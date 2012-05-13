@@ -181,14 +181,15 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     return perf;
 }
 
+- (NSString *)sortNameFromName:(NSString *)name
+{
+    NSRange letterRange = [name rangeOfCharacterFromSet:[NSCharacterSet alphanumericCharacterSet]];
+    return [[name substringFromIndex:letterRange.location] uppercaseString];
+}
+
 - (NSString *)sortSectionFromSortName:(NSString *)sortName
 {
-    unichar c = [sortName characterAtIndex:0];
-    if ([[NSCharacterSet letterCharacterSet] characterIsMember:c]) {
-        return [NSString stringWithFormat:@"%C", c];
-    } else {
-        return @"#";
-    }
+    return [sortName substringToIndex:1];
 }
 
 - (void)importShow:(NSDictionary *)info
@@ -201,7 +202,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
                   insertIntoManagedObjectContext:managedObjectContext];
     show.identifier = [self identifierFromInfo:info];
     show.name = [info objectForKey:@"show_name"];
-    show.sortName = [show.name uppercaseString];
+    show.sortName = [self sortNameFromName:show.name];
     show.sortSection = [self sortSectionFromSortName:show.sortName];
     show.promoBlurb = [info objectForKey:@"promo_blurb"];
     show.homeCity = [info objectForKey:@"home_city"];
