@@ -7,6 +7,9 @@
 //
 
 #import "DCMAppDelegate.h"
+#import "DCMDatabase.h"
+#import "DCMImportOperation.h"
+#import "MBProgressHUD.h"
 
 @implementation DCMAppDelegate
 
@@ -15,6 +18,43 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:DCMImportProgressNotification object:nil
+     queue:[NSOperationQueue mainQueue]
+     usingBlock:^(NSNotification *note) {
+         NSError *error = [[note userInfo] objectForKey:DCMImportErrorKey];
+         if (error) {
+             [[MBProgressHUD HUDForView:self.window] hide:YES];
+             UIAlertView *alert = [[UIAlertView alloc] init];
+             alert.title = @"Import Failed";
+             alert.message = [error localizedDescription];
+             [alert addButtonWithTitle:@"Dismiss"];
+             [alert show];
+         } else {
+             float progress = [[[note userInfo] objectForKey:DCMImportProgressKey] floatValue];
+             MBProgressHUD *hud;
+             if (progress == 0) {
+                 hud = [[MBProgressHUD alloc] initWithWindow:self.window];
+                 hud.removeFromSuperViewOnHide = YES;
+                 hud.labelText = @"Loading";
+                 hud.mode = MBProgressHUDModeDeterminate;
+                 [self.window addSubview:hud];
+                 [hud show:YES];
+             } else {
+                 hud = [MBProgressHUD HUDForView:self.window];
+             }
+             hud.progress = progress;
+             if (progress == 1) {
+                 [hud hide:YES afterDelay:1];
+             }
+         }
+     }];
+    DCMDatabase *database = [DCMDatabase sharedDatabase];
+    if ([database numberOfShows] < 1) {
+        DCMImportOperation *import = [[DCMImportOperation alloc] initWithDatabase:database];
+        NSURL *jsonURL = [[NSBundle mainBundle] URLForResource:@"dcm13data" withExtension:@"json"];
+        [import startImportFromURL:jsonURL];
+    }
     return YES;
 }
 							

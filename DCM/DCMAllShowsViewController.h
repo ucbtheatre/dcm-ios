@@ -1,5 +1,5 @@
 //
-//  DCMFirstViewController.h
+//  DCMAllShowsViewController.h
 //  DCM
 //
 //  Created by Benjamin Ragheb on 5/12/12.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCMFirstViewController : UIViewController
-
+@interface DCMAllShowsViewController : UITableViewController
+{
+    NSFetchedResultsController *showsController;
+}
 @end

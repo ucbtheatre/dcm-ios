@@ -14,12 +14,17 @@
 		BC3748CA155F4C6C0033BAC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748C9155F4C6C0033BAC9 /* main.m */; };
 		BC3748CE155F4C6C0033BAC9 /* DCMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748CD155F4C6C0033BAC9 /* DCMAppDelegate.m */; };
 		BC3748D1155F4C6C0033BAC9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */; };
-		BC3748D4155F4C6C0033BAC9 /* DCMFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748D3155F4C6C0033BAC9 /* DCMFirstViewController.m */; };
-		BC3748D6155F4C6C0033BAC9 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3748D5155F4C6C0033BAC9 /* first.png */; };
-		BC3748D8155F4C6C0033BAC9 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3748D7155F4C6C0033BAC9 /* first@2x.png */; };
-		BC3748DB155F4C6C0033BAC9 /* DCMSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748DA155F4C6C0033BAC9 /* DCMSecondViewController.m */; };
-		BC3748DD155F4C6C0033BAC9 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3748DC155F4C6C0033BAC9 /* second.png */; };
-		BC3748DF155F4C6C0033BAC9 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3748DE155F4C6C0033BAC9 /* second@2x.png */; };
+		BC3748E8155F60F10033BAC9 /* DCMAllShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */; };
+		BC3748EC155F62F00033BAC9 /* DCM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC3748EA155F62F00033BAC9 /* DCM.xcdatamodeld */; };
+		BC3748F0155F69720033BAC9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748EF155F69720033BAC9 /* MBProgressHUD.m */; };
+		BC3748F4155F69BD0033BAC9 /* Performance.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748F3155F69BD0033BAC9 /* Performance.m */; };
+		BC3748F7155F69D10033BAC9 /* Performer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748F6155F69D10033BAC9 /* Performer.m */; };
+		BC3748FD155F69EC0033BAC9 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748FC155F69EC0033BAC9 /* Venue.m */; };
+		BC374900155F6A8C0033BAC9 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748FF155F6A8C0033BAC9 /* Show.m */; };
+		BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374902155F6B010033BAC9 /* DCMImportOperation.m */; };
+		BC374904155F6B760033BAC9 /* dcm13data.json in Resources */ = {isa = PBXBuildFile; fileRef = BC3748E9155F62D50033BAC9 /* dcm13data.json */; };
+		BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374906155F7BE90033BAC9 /* DCMDatabase.m */; };
+		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,21 +32,33 @@
 		BC3748BD155F4C6C0033BAC9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC3748BF155F4C6C0033BAC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC3748C1155F4C6C0033BAC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BC3748C5155F4C6C0033BAC9 /* DCM-Info.plist */ = {isa = PBXFileReference; path = "DCM-Info.plist"; sourceTree = "<group>"; };
+		BC3748C5155F4C6C0033BAC9 /* DCM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DCM-Info.plist"; sourceTree = "<group>"; };
 		BC3748C7155F4C6C0033BAC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC3748C9155F4C6C0033BAC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BC3748CB155F4C6C0033BAC9 /* DCM-Prefix.pch */ = {isa = PBXFileReference; path = "DCM-Prefix.pch"; sourceTree = "<group>"; };
-		BC3748CC155F4C6C0033BAC9 /* DCMAppDelegate.h */ = {isa = PBXFileReference; path = DCMAppDelegate.h; sourceTree = "<group>"; };
+		BC3748CB155F4C6C0033BAC9 /* DCM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DCM-Prefix.pch"; sourceTree = "<group>"; };
+		BC3748CC155F4C6C0033BAC9 /* DCMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCMAppDelegate.h; sourceTree = "<group>"; };
 		BC3748CD155F4C6C0033BAC9 /* DCMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCMAppDelegate.m; sourceTree = "<group>"; };
 		BC3748D0155F4C6C0033BAC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		BC3748D2155F4C6C0033BAC9 /* DCMFirstViewController.h */ = {isa = PBXFileReference; path = DCMFirstViewController.h; sourceTree = "<group>"; };
-		BC3748D3155F4C6C0033BAC9 /* DCMFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCMFirstViewController.m; sourceTree = "<group>"; };
-		BC3748D5155F4C6C0033BAC9 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		BC3748D7155F4C6C0033BAC9 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		BC3748D9155F4C6C0033BAC9 /* DCMSecondViewController.h */ = {isa = PBXFileReference; path = DCMSecondViewController.h; sourceTree = "<group>"; };
-		BC3748DA155F4C6C0033BAC9 /* DCMSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCMSecondViewController.m; sourceTree = "<group>"; };
-		BC3748DC155F4C6C0033BAC9 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		BC3748DE155F4C6C0033BAC9 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		BC3748E5155F4D0E0033BAC9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMAllShowsViewController.h; sourceTree = "<group>"; };
+		BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMAllShowsViewController.m; sourceTree = "<group>"; };
+		BC3748E9155F62D50033BAC9 /* dcm13data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dcm13data.json; sourceTree = "<group>"; };
+		BC3748EB155F62F00033BAC9 /* DCM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DCM.xcdatamodel; sourceTree = "<group>"; };
+		BC3748EE155F69720033BAC9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		BC3748EF155F69720033BAC9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		BC3748F2155F69BD0033BAC9 /* Performance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Performance.h; sourceTree = "<group>"; };
+		BC3748F3155F69BD0033BAC9 /* Performance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Performance.m; sourceTree = "<group>"; };
+		BC3748F5155F69D10033BAC9 /* Performer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Performer.h; sourceTree = "<group>"; };
+		BC3748F6155F69D10033BAC9 /* Performer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Performer.m; sourceTree = "<group>"; };
+		BC3748FB155F69EC0033BAC9 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		BC3748FC155F69EC0033BAC9 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		BC3748FE155F6A8C0033BAC9 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
+		BC3748FF155F6A8C0033BAC9 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Show.m; sourceTree = "<group>"; };
+		BC374901155F6B010033BAC9 /* DCMImportOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMImportOperation.h; sourceTree = "<group>"; };
+		BC374902155F6B010033BAC9 /* DCMImportOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMImportOperation.m; sourceTree = "<group>"; };
+		BC374905155F7BE90033BAC9 /* DCMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMDatabase.h; sourceTree = "<group>"; };
+		BC374906155F7BE90033BAC9 /* DCMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMDatabase.m; sourceTree = "<group>"; };
+		BC374909155F8A030033BAC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */,
 				BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */,
 				BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */,
 				BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */,
@@ -61,7 +79,10 @@
 		BC3748AE155F4C6B0033BAC9 = {
 			isa = PBXGroup;
 			children = (
+				BC3748E9155F62D50033BAC9 /* dcm13data.json */,
+				BC3748E5155F4D0E0033BAC9 /* README.md */,
 				BC3748C3155F4C6C0033BAC9 /* DCM */,
+				BC3748ED155F69580033BAC9 /* MBProgressHUD */,
 				BC3748BC155F4C6C0033BAC9 /* Frameworks */,
 				BC3748BA155F4C6C0033BAC9 /* Products */,
 			);
@@ -78,6 +99,7 @@
 		BC3748BC155F4C6C0033BAC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC374909155F8A030033BAC9 /* CoreData.framework */,
 				BC3748BD155F4C6C0033BAC9 /* UIKit.framework */,
 				BC3748BF155F4C6C0033BAC9 /* Foundation.framework */,
 				BC3748C1155F4C6C0033BAC9 /* CoreGraphics.framework */,
@@ -90,15 +112,14 @@
 			children = (
 				BC3748CC155F4C6C0033BAC9 /* DCMAppDelegate.h */,
 				BC3748CD155F4C6C0033BAC9 /* DCMAppDelegate.m */,
+				BC374905155F7BE90033BAC9 /* DCMDatabase.h */,
+				BC374906155F7BE90033BAC9 /* DCMDatabase.m */,
+				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
+				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
 				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
-				BC3748D2155F4C6C0033BAC9 /* DCMFirstViewController.h */,
-				BC3748D3155F4C6C0033BAC9 /* DCMFirstViewController.m */,
-				BC3748D5155F4C6C0033BAC9 /* first.png */,
-				BC3748D7155F4C6C0033BAC9 /* first@2x.png */,
-				BC3748D9155F4C6C0033BAC9 /* DCMSecondViewController.h */,
-				BC3748DA155F4C6C0033BAC9 /* DCMSecondViewController.m */,
-				BC3748DC155F4C6C0033BAC9 /* second.png */,
-				BC3748DE155F4C6C0033BAC9 /* second@2x.png */,
+				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
+				BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */,
+				BC3748F1155F698F0033BAC9 /* Data Model */,
 				BC3748C4155F4C6C0033BAC9 /* Supporting Files */,
 			);
 			path = DCM;
@@ -113,6 +134,31 @@
 				BC3748CB155F4C6C0033BAC9 /* DCM-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC3748ED155F69580033BAC9 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				BC3748EE155F69720033BAC9 /* MBProgressHUD.h */,
+				BC3748EF155F69720033BAC9 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		BC3748F1155F698F0033BAC9 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC3748EA155F62F00033BAC9 /* DCM.xcdatamodeld */,
+				BC3748FE155F6A8C0033BAC9 /* Show.h */,
+				BC3748FF155F6A8C0033BAC9 /* Show.m */,
+				BC3748FB155F69EC0033BAC9 /* Venue.h */,
+				BC3748FC155F69EC0033BAC9 /* Venue.m */,
+				BC3748F5155F69D10033BAC9 /* Performer.h */,
+				BC3748F6155F69D10033BAC9 /* Performer.m */,
+				BC3748F2155F69BD0033BAC9 /* Performance.h */,
+				BC3748F3155F69BD0033BAC9 /* Performance.m */,
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,10 +215,7 @@
 			files = (
 				BC3748C8155F4C6C0033BAC9 /* InfoPlist.strings in Resources */,
 				BC3748D1155F4C6C0033BAC9 /* MainStoryboard.storyboard in Resources */,
-				BC3748D6155F4C6C0033BAC9 /* first.png in Resources */,
-				BC3748D8155F4C6C0033BAC9 /* first@2x.png in Resources */,
-				BC3748DD155F4C6C0033BAC9 /* second.png in Resources */,
-				BC3748DF155F4C6C0033BAC9 /* second@2x.png in Resources */,
+				BC374904155F6B760033BAC9 /* dcm13data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +228,15 @@
 			files = (
 				BC3748CA155F4C6C0033BAC9 /* main.m in Sources */,
 				BC3748CE155F4C6C0033BAC9 /* DCMAppDelegate.m in Sources */,
-				BC3748D4155F4C6C0033BAC9 /* DCMFirstViewController.m in Sources */,
-				BC3748DB155F4C6C0033BAC9 /* DCMSecondViewController.m in Sources */,
+				BC3748E8155F60F10033BAC9 /* DCMAllShowsViewController.m in Sources */,
+				BC3748EC155F62F00033BAC9 /* DCM.xcdatamodeld in Sources */,
+				BC3748F0155F69720033BAC9 /* MBProgressHUD.m in Sources */,
+				BC3748F4155F69BD0033BAC9 /* Performance.m in Sources */,
+				BC3748F7155F69D10033BAC9 /* Performer.m in Sources */,
+				BC3748FD155F69EC0033BAC9 /* Venue.m in Sources */,
+				BC374900155F6A8C0033BAC9 /* Show.m in Sources */,
+				BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */,
+				BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +350,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BC3748EA155F62F00033BAC9 /* DCM.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BC3748EB155F62F00033BAC9 /* DCM.xcdatamodel */,
+			);
+			currentVersion = BC3748EB155F62F00033BAC9 /* DCM.xcdatamodel */;
+			path = DCM.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BC3748B0155F4C6B0033BAC9 /* Project object */;
 }
