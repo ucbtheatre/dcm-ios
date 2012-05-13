@@ -78,6 +78,12 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Performance *perf = [performancesController objectAtIndexPath:indexPath];
+    return 30.0f + ([perf.minutes floatValue] * (5.0f / 15.0f));
+}
+
 #pragma mark - Storyboard
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

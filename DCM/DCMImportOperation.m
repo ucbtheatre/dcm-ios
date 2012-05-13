@@ -229,7 +229,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     perf.startDate = [self parseDate:[info objectForKey:@"starttime"]];
     perf.endDate = [self parseDate:[info objectForKey:@"endtime"]];
     NSTimeInterval interval = [perf.endDate timeIntervalSinceDate:perf.startDate];
-    perf.minutes = [NSNumber numberWithDouble:interval];
+    perf.minutes = [NSNumber numberWithDouble:(interval / 60.0)];
     [self didImportObject];
 }
 
