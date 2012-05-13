@@ -69,42 +69,54 @@
     performancesController = nil;
 }
 
+- (Performance *)performanceAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSIndexPath *path = [NSIndexPath indexPathForRow:indexPath.row
+                                           inSection:(indexPath.section - 1)];
+    return [performancesController objectAtIndexPath:path];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[performancesController sections] count];
+    return 1 + [[performancesController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 0) return 1;
     id <NSFetchedResultsSectionInfo> info;
-    info = [[performancesController sections] objectAtIndex:section];
+    info = [[performancesController sections] objectAtIndex:(section - 1)];
     return [info numberOfObjects];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if (section == 0) return nil;
     id <NSFetchedResultsSectionInfo> info;
-    info = [[performancesController sections] objectAtIndex:section];
+    info = [[performancesController sections] objectAtIndex:(section - 1)];
     return [info name];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"h:mma"];
-    Performance *perf = [performancesController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [df stringFromDate:perf.startDate];    
-    cell.detailTextLabel.text = perf.show.name;
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Performance *perf = [performancesController objectAtIndexPath:indexPath];
-    return 30.0f + ([perf.minutes floatValue] * (5.0f / 15.0f));
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimeCell"];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateStyle:NSDateFormatterShortStyle];
+        [df setTimeStyle:NSDateFormatterShortStyle];
+        cell.textLabel.text = [df stringFromDate:lastRefreshDate];
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"h:mma"];
+        Performance *perf = [self performanceAtIndexPath:indexPath];
+        cell.textLabel.text = [df stringFromDate:perf.startDate];    
+        cell.detailTextLabel.text = perf.show.name;
+        return cell;
+    }
 }
 
 #pragma mark - Table view delegate
@@ -113,7 +125,7 @@
 {
     DCMShowDetailViewController *detailViewController = [segue destinationViewController];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    Performance *perf = [performancesController objectAtIndexPath:indexPath];
+    Performance *perf = [self performanceAtIndexPath:indexPath];
     detailViewController.show = perf.show;
 }
 
