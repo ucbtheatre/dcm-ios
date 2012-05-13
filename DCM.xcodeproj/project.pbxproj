@@ -34,6 +34,7 @@
 		BC37491F155FB0A40033BAC9 /* Masks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374919155FB0A40033BAC9 /* Masks@2x.png */; };
 		BC374920155FB0A40033BAC9 /* Person.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491A155FB0A40033BAC9 /* Person.png */; };
 		BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491B155FB0A40033BAC9 /* Person@2x.png */; };
+		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,8 @@
 		BC374919155FB0A40033BAC9 /* Masks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Masks@2x.png"; sourceTree = "<group>"; };
 		BC37491A155FB0A40033BAC9 /* Person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person.png; sourceTree = "<group>"; };
 		BC37491B155FB0A40033BAC9 /* Person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Person@2x.png"; sourceTree = "<group>"; };
+		BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUpcomingViewController.h; sourceTree = "<group>"; };
+		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
+				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
 				BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */,
 				BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */,
 				BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */,
@@ -295,6 +300,7 @@
 				BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */,
 				BC374911155FA64C0033BAC9 /* DCMAllVenuesViewController.m in Sources */,
 				BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */,
+				BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +412,7 @@
 				BC3748E4155F4C6C0033BAC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

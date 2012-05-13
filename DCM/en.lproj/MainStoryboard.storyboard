@@ -20,10 +20,11 @@
                     <connections>
                         <segue destination="3cc-g6-m2K" kind="relationship" relationship="viewControllers" id="JWY-wF-L43"/>
                         <segue destination="aWE-pS-yT1" kind="relationship" relationship="viewControllers" id="kEm-IK-FUf"/>
+                        <segue destination="p3q-ex-DjY" kind="relationship" relationship="viewControllers" id="MZx-YM-AMS"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-209" y="-223"/>
+            <point key="canvasLocation" x="-265" y="384"/>
         </scene>
         <!--All Shows View Controller - All Shows-->
         <scene sceneID="fmR-ee-qz3">
@@ -61,7 +62,7 @@
                     <navigationItem key="navigationItem" title="All Shows" id="59I-zO-Jdg"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="760" y="-223"/>
+            <point key="canvasLocation" x="1170" y="-223"/>
         </scene>
         <!--All Venues View Controller - All Venues-->
         <scene sceneID="9HE-rx-7NE">
@@ -104,6 +105,67 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="760" y="384"/>
+        </scene>
+        <!--Upcoming View Controller - Happening Now-->
+        <scene sceneID="vmk-bP-Dm6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EhV-bg-T6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="rCJ-kO-75b" customClass="DCMUpcomingViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Eof-Rb-NoK">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="Uho-HL-pcF" detailTextLabel="n4J-Rh-6TA" style="IBUITableViewCellStyleValue2" id="286-9z-gXB">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="3:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uho-HL-pcF">
+                                            <rect key="frame" x="10" y="15" width="67" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Show Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n4J-Rh-6TA">
+                                            <rect key="frame" x="83" y="12" width="75" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="8fh-Yh-dX8" kind="push" id="Dh0-8U-gpa"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Happening Now" id="bDw-gL-vHU"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1170" y="1012"/>
+        </scene>
+        <!--Navigation Controller - Now-->
+        <scene sceneID="owG-Mr-HIE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P41-Zu-Wqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="p3q-ex-DjY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Now" id="toI-Yc-ghw"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bid-mE-s4X">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rCJ-kO-75b" kind="relationship" relationship="rootViewController" id="MQx-uK-j60"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="330" y="1012"/>
         </scene>
         <!--Venue Detail View Controller-->
         <scene sceneID="sQj-3q-MGQ">
@@ -270,7 +332,7 @@ text</string>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1714" y="24"/>
+            <point key="canvasLocation" x="1830" y="384"/>
         </scene>
         <!--Navigation Controller - Shows-->
         <scene sceneID="hkC-BK-Iin">
@@ -307,6 +369,9 @@ text</string>
                 <relationship kind="outlet" name="promoBlurbLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="DCMUpcomingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMUpcomingViewController.h"/>
+        </class>
         <class className="DCMVenueDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMVenueDetailViewController.h"/>
         </class>
@@ -317,6 +382,6 @@ text</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bgW-oP-1t4"/>
+        <segue reference="Dh0-8U-gpa"/>
     </inferredMetricsTieBreakers>
 </document>
