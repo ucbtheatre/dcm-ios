@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Show;
+@class Venue;
 
 @interface Performance : NSManagedObject
 
@@ -17,7 +19,7 @@
 @property (nonatomic, retain) NSDate * endDate;
 @property (nonatomic, retain) NSNumber * minutes;
 @property (nonatomic, retain) NSString * ticketsURLString;
-@property (nonatomic, retain) NSManagedObject *show;
-@property (nonatomic, retain) NSManagedObject *venue;
+@property (nonatomic, retain) Show *show;
+@property (nonatomic, retain) Venue *venue;
 
 @end

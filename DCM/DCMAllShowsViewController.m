@@ -8,6 +8,7 @@
 
 #import "DCMAllShowsViewController.h"
 #import "DCMDatabase.h"
+#import "DCMShowDetailViewController.h"
 
 @interface DCMAllShowsViewController ()
 
@@ -90,17 +91,13 @@
     return cell;
 }
 
-#pragma mark - Table view delegate
+#pragma mark - Storyboard
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    DCMShowDetailViewController *detailViewController = [segue destinationViewController];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    detailViewController.show = [showsController objectAtIndexPath:indexPath];
 }
 
 @end
