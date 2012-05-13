@@ -28,6 +28,12 @@
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
 		BC374911155FA64C0033BAC9 /* DCMAllVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */; };
 		BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */; };
+		BC37491C155FB0A40033BAC9 /* City.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374916155FB0A40033BAC9 /* City.png */; };
+		BC37491D155FB0A40033BAC9 /* City@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374917155FB0A40033BAC9 /* City@2x.png */; };
+		BC37491E155FB0A40033BAC9 /* Masks.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374918155FB0A40033BAC9 /* Masks.png */; };
+		BC37491F155FB0A40033BAC9 /* Masks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374919155FB0A40033BAC9 /* Masks@2x.png */; };
+		BC374920155FB0A40033BAC9 /* Person.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491A155FB0A40033BAC9 /* Person.png */; };
+		BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491B155FB0A40033BAC9 /* Person@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +74,12 @@
 		BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMAllVenuesViewController.m; sourceTree = "<group>"; };
 		BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueDetailViewController.h; sourceTree = "<group>"; };
 		BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueDetailViewController.m; sourceTree = "<group>"; };
+		BC374916155FB0A40033BAC9 /* City.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = City.png; sourceTree = "<group>"; };
+		BC374917155FB0A40033BAC9 /* City@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "City@2x.png"; sourceTree = "<group>"; };
+		BC374918155FB0A40033BAC9 /* Masks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Masks.png; sourceTree = "<group>"; };
+		BC374919155FB0A40033BAC9 /* Masks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Masks@2x.png"; sourceTree = "<group>"; };
+		BC37491A155FB0A40033BAC9 /* Person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person.png; sourceTree = "<group>"; };
+		BC37491B155FB0A40033BAC9 /* Person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Person@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +138,7 @@
 				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
 				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
 				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
+				BC374915155FAF140033BAC9 /* Images */,
 				BC37490E155F9B2C0033BAC9 /* View Controllers */,
 				BC3748F1155F698F0033BAC9 /* Data Model */,
 				BC3748C4155F4C6C0033BAC9 /* Supporting Files */,
@@ -184,6 +197,19 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		BC374915155FAF140033BAC9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BC374916155FB0A40033BAC9 /* City.png */,
+				BC374917155FB0A40033BAC9 /* City@2x.png */,
+				BC374918155FB0A40033BAC9 /* Masks.png */,
+				BC374919155FB0A40033BAC9 /* Masks@2x.png */,
+				BC37491A155FB0A40033BAC9 /* Person.png */,
+				BC37491B155FB0A40033BAC9 /* Person@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,6 +265,12 @@
 				BC3748C8155F4C6C0033BAC9 /* InfoPlist.strings in Resources */,
 				BC3748D1155F4C6C0033BAC9 /* MainStoryboard.storyboard in Resources */,
 				BC374904155F6B760033BAC9 /* dcm13data.json in Resources */,
+				BC37491C155FB0A40033BAC9 /* City.png in Resources */,
+				BC37491D155FB0A40033BAC9 /* City@2x.png in Resources */,
+				BC37491E155FB0A40033BAC9 /* Masks.png in Resources */,
+				BC37491F155FB0A40033BAC9 /* Masks@2x.png in Resources */,
+				BC374920155FB0A40033BAC9 /* Person.png in Resources */,
+				BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
