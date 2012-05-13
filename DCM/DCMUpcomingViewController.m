@@ -32,7 +32,7 @@
 {
     NSError *error = nil;
     NSFetchRequest *request = performancesController.fetchRequest;
-    NSDate *nowDate = [NSDate date];
+    NSDate *nowDate = [NSDate dateWithTimeIntervalSinceNow:timeShift];
     NSDate *hourFromNowDate = [nowDate dateByAddingTimeInterval:3600];
     [request setPredicate:
      [NSPredicate predicateWithFormat:
@@ -74,6 +74,16 @@
     NSIndexPath *path = [NSIndexPath indexPathForRow:indexPath.row
                                            inSection:(indexPath.section - 1)];
     return [performancesController objectAtIndexPath:path];
+}
+
+#pragma mark - Flux capacitor
+
+- (void)fluxCapacitor:(FluxCapacitorViewController *)fluxCap didSelectTimeShift:(NSTimeInterval)shift
+{
+    timeShift = shift;
+    [fluxCap dismissViewControllerAnimated:YES completion:^{
+        [self refresh];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -123,10 +133,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DCMShowDetailViewController *detailViewController = [segue destinationViewController];
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    Performance *perf = [self performanceAtIndexPath:indexPath];
-    detailViewController.show = perf.show;
+    if ([[segue identifier] isEqualToString:@"TimeTravel"]) {
+        FluxCapacitorViewController *fluxCap = [segue destinationViewController];
+        fluxCap.delegate = self;
+        fluxCap.initialTimeShift = timeShift;
+    } else {
+        DCMShowDetailViewController *detailViewController = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Performance *perf = [self performanceAtIndexPath:indexPath];
+        detailViewController.show = perf.show;
+    }
 }
 
 @end

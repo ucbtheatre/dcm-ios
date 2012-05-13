@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FluxCapacitorViewController.h"
 
-@interface DCMUpcomingViewController : UITableViewController
+@interface DCMUpcomingViewController : UITableViewController <FluxCapacitorDelegate>
 {
     NSFetchedResultsController *performancesController;
     NSDate *lastRefreshDate;
+    NSTimeInterval timeShift;
 }
 @end
