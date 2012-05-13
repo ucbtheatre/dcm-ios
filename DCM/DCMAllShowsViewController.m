@@ -74,6 +74,11 @@
     return [info name];
 }
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [showsController sectionIndexTitles];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShowCell"];
