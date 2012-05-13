@@ -86,7 +86,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"EEEE h:mma"];
     cell.textLabel.text = [df stringFromDate:performance.startDate];
-    cell.detailTextLabel.text = performance.venue.name;
+    cell.detailTextLabel.text = performance.venue.shortName;
     return cell;
 }
 

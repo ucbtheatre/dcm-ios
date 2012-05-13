@@ -19,4 +19,11 @@
 @dynamic show;
 @dynamic venue;
 
+- (NSString *)weekday
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"eeee"];
+    return [df stringFromDate:self.startDate];
+}
+
 @end

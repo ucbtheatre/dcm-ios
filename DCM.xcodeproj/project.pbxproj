@@ -26,6 +26,8 @@
 		BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374906155F7BE90033BAC9 /* DCMDatabase.m */; };
 		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
+		BC374911155FA64C0033BAC9 /* DCMAllVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */; };
+		BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,10 @@
 		BC374909155F8A030033BAC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMShowDetailViewController.h; sourceTree = "<group>"; };
 		BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMShowDetailViewController.m; sourceTree = "<group>"; };
+		BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMAllVenuesViewController.h; sourceTree = "<group>"; };
+		BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMAllVenuesViewController.m; sourceTree = "<group>"; };
+		BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueDetailViewController.h; sourceTree = "<group>"; };
+		BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,10 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */,
+				BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */,
+				BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */,
+				BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */,
 				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
 				BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */,
 				BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */,
@@ -251,6 +261,8 @@
 				BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */,
 				BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */,
 				BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */,
+				BC374911155FA64C0033BAC9 /* DCMAllVenuesViewController.m in Sources */,
+				BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

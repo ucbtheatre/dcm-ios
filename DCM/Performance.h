@@ -22,4 +22,6 @@
 @property (nonatomic, retain) Show *show;
 @property (nonatomic, retain) Venue *venue;
 
+@property (nonatomic, readonly) NSString *weekday;
+
 @end
