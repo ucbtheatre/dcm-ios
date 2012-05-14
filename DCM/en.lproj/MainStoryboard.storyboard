@@ -199,7 +199,7 @@
             </objects>
             <point key="canvasLocation" x="330" y="1012"/>
         </scene>
-        <!--Venue Detail View Controller-->
+        <!--Venue Detail View Controller - Venue Name-->
         <scene sceneID="sQj-3q-MGQ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yz-NA-YQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,7 +257,7 @@
                             <outlet property="delegate" destination="acV-b5-WiA" id="beS-fP-cNR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dCA-oL-6bB"/>
+                    <navigationItem key="navigationItem" title="Venue Name" id="dCA-oL-6bB"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1170" y="391"/>
@@ -278,7 +278,7 @@
             </objects>
             <point key="canvasLocation" x="330" y="384"/>
         </scene>
-        <!--Show Detail View Controller-->
+        <!--Show Detail View Controller - Show Name-->
         <scene sceneID="VZk-Dn-NmH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnM-yg-n3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,8 +358,15 @@ text</string>
                             <outlet property="delegate" destination="8fh-Yh-dX8" id="e7m-qI-Z3v"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="NiG-qw-d9p"/>
+                    <navigationItem key="navigationItem" title="Show Name" id="NiG-qw-d9p">
+                        <barButtonItem key="rightBarButtonItem" image="Heart0.png" id="g8p-9w-JPF">
+                            <connections>
+                                <action selector="toggleFavorite:" destination="8fh-Yh-dX8" id="oUG-3L-5iP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="favoriteButton" destination="g8p-9w-JPF" id="wnE-g0-dcc"/>
                         <outlet property="promoBlurbLabel" destination="rAF-ZR-kEM" id="i61-qc-2eJ"/>
                     </connections>
                 </tableViewController>
@@ -486,6 +493,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="City.png" width="23" height="27"/>
         <image name="Glasses.png" width="66" height="42"/>
+        <image name="Heart0.png" width="17" height="15"/>
         <image name="Masks.png" width="37" height="23"/>
         <image name="Person.png" width="24" height="21"/>
     </resources>
@@ -499,6 +507,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMShowDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMShowDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="toggleFavorite:"/>
+                <relationship kind="outlet" name="favoriteButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="promoBlurbLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -524,6 +534,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bwO-Ck-TVu"/>
+        <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
 </document>

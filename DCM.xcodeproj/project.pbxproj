@@ -40,6 +40,10 @@
 		BC965C991560B91300665E50 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965C971560B91300665E50 /* Icon@2x.png */; };
 		BC965C9C1560BD5400665E50 /* Glasses.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965C9A1560BD5400665E50 /* Glasses.png */; };
 		BC965C9D1560BD5400665E50 /* Glasses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965C9B1560BD5400665E50 /* Glasses@2x.png */; };
+		BC965CA61560C24600665E50 /* Heart0.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA21560C24600665E50 /* Heart0.png */; };
+		BC965CA71560C24600665E50 /* Heart0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA31560C24600665E50 /* Heart0@2x.png */; };
+		BC965CA81560C24600665E50 /* Heart1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA41560C24600665E50 /* Heart1.png */; };
+		BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA51560C24600665E50 /* Heart1@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,10 @@
 		BC965C971560B91300665E50 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		BC965C9A1560BD5400665E50 /* Glasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glasses.png; sourceTree = "<group>"; };
 		BC965C9B1560BD5400665E50 /* Glasses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Glasses@2x.png"; sourceTree = "<group>"; };
+		BC965CA21560C24600665E50 /* Heart0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart0.png; sourceTree = "<group>"; };
+		BC965CA31560C24600665E50 /* Heart0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart0@2x.png"; sourceTree = "<group>"; };
+		BC965CA41560C24600665E50 /* Heart1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart1.png; sourceTree = "<group>"; };
+		BC965CA51560C24600665E50 /* Heart1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart1@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +226,10 @@
 		BC374915155FAF140033BAC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BC965CA21560C24600665E50 /* Heart0.png */,
+				BC965CA31560C24600665E50 /* Heart0@2x.png */,
+				BC965CA41560C24600665E50 /* Heart1.png */,
+				BC965CA51560C24600665E50 /* Heart1@2x.png */,
 				BC965C9A1560BD5400665E50 /* Glasses.png */,
 				BC965C9B1560BD5400665E50 /* Glasses@2x.png */,
 				BC965C961560B91300665E50 /* Icon.png */,
@@ -297,6 +309,10 @@
 				BC965C991560B91300665E50 /* Icon@2x.png in Resources */,
 				BC965C9C1560BD5400665E50 /* Glasses.png in Resources */,
 				BC965C9D1560BD5400665E50 /* Glasses@2x.png in Resources */,
+				BC965CA61560C24600665E50 /* Heart0.png in Resources */,
+				BC965CA71560C24600665E50 /* Heart0@2x.png in Resources */,
+				BC965CA81560C24600665E50 /* Heart1.png in Resources */,
+				BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

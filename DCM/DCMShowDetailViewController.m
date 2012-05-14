@@ -17,6 +17,13 @@
 
 @synthesize promoBlurbLabel;
 @synthesize show;
+@synthesize favoriteButton;
+
+- (void)updateFavoriteButton
+{
+    NSString *name = self.show.favorite ? @"Heart1" : @"Heart0";
+    self.favoriteButton.image = [UIImage imageNamed:name];
+}
 
 - (void)viewDidLoad
 {
@@ -35,6 +42,7 @@
     CGFloat height = CGRectGetHeight(self.promoBlurbLabel.bounds);
     [[self.promoBlurbLabel superview]
      setBounds:CGRectMake(0, 0, 320, height+16)];
+    [self updateFavoriteButton];
 }
 
 - (void)viewDidUnload
@@ -44,6 +52,18 @@
     performers = nil;
     performances = nil;
     [super viewDidUnload];
+}
+
+- (IBAction)toggleFavorite:(id)sender
+{
+    self.show.favorite = !self.show.favorite;
+    NSError *error = nil;
+    if ([self.show.managedObjectContext save:&error]) {
+        [self updateFavoriteButton];
+    } else {
+        // TODO: display alert
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }
 }
 
 #pragma mark - Table view data source
