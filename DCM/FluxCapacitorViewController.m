@@ -24,6 +24,11 @@
     self.datePicker.date = [NSDate dateWithTimeIntervalSinceNow:self.initialTimeShift];
 }
 
+- (void)dcm13:(id)sender
+{
+    self.datePicker.date = [NSDate dateWithTimeIntervalSince1970:1313181000];
+}
+
 - (void)confirm:(id)sender
 {
     NSTimeInterval timeShift = [self.datePicker.date timeIntervalSinceNow];

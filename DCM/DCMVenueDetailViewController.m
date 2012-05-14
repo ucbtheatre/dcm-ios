@@ -71,7 +71,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"h:mma"];
+    [df setDateFormat:@"h:mm a"];
     Performance *perf = [performancesController objectAtIndexPath:indexPath];
     cell.textLabel.text = [df stringFromDate:perf.startDate];    
     cell.detailTextLabel.text = perf.show.name;

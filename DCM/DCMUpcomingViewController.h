@@ -14,5 +14,6 @@
     NSFetchedResultsController *performancesController;
     NSDate *lastRefreshDate;
     NSTimeInterval timeShift;
+    NSTimer *refreshTimer;
 }
 @end

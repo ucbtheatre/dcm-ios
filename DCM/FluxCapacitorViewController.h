@@ -20,4 +20,5 @@
 @property (nonatomic,strong) IBOutlet UIDatePicker *datePicker;
 - (IBAction)confirm:(id)sender;
 - (IBAction)reset:(id)sender;
+- (IBAction)dcm13:(id)sender;
 @end
