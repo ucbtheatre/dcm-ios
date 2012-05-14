@@ -36,6 +36,8 @@
 		BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491B155FB0A40033BAC9 /* Person@2x.png */; };
 		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
 		BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */; };
+		BC965C981560B91300665E50 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965C961560B91300665E50 /* Icon.png */; };
+		BC965C991560B91300665E50 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965C971560B91300665E50 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 		BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxCapacitorViewController.h; sourceTree = "<group>"; };
 		BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxCapacitorViewController.m; sourceTree = "<group>"; };
+		BC965C961560B91300665E50 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		BC965C971560B91300665E50 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +214,8 @@
 		BC374915155FAF140033BAC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BC965C961560B91300665E50 /* Icon.png */,
+				BC965C971560B91300665E50 /* Icon@2x.png */,
 				BC374916155FB0A40033BAC9 /* City.png */,
 				BC374917155FB0A40033BAC9 /* City@2x.png */,
 				BC374918155FB0A40033BAC9 /* Masks.png */,
@@ -281,6 +287,8 @@
 				BC37491F155FB0A40033BAC9 /* Masks@2x.png in Resources */,
 				BC374920155FB0A40033BAC9 /* Person.png in Resources */,
 				BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */,
+				BC965C981560B91300665E50 /* Icon.png in Resources */,
+				BC965C991560B91300665E50 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
