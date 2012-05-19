@@ -184,11 +184,11 @@
             </objects>
             <point key="canvasLocation" x="1170" y="1012"/>
         </scene>
-        <!--Favorites View Controller View Controller - Favorites-->
+        <!--Favorites View Controller - Favorites-->
         <scene sceneID="rRn-Sn-ODd">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWe-pI-zsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="5X7-ii-q0c" customClass="DCMFavoritesViewControllerViewController" sceneMemberID="viewController">
+                <tableViewController id="5X7-ii-q0c" customClass="DCMFavoritesViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9sC-IQ-y7F">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -567,8 +567,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMAllVenuesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMAllVenuesViewController.h"/>
         </class>
-        <class className="DCMFavoritesViewControllerViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMFavoritesViewControllerViewController.h"/>
+        <class className="DCMFavoritesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMFavoritesViewController.h"/>
         </class>
         <class className="DCMShowDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMShowDetailViewController.h"/>

@@ -1,5 +1,5 @@
 //
-//  DCMFavoritesViewControllerViewController.h
+//  DCMFavoritesViewController.h
 //  DCM
 //
 //  Created by Kurt Guenther on 5/19/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCMFavoritesViewControllerViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface DCMFavoritesViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 {
     NSFetchedResultsController *performancesController;
 }

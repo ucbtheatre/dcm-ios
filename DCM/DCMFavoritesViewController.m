@@ -1,20 +1,20 @@
 //
-//  DCMFavoritesViewControllerViewController.m
+//  DCMFavoritesViewController.m
 //  DCM
 //
 //  Created by Kurt Guenther on 5/19/12.
 //  Copyright (c) 2012 Heroic Software Inc. All rights reserved.
 //
 
-#import "DCMFavoritesViewControllerViewController.h"
+#import "DCMFavoritesViewController.h"
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
 
-@interface DCMFavoritesViewControllerViewController ()
+@interface DCMFavoritesViewController ()
 
 @end
 
-@implementation DCMFavoritesViewControllerViewController
+@implementation DCMFavoritesViewController
 
 - (void)viewDidLoad
 {
