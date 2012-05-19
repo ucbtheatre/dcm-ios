@@ -56,7 +56,12 @@
 
 - (IBAction)toggleFavorite:(id)sender
 {
-    self.show.favorite = !self.show.favorite;
+    //self.show.favorite = !self.show.favorite;
+    BOOL fav = self.show.favorite;
+    for (Performance* p in self.show.performances) {
+        p.favorite = !fav;
+    }
+    
     NSError *error = nil;
     if ([self.show.managedObjectContext save:&error]) {
         [self updateFavoriteButton];

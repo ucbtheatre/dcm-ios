@@ -14,6 +14,7 @@
 
 @interface Performance : NSManagedObject
 
+@property (nonatomic) BOOL favorite;
 @property (nonatomic, retain) NSNumber * identifier;
 @property (nonatomic, retain) NSDate * startDate;
 @property (nonatomic, retain) NSDate * endDate;

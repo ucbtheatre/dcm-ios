@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F18531015681EF1007075E5 /* DCMFavoritesViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F18530F15681EF1007075E5 /* DCMFavoritesViewControllerViewController.m */; };
 		BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BD155F4C6C0033BAC9 /* UIKit.framework */; };
 		BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BF155F4C6C0033BAC9 /* Foundation.framework */; };
 		BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748C1155F4C6C0033BAC9 /* CoreGraphics.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F18530E15681EF1007075E5 /* DCMFavoritesViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMFavoritesViewControllerViewController.h; sourceTree = "<group>"; };
+		0F18530F15681EF1007075E5 /* DCMFavoritesViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMFavoritesViewControllerViewController.m; sourceTree = "<group>"; };
 		BC3748B9155F4C6C0033BAC9 /* DCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3748BD155F4C6C0033BAC9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC3748BF155F4C6C0033BAC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -219,6 +222,8 @@
 				BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */,
 				BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */,
 				BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */,
+				0F18530E15681EF1007075E5 /* DCMFavoritesViewControllerViewController.h */,
+				0F18530F15681EF1007075E5 /* DCMFavoritesViewControllerViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */,
 				BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */,
 				BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */,
+				0F18531015681EF1007075E5 /* DCMFavoritesViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

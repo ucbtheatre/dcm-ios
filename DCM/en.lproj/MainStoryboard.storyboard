@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
@@ -21,6 +21,7 @@
                         <segue destination="p3q-ex-DjY" kind="relationship" relationship="viewControllers" id="MZx-YM-AMS"/>
                         <segue destination="3cc-g6-m2K" kind="relationship" relationship="viewControllers" id="JWY-wF-L43"/>
                         <segue destination="aWE-pS-yT1" kind="relationship" relationship="viewControllers" id="kEm-IK-FUf"/>
+                        <segue destination="uBx-cy-dVK" kind="relationship" relationship="viewControllers" id="UUf-10-L5F"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -182,6 +183,67 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1170" y="1012"/>
+        </scene>
+        <!--Favorites View Controller View Controller - Favorites-->
+        <scene sceneID="rRn-Sn-ODd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sWe-pI-zsQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="5X7-ii-q0c" customClass="DCMFavoritesViewControllerViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9sC-IQ-y7F">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="AGD-gA-Czm" detailTextLabel="nru-Wh-40u" style="IBUITableViewCellStyleValue2" id="2YU-Ud-T1i">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="6:00pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AGD-gA-Czm">
+                                            <rect key="frame" x="10" y="15" width="91" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                            <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Death by Roo Roo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nru-Wh-40u">
+                                            <rect key="frame" x="107" y="12" width="130" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="8fh-Yh-dX8" kind="push" id="pYu-qY-i04"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorites" id="H72-KP-qAp"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1164" y="1662"/>
+        </scene>
+        <!--Navigation Controller - Favorites-->
+        <scene sceneID="spz-Be-BSC">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lo0-Ig-7O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="uBx-cy-dVK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Heart1.png" id="53C-Fl-Das"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i0Z-HI-HTC">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5X7-ii-q0c" kind="relationship" relationship="rootViewController" id="WYw-X7-TbV"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="330" y="1662"/>
         </scene>
         <!--Navigation Controller - Coming Up-->
         <scene sceneID="owG-Mr-HIE">
@@ -494,6 +556,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="City.png" width="23" height="27"/>
         <image name="Glasses.png" width="66" height="42"/>
         <image name="Heart0.png" width="17" height="15"/>
+        <image name="Heart1.png" width="17" height="15"/>
         <image name="Masks.png" width="37" height="23"/>
         <image name="Person.png" width="24" height="21"/>
     </resources>
@@ -503,6 +566,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="DCMAllVenuesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMAllVenuesViewController.h"/>
+        </class>
+        <class className="DCMFavoritesViewControllerViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMFavoritesViewControllerViewController.h"/>
         </class>
         <class className="DCMShowDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMShowDetailViewController.h"/>
@@ -534,6 +600,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="w5y-sB-QMH"/>
+        <segue reference="pYu-qY-i04"/>
     </inferredMetricsTieBreakers>
 </document>

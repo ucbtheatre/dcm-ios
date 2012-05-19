@@ -17,12 +17,15 @@
 @property (nonatomic, retain) NSString * promoBlurb;
 @property (nonatomic, retain) NSString * homeCity;
 @property (nonatomic, retain) NSNumber *identifier;
-@property (nonatomic) BOOL favorite;
+
 @property (nonatomic, retain) NSSet *performers;
 @property (nonatomic, retain) NSSet *performances;
 
 @property (nonatomic, retain) NSString *sortName;
 @property (nonatomic, retain) NSString *sortSection;
+
+
+@property (nonatomic, readonly) BOOL favorite;
 
 @end
 
@@ -37,5 +40,6 @@
 - (void)removePerformancesObject:(Performance *)value;
 - (void)addPerformances:(NSSet *)values;
 - (void)removePerformances:(NSSet *)values;
+
 
 @end

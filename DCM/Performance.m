@@ -11,6 +11,7 @@
 
 @implementation Performance
 
+@dynamic favorite;
 @dynamic identifier;
 @dynamic startDate;
 @dynamic endDate;

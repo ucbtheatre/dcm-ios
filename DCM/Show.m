@@ -17,10 +17,15 @@
 @dynamic promoBlurb;
 @dynamic homeCity;
 @dynamic identifier;
-@dynamic favorite;
 @dynamic performers;
 @dynamic performances;
 @dynamic sortName;
 @dynamic sortSection;
+
+
+- (BOOL) favorite
+{
+    return [[self.performances anyObject] favorite];
+}
 
 @end
