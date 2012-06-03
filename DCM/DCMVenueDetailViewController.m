@@ -9,6 +9,7 @@
 #import "DCMVenueDetailViewController.h"
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
+#import "DCMAppDelegate.h"
 
 @interface DCMVenueDetailViewController ()
 
@@ -38,12 +39,62 @@
     if (![performancesController performFetch:&error]) {
         NSLog(@"Error: %@", [error localizedDescription]);
     }
+    scrollOnNextAppearance = YES;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     performancesController = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (scrollOnNextAppearance) {
+        [self scrollToCurrentShow:nil];
+        scrollOnNextAppearance = NO;
+    }
+}
+
+- (IBAction)scrollToCurrentShow:(id)sender
+{
+    NSDate *date = [DCMAppDelegate currentDate];
+    NSArray *perfArray = [performancesController fetchedObjects];
+    NSUInteger idx = [perfArray
+                      indexOfObject:date
+                      inSortedRange:NSMakeRange(0, [perfArray count])
+                      options:NSBinarySearchingInsertionIndex
+                      usingComparator:^NSComparisonResult(id obj1, id obj2) {
+                          NSDate *date1;
+                          if ([obj1 isKindOfClass:[NSDate class]]) {
+                              date1 = obj1;
+                          } else {
+                              date1 = [obj1 startDate];
+                          }
+                          NSDate *date2;
+                          if ([obj2 isKindOfClass:[NSDate class]]) {
+                              date2 = obj2;
+                          } else {
+                              date2 = [obj2 startDate];
+                          }
+                          return [date1 compare:date2];
+                      }];
+    if (idx == 0) return; // don't do anything if first show hasn't happened yet
+    NSIndexPath *path;
+    if (idx < [perfArray count]) {
+        path = [performancesController indexPathForObject:
+                [perfArray objectAtIndex:idx]];
+    } else {
+        path = [performancesController indexPathForObject:
+                [perfArray lastObject]];
+    }
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.tableView selectRowAtIndexPath:path animated:NO
+                              scrollPosition:UITableViewScrollPositionMiddle];
+    } completion:^(BOOL finished) {
+        [self.tableView deselectRowAtIndexPath:path animated:YES];
+    }];
 }
 
 #pragma mark - Table view data source

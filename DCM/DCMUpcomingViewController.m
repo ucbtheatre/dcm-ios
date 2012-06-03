@@ -9,6 +9,7 @@
 #import "DCMUpcomingViewController.h"
 #import "DCMDatabase.h"
 #import "DCMShowDetailViewController.h"
+#import "DCMAppDelegate.h"
 
 @interface DCMUpcomingViewController ()
 
@@ -60,9 +61,10 @@
 
 - (void)refresh
 {
+    DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
     NSError *error = nil;
     NSFetchRequest *request = performancesController.fetchRequest;
-    NSDate *nowDate = [NSDate dateWithTimeIntervalSinceNow:timeShift];
+    NSDate *nowDate = [NSDate dateWithTimeIntervalSinceNow:ad.timeShift];
     NSDate *hourFromNowDate = [nowDate dateByAddingTimeInterval:3600];
     [request setPredicate:
      [NSPredicate predicateWithFormat:
@@ -74,8 +76,8 @@
         NSLog(@"Error: %@", [error localizedDescription]);
     }
     lastRefreshDate = nowDate;
-    if (timeShift != 0) {
-        timeShift += 300;
+    if (ad.timeShift != 0) {
+        ad.timeShift += 300;
     }
     [self updateDateButton];
     // If this is the first fetch, just reload
@@ -148,10 +150,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
     [super viewWillAppear:animated];
     [refreshTimer invalidate];
     refreshTimer = [NSTimer
-                    scheduledTimerWithTimeInterval:(timeShift == 0) ? 60 : 1
+                    scheduledTimerWithTimeInterval:(ad.timeShift == 0) ? 60 : 1
                     target:self selector:@selector(refreshTimerDidFire:)
                     userInfo:nil repeats:YES];
 }
@@ -171,7 +174,8 @@
 
 - (void)fluxCapacitor:(FluxCapacitorViewController *)fluxCap didSelectTimeShift:(NSTimeInterval)shift
 {
-    timeShift = shift;
+    DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
+    ad.timeShift = shift;
     [fluxCap dismissViewControllerAnimated:YES completion:^{
         [self refresh];
         [self.tableView reloadData];
@@ -210,15 +214,15 @@
     return cell;
 }
 
-
 #pragma mark - Storyboard
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"TimeTravel"]) {
+        DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
         FluxCapacitorViewController *fluxCap = [segue destinationViewController];
         fluxCap.delegate = self;
-        fluxCap.initialTimeShift = timeShift;
+        fluxCap.initialTimeShift = ad.timeShift;
     } else {
         DCMShowDetailViewController *detailViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

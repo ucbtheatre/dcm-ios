@@ -21,4 +21,5 @@
 - (IBAction)confirm:(id)sender;
 - (IBAction)reset:(id)sender;
 - (IBAction)dcm13:(id)sender;
+- (IBAction)dcm14:(id)sender;
 @end

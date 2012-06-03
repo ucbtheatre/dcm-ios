@@ -13,7 +13,19 @@
 
 @implementation DCMAppDelegate
 
++ (DCMAppDelegate *)sharedDelegate
+{
+    return [[UIApplication sharedApplication] delegate];
+}
+
++ (NSDate *)currentDate
+{
+    DCMAppDelegate *ad = [[UIApplication sharedApplication] delegate];
+    return [NSDate dateWithTimeIntervalSinceNow:ad.timeShift];
+}
+
 @synthesize window = _window;
+@synthesize timeShift;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -13,7 +13,6 @@
 {
     NSFetchedResultsController *performancesController;
     NSDate *lastRefreshDate;
-    NSTimeInterval timeShift;
     NSTimer *refreshTimer;
 }
 @property (nonatomic,strong) IBOutlet UIButton *dateButton;

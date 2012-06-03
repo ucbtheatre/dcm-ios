@@ -70,27 +70,27 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15s-um-nQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="qgu-tl-91x" customClass="DCMAllVenuesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="soF-MG-Fyt">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="64" sectionHeaderHeight="10" sectionFooterHeight="10" id="soF-MG-Fyt">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueCell" textLabel="eLr-CQ-pDB" imageView="MDz-Jh-8zE" style="IBUITableViewCellStyleDefault" id="uRO-JI-LaF">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueCell" textLabel="eLr-CQ-pDB" imageView="MDz-Jh-8zE" rowHeight="60" style="IBUITableViewCellStyleDefault" id="uRO-JI-LaF">
+                                <rect key="frame" x="0.0" y="46" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="280" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Venue Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLr-CQ-pDB">
-                                            <rect key="frame" x="41" y="0.0" width="249" height="43"/>
+                                            <rect key="frame" x="43" y="0.0" width="227" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="City.png" id="MDz-Jh-8zE">
-                                            <rect key="frame" x="8" y="8" width="23" height="27"/>
+                                            <rect key="frame" x="10" y="16" width="23" height="27"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -319,7 +319,13 @@
                             <outlet property="delegate" destination="acV-b5-WiA" id="beS-fP-cNR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Venue Name" id="dCA-oL-6bB"/>
+                    <navigationItem key="navigationItem" title="Venue Name" id="dCA-oL-6bB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="MyF-YD-POo">
+                            <connections>
+                                <action selector="scrollToCurrentShow:" destination="acV-b5-WiA" id="as9-SL-FEd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1170" y="391"/>
@@ -367,7 +373,7 @@ text</string>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="tfg-Tt-Hjh" detailTextLabel="anG-9j-u3I" style="IBUITableViewCellStyleValue1" id="ETF-7h-T4U">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="tfg-Tt-Hjh" detailTextLabel="anG-9j-u3I" style="IBUITableViewCellStyleValue1" id="ETF-7h-T4U">
                                 <rect key="frame" x="0.0" y="122" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -392,7 +398,7 @@ text</string>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformerCell" textLabel="VvG-hN-Lze" imageView="au4-pG-PT6" style="IBUITableViewCellStyleDefault" id="ld8-cS-cOK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformerCell" textLabel="VvG-hN-Lze" imageView="au4-pG-PT6" style="IBUITableViewCellStyleDefault" id="ld8-cS-cOK">
                                 <rect key="frame" x="0.0" y="166" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -402,7 +408,7 @@ text</string>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Performer Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VvG-hN-Lze">
                                             <rect key="frame" x="44" y="0.0" width="266" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
@@ -504,14 +510,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Danger!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yUY-lp-ULV">
-                                <rect key="frame" x="20" y="20" width="280" height="70"/>
+                                <rect key="frame" x="80" y="20" width="160" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ilO-po-N7n">
-                                <rect key="frame" x="262" y="0.0" width="58" height="50"/>
+                                <rect key="frame" x="0.0" y="30" width="58" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="XIII">
@@ -523,6 +529,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </state>
                                 <connections>
                                     <action selector="dcm13:" destination="uyM-I1-Cdv" eventType="touchUpInside" id="gEJ-l7-Bjq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I9l-mL-VWE">
+                                <rect key="frame" x="262" y="30" width="58" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="XIV">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dcm14:" destination="uyM-I1-Cdv" eventType="touchUpInside" id="8RY-11-e19"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -586,12 +607,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="DCMVenueDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMVenueDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="scrollToCurrentShow:"/>
+            </relationships>
         </class>
         <class className="FluxCapacitorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FluxCapacitorViewController.h"/>
             <relationships>
                 <relationship kind="action" name="confirm:"/>
                 <relationship kind="action" name="dcm13:"/>
+                <relationship kind="action" name="dcm14:"/>
                 <relationship kind="action" name="reset:"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
             </relationships>
@@ -603,6 +628,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bwO-Ck-TVu"/>
+        <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,8 @@
 @interface DCMVenueDetailViewController : UITableViewController
 {
     NSFetchedResultsController *performancesController;
+    BOOL scrollOnNextAppearance;
 }
 @property (strong, nonatomic) Venue *venue;
+- (IBAction)scrollToCurrentShow:(id)sender;
 @end
