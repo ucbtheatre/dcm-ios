@@ -148,6 +148,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [refreshTimer invalidate];
     refreshTimer = [NSTimer
                     scheduledTimerWithTimeInterval:(timeShift == 0) ? 60 : 1
@@ -162,6 +163,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [refreshTimer invalidate]; refreshTimer = nil;
 }
 
