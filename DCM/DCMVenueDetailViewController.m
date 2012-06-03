@@ -18,11 +18,21 @@
 @implementation DCMVenueDetailViewController
 
 @synthesize venue;
+@synthesize nameLabel;
+@synthesize addressLabel;
+@synthesize directionsLabel;
+@synthesize websiteButton;
+@synthesize mapButton;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.title = self.venue.name;
+    self.nameLabel.text = self.venue.name;
+    self.addressLabel.text = self.venue.address;
+    self.directionsLabel.text = self.venue.directions;
+    self.websiteButton.enabled = [self.venue.homeURLString length] > 0;
+    self.mapButton.enabled = [self.venue.mapURLString length] > 0;
     DCMDatabase *database = [DCMDatabase sharedDatabase];
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Performance"];
     [request setPredicate:
@@ -44,6 +54,11 @@
 
 - (void)viewDidUnload
 {
+    [self setAddressLabel:nil];
+    [self setDirectionsLabel:nil];
+    [self setWebsiteButton:nil];
+    [self setMapButton:nil];
+    [self setNameLabel:nil];
     [super viewDidUnload];
     performancesController = nil;
 }
@@ -95,6 +110,18 @@
     } completion:^(BOOL finished) {
         [self.tableView deselectRowAtIndexPath:path animated:YES];
     }];
+}
+
+- (IBAction)openWebsite:(id)sender
+{
+    [[UIApplication sharedApplication]
+     openURL:[NSURL URLWithString:self.venue.homeURLString]];
+}
+
+- (IBAction)openMap:(id)sender
+{
+    [[UIApplication sharedApplication]
+     openURL:[NSURL URLWithString:self.venue.mapURLString]];
 }
 
 #pragma mark - Table view data source
