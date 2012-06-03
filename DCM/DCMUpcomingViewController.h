@@ -16,4 +16,5 @@
     NSTimeInterval timeShift;
     NSTimer *refreshTimer;
 }
+@property (nonatomic,strong) IBOutlet UIButton *dateButton;
 @end

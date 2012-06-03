@@ -16,6 +16,8 @@
 
 @implementation DCMUpcomingViewController
 
+@synthesize dateButton;
+
 - (void)awakeFromNib
 {
     [[NSNotificationCenter defaultCenter]
@@ -28,19 +30,19 @@
     [self refresh];
 }
 
-- (void)updateTimeCell:(UITableViewCell *)cell
+- (void)updateDateButton
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterShortStyle];
-    [df setTimeStyle:NSDateFormatterShortStyle];
-    cell.textLabel.text = [df stringFromDate:lastRefreshDate];
+    [df setDateFormat:@"EEEE h:mm a"];
+    NSString *dateString = [df stringFromDate:lastRefreshDate];
+    [self.dateButton setTitle:dateString forState:UIControlStateNormal];
 }
 
 - (NSDictionary *)sectionIndexesBySectionName
 {
     NSMutableDictionary *indexesByName = [NSMutableDictionary dictionary];
     for (id <NSFetchedResultsSectionInfo> sectionInfo in [performancesController sections]) {
-        NSNumber *sectionIndex = [NSNumber numberWithInteger:1+[indexesByName count]];
+        NSNumber *sectionIndex = [NSNumber numberWithInteger:[indexesByName count]];
         [indexesByName setObject:[sectionInfo name] forKey:sectionIndex];
     }
     return indexesByName;
@@ -50,9 +52,8 @@
 {
     NSMutableDictionary *pathsByID = [NSMutableDictionary dictionary];
     for (Performance *perf in [performancesController fetchedObjects]) {
-        NSIndexPath *cIndexPath = [performancesController indexPathForObject:perf];
-        NSIndexPath *tIndexPath = [NSIndexPath indexPathForRow:cIndexPath.row inSection:1+cIndexPath.section];
-        [pathsByID setObject:tIndexPath forKey:perf.identifier];
+        NSIndexPath *indexPath = [performancesController indexPathForObject:perf];
+        [pathsByID setObject:indexPath forKey:perf.identifier];
     }
     return pathsByID;
 }
@@ -76,13 +77,13 @@
     if (timeShift != 0) {
         timeShift += 300;
     }
+    [self updateDateButton];
     // If this is the first fetch, just reload
     if ([oldSectionIndexes count] == 0) {
         [self.tableView reloadData];
         return;
     }
     // Otherwise, do a ton of tedious work to make the changes animate nicely
-    [self updateTimeCell:[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]];
     NSDictionary *newSectionIndexes = [self sectionIndexesBySectionName];
     if (![newSectionIndexes isEqualToDictionary:oldSectionIndexes]) {
         // If the section layout change, just reload.
@@ -145,13 +146,6 @@
     [refreshTimer invalidate]; refreshTimer = nil;
 }
 
-- (Performance *)performanceAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSIndexPath *path = [NSIndexPath indexPathForRow:indexPath.row
-                                           inSection:(indexPath.section - 1)];
-    return [performancesController objectAtIndexPath:path];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [refreshTimer invalidate];
@@ -186,40 +180,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1 + [[performancesController sections] count];
+    return [[performancesController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) return 1;
     id <NSFetchedResultsSectionInfo> info;
-    info = [[performancesController sections] objectAtIndex:(section - 1)];
+    info = [[performancesController sections] objectAtIndex:section];
     return [info numberOfObjects];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) return nil;
     id <NSFetchedResultsSectionInfo> info;
-    info = [[performancesController sections] objectAtIndex:(section - 1)];
+    info = [[performancesController sections] objectAtIndex:section];
     return [info name];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimeCell"];
-        [self updateTimeCell:cell];
-        return cell;
-    } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"h:mm a"];
-        Performance *perf = [self performanceAtIndexPath:indexPath];
-        cell.textLabel.text = [df stringFromDate:perf.startDate];    
-        cell.detailTextLabel.text = perf.show.name;
-        return cell;
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"h:mm a"];
+    Performance *perf = [performancesController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [df stringFromDate:perf.startDate];    
+    cell.detailTextLabel.text = perf.show.name;
+    return cell;
 }
 
 
@@ -234,7 +220,7 @@
     } else {
         DCMShowDetailViewController *detailViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Performance *perf = [self performanceAtIndexPath:indexPath];
+        Performance *perf = [performancesController objectAtIndexPath:indexPath];
         detailViewController.show = perf.show;
     }
 }
