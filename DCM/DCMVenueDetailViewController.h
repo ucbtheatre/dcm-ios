@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *directionsLabel;
 @property (strong, nonatomic) IBOutlet UIButton *websiteButton;
 @property (strong, nonatomic) IBOutlet UIButton *mapButton;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 - (IBAction)openWebsite:(id)sender;
 - (IBAction)openMap:(id)sender;
 @end

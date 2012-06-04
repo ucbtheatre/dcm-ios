@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Heroic Software Inc. All rights reserved.
 //
 
+#import <CommonCrypto/CommonDigest.h>
+
 #import "DCMVenueDetailViewController.h"
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
@@ -23,11 +25,31 @@
 @synthesize directionsLabel;
 @synthesize websiteButton;
 @synthesize mapButton;
+@synthesize loadingIndicator;
+@synthesize imageView;
 
 - (Venue *)venue
 {
     DCMVenueViewController *parent = (DCMVenueViewController *)self.parentViewController;
     return parent.venue;
+}
+
+- (NSString *)cachedImagePath
+{
+    const char *imgURL = [self.venue.imageURLString UTF8String];
+    unsigned char hash[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(imgURL, strlen(imgURL), hash);
+    NSMutableString *name = [[NSMutableString alloc] initWithCapacity:2*CC_MD5_DIGEST_LENGTH];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [name appendFormat:@"%02x", hash[i]];
+    }
+    NSURL *cachesURL = [[NSFileManager defaultManager]
+                        URLForDirectory:NSCachesDirectory
+                        inDomain:NSUserDomainMask
+                        appropriateForURL:nil
+                        create:YES
+                        error:nil];
+    return [[NSURL URLWithString:name relativeToURL:cachesURL] path];
 }
 
 - (void)viewDidLoad
@@ -39,6 +61,28 @@
     self.directionsLabel.text = self.venue.directions;
     self.websiteButton.enabled = [self.venue.homeURLString length] > 0;
     self.mapButton.enabled = [self.venue.mapURLString length] > 0;
+    if ([self.venue.imageURLString length] > 0) {
+        NSString *path = [self cachedImagePath];
+        UIImage *image = [UIImage imageWithContentsOfFile:path];
+        if (image) {
+            self.imageView.image = image;
+            self.loadingIndicator.hidden = YES;
+        } else {
+            [self.loadingIndicator startAnimating];
+            NSURL *imageURL = [NSURL URLWithString:self.venue.imageURLString];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                NSData *data = [NSData dataWithContentsOfURL:imageURL];
+                [data writeToFile:path options:0 error:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.loadingIndicator stopAnimating];
+                    self.imageView.image = [UIImage imageWithContentsOfFile:path];
+                });
+            });
+        }
+    } else {
+        self.imageView.hidden = YES;
+        self.loadingIndicator.hidden = YES;
+    }
 }
 
 - (void)viewDidUnload
@@ -48,6 +92,8 @@
     [self setWebsiteButton:nil];
     [self setMapButton:nil];
     [self setNameLabel:nil];
+    [self setImageView:nil];
+    [self setLoadingIndicator:nil];
     [super viewDidUnload];
 }
 
