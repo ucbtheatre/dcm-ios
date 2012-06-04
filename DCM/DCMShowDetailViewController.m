@@ -37,7 +37,10 @@
                     [NSArray arrayWithObject:
                      [NSSortDescriptor
                       sortDescriptorWithKey:@"startDate" ascending:YES]]];
-    self.promoBlurbLabel.text = self.show.promoBlurb;
+    self.promoBlurbLabel.text = [NSString stringWithFormat:@"%@\n%@\n\n%@",
+                                 self.show.name,
+                                 self.show.homeCity,
+                                 self.show.promoBlurb];
     [self.promoBlurbLabel sizeToFit];
     CGFloat height = CGRectGetHeight(self.promoBlurbLabel.bounds);
     [[self.promoBlurbLabel superview]
