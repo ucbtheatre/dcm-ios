@@ -8,7 +8,7 @@
 
 #import "DCMAllVenuesViewController.h"
 #import "DCMDatabase.h"
-#import "DCMVenueDetailViewController.h"
+#import "DCMVenueViewController.h"
 
 @interface DCMAllVenuesViewController ()
 
@@ -81,9 +81,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DCMVenueDetailViewController *detailViewController = [segue destinationViewController];
+    DCMVenueViewController *viewController = [segue destinationViewController];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    detailViewController.venue = [venuesController objectAtIndexPath:indexPath];
+    viewController.venue = [venuesController objectAtIndexPath:indexPath];
 }
 
 @end

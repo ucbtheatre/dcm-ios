@@ -45,6 +45,8 @@
 		BC965CA71560C24600665E50 /* Heart0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA31560C24600665E50 /* Heart0@2x.png */; };
 		BC965CA81560C24600665E50 /* Heart1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA41560C24600665E50 /* Heart1.png */; };
 		BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA51560C24600665E50 /* Heart1@2x.png */; };
+		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
+		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,10 @@
 		BC965CA31560C24600665E50 /* Heart0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart0@2x.png"; sourceTree = "<group>"; };
 		BC965CA41560C24600665E50 /* Heart1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart1.png; sourceTree = "<group>"; };
 		BC965CA51560C24600665E50 /* Heart1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart1@2x.png"; sourceTree = "<group>"; };
+		BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueViewController.h; sourceTree = "<group>"; };
+		BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueViewController.m; sourceTree = "<group>"; };
+		BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueScheduleViewController.h; sourceTree = "<group>"; };
+		BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueScheduleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +220,10 @@
 				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
 				BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */,
 				BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */,
+				BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */,
+				BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */,
+				BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */,
+				BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */,
 				BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */,
 				BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */,
 				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
@@ -345,6 +355,8 @@
 				BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */,
 				BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */,
 				0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */,
+				BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */,
+				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
