@@ -37,15 +37,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShowCell" textLabel="2tP-Qi-r0i" style="IBUITableViewCellStyleDefault" id="S8L-hF-lQd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShowCell" textLabel="2tP-Qi-r0i" style="IBUITableViewCellStyleDefault" id="S8L-hF-lQd">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Show Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2tP-Qi-r0i">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -690,8 +690,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMAllVenuesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMAllVenuesViewController.h"/>
         </class>
-        <class className="DCMFavoritesViewController" superclassName="UITableViewController">
+        <class className="DCMFavoritesViewController" superclassName="DCMScheduleViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMFavoritesViewController.h"/>
+        </class>
+        <class className="DCMScheduleViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMScheduleViewController.h"/>
         </class>
         <class className="DCMShowDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMShowDetailViewController.h"/>
@@ -721,7 +724,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="websiteButton" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="DCMVenueScheduleViewController" superclassName="UITableViewController">
+        <class className="DCMVenueScheduleViewController" superclassName="DCMScheduleViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMVenueScheduleViewController.h"/>
         </class>
         <class className="DCMVenueViewController" superclassName="UIViewController">
@@ -747,6 +750,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="w5y-sB-QMH"/>
+        <segue reference="bgW-oP-1t4"/>
     </inferredMetricsTieBreakers>
 </document>
