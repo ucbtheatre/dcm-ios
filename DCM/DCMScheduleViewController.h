@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Performance;
+
 @interface DCMScheduleViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 {
     NSFetchedResultsController *performancesController;
     BOOL scrollOnNextAppearance;
 }
+- (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf;
 @end
 
 @interface DCMScheduleViewController (Abstract)

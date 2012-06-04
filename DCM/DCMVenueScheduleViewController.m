@@ -35,4 +35,14 @@
     self.navigationItem.title = self.venue.name;
 }
 
+- (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf
+{
+    [super configureCell:cell forPerformance:perf];
+    if (perf.favorite) {
+        // Unicode "HEAVY BLACK HEART"
+        cell.textLabel.text = [@"\xE2\x9D\xA4 " stringByAppendingString:
+                               cell.textLabel.text];
+    }
+}
+
 @end
