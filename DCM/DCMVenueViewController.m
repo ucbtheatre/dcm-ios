@@ -9,6 +9,8 @@
 #import "DCMVenueViewController.h"
 #import "DCMDatabase.h"
 
+static NSString * const DCMVenueViewIsFlipped = @"DCMVenueViewIsFlipped";
+
 @interface DCMVenueViewController ()
 
 @end
@@ -19,14 +21,22 @@
 
 - (void)viewDidLoad
 {
+    isFlipped = [[NSUserDefaults standardUserDefaults]
+                 boolForKey:DCMVenueViewIsFlipped];
     [super viewDidLoad];
     self.title = self.venue.shortName;
     frontViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VenueSchedule"];
     backViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VenueDetail"];
-    [self addChildViewController:frontViewController];
-    frontViewController.view.frame = self.view.bounds;
-    [self.view addSubview:frontViewController.view];
-    [frontViewController didMoveToParentViewController:self];
+    UIViewController *initial;
+    if (isFlipped) {
+        initial = backViewController;
+    } else {
+        initial = frontViewController;
+    }
+    [self addChildViewController:initial];
+    initial.view.frame = self.view.bounds;
+    [self.view addSubview:initial.view];
+    [initial didMoveToParentViewController:self];
 }
 
 - (IBAction)flipView:(id)sender
@@ -44,13 +54,16 @@
     }
     [from willMoveToParentViewController:nil];
     [self addChildViewController:to];
+    to.view.frame = self.view.bounds;
     [UIView transitionFromView:from.view toView:to.view
-                      duration:0.4 options:options
+                      duration:0.6 options:options
                     completion:^(BOOL finished) {
                         [to didMoveToParentViewController:self];
                         [from removeFromParentViewController];
                     }];
     isFlipped = !isFlipped;
+    [[NSUserDefaults standardUserDefaults]
+     setBool:isFlipped forKey:DCMVenueViewIsFlipped];
 }
 
 - (void)viewDidUnload
