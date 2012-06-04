@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCMScheduleViewController.h"
 
-@interface DCMFavoritesViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-{
-    NSFetchedResultsController *performancesController;
-}
-
+@interface DCMFavoritesViewController : DCMScheduleViewController
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */; };
+		BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */; };
 		BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BD155F4C6C0033BAC9 /* UIKit.framework */; };
 		BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BF155F4C6C0033BAC9 /* Foundation.framework */; };
 		BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748C1155F4C6C0033BAC9 /* CoreGraphics.framework */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMFavoritesViewController.h; sourceTree = "<group>"; };
 		0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMFavoritesViewController.m; sourceTree = "<group>"; };
+		BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMScheduleViewController.h; sourceTree = "<group>"; };
+		BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMScheduleViewController.m; sourceTree = "<group>"; };
 		BC3748B9155F4C6C0033BAC9 /* DCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3748BD155F4C6C0033BAC9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC3748BF155F4C6C0033BAC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +219,8 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */,
+				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
 				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
 				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
 				BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */,
@@ -357,6 +362,7 @@
 				0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */,
 				BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */,
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
+				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

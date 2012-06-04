@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCMScheduleViewController.h"
 
 @class Venue;
 
-@interface DCMVenueScheduleViewController : UITableViewController
-{
-    NSFetchedResultsController *performancesController;
-    BOOL scrollOnNextAppearance;
-}
+@interface DCMVenueScheduleViewController : DCMScheduleViewController
 @property (readonly, nonatomic) Venue *venue;
 @end
