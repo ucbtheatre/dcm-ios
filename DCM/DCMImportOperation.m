@@ -183,8 +183,12 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
 
 - (NSString *)sortNameFromName:(NSString *)name
 {
-    NSRange letterRange = [name rangeOfCharacterFromSet:[NSCharacterSet alphanumericCharacterSet]];
-    return [[name substringFromIndex:letterRange.location] uppercaseString];
+    NSString *upName = [name uppercaseString];
+    if ([upName hasPrefix:@"THE "]) {
+        return [upName substringFromIndex:4];
+    }
+    NSRange letterRange = [upName rangeOfCharacterFromSet:[NSCharacterSet alphanumericCharacterSet]];
+    return [upName substringFromIndex:letterRange.location];
 }
 
 - (NSString *)sortSectionFromSortName:(NSString *)sortName
