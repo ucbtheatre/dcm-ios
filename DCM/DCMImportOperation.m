@@ -26,40 +26,10 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     if ((self = [super init])) {
         database = db;
         persistentStoreCoordinator = db.persistentStoreCoordinator;
+        sourceURL = [[NSBundle mainBundle]
+                     URLForResource:@"dcm13data" withExtension:@"json"];
     }
     return self;
-}
-
-- (void)startImportFromURL:(NSURL *)anURL
-{
-    sourceURL = anURL;
-    dispatch_queue_priority_t p = DISPATCH_QUEUE_PRIORITY_DEFAULT;
-    dispatch_async(dispatch_get_global_queue(p, 0), ^{
-        @try {
-            [self postNotificationOfProgress:0];
-            [self main];
-            [self postNotificationOfProgress:1];
-        }
-        @catch (NSException *exception) {
-            NSError *error = [NSError
-                              errorWithDomain:DCMImportErrorDomain
-                              code:DCMImportErrorCodeUnhandledException
-                              userInfo:[NSDictionary
-                                        dictionaryWithObject:[exception reason]
-                                        forKey:NSLocalizedDescriptionKey]];
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:DCMImportProgressNotification
-             object:self
-             userInfo:[NSDictionary
-                       dictionaryWithObject:error
-                       forKey:DCMImportErrorKey]];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:DCMDatabaseDidChangeNotification
-             object:database];
-        });
-    });
 }
 
 - (void)postNotificationOfProgress:(float)progress
@@ -96,6 +66,9 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
 
 - (id)objectFromIdentifier:(id)identifier entity:(NSEntityDescription *)entity
 {
+    id key = [NSString stringWithFormat:@"%@:%@", entity.name, identifier];
+    id object = [objectCache objectForKey:key];
+    if (object) return object;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     [request setFetchLimit:1];
@@ -112,7 +85,9 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
                                        reason:[error localizedDescription]
                                      userInfo:nil];
     }
-    return [results objectAtIndex:0]; // throws exception if array is empty
+    object = [results objectAtIndex:0]; // throws exception if array is empty
+    [objectCache setObject:object forKey:key];
+    return object;
 }
 
 - (Show *)showFromIdentifier:(id)identifier
@@ -153,6 +128,9 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
 - (Performer *)performerFromName:(NSString *)name
 {
     if ([name length] < 1) return nil;
+    id key = [@"Performer:" stringByAppendingString:name];
+    Performer *perf = [objectCache objectForKey:key];
+    if (perf) return perf;
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Performer"
                                    inManagedObjectContext:managedObjectContext];
@@ -169,7 +147,6 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
                                        reason:[error localizedDescription]
                                      userInfo:nil];
     }
-    Performer *perf;
     if ([results count] > 0) {
         perf = [results objectAtIndex:0];
     } else {
@@ -178,6 +155,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
                 insertIntoManagedObjectContext:managedObjectContext];
         perf.name = name;
     }
+    [objectCache setObject:perf forKey:key];
     return perf;
 }
 
@@ -247,7 +225,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     }
 }
 
-- (void)main
+- (void)performImport
 {
     NSInputStream *stream = [NSInputStream inputStreamWithURL:sourceURL];
     [stream open];
@@ -269,18 +247,52 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     managedObjectContext = [[NSManagedObjectContext alloc]
                             initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
+    objectCache = [[NSCache alloc] init];
     for (NSDictionary *info in venueDataArray) {
         [self importVenue:[info objectForKey:@"Venue"]];
     }
     [self saveContext];
     for (NSDictionary *info in showDataArray) {
-        [self importShow:[info objectForKey:@"Show"]];
+        @autoreleasepool {
+            [self importShow:[info objectForKey:@"Show"]];
+        }
     }
     [self saveContext];
     for (NSDictionary *info in scheduleDataArray) {
-        [self importSchedule:[info objectForKey:@"Schedule"]];
+        @autoreleasepool {
+            [self importSchedule:[info objectForKey:@"Schedule"]];
+        }
     }
     [self saveContext];
+    objectCache = nil;
+}
+
+- (void)main
+{
+    @try {
+        [self postNotificationOfProgress:0];
+        [self performImport];
+        [self postNotificationOfProgress:1];
+    }
+    @catch (NSException *exception) {
+        NSError *error = [NSError
+                          errorWithDomain:DCMImportErrorDomain
+                          code:DCMImportErrorCodeUnhandledException
+                          userInfo:[NSDictionary
+                                    dictionaryWithObject:[exception reason]
+                                    forKey:NSLocalizedDescriptionKey]];
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:DCMImportProgressNotification
+         object:self
+         userInfo:[NSDictionary
+                   dictionaryWithObject:error
+                   forKey:DCMImportErrorKey]];
+    }
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:DCMDatabaseDidChangeNotification
+         object:database];
+    }];
 }
 
 @end

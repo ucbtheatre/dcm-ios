@@ -13,11 +13,10 @@
 
 @implementation DCMScheduleViewController
 
-- (void)viewDidLoad
+- (void)setUpControllerForDatabase:(DCMDatabase *)database
 {
-    [super viewDidLoad];
-    DCMDatabase *database = [DCMDatabase sharedDatabase];
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Performance"];
+    NSFetchRequest *request = [[NSFetchRequest alloc]
+                               initWithEntityName:@"Performance"];
     [request setPredicate:[self predicate]];
     [request setSortDescriptors:
      [NSArray arrayWithObject:
@@ -32,6 +31,12 @@
     if (![performancesController performFetch:&error]) {
         NSLog(@"Error: %@", [error localizedDescription]);
     }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
     scrollOnNextAppearance = YES;
 }
 

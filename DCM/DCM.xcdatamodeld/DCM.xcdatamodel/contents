@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50d" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Performance" representedClassName="Performance" syncable="YES">
-        <attribute name="endDate" attributeType="Date" syncable="YES"/>
-        <attribute name="favorite" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="endDate" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" indexed="YES" syncable="YES"/>
+        <attribute name="identifier" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="minutes" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="startDate" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="ticketsURLString" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="show" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Show" inverseName="performances" inverseEntity="Show" syncable="YES"/>
         <relationship name="venue" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" inverseName="performances" inverseEntity="Venue" syncable="YES"/>
@@ -16,8 +16,8 @@
     </entity>
     <entity name="Show" representedClassName="Show" syncable="YES">
         <attribute name="homeCity" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
         <attribute name="promoBlurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sortName" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="sortSection" attributeType="String" syncable="YES"/>
@@ -28,7 +28,7 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="directions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="homeURLString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mapURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>

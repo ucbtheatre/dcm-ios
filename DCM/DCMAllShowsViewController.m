@@ -16,28 +16,8 @@
 
 @implementation DCMAllShowsViewController
 
-- (void)awakeFromNib
+- (void)setUpControllerForDatabase:(DCMDatabase *)database
 {
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(databaseDidChange:)
-     name:DCMDatabaseDidChangeNotification object:nil];
-}
-
-- (void)databaseDidChange:(NSNotification *)note
-{
-    NSError *error = nil;
-    if (![showsController performFetch:&error]) {
-        NSLog(@"Error: %@", [error localizedDescription]);
-    }
-    if (note) {
-        [self.tableView reloadData];
-    }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    DCMDatabase *database = [DCMDatabase sharedDatabase];
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
     [request setSortDescriptors:
      [NSArray arrayWithObject:
@@ -47,7 +27,47 @@
                        managedObjectContext:database.managedObjectContext
                        sectionNameKeyPath:@"sortSection"
                        cacheName:@"DCMAllShowsViewController"];
-    [self databaseDidChange:nil];
+    NSError *error = nil;
+    if (![showsController performFetch:&error]) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }
+}
+
+- (void)awakeFromNib
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(databaseWillChange:)
+                   name:DCMDatabaseWillChangeNotification object:nil];
+    [center addObserver:self selector:@selector(databaseDidChange:)
+                   name:DCMDatabaseDidChangeNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)databaseWillChange:(NSNotification *)notification
+{
+    showsController = nil;
+    if ([self isViewLoaded]) {
+        [self.tableView reloadData];
+        [self.navigationController popToViewController:self animated:YES];
+    }
+}
+
+- (void)databaseDidChange:(NSNotification *)notification
+{
+    [self setUpControllerForDatabase:[notification object]];
+    if ([self isViewLoaded]) {
+        [self.tableView reloadData];
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
 }
 
 - (void)viewDidUnload

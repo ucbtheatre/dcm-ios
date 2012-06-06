@@ -61,15 +61,22 @@
              }
          }
      }];
-    DCMDatabase *database = [DCMDatabase sharedDatabase];
-    if ([database numberOfShows] < 1) {
-        DCMImportOperation *import = [[DCMImportOperation alloc] initWithDatabase:database];
-        NSURL *jsonURL = [[NSBundle mainBundle] URLForResource:@"dcm13data" withExtension:@"json"];
-        [import startImportFromURL:jsonURL];
-    }
+    [NSTimer
+     scheduledTimerWithTimeInterval:10
+     target:self selector:@selector(databaseUpdateTimerDidFire:)
+     userInfo:nil repeats:YES];
     return YES;
 }
-							
+
+- (void)databaseUpdateTimerDidFire:(NSTimer *)timer
+{
+    DCMDatabase *database = [DCMDatabase sharedDatabase];
+    [database deleteStore];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:[[DCMImportOperation alloc]
+                         initWithDatabase:database]];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

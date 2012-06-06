@@ -10,6 +10,7 @@
 
 #import "DCMDatabase.h"
 
+NSString * const DCMDatabaseWillChangeNotification = @"DCMDatabaseWillChange";
 NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
 
 @implementation DCMDatabase
@@ -26,6 +27,15 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
 
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectContext = __managedObjectContext;
+
+- (void)deleteStore
+{
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:DCMDatabaseWillChangeNotification object:self];
+    __managedObjectContext = nil;
+    __persistentStoreCoordinator = nil;
+    [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
+}
 
 - (NSURL *)storeURL
 {
@@ -44,13 +54,20 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
     return result == 0;
 }
 
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (managedObjectModel) return managedObjectModel;
+
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DCM" withExtension:@"momd"];
+    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return managedObjectModel;
+}
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if (__persistentStoreCoordinator) return __persistentStoreCoordinator;
 
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DCM" withExtension:@"momd"];
-    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [self storeURL];
     NSError *error;
     [__persistentStoreCoordinator

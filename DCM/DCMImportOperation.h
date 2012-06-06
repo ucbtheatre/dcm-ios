@@ -20,9 +20,10 @@ enum {
 
 @class DCMDatabase;
 
-@interface DCMImportOperation : NSObject
+@interface DCMImportOperation : NSOperation
 {
     DCMDatabase *database;
+    NSCache *objectCache;
     NSURL *sourceURL;
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSUInteger numberOfObjectsToImport;
@@ -31,5 +32,4 @@ enum {
     NSManagedObjectContext *managedObjectContext;
 }
 - (id)initWithDatabase:(DCMDatabase *)database;
-- (void)startImportFromURL:(NSURL *)anURL;
 @end

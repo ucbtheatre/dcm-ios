@@ -13,11 +13,16 @@
 #import "Performer.h"
 #import "Performance.h"
 
+extern NSString * const DCMDatabaseWillChangeNotification;
 extern NSString * const DCMDatabaseDidChangeNotification;
 
 @interface DCMDatabase : NSObject
+{
+    NSManagedObjectModel *managedObjectModel;
+}
 + (DCMDatabase *)sharedDatabase;
 @property (nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
+- (void)deleteStore;
 - (NSUInteger)numberOfShows;
 @end
