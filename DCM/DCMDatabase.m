@@ -34,6 +34,7 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
      postNotificationName:DCMDatabaseWillChangeNotification object:self];
     __managedObjectContext = nil;
     __persistentStoreCoordinator = nil;
+    __startDate = nil;
     [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
 }
 
@@ -56,11 +57,11 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
 
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (managedObjectModel) return managedObjectModel;
+    if (__managedObjectModel) return __managedObjectModel;
 
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DCM" withExtension:@"momd"];
-    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return managedObjectModel;
+    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return __managedObjectModel;
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
@@ -101,6 +102,26 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
         NSLog(@"Warning: %@", [error localizedDescription]);
     }
     return [[results lastObject] unsignedIntegerValue];
+}
+
+- (NSDate *)marathonStartDate
+{
+    if (__startDate != nil) return __startDate;
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Performance"];
+    [request setResultType:NSDictionaryResultType];
+    [request setPropertiesToFetch:[NSArray arrayWithObject:@"startDate"]];
+    [request setSortDescriptors:
+     [NSArray arrayWithObject:
+      [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES]]];
+    [request setFetchLimit:1];
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext
+                        executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"Warning: %@", [error localizedDescription]);
+    }
+    __startDate = [[results lastObject] objectForKey:@"startDate"];
+    return __startDate;
 }
 
 @end

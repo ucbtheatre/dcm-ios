@@ -18,6 +18,8 @@
 @implementation DCMUpcomingViewController
 
 @synthesize dateButton;
+@synthesize countdownView;
+@synthesize countdownLabel;
 
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
 {
@@ -33,6 +35,48 @@
                               managedObjectContext:database.managedObjectContext
                               sectionNameKeyPath:@"venue.name"
                               cacheName:nil];
+}
+
+- (void)loadCountdownView
+{
+    [[UINib nibWithNibName:@"CountdownView" bundle:nil]
+     instantiateWithOwner:self options:nil];
+    self.countdownView.frame = self.view.bounds;
+    [self.view addSubview:self.countdownView];
+    [self.tableView setScrollEnabled:NO];
+}
+
+- (void)refreshCountdownViewWithDate:(NSDate *)nowDate
+{
+    NSDate *startDate = [[DCMDatabase sharedDatabase] marathonStartDate];
+    NSDateComponents *dc = [[NSCalendar currentCalendar]
+                            components:(NSDayCalendarUnit |
+                                        NSHourCalendarUnit |
+                                        NSMinuteCalendarUnit)
+                            fromDate:nowDate
+                            toDate:startDate
+                            options:0];
+    if (! self.countdownView) {
+        [self loadCountdownView];
+    }
+    self.countdownLabel.text = [NSString stringWithFormat:
+                                @"%d days %d hours %d minutes",
+                                dc.day, dc.hour, dc.minute];
+}
+
+- (void)unloadCountdownView
+{
+    if (self.countdownView) {
+        [UIView transitionWithView:self.view duration:1
+                           options:UIViewAnimationOptionTransitionCurlUp
+                        animations:^{
+                            [self.countdownView removeFromSuperview];
+                            self.countdownView = nil;
+                            self.countdownLabel = nil;
+                        } completion:^(BOOL finished) {
+                            [self.tableView setScrollEnabled:YES];
+                        }];
+    }
 }
 
 - (void)awakeFromNib
@@ -98,9 +142,15 @@
 {
     DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
     NSError *error = nil;
-    NSFetchRequest *request = performancesController.fetchRequest;
     NSDate *nowDate = [NSDate dateWithTimeIntervalSinceNow:ad.timeShift];
     NSDate *hourFromNowDate = [nowDate dateByAddingTimeInterval:3600];
+    NSDate *startDate = [[DCMDatabase sharedDatabase] marathonStartDate];
+    if ([startDate timeIntervalSinceDate:hourFromNowDate] > 0) {
+        [self refreshCountdownViewWithDate:nowDate];
+    } else {
+        [self unloadCountdownView];
+    }
+    NSFetchRequest *request = performancesController.fetchRequest;
     [request setPredicate:
      [NSPredicate predicateWithFormat:
       @"endDate >= %@ AND startDate <= %@",

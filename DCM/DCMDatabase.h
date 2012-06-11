@@ -18,11 +18,13 @@ extern NSString * const DCMDatabaseDidChangeNotification;
 
 @interface DCMDatabase : NSObject
 {
-    NSManagedObjectModel *managedObjectModel;
+    NSManagedObjectModel *__managedObjectModel;
+    NSDate *__startDate;
 }
 + (DCMDatabase *)sharedDatabase;
 @property (nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
 - (void)deleteStore;
 - (NSUInteger)numberOfShows;
+- (NSDate *)marathonStartDate;
 @end
