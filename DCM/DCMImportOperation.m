@@ -245,7 +245,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
                                [showDataArray count] +
                                [scheduleDataArray count]);
     managedObjectContext = [[NSManagedObjectContext alloc]
-                            initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+                            initWithConcurrencyType:NSConfinementConcurrencyType];
     managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
     objectCache = [[NSCache alloc] init];
     for (NSDictionary *info in venueDataArray) {
@@ -264,6 +264,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
         }
     }
     [self saveContext];
+    [database restoreFavoritesWithContext:managedObjectContext];
     objectCache = nil;
 }
 

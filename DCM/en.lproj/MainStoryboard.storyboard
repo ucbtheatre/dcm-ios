@@ -63,7 +63,7 @@
                     <navigationItem key="navigationItem" title="Shows" id="59I-zO-Jdg"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1272" y="-631"/>
+            <point key="canvasLocation" x="1612" y="-647"/>
         </scene>
         <!--All Venues View Controller - Venues-->
         <scene sceneID="9HE-rx-7NE">
@@ -105,7 +105,7 @@
                     <navigationItem key="navigationItem" title="Venues" id="2nq-DV-HVY"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="760" y="384"/>
+            <point key="canvasLocation" x="760" y="248"/>
         </scene>
         <!--Upcoming View Controller-->
         <scene sceneID="vmk-bP-Dm6">
@@ -182,7 +182,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1170" y="1012"/>
+            <point key="canvasLocation" x="1612" y="1188"/>
         </scene>
         <!--Favorites View Controller - Favorites-->
         <scene sceneID="rRn-Sn-ODd">
@@ -227,7 +227,7 @@
                     <navigationItem key="navigationItem" title="Favorites" id="H72-KP-qAp"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1164" y="1662"/>
+            <point key="canvasLocation" x="1612" y="1838"/>
         </scene>
         <!--Navigation Controller - Favorites-->
         <scene sceneID="spz-Be-BSC">
@@ -243,7 +243,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="330" y="1662"/>
+            <point key="canvasLocation" x="330" y="1838"/>
         </scene>
         <!--Navigation Controller - Coming Up-->
         <scene sceneID="owG-Mr-HIE">
@@ -259,7 +259,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="330" y="1012"/>
+            <point key="canvasLocation" x="330" y="1188"/>
         </scene>
         <!--Venue View Controller-->
         <scene sceneID="RHn-yW-E3R">
@@ -280,7 +280,7 @@
                     </navigationItem>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1208" y="303"/>
+            <point key="canvasLocation" x="1240" y="243"/>
         </scene>
         <!--Venue Schedule View Controller-->
         <scene sceneID="sQj-3q-MGQ">
@@ -337,7 +337,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1612" y="536"/>
+            <point key="canvasLocation" x="1612" y="540"/>
         </scene>
         <!--Navigation Controller - Venues-->
         <scene sceneID="bYa-Au-3SG">
@@ -353,7 +353,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="330" y="384"/>
+            <point key="canvasLocation" x="330" y="248"/>
         </scene>
         <!--Venue Detail View Controller-->
         <scene sceneID="eb9-Hs-pUx">
@@ -541,7 +541,7 @@ text</string>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2666" y="408"/>
+            <point key="canvasLocation" x="2658" y="243"/>
         </scene>
         <!--Flux Capacitor View Controller-->
         <scene sceneID="ndg-Ck-oSS">
@@ -656,7 +656,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2666" y="1036"/>
+            <point key="canvasLocation" x="2666" y="1188"/>
         </scene>
         <!--Navigation Controller - Shows-->
         <scene sceneID="hkC-BK-Iin">
@@ -672,7 +672,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="330" y="-223"/>
+            <point key="canvasLocation" x="330" y="-647"/>
         </scene>
     </scenes>
     <resources>
@@ -707,6 +707,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMUpcomingViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMUpcomingViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="countdownLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="countdownView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="dateButton" candidateClass="UIButton"/>
             </relationships>
         </class>

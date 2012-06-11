@@ -29,6 +29,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UINavigationBar appearance] setTintColor:
+     [UIColor colorWithRed:1 green:0.2 blue:0.2 alpha:1]];
     // Override point for customization after application launch.
     [[NSNotificationCenter defaultCenter]
      addObserverForName:DCMImportProgressNotification object:nil
@@ -62,7 +64,7 @@
          }
      }];
     [NSTimer
-     scheduledTimerWithTimeInterval:10
+     scheduledTimerWithTimeInterval:30
      target:self selector:@selector(databaseUpdateTimerDidFire:)
      userInfo:nil repeats:YES];
     return YES;
@@ -71,6 +73,7 @@
 - (void)databaseUpdateTimerDidFire:(NSTimer *)timer
 {
     DCMDatabase *database = [DCMDatabase sharedDatabase];
+    [database backupFavorites];
     [database deleteStore];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:[[DCMImportOperation alloc]

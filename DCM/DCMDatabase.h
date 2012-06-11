@@ -25,6 +25,9 @@ extern NSString * const DCMDatabaseDidChangeNotification;
 @property (nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
 - (void)deleteStore;
+- (void)backupFavorites;
+- (void)backupFavoritesWithContext:(NSManagedObjectContext *)context;
+- (void)restoreFavoritesWithContext:(NSManagedObjectContext *)context;
 - (NSUInteger)numberOfShows;
 - (NSDate *)marathonStartDate;
 @end

@@ -38,6 +38,60 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
     [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
 }
 
+- (NSURL *)favoritesURL
+{
+    NSURL *documentsURL = [[[NSFileManager defaultManager]
+                            URLsForDirectory:NSDocumentDirectory
+                            inDomains:NSUserDomainMask] lastObject];
+    return [NSURL URLWithString:@"dcm-favorites.plist" relativeToURL:documentsURL];
+}
+
+- (void)backupFavorites
+{
+    [self backupFavoritesWithContext:self.managedObjectContext];
+}
+
+- (void)backupFavoritesWithContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
+    [request setResultType:NSDictionaryResultType];
+    [request setPropertiesToFetch:[NSArray arrayWithObject:@"identifier"]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"ANY performances.favorite = TRUE"]];
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"Warning: Backup Favorites Failed: %@", [error localizedDescription]);
+        return;
+    }
+    [results writeToURL:[self favoritesURL] atomically:YES];
+}
+
+- (void)restoreFavoritesWithContext:(NSManagedObjectContext *)context
+{
+    NSArray *array = [NSArray arrayWithContentsOfURL:[self favoritesURL]];
+    NSMutableSet *identifierSet = [[NSMutableSet alloc] initWithCapacity:[array count]];
+    for (NSDictionary *props in array) {
+        [identifierSet addObject:[props objectForKey:@"identifier"]];
+    }
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"identifier IN %@", identifierSet]];
+    NSError *error = nil;
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"Warning: Restore Favorites: %@", [error localizedDescription]);
+        return;
+    }
+    for (Show *show in results) {
+        for (Performance *perf in show.performances) {
+            perf.favorite = YES;
+        }
+    }
+    [context save:&error];
+    if (error) {
+        NSLog(@"Warning: Restore Favorites: %@", [error localizedDescription]);
+    }
+}
+
 - (NSURL *)storeURL
 {
     NSURL *documentsURL = [[[NSFileManager defaultManager]
