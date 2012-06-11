@@ -8,6 +8,7 @@
 
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
+#import "LabelSetView.h"
 
 @interface DCMShowDetailViewController ()
 
@@ -15,7 +16,6 @@
 
 @implementation DCMShowDetailViewController
 
-@synthesize promoBlurbLabel;
 @synthesize show;
 @synthesize favoriteButton;
 
@@ -37,21 +37,19 @@
                     [NSArray arrayWithObject:
                      [NSSortDescriptor
                       sortDescriptorWithKey:@"startDate" ascending:YES]]];
-    self.promoBlurbLabel.text = [NSString stringWithFormat:@"%@\n%@\n\n%@",
-                                 self.show.name,
-                                 self.show.homeCity,
-                                 self.show.promoBlurb];
-    [self.promoBlurbLabel sizeToFit];
-    CGFloat height = CGRectGetHeight(self.promoBlurbLabel.bounds);
-    [[self.promoBlurbLabel superview]
-     setBounds:CGRectMake(0, 0, 320, height+16)];
+    LabelSetView *labelSet = (LabelSetView *)self.tableView.tableHeaderView;
+    labelSet.margin = UIEdgeInsetsMake(8, 8, 8, 8);
+    labelSet.verticalSpacing = 4;
+    [labelSet addLabelWithText:self.show.name font:[UIFont boldSystemFontOfSize:17]];
+    [labelSet addLabelWithText:self.show.homeCity font:[UIFont italicSystemFontOfSize:15]];
+    [labelSet addLabelWithText:self.show.promoBlurb font:[UIFont systemFontOfSize:15]];
+    [labelSet sizeToFit];
     [self updateFavoriteButton];
 }
 
 - (void)viewDidUnload
 {
     self.show = nil;
-    self.promoBlurbLabel = nil;
     performers = nil;
     performances = nil;
     [super viewDidUnload];

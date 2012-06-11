@@ -47,6 +47,7 @@
 		BC965CA81560C24600665E50 /* Heart1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA41560C24600665E50 /* Heart1.png */; };
 		BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA51560C24600665E50 /* Heart1@2x.png */; };
 		BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB86A401585835300DD48E7 /* CountdownView.xib */; };
+		BCB86A441585A18B00DD48E7 /* LabelSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB86A431585A18B00DD48E7 /* LabelSetView.m */; };
 		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
 		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,8 @@
 		BC965CA41560C24600665E50 /* Heart1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart1.png; sourceTree = "<group>"; };
 		BC965CA51560C24600665E50 /* Heart1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart1@2x.png"; sourceTree = "<group>"; };
 		BCB86A401585835300DD48E7 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
+		BCB86A421585A18B00DD48E7 /* LabelSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelSetView.h; sourceTree = "<group>"; };
+		BCB86A431585A18B00DD48E7 /* LabelSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelSetView.m; sourceTree = "<group>"; };
 		BCC90100157D730900F94409 /* DCM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCM.entitlements; sourceTree = "<group>"; };
 		BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueViewController.h; sourceTree = "<group>"; };
 		BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueViewController.m; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				BC374906155F7BE90033BAC9 /* DCMDatabase.m */,
 				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
 				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
+				BCB86A421585A18B00DD48E7 /* LabelSetView.h */,
+				BCB86A431585A18B00DD48E7 /* LabelSetView.m */,
 				BC3748F1155F698F0033BAC9 /* Data Model */,
 				BC37490E155F9B2C0033BAC9 /* View Controllers */,
 				BC374915155FAF140033BAC9 /* Images */,
@@ -369,6 +374,7 @@
 				BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */,
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
+				BCB86A441585A18B00DD48E7 /* LabelSetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

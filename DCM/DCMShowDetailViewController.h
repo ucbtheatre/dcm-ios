@@ -16,7 +16,6 @@
     NSArray *performances;
 }
 @property (strong, nonatomic) Show *show;
-@property (strong, nonatomic) IBOutlet UILabel *promoBlurbLabel;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
 - (IBAction)toggleFavorite:(id)sender;
 @end
