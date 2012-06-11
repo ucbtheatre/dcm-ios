@@ -12,4 +12,5 @@
 {
     NSFetchedResultsController *showsController;
 }
+- (IBAction)refresh:(id)sender;
 @end

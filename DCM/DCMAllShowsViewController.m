@@ -9,6 +9,7 @@
 #import "DCMAllShowsViewController.h"
 #import "DCMDatabase.h"
 #import "DCMShowDetailViewController.h"
+#import "DCMAppDelegate.h"
 
 @interface DCMAllShowsViewController ()
 
@@ -74,6 +75,11 @@
 {
     [super viewDidUnload];
     showsController = nil;
+}
+
+- (IBAction)refresh:(id)sender
+{
+    [[DCMAppDelegate sharedDelegate] refreshDatabase];
 }
 
 #pragma mark - Table view data source

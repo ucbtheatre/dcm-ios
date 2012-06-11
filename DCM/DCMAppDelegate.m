@@ -63,14 +63,10 @@
              }
          }
      }];
-    [NSTimer
-     scheduledTimerWithTimeInterval:30
-     target:self selector:@selector(databaseUpdateTimerDidFire:)
-     userInfo:nil repeats:YES];
     return YES;
 }
 
-- (void)databaseUpdateTimerDidFire:(NSTimer *)timer
+- (void)refreshDatabase
 {
     DCMDatabase *database = [DCMDatabase sharedDatabase];
     [database backupFavorites];

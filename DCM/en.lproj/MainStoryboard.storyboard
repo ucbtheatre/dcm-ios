@@ -60,7 +60,13 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shows" id="59I-zO-Jdg"/>
+                    <navigationItem key="navigationItem" title="Shows" id="59I-zO-Jdg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hXT-Aa-0SU">
+                            <connections>
+                                <action selector="refresh:" destination="S87-I9-Zih" id="b2m-7v-cyW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1612" y="-647"/>
@@ -170,7 +176,7 @@
                                 <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <segue destination="uyM-I1-Cdv" kind="modal" identifier="TimeTravel" id="Hv5-6b-PGZ"/>
@@ -686,6 +692,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <classes>
         <class className="DCMAllShowsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMAllShowsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refresh:"/>
+            </relationships>
         </class>
         <class className="DCMAllVenuesViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMAllVenuesViewController.h"/>
