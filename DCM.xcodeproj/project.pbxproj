@@ -38,6 +38,7 @@
 		BC37491F155FB0A40033BAC9 /* Masks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374919155FB0A40033BAC9 /* Masks@2x.png */; };
 		BC374920155FB0A40033BAC9 /* Person.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491A155FB0A40033BAC9 /* Person.png */; };
 		BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491B155FB0A40033BAC9 /* Person@2x.png */; };
+		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
 		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
 		BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */; };
 		BC965C981560B91300665E50 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965C961560B91300665E50 /* Icon.png */; };
@@ -105,6 +106,8 @@
 		BC374919155FB0A40033BAC9 /* Masks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Masks@2x.png"; sourceTree = "<group>"; };
 		BC37491A155FB0A40033BAC9 /* Person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person.png; sourceTree = "<group>"; };
 		BC37491B155FB0A40033BAC9 /* Person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Person@2x.png"; sourceTree = "<group>"; };
+		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTableViewController.h; sourceTree = "<group>"; };
+		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTableViewController.m; sourceTree = "<group>"; };
 		BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUpcomingViewController.h; sourceTree = "<group>"; };
 		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 		BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxCapacitorViewController.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */,
+				BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */,
 				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
 				BCB86A401585835300DD48E7 /* CountdownView.xib */,
 				BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */,
@@ -385,6 +390,7 @@
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
 				BCB86A441585A18B00DD48E7 /* LabelSetView.m in Sources */,
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
+				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCMTableViewController.h"
 
-@interface DCMAllShowsViewController : UITableViewController
+@interface DCMAllShowsViewController : DCMTableViewController
 {
     NSFetchedResultsController *showsController;
 }

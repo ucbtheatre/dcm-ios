@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCMTableViewController.h"
 
 @class DCMDatabase;
 @class Performance;
 
-@interface DCMScheduleViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface DCMScheduleViewController : DCMTableViewController <NSFetchedResultsControllerDelegate>
 {
     NSFetchedResultsController *performancesController;
     BOOL scrollOnNextAppearance;
