@@ -14,42 +14,48 @@
 #import "Performer.h"
 #import "Performance.h"
 
-NSString * const DCMImportProgressNotification = @"DCMImportProgress";
-NSString * const DCMImportProgressKey = @"DCMImportProgress";
-NSString * const DCMImportErrorKey = @"DCMImportError";
-NSString * const DCMImportErrorDomain = @"DCMImportError";
-
 @implementation DCMImportOperation
 
-- (id)initWithDatabase:(DCMDatabase *)db
+- (id)initWithData:(NSData *)data context:(NSManagedObjectContext *)context
 {
     if ((self = [super init])) {
-        database = db;
-        persistentStoreCoordinator = db.persistentStoreCoordinator;
-        sourceURL = [[NSBundle mainBundle]
-                     URLForResource:@"dcm13data" withExtension:@"json"];
+        rawData = data;
+        managedObjectContext = context;
     }
     return self;
 }
 
-- (void)postNotificationOfProgress:(float)progress
+- (void)postNotificationOfProgress:(float)progress activity:(NSString *)activity
 {
     [[NSNotificationCenter defaultCenter]
-     postNotificationName:DCMImportProgressNotification
-     object:self
-     userInfo:[NSDictionary
-               dictionaryWithObject:[NSNumber numberWithFloat:progress]
-               forKey:DCMImportProgressKey]];
-    lastProgressNotificationDate = [[NSDate alloc] init];
+     postNotificationName:DCMDatabaseProgressNotification
+     object:nil
+     userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+               activity,
+               DCMDatabaseActivityKey,
+               [NSNumber numberWithFloat:progress],
+               DCMDatabaseProgressKey,
+               nil]];
+     lastProgressNotificationDate = [[NSDate alloc] init];
 }
 
-- (void)didImportObject
+- (void)postNotificationOfError:(NSError *)error
+{
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:DCMDatabaseProgressNotification
+     object:self
+     userInfo:[NSDictionary
+               dictionaryWithObject:error
+               forKey:DCMDatabaseErrorKey]];
+}
+
+- (void)didImportObjectWithActivity:(NSString *)activity
 {
     numberOfObjectsImported += 1;
-    if ([lastProgressNotificationDate timeIntervalSinceNow] < -0.2) {
+    if ([lastProgressNotificationDate timeIntervalSinceNow] < -0.3) {
         float n = numberOfObjectsImported;
         float d = numberOfObjectsToImport;
-        [self postNotificationOfProgress:(n / d)];
+        [self postNotificationOfProgress:(n / d) activity:activity];
     }
 }
 
@@ -122,7 +128,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     venue.imageURLString = [info objectForKey:@"image"];
     venue.mapURLString = [info objectForKey:@"gmaps"];
     venue.homeURLString = [info objectForKey:@"url"];
-    [self didImportObject];
+    [self didImportObjectWithActivity:@"First Beats"];
 }
 
 - (Performer *)performerFromName:(NSString *)name
@@ -165,8 +171,13 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     if ([upName hasPrefix:@"THE "]) {
         return [upName substringFromIndex:4];
     }
-    NSRange letterRange = [upName rangeOfCharacterFromSet:[NSCharacterSet alphanumericCharacterSet]];
-    return [upName substringFromIndex:letterRange.location];
+    NSRange letterRange = [upName rangeOfCharacterFromSet:
+                           [NSCharacterSet alphanumericCharacterSet]];
+    if (letterRange.location == NSNotFound) {
+        return upName;
+    } else {
+        return [upName substringFromIndex:letterRange.location];
+    }
 }
 
 - (NSString *)sortSectionFromSortName:(NSString *)sortName
@@ -194,7 +205,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
             [show addPerformersObject:perf];
         }
     }
-    [self didImportObject];
+    [self didImportObjectWithActivity:@"Second Beats"];
 }
 
 - (void)importSchedule:(NSDictionary *)info
@@ -212,7 +223,7 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     perf.endDate = [self parseDate:[info objectForKey:@"endtime"]];
     NSTimeInterval interval = [perf.endDate timeIntervalSinceDate:perf.startDate];
     perf.minutes = [NSNumber numberWithDouble:(interval / 60.0)];
-    [self didImportObject];
+    [self didImportObjectWithActivity:@"Third Beats"];
 }
 
 - (void)saveContext
@@ -225,28 +236,25 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
     }
 }
 
-- (void)performImport
+- (void)main
 {
-    NSInputStream *stream = [NSInputStream inputStreamWithURL:sourceURL];
-    [stream open];
+    [self postNotificationOfProgress:DCMDatabaseProgressNone
+                            activity:@"Opening"];
     NSError *error = nil;
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithStream:stream options:0 error:&error];
-    if (data == nil) {
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:DCMImportProgressNotification
-         object:self userInfo:[NSDictionary dictionaryWithObject:error forKey:DCMImportErrorKey]];
+    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:rawData
+                                                               options:0
+                                                                 error:&error];
+    if (jsonObject == nil) {
+        [self postNotificationOfError:error];
         return;
     }
-    NSArray *venueDataArray = [data objectForKey:@"Venues"];
-    NSArray *showDataArray = [data objectForKey:@"Shows"];
-    NSArray *scheduleDataArray = [data objectForKey:@"Schedules"];
+    NSArray *venueDataArray = [jsonObject objectForKey:@"Venues"];
+    NSArray *showDataArray = [jsonObject objectForKey:@"Shows"];
+    NSArray *scheduleDataArray = [jsonObject objectForKey:@"Schedules"];
     // Compute the number of objects to import
     numberOfObjectsToImport = ([venueDataArray count] +
                                [showDataArray count] +
                                [scheduleDataArray count]);
-    managedObjectContext = [[NSManagedObjectContext alloc]
-                            initWithConcurrencyType:NSConfinementConcurrencyType];
-    managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator;
     objectCache = [[NSCache alloc] init];
     for (NSDictionary *info in venueDataArray) {
         [self importVenue:[info objectForKey:@"Venue"]];
@@ -264,36 +272,27 @@ NSString * const DCMImportErrorDomain = @"DCMImportError";
         }
     }
     [self saveContext];
-    [database restoreFavoritesWithContext:managedObjectContext];
     objectCache = nil;
+    [self postNotificationOfProgress:DCMDatabaseProgressComplete
+                            activity:@"Blackout"];
 }
 
-- (void)main
+- (BOOL)performImport
 {
     @try {
-        [self postNotificationOfProgress:0];
-        [self performImport];
-        [self postNotificationOfProgress:1];
+        [self main];
+        return YES;
     }
     @catch (NSException *exception) {
-        NSError *error = [NSError
-                          errorWithDomain:DCMImportErrorDomain
-                          code:DCMImportErrorCodeUnhandledException
-                          userInfo:[NSDictionary
-                                    dictionaryWithObject:[exception reason]
-                                    forKey:NSLocalizedDescriptionKey]];
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:DCMImportProgressNotification
-         object:self
-         userInfo:[NSDictionary
-                   dictionaryWithObject:error
-                   forKey:DCMImportErrorKey]];
+        [self postNotificationOfError:
+         [NSError
+          errorWithDomain:DCMDatabaseErrorDomain
+          code:DCMDatabaseErrorCodeUnhandledException
+          userInfo:[NSDictionary
+                    dictionaryWithObject:[exception reason]
+                    forKey:NSLocalizedDescriptionKey]]];
+        return NO;
     }
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:DCMDatabaseDidChangeNotification
-         object:database];
-    }];
 }
 
 @end

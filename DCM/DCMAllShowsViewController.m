@@ -79,7 +79,7 @@
 
 - (IBAction)refresh:(id)sender
 {
-    [[DCMAppDelegate sharedDelegate] refreshDatabase];
+    [[DCMDatabase sharedDatabase] checkForUpdate];
 }
 
 #pragma mark - Table view data source

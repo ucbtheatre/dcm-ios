@@ -13,5 +13,4 @@
 @property (nonatomic) NSTimeInterval timeShift;
 + (DCMAppDelegate *)sharedDelegate;
 + (NSDate *)currentDate;
-- (void)refreshDatabase;
 @end

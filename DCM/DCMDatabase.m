@@ -9,9 +9,21 @@
 #include <sys/xattr.h>
 
 #import "DCMDatabase.h"
+#import "DCMDownload.h"
+#import "DCMImportOperation.h"
 
 NSString * const DCMDatabaseWillChangeNotification = @"DCMDatabaseWillChange";
 NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
+NSString * const DCMDatabaseProgressNotification = @"DCMDatabaseProgress";
+
+NSString * const DCMDatabaseActivityKey = @"DCMDatabaseActivity";
+NSString * const DCMDatabaseProgressKey = @"DCMDatabaseProgress";
+NSString * const DCMDatabaseErrorKey = @"DCMDatabaseError";
+
+NSString * const DCMDatabaseErrorDomain = @"DCMDatabaseError";
+
+static NSString * const DCMETagKey = @"ETag";
+static NSString * const DCMLastModifiedKey = @"Last-Modified";
 
 @implementation DCMDatabase
 
@@ -28,6 +40,155 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectContext = __managedObjectContext;
 
+- (id)init
+{
+    if ((self = [super init])) {
+        __backgroundQueue = [[NSOperationQueue alloc] init];
+        __backgroundQueue.maxConcurrentOperationCount = 1;
+    }
+    return self;
+}
+
+#pragma mark - URLs
+
+- (NSURL *)favoritesURL
+{
+    NSURL *documentsURL = [[[NSFileManager defaultManager]
+                            URLsForDirectory:NSDocumentDirectory
+                            inDomains:NSUserDomainMask] lastObject];
+    return [NSURL URLWithString:@"dcm-favorites.plist" relativeToURL:documentsURL];
+}
+
+- (NSURL *)storeURL
+{
+    NSURL *documentsURL = [[[NSFileManager defaultManager]
+                            URLsForDirectory:NSDocumentDirectory
+                            inDomains:NSUserDomainMask] lastObject];
+    return [NSURL URLWithString:@"dcm.sqlite" relativeToURL:documentsURL];
+}
+
+- (NSURL *)originURL
+{
+    return [NSURL URLWithString:@"http://delclosemarathon.com/dcm14/schedule.json"];
+}
+
+#pragma mark - Core Data
+
+- (NSManagedObjectModel *)managedObjectModel
+{
+    if (__managedObjectModel) return __managedObjectModel;
+    
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DCM" withExtension:@"momd"];
+    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    return __managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (__persistentStoreCoordinator) return __persistentStoreCoordinator;
+    
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSURL *storeURL = [self storeURL];
+    NSError *error;
+    [__persistentStoreCoordinator
+     addPersistentStoreWithType:NSSQLiteStoreType
+     configuration:nil
+     URL:storeURL
+     options:nil
+     error:&error];
+    [self addSkipBackupAttributeToItemAtURL:storeURL];
+    return __persistentStoreCoordinator;
+}
+
+- (NSPersistentStore *)persistentStore
+{
+    return [[self persistentStoreCoordinator]
+            persistentStoreForURL:[self storeURL]];
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (__managedObjectContext) return __managedObjectContext;
+    
+    __managedObjectContext = [[NSManagedObjectContext alloc]
+                              initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    __managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    return __managedObjectContext;
+}
+
+#pragma mark - eTag
+
+- (NSString *)eTag
+{
+    return [[[self persistentStore] metadata] objectForKey:@"Origin-ETag"];
+}
+
+- (void)setETag:(NSString *)tag
+{
+    if (tag) {
+        [[self persistentStore] setMetadata:
+         [NSDictionary dictionaryWithObject:tag forKey:@"Origin-ETag"]];
+    }
+}
+
+#pragma mark - Public methods
+
+- (void)checkForUpdate
+{
+    DCMDownload *download = [[DCMDownload alloc] initWithDatabase:self];
+    [NSURLConnection connectionWithRequest:[self originURLRequest]
+                                  delegate:download];
+}
+
+- (void)importData:(NSData *)rawData eTag:(NSString *)eTag;
+{
+    [self backupFavorites];
+    [self deleteStore];
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc]
+                                       initWithConcurrencyType:
+                                       NSPrivateQueueConcurrencyType];
+    context.parentContext = self.managedObjectContext;
+    [context performBlock:^{
+        DCMImportOperation *importer = [[DCMImportOperation alloc]
+                                        initWithData:rawData context:context];
+        if ([importer performImport]) {
+            [self restoreFavoritesWithContext:context];
+            [self setETag:eTag];
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.managedObjectContext save:nil];
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:DCMDatabaseDidChangeNotification
+             object:self];
+        }];
+    }];
+}
+
+#pragma mark - Everything else
+
+- (NSURLRequest *)originURLRequest
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[self originURL]];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setNetworkServiceType:NSURLNetworkServiceTypeBackground];
+    NSString *eTagValue = [self eTag];
+    if (eTagValue) {
+        [request setValue:eTagValue forHTTPHeaderField:@"If-None-Match"];
+    }
+    return request;
+}
+
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    const char *filePath = [[URL path] fileSystemRepresentation];    
+    const char *attrName = "com.apple.MobileBackup";
+    u_int8_t attrValue = 1;
+    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+    return result == 0;
+}
+
 - (void)deleteStore
 {
     [[NSNotificationCenter defaultCenter]
@@ -36,14 +197,6 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
     __persistentStoreCoordinator = nil;
     __startDate = nil;
     [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
-}
-
-- (NSURL *)favoritesURL
-{
-    NSURL *documentsURL = [[[NSFileManager defaultManager]
-                            URLsForDirectory:NSDocumentDirectory
-                            inDomains:NSUserDomainMask] lastObject];
-    return [NSURL URLWithString:@"dcm-favorites.plist" relativeToURL:documentsURL];
 }
 
 - (void)backupFavorites
@@ -90,72 +243,6 @@ NSString * const DCMDatabaseDidChangeNotification = @"DCMDatabaseDidChange";
     if (error) {
         NSLog(@"Warning: Restore Favorites: %@", [error localizedDescription]);
     }
-}
-
-- (NSURL *)storeURL
-{
-    NSURL *documentsURL = [[[NSFileManager defaultManager]
-                            URLsForDirectory:NSDocumentDirectory
-                            inDomains:NSUserDomainMask] lastObject];
-    return [NSURL URLWithString:@"dcm.sqlite" relativeToURL:documentsURL];
-}
-
-- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
-{
-    const char *filePath = [[URL path] fileSystemRepresentation];    
-    const char *attrName = "com.apple.MobileBackup";
-    u_int8_t attrValue = 1;
-    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
-    return result == 0;
-}
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (__managedObjectModel) return __managedObjectModel;
-
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"DCM" withExtension:@"momd"];
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return __managedObjectModel;
-}
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (__persistentStoreCoordinator) return __persistentStoreCoordinator;
-
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [self storeURL];
-    NSError *error;
-    [__persistentStoreCoordinator
-     addPersistentStoreWithType:NSSQLiteStoreType
-     configuration:nil
-     URL:storeURL
-     options:nil
-     error:&error];
-    [self addSkipBackupAttributeToItemAtURL:storeURL];
-    return __persistentStoreCoordinator;
-}
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    if (__managedObjectContext) return __managedObjectContext;
-
-    __managedObjectContext = [[NSManagedObjectContext alloc]
-                              initWithConcurrencyType:NSMainQueueConcurrencyType];
-    __managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    return __managedObjectContext;
-}
-
-- (NSUInteger)numberOfShows
-{
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
-    [request setResultType:NSCountResultType];
-    NSError *error = nil;
-    NSArray *results = [self.managedObjectContext
-                        executeFetchRequest:request error:&error];
-    if (error) {
-        NSLog(@"Warning: %@", [error localizedDescription]);
-    }
-    return [[results lastObject] unsignedIntegerValue];
 }
 
 - (NSDate *)marathonStartDate

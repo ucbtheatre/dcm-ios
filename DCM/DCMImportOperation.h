@@ -8,28 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const DCMImportProgressNotification;
-extern NSString * const DCMImportProgressKey;
-extern NSString * const DCMImportErrorKey;
-extern NSString * const DCMImportErrorDomain;
-
-enum {
-    DCMImportErrorCodeNone = 0,
-    DCMImportErrorCodeUnhandledException = 1
-};
-
-@class DCMDatabase;
-
-@interface DCMImportOperation : NSOperation
+@interface DCMImportOperation : NSObject
 {
-    DCMDatabase *database;
+    NSData *rawData;
     NSCache *objectCache;
-    NSURL *sourceURL;
-    NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSUInteger numberOfObjectsToImport;
     NSUInteger numberOfObjectsImported;
     NSDate *lastProgressNotificationDate;
     NSManagedObjectContext *managedObjectContext;
 }
-- (id)initWithDatabase:(DCMDatabase *)database;
+- (id)initWithData:(NSData *)data context:(NSManagedObjectContext *)context;
+- (BOOL)performImport;
 @end

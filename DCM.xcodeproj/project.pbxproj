@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */; };
 		BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */; };
+		BC31B93B1587B778005F9717 /* schedule-meta.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC31B93A1587B778005F9717 /* schedule-meta.plist */; };
+		BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31B93E1587D593005F9717 /* DCMDownload.m */; };
 		BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BD155F4C6C0033BAC9 /* UIKit.framework */; };
 		BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BF155F4C6C0033BAC9 /* Foundation.framework */; };
 		BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748C1155F4C6C0033BAC9 /* CoreGraphics.framework */; };
@@ -24,7 +26,7 @@
 		BC3748FD155F69EC0033BAC9 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748FC155F69EC0033BAC9 /* Venue.m */; };
 		BC374900155F6A8C0033BAC9 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3748FF155F6A8C0033BAC9 /* Show.m */; };
 		BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374902155F6B010033BAC9 /* DCMImportOperation.m */; };
-		BC374904155F6B760033BAC9 /* dcm13data.json in Resources */ = {isa = PBXBuildFile; fileRef = BC3748E9155F62D50033BAC9 /* dcm13data.json */; };
+		BC374904155F6B760033BAC9 /* schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = BC3748E9155F62D50033BAC9 /* schedule.json */; };
 		BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374906155F7BE90033BAC9 /* DCMDatabase.m */; };
 		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
@@ -57,6 +59,9 @@
 		0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMFavoritesViewController.m; sourceTree = "<group>"; };
 		BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMScheduleViewController.h; sourceTree = "<group>"; };
 		BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMScheduleViewController.m; sourceTree = "<group>"; };
+		BC31B93A1587B778005F9717 /* schedule-meta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "schedule-meta.plist"; sourceTree = "<group>"; };
+		BC31B93D1587D593005F9717 /* DCMDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMDownload.h; sourceTree = "<group>"; };
+		BC31B93E1587D593005F9717 /* DCMDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMDownload.m; sourceTree = "<group>"; };
 		BC3748B9155F4C6C0033BAC9 /* DCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3748BD155F4C6C0033BAC9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC3748BF155F4C6C0033BAC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,7 +76,7 @@
 		BC3748E5155F4D0E0033BAC9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMAllShowsViewController.h; sourceTree = "<group>"; };
 		BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMAllShowsViewController.m; sourceTree = "<group>"; };
-		BC3748E9155F62D50033BAC9 /* dcm13data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dcm13data.json; sourceTree = "<group>"; };
+		BC3748E9155F62D50033BAC9 /* schedule.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schedule.json; sourceTree = "<group>"; };
 		BC3748EB155F62F00033BAC9 /* DCM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DCM.xcdatamodel; sourceTree = "<group>"; };
 		BC3748EE155F69720033BAC9 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		BC3748EF155F69720033BAC9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
@@ -140,7 +145,8 @@
 		BC3748AE155F4C6B0033BAC9 = {
 			isa = PBXGroup;
 			children = (
-				BC3748E9155F62D50033BAC9 /* dcm13data.json */,
+				BC3748E9155F62D50033BAC9 /* schedule.json */,
+				BC31B93A1587B778005F9717 /* schedule-meta.plist */,
 				BC3748E5155F4D0E0033BAC9 /* README.md */,
 				BC3748C3155F4C6C0033BAC9 /* DCM */,
 				BC3748ED155F69580033BAC9 /* MBProgressHUD */,
@@ -175,6 +181,8 @@
 				BC3748CD155F4C6C0033BAC9 /* DCMAppDelegate.m */,
 				BC374905155F7BE90033BAC9 /* DCMDatabase.h */,
 				BC374906155F7BE90033BAC9 /* DCMDatabase.m */,
+				BC31B93D1587D593005F9717 /* DCMDownload.h */,
+				BC31B93E1587D593005F9717 /* DCMDownload.m */,
 				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
 				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
 				BCB86A421585A18B00DD48E7 /* LabelSetView.h */,
@@ -328,7 +336,7 @@
 			files = (
 				BC3748C8155F4C6C0033BAC9 /* InfoPlist.strings in Resources */,
 				BC3748D1155F4C6C0033BAC9 /* MainStoryboard.storyboard in Resources */,
-				BC374904155F6B760033BAC9 /* dcm13data.json in Resources */,
+				BC374904155F6B760033BAC9 /* schedule.json in Resources */,
 				BC37491C155FB0A40033BAC9 /* City.png in Resources */,
 				BC37491D155FB0A40033BAC9 /* City@2x.png in Resources */,
 				BC37491E155FB0A40033BAC9 /* Masks.png in Resources */,
@@ -344,6 +352,7 @@
 				BC965CA81560C24600665E50 /* Heart1.png in Resources */,
 				BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */,
 				BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */,
+				BC31B93B1587B778005F9717 /* schedule-meta.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +384,7 @@
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
 				BCB86A441585A18B00DD48E7 /* LabelSetView.m in Sources */,
+				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

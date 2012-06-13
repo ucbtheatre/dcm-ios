@@ -15,19 +15,34 @@
 
 extern NSString * const DCMDatabaseWillChangeNotification;
 extern NSString * const DCMDatabaseDidChangeNotification;
+extern NSString * const DCMDatabaseProgressNotification;
+
+extern NSString * const DCMDatabaseActivityKey;
+extern NSString * const DCMDatabaseProgressKey;
+extern NSString * const DCMDatabaseErrorKey;
+
+extern NSString * const DCMDatabaseErrorDomain;
+
+static const float DCMDatabaseProgressIndeterminate = -1.0f;
+static const float DCMDatabaseProgressNone = 0.0f;
+static const float DCMDatabaseProgressComplete = 2.0f;
+
+enum {
+    DCMDatabaseErrorCodeNone = 0,
+    DCMDatabaseErrorCodeUnhandledException = 1
+};
 
 @interface DCMDatabase : NSObject
 {
     NSManagedObjectModel *__managedObjectModel;
     NSDate *__startDate;
+    NSOperationQueue *__backgroundQueue;
 }
 + (DCMDatabase *)sharedDatabase;
 @property (nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
-- (void)deleteStore;
-- (void)backupFavorites;
-- (void)backupFavoritesWithContext:(NSManagedObjectContext *)context;
-- (void)restoreFavoritesWithContext:(NSManagedObjectContext *)context;
-- (NSUInteger)numberOfShows;
+@property (nonatomic,copy) NSString *eTag;
+- (void)checkForUpdate;
+- (void)importData:(NSData *)rawData eTag:(NSString *)eTag;
 - (NSDate *)marathonStartDate;
 @end

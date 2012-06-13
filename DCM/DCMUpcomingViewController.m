@@ -106,7 +106,7 @@
 {
     [self setUpControllerForDatabase:[notification object]];
     if ([self isViewLoaded]) {
-        [self.tableView reloadData];
+        [self refresh];
     }
 }
 
