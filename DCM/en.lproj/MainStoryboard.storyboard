@@ -247,7 +247,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lo0-Ig-7O0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="uBx-cy-dVK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Heart1.png" id="53C-Fl-Das"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Heart.png" id="53C-Fl-Das"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i0Z-HI-HTC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -258,12 +258,12 @@
             </objects>
             <point key="canvasLocation" x="330" y="1838"/>
         </scene>
-        <!--Navigation Controller - Coming Up-->
+        <!--Navigation Controller - Now-->
         <scene sceneID="owG-Mr-HIE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P41-Zu-Wqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="p3q-ex-DjY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Coming Up" id="toI-Yc-ghw"/>
+                    <tabBarItem key="tabBarItem" title="Now" id="toI-Yc-ghw"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bid-mE-s4X">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -679,8 +679,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <resources>
         <image name="City.png" width="23" height="27"/>
         <image name="Glasses.png" width="66" height="42"/>
+        <image name="Heart.png" width="30" height="30"/>
         <image name="Heart0.png" width="17" height="15"/>
-        <image name="Heart1.png" width="17" height="15"/>
         <image name="Masks.png" width="37" height="23"/>
         <image name="Person.png" width="24" height="21"/>
     </resources>
