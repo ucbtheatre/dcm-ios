@@ -11,6 +11,18 @@
 #import "DCMImportOperation.h"
 #import "MBProgressHUD.h"
 
+#if TESTFLIGHT_ENABLED
+
+#import "TestFlight.h"
+
+static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
+                                                @"6bd8bf15b156896"
+                                                @"b9_OTA5MTkyMDEy"
+                                                @"LTA1LTE2IDE3OjA"
+                                                @"wOjE4LjcyOTI5MA");
+
+#endif
+
 @implementation DCMAppDelegate
 
 + (DCMAppDelegate *)sharedDelegate
@@ -29,6 +41,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#if TESTFLIGHT_ENABLED
+    [TestFlight takeOff:kTestFlightTeamToken];
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
     [[UINavigationBar appearance] setTintColor:
      [UIColor colorWithRed:1 green:0.2 blue:0.2 alpha:1]];
     // Override point for customization after application launch.

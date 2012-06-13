@@ -25,3 +25,7 @@ If you're interested in testing, you should sign up at TestFlight [here](http://
 - All Shows - list of shows, alphabetically
 - Venues - list of venues
   - Venue Detail - photo, address, list of shows
+
+# Notes
+
+Singleton DCMDatabase object. May reset the Core Data stack at any time; client view controllers should prepare to receive notification.
