@@ -60,7 +60,7 @@
         [self loadCountdownView];
     }
     self.countdownLabel.text = [NSString stringWithFormat:
-                                @"%d days %d hours %d minutes",
+                                @"%d days\n%d hours\n%d minutes",
                                 dc.day, dc.hour, dc.minute];
 }
 
