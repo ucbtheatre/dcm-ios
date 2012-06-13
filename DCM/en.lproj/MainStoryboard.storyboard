@@ -76,27 +76,27 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15s-um-nQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="qgu-tl-91x" customClass="DCMAllVenuesViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="64" sectionHeaderHeight="10" sectionFooterHeight="10" id="soF-MG-Fyt">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="48" sectionHeaderHeight="10" sectionFooterHeight="10" id="soF-MG-Fyt">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueCell" textLabel="eLr-CQ-pDB" imageView="MDz-Jh-8zE" rowHeight="60" style="IBUITableViewCellStyleDefault" id="uRO-JI-LaF">
-                                <rect key="frame" x="0.0" y="46" width="320" height="62"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueCell" textLabel="eLr-CQ-pDB" imageView="MDz-Jh-8zE" style="IBUITableViewCellStyleDefault" id="uRO-JI-LaF">
+                                <rect key="frame" x="0.0" y="46" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="280" height="59"/>
+                                    <rect key="frame" x="10" y="1" width="280" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Venue Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLr-CQ-pDB">
-                                            <rect key="frame" x="43" y="0.0" width="227" height="59"/>
+                                            <rect key="frame" x="43" y="0.0" width="227" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="City.png" id="MDz-Jh-8zE">
-                                            <rect key="frame" x="10" y="16" width="23" height="27"/>
+                                            <rect key="frame" x="10" y="10" width="23" height="27"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
