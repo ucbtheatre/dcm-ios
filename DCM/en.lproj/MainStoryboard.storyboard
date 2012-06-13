@@ -89,14 +89,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Venue Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLr-CQ-pDB">
-                                            <rect key="frame" x="43" y="0.0" width="227" height="47"/>
+                                            <rect key="frame" x="50" y="0.0" width="220" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="City.png" id="MDz-Jh-8zE">
-                                            <rect key="frame" x="10" y="10" width="23" height="27"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Barrier.png" id="MDz-Jh-8zE">
+                                            <rect key="frame" x="10" y="14" width="30" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -263,7 +263,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P41-Zu-Wqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="p3q-ex-DjY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now" id="toI-Yc-ghw"/>
+                    <tabBarItem key="tabBarItem" title="Now" image="Ticket.png" id="toI-Yc-ghw"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bid-mE-s4X">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -284,16 +284,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RjK-Y5-9ib">
-                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="0aT-y7-3rz">
-                            <connections>
-                                <action selector="flipView:" destination="6Pi-TB-XcK" id="NEE-hM-9Ti"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="RjK-Y5-9ib"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1240" y="243"/>
+            <point key="canvasLocation" x="1216" y="248"/>
         </scene>
         <!--Venue Schedule View Controller-->
         <scene sceneID="sQj-3q-MGQ">
@@ -340,9 +334,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dCA-oL-6bB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="MyF-YD-POo">
+                        <barButtonItem key="rightBarButtonItem" image="Pin.png" id="0aT-y7-3rz">
                             <connections>
-                                <action selector="scrollToCurrentShow:" destination="acV-b5-WiA" id="as9-SL-FEd"/>
+                                <action selector="flipView:" destination="6Pi-TB-XcK" id="NEE-hM-9Ti"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -357,7 +351,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJ8-YC-hB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="aWE-pS-yT1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Venues" image="City.png" id="n9P-sF-Dxy"/>
+                    <tabBarItem key="tabBarItem" title="Venues" image="Barrier.png" id="n9P-sF-Dxy"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CAc-rt-zaK">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -446,7 +440,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mhf-8j-9Ko"/>
+                    <navigationItem key="navigationItem" id="Mhf-8j-9Ko">
+                        <barButtonItem key="rightBarButtonItem" image="List.png" id="Crb-PY-AWH"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -677,12 +673,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="City.png" width="23" height="27"/>
+        <image name="Barrier.png" width="30" height="18"/>
         <image name="Glasses.png" width="66" height="42"/>
-        <image name="Heart.png" width="30" height="30"/>
+        <image name="Heart.png" width="28" height="28"/>
         <image name="Heart0.png" width="17" height="15"/>
+        <image name="List.png" width="20" height="14"/>
         <image name="Masks.png" width="37" height="23"/>
         <image name="Person.png" width="24" height="21"/>
+        <image name="Pin.png" width="10" height="20"/>
+        <image name="Ticket.png" width="28" height="18"/>
     </resources>
     <classes>
         <class className="DCMAllShowsViewController" superclassName="DCMTableViewController">
@@ -761,6 +760,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bgW-oP-1t4"/>
+        <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
 </document>
