@@ -9,6 +9,10 @@
 #import "DCMFavoritesViewController.h"
 #import "DCMDatabase.h"
 
+#define kDateLabelTag 101
+#define kVenueLabelTag 102
+#define kTitleLabelTag 103
+
 @interface DCMFavoritesViewController ()
 
 @end
@@ -49,6 +53,18 @@
 - (NSPredicate *)predicate
 {
     return [NSPredicate predicateWithFormat:@"favorite = TRUE"];
+}
+
+- (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"h:mm a"];
+    UILabel *dateLabel = (id)[cell.contentView viewWithTag:kDateLabelTag];
+    UILabel *venueLabel = (id)[cell.contentView viewWithTag:kVenueLabelTag];
+    UILabel *titleLabel = (id)[cell.contentView viewWithTag:kTitleLabelTag];
+    dateLabel.text = [df stringFromDate:perf.startDate];
+    venueLabel.text = perf.venue.shortName;
+    titleLabel.text = perf.show.name;
 }
 
 @end
