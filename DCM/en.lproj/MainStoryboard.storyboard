@@ -439,8 +439,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="gray" id="WM6-zn-kMy">
-                                <rect key="frame" x="150" y="244" width="20" height="20"/>
+                                <rect key="frame" x="150" y="254" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -684,7 +685,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="Person.png" width="24" height="21"/>
     </resources>
     <classes>
-        <class className="DCMAllShowsViewController" superclassName="UITableViewController">
+        <class className="DCMAllShowsViewController" superclassName="DCMTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMAllShowsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refresh:"/>
@@ -696,7 +697,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMFavoritesViewController" superclassName="DCMScheduleViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMFavoritesViewController.h"/>
         </class>
-        <class className="DCMScheduleViewController" superclassName="UITableViewController">
+        <class className="DCMScheduleViewController" superclassName="DCMTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMScheduleViewController.h"/>
         </class>
         <class className="DCMShowDetailViewController" superclassName="UITableViewController">
@@ -705,6 +706,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="toggleFavorite:"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIBarButtonItem"/>
             </relationships>
+        </class>
+        <class className="DCMTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMTableViewController.h"/>
         </class>
         <class className="DCMUpcomingViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMUpcomingViewController.h"/>
@@ -757,6 +761,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pYu-qY-i04"/>
+        <segue reference="bgW-oP-1t4"/>
     </inferredMetricsTieBreakers>
 </document>

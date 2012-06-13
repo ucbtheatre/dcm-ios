@@ -68,13 +68,12 @@
             self.imageView.image = image;
             self.loadingIndicator.hidden = YES;
         } else {
-            [self.loadingIndicator startAnimating];
             NSURL *imageURL = [NSURL URLWithString:self.venue.imageURLString];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 NSData *data = [NSData dataWithContentsOfURL:imageURL];
                 [data writeToFile:path options:0 error:nil];
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.loadingIndicator stopAnimating];
+                    self.loadingIndicator.hidden = YES;
                     self.imageView.image = [UIImage imageWithContentsOfFile:path];
                 });
             });
