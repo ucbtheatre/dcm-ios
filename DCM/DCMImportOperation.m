@@ -25,8 +25,20 @@
     return self;
 }
 
-- (void)postNotificationOfProgress:(float)progress activity:(NSString *)activity
+- (void)postNotificationOfProgress:(float)progress
 {
+    NSString *activity;
+    if (progress < 0.1f) {
+        activity = @"Opening";
+    } else if (progress < 0.4f) {
+        activity = @"First Beats";
+    } else if (progress < 0.7f) {
+        activity = @"Second Beats";
+    } else if (progress < DCMDatabaseProgressComplete) {
+        activity = @"Third Beats";
+    } else {
+        activity = @"Blackout";
+    }
     [[NSNotificationCenter defaultCenter]
      postNotificationName:DCMDatabaseProgressNotification
      object:nil
@@ -49,13 +61,13 @@
                forKey:DCMDatabaseErrorKey]];
 }
 
-- (void)didImportObjectWithActivity:(NSString *)activity
+- (void)didImportObject
 {
     numberOfObjectsImported += 1;
-    if ([lastProgressNotificationDate timeIntervalSinceNow] < -0.3) {
+    if ([lastProgressNotificationDate timeIntervalSinceNow] < -0.1) {
         float n = numberOfObjectsImported;
         float d = numberOfObjectsToImport;
-        [self postNotificationOfProgress:(n / d) activity:activity];
+        [self postNotificationOfProgress:(n / d)];
     }
 }
 
@@ -70,11 +82,18 @@
     return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
 }
 
+- (void)cacheObject:(NSManagedObject *)object withIdentifier:(id)identifier
+{
+    id key = [NSString stringWithFormat:@"%@:%@", identifier, object.entity.name];
+    [objectCache setObject:object forKey:key];
+}
+
 - (id)objectFromIdentifier:(id)identifier entity:(NSEntityDescription *)entity
 {
-    id key = [NSString stringWithFormat:@"%@:%@", entity.name, identifier];
+    id key = [NSString stringWithFormat:@"%@:%@", identifier, entity.name];
     id object = [objectCache objectForKey:key];
     if (object) return object;
+    // Because we are no longer using NSCache, the following is never executed.
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     [request setFetchLimit:1];
@@ -128,40 +147,26 @@
     venue.imageURLString = [info objectForKey:@"image"];
     venue.mapURLString = [info objectForKey:@"gmaps"];
     venue.homeURLString = [info objectForKey:@"url"];
-    [self didImportObjectWithActivity:@"First Beats"];
+    [self cacheObject:venue withIdentifier:venue.identifier];
+    [self didImportObject];
 }
 
 - (Performer *)performerFromName:(NSString *)name
 {
     if ([name length] < 1) return nil;
-    id key = [@"Performer:" stringByAppendingString:name];
-    Performer *perf = [objectCache objectForKey:key];
-    if (perf) return perf;
+    id key = [name stringByAppendingString:@":Performer"];
+    Performer *perf = [performerCache objectForKey:key];
+    if (perf) {
+        return perf;
+    }
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Performer"
                                    inManagedObjectContext:managedObjectContext];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entity];
-    [request setFetchLimit:1];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"name = %@", name]];
-    NSError *error = nil;
-    NSArray *results = [managedObjectContext
-                        executeFetchRequest:request
-                        error:&error];
-    if (error) {
-        @throw [NSException exceptionWithName:NSGenericException
-                                       reason:[error localizedDescription]
-                                     userInfo:nil];
-    }
-    if ([results count] > 0) {
-        perf = [results objectAtIndex:0];
-    } else {
-        perf = [[Performer alloc]
-                initWithEntity:entity
-                insertIntoManagedObjectContext:managedObjectContext];
-        perf.name = name;
-    }
-    [objectCache setObject:perf forKey:key];
+    perf = [[Performer alloc]
+            initWithEntity:entity
+            insertIntoManagedObjectContext:managedObjectContext];
+    perf.name = name;
+    [performerCache setObject:perf forKey:key];
     return perf;
 }
 
@@ -205,7 +210,8 @@
             [show addPerformersObject:perf];
         }
     }
-    [self didImportObjectWithActivity:@"Second Beats"];
+    [self cacheObject:show withIdentifier:show.identifier];
+    [self didImportObject];
 }
 
 - (void)importSchedule:(NSDictionary *)info
@@ -223,7 +229,7 @@
     perf.endDate = [self parseDate:[info objectForKey:@"endtime"]];
     NSTimeInterval interval = [perf.endDate timeIntervalSinceDate:perf.startDate];
     perf.minutes = [NSNumber numberWithDouble:(interval / 60.0)];
-    [self didImportObjectWithActivity:@"Third Beats"];
+    [self didImportObject];
 }
 
 - (void)saveContext
@@ -238,8 +244,7 @@
 
 - (void)main
 {
-    [self postNotificationOfProgress:DCMDatabaseProgressNone
-                            activity:@"Opening"];
+    [self postNotificationOfProgress:DCMDatabaseProgressNone];
     NSError *error = nil;
     NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:rawData
                                                                options:0
@@ -256,25 +261,26 @@
                                [showDataArray count] +
                                [scheduleDataArray count]);
     objectCache = [[NSCache alloc] init];
-    for (NSDictionary *info in venueDataArray) {
-        [self importVenue:[info objectForKey:@"Venue"]];
-    }
-    [self saveContext];
+    performerCache = [[NSMutableDictionary alloc]
+                      initWithCapacity:(5 * [showDataArray count])];
     for (NSDictionary *info in showDataArray) {
         @autoreleasepool {
             [self importShow:[info objectForKey:@"Show"]];
         }
     }
+    performerCache = nil;
     [self saveContext];
+    for (NSDictionary *info in venueDataArray) {
+        [self importVenue:[info objectForKey:@"Venue"]];
+    }
     for (NSDictionary *info in scheduleDataArray) {
         @autoreleasepool {
             [self importSchedule:[info objectForKey:@"Schedule"]];
         }
     }
-    [self saveContext];
     objectCache = nil;
-    [self postNotificationOfProgress:DCMDatabaseProgressComplete
-                            activity:@"Blackout"];
+    [self saveContext];
+    [self postNotificationOfProgress:DCMDatabaseProgressComplete];
 }
 
 - (BOOL)performImport

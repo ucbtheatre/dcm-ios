@@ -11,6 +11,7 @@
 @interface DCMImportOperation : NSObject
 {
     NSData *rawData;
+    NSMutableDictionary *performerCache;
     NSCache *objectCache;
     NSUInteger numberOfObjectsToImport;
     NSUInteger numberOfObjectsImported;
