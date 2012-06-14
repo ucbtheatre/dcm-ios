@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DCMTableViewController.h"
 
 @class Show;
 
-@interface DCMShowDetailViewController : UITableViewController
+@interface DCMShowDetailViewController : DCMTableViewController
 {
     NSArray *performers;
     NSArray *performances;
