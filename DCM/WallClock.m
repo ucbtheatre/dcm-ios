@@ -85,8 +85,8 @@ NSString * const WallClockMinuteDidChangeNotification = @"WallClockMinuteDidChan
 - (void)timerDidFire:(NSTimer *)timer
 {
     if (!isRunning) return;
-    NSLog(@"WallClock Timer Fired (planned %@, off by %f)",
-          [timer fireDate], [[timer fireDate] timeIntervalSinceNow]);
+//    NSLog(@"WallClock Timer Fired (planned %@, off by %f)",
+//          [timer fireDate], [[timer fireDate] timeIntervalSinceNow]);
     [[NSNotificationCenter defaultCenter]
      postNotificationName:WallClockMinuteDidChangeNotification object:self];
     [self scheduleTimer];
