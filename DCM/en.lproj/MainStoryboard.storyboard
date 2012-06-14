@@ -463,7 +463,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnM-yg-n3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="8fh-Yh-dX8" customClass="DCMShowDetailViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z3K-Nb-3WF">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z3K-Nb-3WF">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -699,7 +699,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMScheduleViewController" superclassName="DCMTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMScheduleViewController.h"/>
         </class>
-        <class className="DCMShowDetailViewController" superclassName="UITableViewController">
+        <class className="DCMShowDetailViewController" superclassName="DCMTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMShowDetailViewController.h"/>
             <relationships>
                 <relationship kind="action" name="toggleFavorite:"/>
