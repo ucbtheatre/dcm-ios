@@ -70,26 +70,30 @@
     if (statusCode == 200) {
         [database importData:rawData eTag:eTag];
     }
-    else if (statusCode == 304) {
-        [self postNotificationOfProgress:DCMDatabaseProgressComplete
-                                activity:@"Up to Date"];
-    }
     else {
-        [self postNotificationOfProgress:DCMDatabaseProgressComplete
-                                activity:[NSString stringWithFormat:@"[%d]",
-                                          statusCode]];
+        NSString *msg;
+        if (statusCode == 304) {
+            msg = @"Up to Date";
+        } else {
+            msg = [NSHTTPURLResponse localizedStringForStatusCode:statusCode];
+        }
+        [self postNotificationOfProgress:DCMDatabaseProgressComplete activity:msg];
+        [database endUpdate];
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:DCMDatabaseProgressNotification
-     object:database
-     userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-               error,
-               DCMDatabaseErrorKey,
-               nil]];
+    if (database.shouldReportConnectionErrors) {
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:DCMDatabaseProgressNotification
+         object:database
+         userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                   error,
+                   DCMDatabaseErrorKey,
+                   nil]];
+    }
+    [database endUpdate];
 }
 
 @end

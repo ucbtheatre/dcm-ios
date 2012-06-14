@@ -39,6 +39,7 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
 
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize managedObjectContext = __managedObjectContext;
+@synthesize shouldReportConnectionErrors;
 
 - (id)init
 {
@@ -73,6 +74,15 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
 }
 
 #pragma mark - Core Data
+
+- (BOOL)isEmpty
+{
+    NSString *path = [[self storeURL] path];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        return YES;
+    }
+    return self.eTag == nil;
+}
 
 - (NSManagedObjectModel *)managedObjectModel
 {
@@ -135,8 +145,26 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
 
 - (void)checkForUpdate
 {
+    [self checkForUpdateQuietly:NO];
+}
+
+- (void)checkForUpdateQuietly:(BOOL)beQuiet
+{
+    if (isUpdating) return;
+    isUpdating = YES;
+    self.shouldReportConnectionErrors = !beQuiet;
     DCMDownload *download = [[DCMDownload alloc] initWithDatabase:self];
-    [NSURLConnection connectionWithRequest:[self originURLRequest]
+    [NSURLConnection connectionWithRequest:[self originURLRequest:NO]
+                                  delegate:download];
+}
+
+- (void)forceUpdate
+{
+    if (isUpdating) return;
+    isUpdating = YES;
+    self.shouldReportConnectionErrors = YES;
+    DCMDownload *download = [[DCMDownload alloc] initWithDatabase:self];
+    [NSURLConnection connectionWithRequest:[self originURLRequest:YES]
                                   delegate:download];
 }
 
@@ -160,22 +188,30 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
             [[NSNotificationCenter defaultCenter]
              postNotificationName:DCMDatabaseDidChangeNotification
              object:self];
+            [self endUpdate];
         }];
     }];
 }
 
+- (void)endUpdate
+{
+    isUpdating = NO;
+}
+
 #pragma mark - Everything else
 
-- (NSURLRequest *)originURLRequest
+- (NSURLRequest *)originURLRequest:(BOOL)forceUpdate
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[self originURL]];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     [request setHTTPShouldHandleCookies:NO];
     [request setNetworkServiceType:NSURLNetworkServiceTypeBackground];
-    NSString *eTagValue = [self eTag];
-    if (eTagValue) {
-        [request setValue:eTagValue forHTTPHeaderField:@"If-None-Match"];
+    if (!forceUpdate) {
+        NSString *eTagValue = [self eTag];
+        if (eTagValue) {
+            [request setValue:eTagValue forHTTPHeaderField:@"If-None-Match"];
+        }
     }
     return request;
 }

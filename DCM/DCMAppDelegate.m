@@ -65,7 +65,6 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
              NSDictionary *info = [note userInfo];
              float progress = [[info objectForKey:DCMDatabaseProgressKey] floatValue];
              NSString *activity = [info objectForKey:DCMDatabaseActivityKey];
-             // NSLog(@"Progress: %0.4f %@", progress, activity);
              MBProgressHUD *hud = [MBProgressHUD HUDForView:self.window];
              if (hud == nil) {
                  hud = [[MBProgressHUD alloc] initWithWindow:self.window];
@@ -86,7 +85,9 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
              }
          }
      }];
-    [[DCMDatabase sharedDatabase] checkForUpdate];
+    // Supress error messages unless the database is empty.
+    DCMDatabase *db = [DCMDatabase sharedDatabase];
+    [db checkForUpdateQuietly:![db isEmpty]];
     return YES;
 }
 
