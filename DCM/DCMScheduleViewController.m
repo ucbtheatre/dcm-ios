@@ -120,14 +120,6 @@
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf
-{
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"h:mm a"];
-    cell.textLabel.text = [df stringFromDate:perf.startDate];    
-    cell.detailTextLabel.text = perf.show.name;
-}
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Performance *perf = [performancesController objectAtIndexPath:indexPath];

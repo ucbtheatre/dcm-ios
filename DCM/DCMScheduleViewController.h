@@ -18,9 +18,9 @@
     BOOL scrollOnNextAppearance;
 }
 - (void)setUpControllerForDatabase:(DCMDatabase *)database;
-- (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf;
 @end
 
 @interface DCMScheduleViewController (Abstract)
 - (NSPredicate *)predicate;
+- (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf;
 @end

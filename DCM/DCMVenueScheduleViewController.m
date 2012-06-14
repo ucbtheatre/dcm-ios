@@ -37,12 +37,18 @@
 
 - (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf
 {
-    [super configureCell:cell forPerformance:perf];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"h:mm a"];
+    NSString *prefix;
     if (perf.favorite) {
         // Unicode "HEAVY BLACK HEART"
-        cell.textLabel.text = [@"\xE2\x9D\xA4 " stringByAppendingString:
-                               cell.textLabel.text];
+        prefix = @"\xE2\x9D\xA4 ";
+    } else {
+        prefix = @"";
     }
+    cell.textLabel.text = [prefix stringByAppendingString:
+                           [df stringFromDate:perf.startDate]];
+    cell.detailTextLabel.text = perf.show.name;
 }
 
 @end
