@@ -227,6 +227,10 @@
     perf.venue = [self venueFromIdentifier:[info objectForKey:@"venue_id"]];
     perf.startDate = [self parseDate:[info objectForKey:@"starttime"]];
     perf.endDate = [self parseDate:[info objectForKey:@"endtime"]];
+    NSString *tix = [info objectForKey:@"tickets"];
+    if ([tix length] > 0) {
+        perf.ticketsURLString = tix;
+    }
     NSTimeInterval interval = [perf.endDate timeIntervalSinceDate:perf.startDate];
     perf.minutes = [NSNumber numberWithDouble:(interval / 60.0)];
     [self didImportObject];

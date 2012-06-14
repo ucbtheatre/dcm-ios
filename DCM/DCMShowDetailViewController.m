@@ -113,6 +113,12 @@
     [df setDateFormat:@"EEEE h:mm a"];
     cell.textLabel.text = [df stringFromDate:performance.startDate];
     cell.detailTextLabel.text = performance.venue.shortName;
+    NSURL *ticketsURL = performance.ticketsURL;
+    if (ticketsURL) {
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
@@ -127,6 +133,12 @@
                         cellForPerformerAtRow:indexPath.row];
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    Performance *performance = [performances objectAtIndex:indexPath.row];
+    [[UIApplication sharedApplication] openURL:performance.ticketsURL];
 }
 
 @end

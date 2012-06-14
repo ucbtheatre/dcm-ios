@@ -24,5 +24,6 @@
 @property (nonatomic, retain) Venue *venue;
 
 @property (nonatomic, readonly) NSString *weekday;
+@property (nonatomic, readonly) NSURL *ticketsURL;
 
 @end

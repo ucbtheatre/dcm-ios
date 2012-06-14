@@ -27,4 +27,13 @@
     return [df stringFromDate:self.startDate];
 }
 
+- (NSURL *)ticketsURL
+{
+    if (self.ticketsURLString) {
+        return [NSURL URLWithString:self.ticketsURLString];
+    } else {
+        return nil;
+    }
+}
+
 @end
