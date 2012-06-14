@@ -8,7 +8,7 @@
 
 #import "DCMScheduleViewController.h"
 #import "DCMDatabase.h"
-#import "DCMAppDelegate.h"
+#import "WallClock.h"
 #import "DCMShowDetailViewController.h"
 
 @implementation DCMScheduleViewController
@@ -48,7 +48,7 @@
 
 - (void)scrollToCurrentShowAnimated:(BOOL)animated
 {
-    NSDate *date = [DCMAppDelegate currentDate];
+    NSDate *date = [[WallClock sharedClock] date];
     NSArray *perfArray = [performancesController fetchedObjects];
     NSUInteger idx = [perfArray
                       indexOfObject:date

@@ -10,7 +10,5 @@
 
 @interface DCMAppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic) NSTimeInterval timeShift;
 + (DCMAppDelegate *)sharedDelegate;
-+ (NSDate *)currentDate;
 @end

@@ -9,7 +9,7 @@
 #import "DCMUpcomingViewController.h"
 #import "DCMDatabase.h"
 #import "DCMShowDetailViewController.h"
-#import "DCMAppDelegate.h"
+#import "WallClock.h"
 
 @interface DCMUpcomingViewController ()
 
@@ -86,6 +86,10 @@
                    name:DCMDatabaseWillChangeNotification object:nil];
     [center addObserver:self selector:@selector(databaseDidChange:)
                    name:DCMDatabaseDidChangeNotification object:nil];
+    [center addObserver:self selector:@selector(timeToRefresh:)
+                   name:UIApplicationDidBecomeActiveNotification object:nil];
+    [center addObserver:self selector:@selector(timeToRefresh:)
+                   name:WallClockMinuteDidChangeNotification object:nil];
 }
 
 - (void)dealloc
@@ -108,6 +112,11 @@
     if ([self isViewLoaded]) {
         [self refresh];
     }
+}
+
+- (void)timeToRefresh:(NSNotification *)notification
+{
+    [self refresh];
 }
 
 - (void)updateDateButton
@@ -140,9 +149,8 @@
 
 - (void)refresh
 {
-    DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
     NSError *error = nil;
-    NSDate *nowDate = [NSDate dateWithTimeIntervalSinceNow:ad.timeShift];
+    NSDate *nowDate = [[WallClock sharedClock] date];
     NSDate *hourFromNowDate = [nowDate dateByAddingTimeInterval:3600];
     NSDate *startDate = [[DCMDatabase sharedDatabase] marathonStartDate];
     if ([startDate timeIntervalSinceDate:hourFromNowDate] > 0) {
@@ -161,9 +169,6 @@
         NSLog(@"Error: %@", [error localizedDescription]);
     }
     lastRefreshDate = nowDate;
-    if (ad.timeShift != 0) {
-        ad.timeShift += 300;
-    }
     [self updateDateButton];
     // If this is the first fetch, just reload
     if ([oldSectionIndexes count] == 0) {
@@ -219,37 +224,15 @@
 {
     [super viewDidUnload];
     performancesController = nil;
-    [refreshTimer invalidate]; refreshTimer = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
-    [super viewWillAppear:animated];
-    [refreshTimer invalidate];
-    refreshTimer = [NSTimer
-                    scheduledTimerWithTimeInterval:(ad.timeShift == 0) ? 60 : 1
-                    target:self selector:@selector(refreshTimerDidFire:)
-                    userInfo:nil repeats:YES];
-}
-
-- (void)refreshTimerDidFire:(NSTimer *)timer
-{
-    [self refresh];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [refreshTimer invalidate]; refreshTimer = nil;
 }
 
 #pragma mark - Flux capacitor
 
 - (void)fluxCapacitor:(FluxCapacitorViewController *)fluxCap didSelectTimeShift:(NSTimeInterval)shift
 {
-    DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
-    ad.timeShift = shift;
+    WallClock *clock = [WallClock sharedClock];
+    clock.timeShift = shift;
+    [clock setSpeed:(shift != 0) ? 300 : 0];
     [fluxCap dismissViewControllerAnimated:YES completion:^{
         [self refresh];
         [self.tableView reloadData];
@@ -293,10 +276,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"TimeTravel"]) {
-        DCMAppDelegate *ad = [DCMAppDelegate sharedDelegate];
         FluxCapacitorViewController *fluxCap = [segue destinationViewController];
         fluxCap.delegate = self;
-        fluxCap.initialTimeShift = ad.timeShift;
+        fluxCap.initialTimeShift = [[WallClock sharedClock] timeShift];
     } else {
         DCMShowDetailViewController *detailViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

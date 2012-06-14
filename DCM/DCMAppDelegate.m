@@ -10,6 +10,7 @@
 #import "DCMDatabase.h"
 #import "DCMImportOperation.h"
 #import "MBProgressHUD.h"
+#import "WallClock.h"
 
 #if TESTFLIGHT_ENABLED
 
@@ -30,14 +31,7 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
     return [[UIApplication sharedApplication] delegate];
 }
 
-+ (NSDate *)currentDate
-{
-    DCMAppDelegate *ad = [[UIApplication sharedApplication] delegate];
-    return [NSDate dateWithTimeIntervalSinceNow:ad.timeShift];
-}
-
 @synthesize window = _window;
-@synthesize timeShift;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -88,6 +82,7 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
     // Supress error messages unless the database is empty.
     DCMDatabase *db = [DCMDatabase sharedDatabase];
     [db checkForUpdateQuietly:![db isEmpty]];
+    [[WallClock sharedClock] start];
     return YES;
 }
 

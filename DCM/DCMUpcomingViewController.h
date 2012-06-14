@@ -13,7 +13,6 @@
 {
     NSFetchedResultsController *performancesController;
     NSDate *lastRefreshDate;
-    NSTimer *refreshTimer;
 }
 @property (nonatomic,strong) IBOutlet UIButton *dateButton;
 @property (nonatomic,strong) IBOutlet UIView *countdownView;
