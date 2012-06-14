@@ -48,13 +48,16 @@
 
 - (void)refreshCountdownViewWithDate:(NSDate *)nowDate
 {
+    // Add 60 seconds to the date interval so the countdown appears correctly.
+    // (If it is 2:50 and we are counting down to 3:00, we'd expect to see 0:10,
+    // but the calendar computation may round away a half-minute remaining. )
     NSDate *startDate = [[DCMDatabase sharedDatabase] marathonStartDate];
     NSDateComponents *dc = [[NSCalendar currentCalendar]
                             components:(NSDayCalendarUnit |
                                         NSHourCalendarUnit |
                                         NSMinuteCalendarUnit)
                             fromDate:nowDate
-                            toDate:startDate
+                            toDate:[startDate dateByAddingTimeInterval:60]
                             options:0];
     if (! self.countdownView) {
         [self loadCountdownView];
@@ -66,6 +69,7 @@
 
 - (void)unloadCountdownView
 {
+    [self.tableView setScrollEnabled:YES];
     if (self.countdownView) {
         [UIView transitionWithView:self.view duration:1
                            options:UIViewAnimationOptionTransitionCurlUp
@@ -74,7 +78,6 @@
                             self.countdownView = nil;
                             self.countdownLabel = nil;
                         } completion:^(BOOL finished) {
-                            [self.tableView setScrollEnabled:YES];
                         }];
     }
 }
