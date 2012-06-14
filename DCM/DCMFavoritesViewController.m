@@ -28,6 +28,12 @@
                    name:DCMDatabaseDidChangeNotification object:nil];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -65,6 +71,25 @@
     dateLabel.text = [df stringFromDate:perf.startDate];
     venueLabel.text = perf.venue.shortName;
     titleLabel.text = perf.show.name;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Remove";
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Performance *p = [performancesController objectAtIndexPath:indexPath];
+        p.favorite = NO;
+        [p.managedObjectContext save:nil];
+    }
 }
 
 @end
