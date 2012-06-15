@@ -282,7 +282,8 @@
         FluxCapacitorViewController *fluxCap = [segue destinationViewController];
         fluxCap.delegate = self;
         fluxCap.initialTimeShift = [[WallClock sharedClock] timeShift];
-    } else {
+    }
+    else if ([[segue identifier] isEqualToString:@"ShowDetail"]) {
         DCMShowDetailViewController *detailViewController = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         Performance *perf = [performancesController objectAtIndexPath:indexPath];
