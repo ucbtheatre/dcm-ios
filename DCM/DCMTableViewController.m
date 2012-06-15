@@ -28,7 +28,10 @@
     if (headerView == nil) {
         CGRect frame = CGRectMake(0, 0, 320, tableView.sectionHeaderHeight);
         headerView = [[UIView alloc] initWithFrame:frame];
-        headerView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.8f];
+        headerView.backgroundColor = [UIColor colorWithRed:0.8f
+                                                     green:0.2f
+                                                      blue:0.2f
+                                                     alpha:0.8f];
         headerView.opaque = NO;
         headerView.autoresizesSubviews = YES;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectInset(frame, 10, 0)];
