@@ -283,6 +283,11 @@
 
 #pragma mark - Storyboard
 
+- (IBAction)dontThink:(id)sender
+{
+    [self performSegueWithIdentifier:@"GiveCredit" sender:sender];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"TimeTravel"]) {

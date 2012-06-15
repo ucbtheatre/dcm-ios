@@ -17,4 +17,5 @@
 @property (nonatomic,strong) IBOutlet UIButton *dateButton;
 @property (nonatomic,strong) IBOutlet UIView *countdownView;
 @property (nonatomic,strong) IBOutlet UILabel *countdownLabel;
+- (IBAction)dontThink:(id)sender;
 @end

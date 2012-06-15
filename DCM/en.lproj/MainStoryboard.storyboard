@@ -138,7 +138,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <segue destination="eSw-09-ASA" kind="push" id="mFl-S8-oan"/>
+                                        <segue destination="eSw-09-ASA" kind="push" identifier="GiveCredit" id="mFl-S8-oan"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -776,6 +776,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMUpcomingViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMUpcomingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="dontThink:"/>
                 <relationship kind="outlet" name="countdownLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="countdownView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="dateButton" candidateClass="UIButton"/>
