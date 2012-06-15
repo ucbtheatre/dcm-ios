@@ -26,7 +26,7 @@ static const NSTimeInterval kSpeedSettings[] = { 0, 300, 1800 };
 {
     [super viewDidLoad];
     WallClock *clock = [WallClock sharedClock];
-    self.datePicker.date = [NSDate dateWithTimeIntervalSinceNow:clock.timeShift];
+    self.datePicker.date = [clock date];
     for (NSInteger i = 0; i < [self.speedControl numberOfSegments]; i++) {
         if (clock.speed <= kSpeedSettings[i]) {
             self.speedControl.selectedSegmentIndex = i;
