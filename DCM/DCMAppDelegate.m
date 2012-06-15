@@ -35,6 +35,8 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"America/New_York"];
+    if (tz) [NSTimeZone setDefaultTimeZone:tz];
 #if TESTFLIGHT_ENABLED
     [TestFlight takeOff:kTestFlightTeamToken];
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
