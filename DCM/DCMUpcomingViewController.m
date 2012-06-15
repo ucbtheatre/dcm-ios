@@ -18,7 +18,7 @@
 
 @implementation DCMUpcomingViewController
 
-@synthesize dateButton;
+@synthesize dateLabel;
 @synthesize countdownView;
 @synthesize countdownLabel;
 
@@ -129,7 +129,7 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"EEEE h:mm a"];
     NSString *dateString = [df stringFromDate:lastRefreshDate];
-    [self.dateButton setTitle:dateString forState:UIControlStateNormal];
+    self.dateLabel.text = dateString;
 }
 
 - (NSDictionary *)sectionIndexesBySectionName
@@ -228,6 +228,9 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    self.dateLabel = nil;
+    self.countdownView = nil;
+    self.countdownLabel = nil;
     performancesController = nil;
 }
 
@@ -286,6 +289,11 @@
 - (IBAction)dontThink:(id)sender
 {
     [self performSegueWithIdentifier:@"GiveCredit" sender:sender];
+}
+
+- (IBAction)timeTravel:(id)sender
+{
+    [self performSegueWithIdentifier:@"TimeTravel" sender:sender];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

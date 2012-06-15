@@ -176,28 +176,37 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="bDw-gL-vHU">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Now" id="T6V-h7-63m"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jXx-vo-KPh">
-                            <rect key="frame" x="58" y="6" width="204" height="33"/>
+                        <view key="titleView" opaque="NO" contentMode="scaleToFill" id="BcD-dt-8Yh">
+                            <rect key="frame" x="55" y="6" width="210" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <size key="titleShadowOffset" width="0.0" height="-1"/>
-                            <state key="normal" title="Monday 2:30 PM">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thursday 13:86 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CXz-sV-ibK">
+                                    <rect key="frame" x="0.0" y="0.0" width="210" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </label>
+                            </subviews>
+                            <gestureRecognizers/>
                             <connections>
-                                <segue destination="uyM-I1-Cdv" kind="modal" identifier="TimeTravel" id="Hv5-6b-PGZ"/>
+                                <outletCollection property="gestureRecognizers" destination="UCq-UU-fKs" appends="YES" id="BAQ-1b-SjP"/>
                             </connections>
-                        </button>
+                        </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateButton" destination="jXx-vo-KPh" id="vLV-Wg-WQB"/>
+                        <outlet property="dateLabel" destination="CXz-sV-ibK" id="9RQ-Oo-8eM"/>
+                        <segue destination="uyM-I1-Cdv" kind="modal" identifier="TimeTravel" id="UlZ-JP-t1b"/>
                     </connections>
                 </tableViewController>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.99999999999999989" id="UCq-UU-fKs">
+                    <connections>
+                        <action selector="timeTravel:" destination="rCJ-kO-75b" id="Obz-fV-k1c"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1612" y="1188"/>
         </scene>
@@ -608,7 +617,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         <scene sceneID="ndg-Ck-oSS">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i78-ap-Kh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="uyM-I1-Cdv" customClass="FluxCapacitorViewController" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="uyM-I1-Cdv" customClass="FluxCapacitorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCo-kV-onu">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -777,9 +786,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMUpcomingViewController.h"/>
             <relationships>
                 <relationship kind="action" name="dontThink:"/>
+                <relationship kind="action" name="timeTravel:"/>
                 <relationship kind="outlet" name="countdownLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="countdownView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="dateButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="DCMVenueDetailViewController" superclassName="UIViewController">
