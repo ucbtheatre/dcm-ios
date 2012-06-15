@@ -37,17 +37,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"h:mm a"];
-    NSString *prefix;
-    if (perf.favorite) {
-        // Unicode "HEAVY BLACK HEART"
-        prefix = @"\xE2\x9D\xA4 ";
-    } else {
-        prefix = @"";
-    }
-    cell.textLabel.text = [prefix stringByAppendingString:
-                           [df stringFromDate:perf.startDate]];
+    cell.textLabel.text = [DCMScheduleViewController
+                           timeStringForPerformance:perf showFavorite:YES];
     cell.detailTextLabel.text = perf.show.name;
 }
 

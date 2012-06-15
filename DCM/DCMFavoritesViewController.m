@@ -63,12 +63,11 @@
 
 - (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf
 {
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"h:mm a"];
     UILabel *dateLabel = (id)[cell.contentView viewWithTag:kDateLabelTag];
     UILabel *venueLabel = (id)[cell.contentView viewWithTag:kVenueLabelTag];
     UILabel *titleLabel = (id)[cell.contentView viewWithTag:kTitleLabelTag];
-    dateLabel.text = [df stringFromDate:perf.startDate];
+    dateLabel.text = [DCMScheduleViewController
+                      timeStringForPerformance:perf showFavorite:NO];
     venueLabel.text = perf.venue.shortName;
     titleLabel.text = perf.show.name;
 }

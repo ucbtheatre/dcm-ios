@@ -13,6 +13,21 @@
 
 @implementation DCMScheduleViewController
 
++ (NSString *)timeStringForPerformance:(Performance *)perf showFavorite:(BOOL)showFav
+{
+    // Unicode "HEAVY BLACK HEART"
+    static NSString * const kHeartPrefix = @"\xE2\x9D\xA4 ";
+
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"h:mm a"];
+    NSString *timeString = [df stringFromDate:perf.startDate];
+    if (showFav && perf.favorite) {
+        return [kHeartPrefix stringByAppendingString:timeString];
+    } else {
+        return timeString;
+    }
+}
+
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
 {
     NSFetchRequest *request = [[NSFetchRequest alloc]

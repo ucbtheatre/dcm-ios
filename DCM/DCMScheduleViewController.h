@@ -17,6 +17,7 @@
     NSFetchedResultsController *performancesController;
     BOOL scrollOnNextAppearance;
 }
++ (NSString *)timeStringForPerformance:(Performance *)perf showFavorite:(BOOL)showFav;
 - (void)setUpControllerForDatabase:(DCMDatabase *)database;
 @end
 

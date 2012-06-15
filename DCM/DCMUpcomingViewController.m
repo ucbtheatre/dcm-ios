@@ -10,6 +10,7 @@
 #import "DCMDatabase.h"
 #import "DCMShowDetailViewController.h"
 #import "WallClock.h"
+#import "DCMScheduleViewController.h"
 
 @interface DCMUpcomingViewController ()
 
@@ -230,6 +231,12 @@
     performancesController = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Flux capacitor
 
 - (void)fluxCapacitor:(FluxCapacitorViewController *)fluxCap didSelectTimeShift:(NSTimeInterval)shift
@@ -267,10 +274,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"h:mm a"];
     Performance *perf = [performancesController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [df stringFromDate:perf.startDate];    
+    cell.textLabel.text = [DCMScheduleViewController
+                           timeStringForPerformance:perf showFavorite:YES];
     cell.detailTextLabel.text = perf.show.name;
     return cell;
 }
