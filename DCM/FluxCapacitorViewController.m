@@ -7,44 +7,52 @@
 //
 
 #import "FluxCapacitorViewController.h"
+#import "DCMDatabase.h"
+#import "WallClock.h"
 
 @interface FluxCapacitorViewController ()
 
 @end
 
+static const NSTimeInterval kSpeedSettings[] = { 0, 300, 1800 };
+
 @implementation FluxCapacitorViewController
 
 @synthesize delegate;
-@synthesize initialTimeShift;
 @synthesize datePicker;
+@synthesize speedControl;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.datePicker.date = [NSDate dateWithTimeIntervalSinceNow:self.initialTimeShift];
+    WallClock *clock = [WallClock sharedClock];
+    self.datePicker.date = [NSDate dateWithTimeIntervalSinceNow:clock.timeShift];
+    for (NSInteger i = 0; i < [self.speedControl numberOfSegments]; i++) {
+        if (clock.speed <= kSpeedSettings[i]) {
+            self.speedControl.selectedSegmentIndex = i;
+            break;
+        }
+    }
 }
 
-- (void)dcm13:(id)sender
+- (void)jumpToMarathonStart:(id)sender
 {
-    self.datePicker.date = [NSDate dateWithTimeIntervalSince1970:1313181000];
-}
-
-- (void)dcm14:(id)sender
-{
-    self.datePicker.date = [NSDate dateWithTimeIntervalSince1970:1341001800];
+    self.datePicker.date = [[DCMDatabase sharedDatabase] marathonStartDate];
 }
 
 - (void)confirm:(id)sender
 {
-    NSTimeInterval timeShift = [self.datePicker.date timeIntervalSinceNow];
-    [self.delegate fluxCapacitor:self
-              didSelectTimeShift:timeShift];
+    NSTimeInterval newSpeed = kSpeedSettings[self.speedControl.selectedSegmentIndex];
+    [[WallClock sharedClock] setSpeed:newSpeed];
+    [[WallClock sharedClock] setTimeShift:[self.datePicker.date timeIntervalSinceNow]];
+    [self.delegate fluxCapacitorCompleted:self];
 }
 
 - (void)reset:(id)sender
 {
-    [self.delegate fluxCapacitor:self
-              didSelectTimeShift:0];
+    [[WallClock sharedClock] setSpeed:0];
+    [[WallClock sharedClock] setTimeShift:0];
+    [self.delegate fluxCapacitorCompleted:self];
 }
 
 @end

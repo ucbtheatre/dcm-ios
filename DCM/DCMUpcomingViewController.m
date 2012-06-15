@@ -242,11 +242,8 @@
 
 #pragma mark - Flux capacitor
 
-- (void)fluxCapacitor:(FluxCapacitorViewController *)fluxCap didSelectTimeShift:(NSTimeInterval)shift
+- (void)fluxCapacitorCompleted:(FluxCapacitorViewController *)fluxCap
 {
-    WallClock *clock = [WallClock sharedClock];
-    clock.timeShift = shift;
-    [clock setSpeed:(shift != 0) ? 300 : 0];
     [fluxCap dismissViewControllerAnimated:YES completion:^{
         [self refresh];
         [self.tableView reloadData];
@@ -301,7 +298,6 @@
     if ([[segue identifier] isEqualToString:@"TimeTravel"]) {
         FluxCapacitorViewController *fluxCap = [segue destinationViewController];
         fluxCap.delegate = self;
-        fluxCap.initialTimeShift = [[WallClock sharedClock] timeShift];
     }
     else if ([[segue identifier] isEqualToString:@"ShowDetail"]) {
         DCMShowDetailViewController *detailViewController = [segue destinationViewController];

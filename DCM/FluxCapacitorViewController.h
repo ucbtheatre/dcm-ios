@@ -11,15 +11,14 @@
 @class FluxCapacitorViewController;
 
 @protocol FluxCapacitorDelegate <NSObject>
-- (void)fluxCapacitor:(FluxCapacitorViewController *)fluxCap didSelectTimeShift:(NSTimeInterval)shift;
+- (void)fluxCapacitorCompleted:(FluxCapacitorViewController *)fluxCap;
 @end
 
 @interface FluxCapacitorViewController : UIViewController
 @property (nonatomic,weak) id <FluxCapacitorDelegate> delegate;
-@property (nonatomic) NSTimeInterval initialTimeShift;
 @property (nonatomic,strong) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic,strong) IBOutlet UISegmentedControl *speedControl;
 - (IBAction)confirm:(id)sender;
 - (IBAction)reset:(id)sender;
-- (IBAction)dcm13:(id)sender;
-- (IBAction)dcm14:(id)sender;
+- (IBAction)jumpToMarathonStart:(id)sender;
 @end

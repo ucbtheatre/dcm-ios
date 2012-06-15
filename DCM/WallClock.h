@@ -26,7 +26,7 @@ extern NSString * const WallClockMinuteDidChangeNotification;
 }
 + (WallClock *)sharedClock;
 @property (nonatomic) NSTimeInterval timeShift;
-- (void)setSpeed:(NSTimeInterval)secondsPerSecond;
+@property (nonatomic) NSTimeInterval speed;
 - (NSDate *)date;
 - (void)start;
 - (void)stop;

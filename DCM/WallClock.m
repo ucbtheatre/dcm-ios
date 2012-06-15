@@ -24,12 +24,17 @@ NSString * const WallClockMinuteDidChangeNotification = @"WallClockMinuteDidChan
 
 @synthesize timeShift;
 
+- (NSTimeInterval)speed
+{
+    return speedRate;
+}
+
 - (void)setSpeed:(NSTimeInterval)secondsPerSecond
 {
     if (secondsPerSecond) {
         speedOffset = [NSDate timeIntervalSinceReferenceDate];
         speedRate = secondsPerSecond;
-        [self scheduleTimer];
+        if (isRunning) [self scheduleTimer];
     } else {
         speedOffset = 0;
         speedRate = 0;
