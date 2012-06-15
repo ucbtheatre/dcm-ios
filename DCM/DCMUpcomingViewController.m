@@ -41,9 +41,10 @@
 {
     [[UINib nibWithNibName:@"CountdownView" bundle:nil]
      instantiateWithOwner:self options:nil];
-    self.countdownView.frame = self.view.bounds;
-    [self.view addSubview:self.countdownView];
     [self.tableView setScrollEnabled:NO];
+    [self.tableView setContentOffset:CGPointZero];
+    self.countdownView.frame = self.view.bounds;
+    [self.tableView addSubview:self.countdownView];
 }
 
 - (void)refreshCountdownViewWithDate:(NSDate *)nowDate
