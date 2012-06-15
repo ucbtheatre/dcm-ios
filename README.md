@@ -1,6 +1,11 @@
 # Del Close Marathon mobile app
 
-If you're interested in testing, you should sign up at TestFlight [here](http://bit.ly/KyI9ZW).
+This is the native iOS app. There is also a [web app][1].
+
+If you're interested in testing, you should sign up at TestFlight [here][2].
+
+[1]: http://github.com/ucbtheatre/dcm-mobile
+[2]: http://bit.ly/KyI9ZW
 
 ## Goals
 
@@ -26,6 +31,28 @@ If you're interested in testing, you should sign up at TestFlight [here](http://
 - Venues - list of venues
   - Venue Detail - photo, address, list of shows
 
-# Notes
+## Notes
 
 Singleton DCMDatabase object. May reset the Core Data stack at any time; client view controllers should prepare to receive notification.
+
+## License
+
+Copyright (c) 2012 Upright Citizens Brigade LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
