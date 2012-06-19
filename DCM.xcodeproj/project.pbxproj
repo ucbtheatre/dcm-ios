@@ -117,6 +117,7 @@
 		BC37491B155FB0A40033BAC9 /* Person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Person@2x.png"; sourceTree = "<group>"; };
 		BC7C6A96159007900055E985 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC7C6A98159008730055E985 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BC7C6A9A15900A2C0055E985 /* iTunesArtwork */ = {isa = PBXFileReference; explicitFileType = image.jpeg; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTableViewController.h; sourceTree = "<group>"; };
 		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTableViewController.m; sourceTree = "<group>"; };
 		BC94EF7A158849FC001CE7A8 /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
@@ -235,6 +236,7 @@
 		BC3748C4155F4C6C0033BAC9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC7C6A9A15900A2C0055E985 /* iTunesArtwork */,
 				BCC90100157D730900F94409 /* DCM.entitlements */,
 				BC3748C5155F4C6C0033BAC9 /* DCM-Info.plist */,
 				BC3748C6155F4C6C0033BAC9 /* InfoPlist.strings */,
