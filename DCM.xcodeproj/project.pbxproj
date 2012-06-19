@@ -34,6 +34,8 @@
 		BC37491F155FB0A40033BAC9 /* Masks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC374919155FB0A40033BAC9 /* Masks@2x.png */; };
 		BC374920155FB0A40033BAC9 /* Person.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491A155FB0A40033BAC9 /* Person.png */; };
 		BC374921155FB0A40033BAC9 /* Person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC37491B155FB0A40033BAC9 /* Person@2x.png */; };
+		BC7C6A97159007900055E985 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C6A96159007900055E985 /* Default.png */; };
+		BC7C6A99159008730055E985 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C6A98159008730055E985 /* Default@2x.png */; };
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
 		BC94EF7C158849FC001CE7A8 /* Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = BC94EF7A158849FC001CE7A8 /* Heart.png */; };
 		BC94EF7D158849FC001CE7A8 /* Heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC94EF7B158849FC001CE7A8 /* Heart@2x.png */; };
@@ -113,6 +115,8 @@
 		BC374919155FB0A40033BAC9 /* Masks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Masks@2x.png"; sourceTree = "<group>"; };
 		BC37491A155FB0A40033BAC9 /* Person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Person.png; sourceTree = "<group>"; };
 		BC37491B155FB0A40033BAC9 /* Person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Person@2x.png"; sourceTree = "<group>"; };
+		BC7C6A96159007900055E985 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BC7C6A98159008730055E985 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTableViewController.h; sourceTree = "<group>"; };
 		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTableViewController.m; sourceTree = "<group>"; };
 		BC94EF7A158849FC001CE7A8 /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 		BC374915155FAF140033BAC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BC7C6A96159007900055E985 /* Default.png */,
+				BC7C6A98159008730055E985 /* Default@2x.png */,
 				BC94EF8615885AA7001CE7A8 /* List.png */,
 				BC94EF8715885AA7001CE7A8 /* List@2x.png */,
 				BC94EF8815885AA8001CE7A8 /* Pin.png */,
@@ -413,6 +419,8 @@
 				BC94EF8B15885AA9001CE7A8 /* List@2x.png in Resources */,
 				BC94EF8C15885AA9001CE7A8 /* Pin.png in Resources */,
 				BC94EF8D15885AA9001CE7A8 /* Pin@2x.png in Resources */,
+				BC7C6A97159007900055E985 /* Default.png in Resources */,
+				BC7C6A99159008730055E985 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
