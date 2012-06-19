@@ -28,4 +28,12 @@
     return [[self.performances anyObject] favorite];
 }
 
+- (BOOL)anyShowRequiresTicket
+{
+    for (Performance *perf in self.performances) {
+        if (perf.ticketsURL != nil) return YES;
+    }
+    return NO;
+}
+
 @end

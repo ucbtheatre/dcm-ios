@@ -27,6 +27,8 @@
 
 @property (nonatomic, readonly) BOOL favorite;
 
+- (BOOL)anyShowRequiresTicket;
+
 @end
 
 @interface Show (CoreDataGeneratedAccessors)

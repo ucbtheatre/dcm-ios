@@ -43,6 +43,10 @@
     [labelSet addLabelWithText:self.show.name font:[UIFont boldSystemFontOfSize:17]];
     [labelSet addLabelWithText:self.show.homeCity font:[UIFont italicSystemFontOfSize:15]];
     [labelSet addLabelWithText:self.show.promoBlurb font:[UIFont systemFontOfSize:15]];
+    if ([self.show anyShowRequiresTicket]) {
+        [labelSet addLabelWithText:@"Tickets for this show sold separately."
+                              font:[UIFont italicSystemFontOfSize:15]];
+    }
     [labelSet sizeToFit];
     [self updateFavoriteButton];
 }
