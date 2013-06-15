@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Upright Citizens Brigade LLC. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
-
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
 
