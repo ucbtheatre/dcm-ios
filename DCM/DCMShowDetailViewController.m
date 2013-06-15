@@ -53,6 +53,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateFavoriteButton];
+
+    performanceDateFormatter = [[NSDateFormatter alloc] init];
+    [performanceDateFormatter setDateFormat:@"EEEE h:mm a"];
+
     performers = [self.show.performers sortedArrayUsingDescriptors:
                   [NSArray arrayWithObject:
                    [NSSortDescriptor
@@ -61,10 +66,12 @@
                     [NSArray arrayWithObject:
                      [NSSortDescriptor
                       sortDescriptorWithKey:@"startDate" ascending:YES]]];
+
     self.titleLabel.text = self.show.name;
     self.homeCityLabel.text = self.show.homeCity;
     self.promoBlurbLabel.text = self.show.promoBlurb;
     [self.promoBlurbLabel sizeToFit];
+
     CGRect bounds = [self.tableView.tableHeaderView bounds];
     bounds.size.height = (CGRectGetHeight(self.imageView.frame) + 8 +
                           CGRectGetHeight(self.promoBlurbLabel.frame) + 8);
@@ -74,10 +81,12 @@
         [self.ticketWarningLabel removeFromSuperview];
     }
     [self.tableView.tableHeaderView setBounds:bounds];
-    [self updateFavoriteButton];
 
     CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
     [self.imageView.layer addSublayer:vignetteLayer];
+
+    Class avcClass = NSClassFromString(@"UIActivityViewController");
+    self.shareButton.hidden = (avcClass == nil);
     
     if (self.show.imageURLString) {
         NSString *imageURLString = self.show.imageURLString;
@@ -124,6 +133,44 @@
     }
 }
 
+- (void)shareShow:(id)sender
+{
+    // Cases:
+    // - 1 performance
+    // - multiple performances, 1 venue
+    // - multiple performances, multiple venues
+    NSMutableString *text = [NSMutableString string];
+    if ([self.show isFavorite]) {
+        [text appendString:@"I’ll be at "];
+    } else {
+        [text appendString:@"Check out "];
+    }
+    [text appendString:self.show.name];
+    [text appendString:@" "];
+    if ([[performances valueForKeyPath:@"@distinctUnionOfObjects.venue"] count] > 1) {
+        [performances enumerateObjectsUsingBlock:^(Performance *p, NSUInteger idx, BOOL *stop) {
+            if (idx > 0) [text appendString:@", "];
+            [text appendFormat:@"%@ at %@",
+             [performanceDateFormatter stringFromDate:p.startDate],
+             p.venue.name];
+        }];
+    }
+    else {
+        [performances enumerateObjectsUsingBlock:^(Performance *p, NSUInteger idx, BOOL *stop) {
+            if (idx > 0) [text appendString:@", "];
+            [text appendString:[performanceDateFormatter stringFromDate:p.startDate]];
+        }];
+        [text appendFormat:@" at %@", [[[performances lastObject] venue] name]];
+    }
+    [text appendString:@" #dcm15"];
+    NSString *showURLString = [NSString stringWithFormat:@"http://delclosemarathon.com/dcm15/shows/%@", self.show.identifier];
+    NSURL *showURL = [NSURL URLWithString:showURLString];
+    UIActivityViewController *avc = [[UIActivityViewController alloc]
+                                     initWithActivityItems:@[text, showURL]
+                                     applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,9 +208,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
     Performance *performance = [performances objectAtIndex:row];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"EEEE h:mm a"];
-    cell.textLabel.text = [df stringFromDate:performance.startDate];
+    cell.textLabel.text = [performanceDateFormatter stringFromDate:performance.startDate];
     cell.detailTextLabel.text = performance.venue.shortName;
     NSURL *ticketsURL = performance.ticketsURL;
     if (ticketsURL) {

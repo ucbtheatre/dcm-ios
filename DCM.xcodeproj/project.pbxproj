@@ -57,6 +57,8 @@
 		BC965CA71560C24600665E50 /* Heart0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA31560C24600665E50 /* Heart0@2x.png */; };
 		BC965CA81560C24600665E50 /* Heart1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA41560C24600665E50 /* Heart1.png */; };
 		BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA51560C24600665E50 /* Heart1@2x.png */; };
+		BC9DC5A6176CF41E00C84653 /* Action.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A4176CF41E00C84653 /* Action.png */; };
+		BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A5176CF41E00C84653 /* Action@2x.png */; };
 		BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB86A401585835300DD48E7 /* CountdownView.xib */; };
 		BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD9D13B158A7A0000BC9D0F /* WallClock.m */; };
 		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
@@ -146,6 +148,8 @@
 		BC965CA31560C24600665E50 /* Heart0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart0@2x.png"; sourceTree = "<group>"; };
 		BC965CA41560C24600665E50 /* Heart1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart1.png; sourceTree = "<group>"; };
 		BC965CA51560C24600665E50 /* Heart1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart1@2x.png"; sourceTree = "<group>"; };
+		BC9DC5A4176CF41E00C84653 /* Action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Action.png; sourceTree = "<group>"; };
+		BC9DC5A5176CF41E00C84653 /* Action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Action@2x.png"; sourceTree = "<group>"; };
 		BCB86A401585835300DD48E7 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
 		BCC90100157D730900F94409 /* DCM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCM.entitlements; sourceTree = "<group>"; };
 		BCD9D13A158A7A0000BC9D0F /* WallClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallClock.h; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 				BC7C6A96159007900055E985 /* Default.png */,
 				BC7C6A98159008730055E985 /* Default@2x.png */,
 				BCEFBDB5176C42B5003388E1 /* Default-568h@2x.png */,
+				BC9DC5A4176CF41E00C84653 /* Action.png */,
+				BC9DC5A5176CF41E00C84653 /* Action@2x.png */,
 				BC94EF8615885AA7001CE7A8 /* List.png */,
 				BC94EF8715885AA7001CE7A8 /* List@2x.png */,
 				BC94EF8815885AA8001CE7A8 /* Pin.png */,
@@ -422,6 +428,8 @@
 				BC7C6A97159007900055E985 /* Default.png in Resources */,
 				BC7C6A99159008730055E985 /* Default@2x.png in Resources */,
 				BCEFBDB6176C42B5003388E1 /* Default-568h@2x.png in Resources */,
+				BC9DC5A6176CF41E00C84653 /* Action.png in Resources */,
+				BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

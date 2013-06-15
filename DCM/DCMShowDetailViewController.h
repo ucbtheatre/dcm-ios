@@ -15,6 +15,7 @@
 {
     NSArray *performers;
     NSArray *performances;
+    NSDateFormatter *performanceDateFormatter;
 }
 @property (strong, nonatomic) Show *show;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
@@ -23,5 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *homeCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promoBlurbLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ticketWarningLabel;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 - (IBAction)toggleFavorite:(id)sender;
+- (IBAction)shareShow:(id)sender;
 @end
