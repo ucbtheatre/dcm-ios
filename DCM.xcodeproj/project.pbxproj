@@ -58,11 +58,11 @@
 		BC965CA81560C24600665E50 /* Heart1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA41560C24600665E50 /* Heart1.png */; };
 		BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA51560C24600665E50 /* Heart1@2x.png */; };
 		BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB86A401585835300DD48E7 /* CountdownView.xib */; };
-		BCB86A441585A18B00DD48E7 /* LabelSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB86A431585A18B00DD48E7 /* LabelSetView.m */; };
 		BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD9D13B158A7A0000BC9D0F /* WallClock.m */; };
 		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
 		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
 		BCEFBDB6176C42B5003388E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEFBDB5176C42B5003388E1 /* Default-568h@2x.png */; };
+		BCEFBDB8176C6BF4003388E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,8 +147,6 @@
 		BC965CA41560C24600665E50 /* Heart1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart1.png; sourceTree = "<group>"; };
 		BC965CA51560C24600665E50 /* Heart1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart1@2x.png"; sourceTree = "<group>"; };
 		BCB86A401585835300DD48E7 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
-		BCB86A421585A18B00DD48E7 /* LabelSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelSetView.h; sourceTree = "<group>"; };
-		BCB86A431585A18B00DD48E7 /* LabelSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelSetView.m; sourceTree = "<group>"; };
 		BCC90100157D730900F94409 /* DCM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCM.entitlements; sourceTree = "<group>"; };
 		BCD9D13A158A7A0000BC9D0F /* WallClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallClock.h; sourceTree = "<group>"; };
 		BCD9D13B158A7A0000BC9D0F /* WallClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallClock.m; sourceTree = "<group>"; };
@@ -157,6 +155,7 @@
 		BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueScheduleViewController.h; sourceTree = "<group>"; };
 		BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueScheduleViewController.m; sourceTree = "<group>"; };
 		BCEFBDB5176C42B5003388E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCEFBDB8176C6BF4003388E1 /* QuartzCore.framework in Frameworks */,
 				BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */,
 				BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */,
 				BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */,
@@ -199,6 +199,7 @@
 		BC3748BC155F4C6C0033BAC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */,
 				BC374909155F8A030033BAC9 /* CoreData.framework */,
 				BC3748BD155F4C6C0033BAC9 /* UIKit.framework */,
 				BC3748BF155F4C6C0033BAC9 /* Foundation.framework */,
@@ -218,8 +219,6 @@
 				BC31B93E1587D593005F9717 /* DCMDownload.m */,
 				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
 				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
-				BCB86A421585A18B00DD48E7 /* LabelSetView.h */,
-				BCB86A431585A18B00DD48E7 /* LabelSetView.m */,
 				BCD9D13A158A7A0000BC9D0F /* WallClock.h */,
 				BCD9D13B158A7A0000BC9D0F /* WallClock.m */,
 				BC3748F1155F698F0033BAC9 /* Data Model */,
@@ -453,7 +452,6 @@
 				BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */,
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
-				BCB86A441585A18B00DD48E7 /* LabelSetView.m in Sources */,
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
 				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
 				BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */,

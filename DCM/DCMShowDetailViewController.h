@@ -17,6 +17,11 @@
     NSArray *performances;
 }
 @property (strong, nonatomic) Show *show;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeCityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *promoBlurbLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ticketWarningLabel;
 - (IBAction)toggleFavorite:(id)sender;
 @end

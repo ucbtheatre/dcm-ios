@@ -204,6 +204,7 @@
     show.sortSection = [self sortSectionFromSortName:show.sortName];
     show.promoBlurb = [info objectForKey:@"promo_blurb"];
     show.homeCity = [info objectForKey:@"home_city"];
+    show.imageURLString = [info objectForKey:@"image"];
     for (NSString *name in [info objectForKey:@"cast"]) {
         Performer *perf = [self performerFromName:name];
         if (perf) {

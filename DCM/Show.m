@@ -16,6 +16,7 @@
 @dynamic name;
 @dynamic promoBlurb;
 @dynamic homeCity;
+@dynamic imageURLString;
 @dynamic identifier;
 @dynamic performers;
 @dynamic performances;

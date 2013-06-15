@@ -13,9 +13,10 @@
 
 @interface Show : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * promoBlurb;
-@property (nonatomic, retain) NSString * homeCity;
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *promoBlurb;
+@property (nonatomic, retain) NSString *homeCity;
+@property (nonatomic, retain) NSString *imageURLString;
 @property (nonatomic, retain) NSNumber *identifier;
 
 @property (nonatomic, retain) NSSet *performers;
