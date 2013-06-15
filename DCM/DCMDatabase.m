@@ -70,7 +70,7 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
 
 - (NSURL *)originURL
 {
-    return [NSURL URLWithString:@"http://delclosemarathon.com/dcm14/schedule.json"];
+    return [NSURL URLWithString:@"http://delclosemarathon.com/dcm15/schedule.json"];
 }
 
 #pragma mark - Core Data
