@@ -62,6 +62,7 @@
 		BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD9D13B158A7A0000BC9D0F /* WallClock.m */; };
 		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
 		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
+		BCEFBDB6176C42B5003388E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEFBDB5176C42B5003388E1 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +156,7 @@
 		BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueViewController.m; sourceTree = "<group>"; };
 		BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueScheduleViewController.h; sourceTree = "<group>"; };
 		BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueScheduleViewController.m; sourceTree = "<group>"; };
+		BCEFBDB5176C42B5003388E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 			children = (
 				BC7C6A96159007900055E985 /* Default.png */,
 				BC7C6A98159008730055E985 /* Default@2x.png */,
+				BCEFBDB5176C42B5003388E1 /* Default-568h@2x.png */,
 				BC94EF8615885AA7001CE7A8 /* List.png */,
 				BC94EF8715885AA7001CE7A8 /* List@2x.png */,
 				BC94EF8815885AA8001CE7A8 /* Pin.png */,
@@ -367,7 +370,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DCM;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Heroic Software Inc";
 			};
 			buildConfigurationList = BC3748B3155F4C6B0033BAC9 /* Build configuration list for PBXProject "DCM" */;
@@ -419,6 +422,7 @@
 				BC94EF8D15885AA9001CE7A8 /* Pin@2x.png in Resources */,
 				BC7C6A97159007900055E985 /* Default.png in Resources */,
 				BC7C6A99159008730055E985 /* Default@2x.png in Resources */,
+				BCEFBDB6176C42B5003388E1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -510,6 +518,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
