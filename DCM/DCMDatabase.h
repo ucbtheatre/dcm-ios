@@ -42,13 +42,12 @@ enum {
 + (DCMDatabase *)sharedDatabase;
 @property (nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic,copy) NSString *eTag;
 @property (nonatomic) BOOL shouldReportConnectionErrors;
 - (BOOL)isEmpty;
 - (void)checkForUpdate;
 - (void)checkForUpdateQuietly:(BOOL)beQuiet;
 - (void)forceUpdate;
-- (void)importData:(NSData *)rawData eTag:(NSString *)eTag;
+- (void)importData:(NSData *)rawData responseHeaders:(NSDictionary *)headers;
 - (void)endUpdate;
 - (NSDate *)marathonStartDate;
 @end

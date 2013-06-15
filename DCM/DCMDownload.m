@@ -46,7 +46,7 @@
 {
     statusCode = [response statusCode];
     expectedLength = [response expectedContentLength];
-    eTag = [[response allHeaderFields] objectForKey:@"ETag"];
+    responseHeaders = [response allHeaderFields];
     if (expectedLength == NSURLResponseUnknownLength) {
         rawData = [[NSMutableData alloc] init];
         [self postNotificationOfProgress:DCMDatabaseProgressIndeterminate];
@@ -68,7 +68,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     if (statusCode == 200) {
-        [database importData:rawData eTag:eTag];
+        [database importData:rawData responseHeaders:responseHeaders];
     }
     else {
         NSString *msg;

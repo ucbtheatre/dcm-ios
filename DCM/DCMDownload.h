@@ -16,7 +16,7 @@
     NSMutableData *rawData;
     NSInteger statusCode;
     NSInteger expectedLength;
-    NSString *eTag;
+    NSDictionary *responseHeaders;
 }
 - (id)initWithDatabase:(DCMDatabase *)aDatabase;
 @end

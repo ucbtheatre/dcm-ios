@@ -22,8 +22,8 @@ NSString * const DCMDatabaseErrorKey = @"DCMDatabaseError";
 
 NSString * const DCMDatabaseErrorDomain = @"DCMDatabaseError";
 
-static NSString * const DCMETagKey = @"ETag";
-static NSString * const DCMLastModifiedKey = @"Last-Modified";
+static NSString * const DCMMetadataOriginLastModifiedKey = @"Origin-Last-Modified";
+static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 @implementation DCMDatabase
 
@@ -81,7 +81,8 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         return YES;
     }
-    return self.eTag == nil;
+    NSDictionary *md = [[self persistentStore] metadata];
+    return md[DCMMetadataOriginEntityTagKey] == nil && md[DCMMetadataOriginLastModifiedKey] == nil;
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -126,21 +127,6 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
     return __managedObjectContext;
 }
 
-#pragma mark - eTag
-
-- (NSString *)eTag
-{
-    return [[[self persistentStore] metadata] objectForKey:@"Origin-ETag"];
-}
-
-- (void)setETag:(NSString *)tag
-{
-    if (tag) {
-        [[self persistentStore] setMetadata:
-         [NSDictionary dictionaryWithObject:tag forKey:@"Origin-ETag"]];
-    }
-}
-
 #pragma mark - Public methods
 
 - (void)checkForUpdate
@@ -168,7 +154,7 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
                                   delegate:download];
 }
 
-- (void)importData:(NSData *)rawData eTag:(NSString *)eTag;
+- (void)importData:(NSData *)rawData responseHeaders:(NSDictionary *)headers
 {
     [self backupFavorites];
     [self deleteStore];
@@ -181,7 +167,20 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
                                         initWithData:rawData context:context];
         if ([importer performImport]) {
             [self restoreFavoritesWithContext:context];
-            [self setETag:eTag];
+            NSMutableDictionary *md = [[[self persistentStore] metadata] mutableCopy];
+            id entityTag = headers[@"ETag"];
+            if (entityTag) {
+                md[DCMMetadataOriginEntityTagKey] = entityTag;
+            } else {
+                [md removeObjectForKey:DCMMetadataOriginEntityTagKey];
+            }
+            id lastModifiedToken = headers[@"Last-Modified"];
+            if (lastModifiedToken) {
+                md[DCMMetadataOriginLastModifiedKey] = lastModifiedToken;
+            } else {
+                [md removeObjectForKey:DCMMetadataOriginLastModifiedKey];
+            }
+            [[self persistentStore] setMetadata:md];
         }
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self.managedObjectContext save:nil];
@@ -208,9 +207,15 @@ static NSString * const DCMLastModifiedKey = @"Last-Modified";
     [request setHTTPShouldHandleCookies:NO];
     [request setNetworkServiceType:NSURLNetworkServiceTypeBackground];
     if (!forceUpdate) {
-        NSString *eTagValue = [self eTag];
-        if (eTagValue) {
-            [request setValue:eTagValue forHTTPHeaderField:@"If-None-Match"];
+        NSDictionary *md = [[self persistentStore] metadata];
+        NSString *entityTag = md[DCMMetadataOriginEntityTagKey];
+        if (entityTag) {
+            [request setValue:entityTag forHTTPHeaderField:@"If-None-Match"];
+        } else {
+            NSString *lastModified = md[DCMMetadataOriginLastModifiedKey];
+            if (lastModified) {
+                [request setValue:lastModified forHTTPHeaderField:@"If-Modified-Since"];
+            }
         }
     }
     return request;
