@@ -26,7 +26,7 @@
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-    CGFloat height;
+    CGFloat height = 0;
     CGSize labelSize = CGSizeMake(size.width -
                                   self.margin.left -
                                   self.margin.right,
