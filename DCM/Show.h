@@ -25,10 +25,11 @@
 @property (nonatomic, retain) NSString *sortName;
 @property (nonatomic, retain) NSString *sortSection;
 
+@property (nonatomic, retain) NSDate *favoriteChangedDate;
 
-@property (nonatomic, readonly) BOOL favorite;
-
+- (BOOL)isFavorite;
 - (BOOL)anyShowRequiresTicket;
+- (BOOL)toggleFavoriteAndSave:(NSError **)error;
 
 @end
 

@@ -11,10 +11,6 @@
 #import "DCMShowDetailViewController.h"
 #import "DCMAppDelegate.h"
 
-@interface DCMAllShowsViewController ()
-
-@end
-
 @implementation DCMAllShowsViewController
 
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
@@ -23,11 +19,13 @@
     [request setSortDescriptors:
      [NSArray arrayWithObject:
       [NSSortDescriptor sortDescriptorWithKey:@"sortName" ascending:YES]]];
+    [request setRelationshipKeyPathsForPrefetching:@[@"performances"]];
     showsController = [[NSFetchedResultsController alloc]
                        initWithFetchRequest:request
                        managedObjectContext:database.managedObjectContext
                        sectionNameKeyPath:@"sortSection"
                        cacheName:@"DCMAllShowsViewController"];
+    showsController.delegate = self;
     NSError *error = nil;
     if (![showsController performFetch:&error]) {
         NSLog(@"Error: %@", [error localizedDescription]);
@@ -68,6 +66,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self enableDoubleTapRecognizer];
     [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
 }
 
@@ -80,6 +79,34 @@
 - (IBAction)refresh:(id)sender
 {
     [[DCMDatabase sharedDatabase] checkForUpdate];
+}
+
+- (void)tableCellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
+{
+    Show *show = [showsController objectAtIndexPath:indexPath];
+    NSError *error = nil;
+    if ( ! [show toggleFavoriteAndSave:&error]) {
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        [alert setTitle:@"Unexpected Error"];
+        [alert setMessage:[error debugDescription]];
+        [alert addButtonWithTitle:@"Dismiss"];
+        [alert show];
+    }
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    // Unicode "HEAVY BLACK HEART"
+    static NSString * const kHeartSuffix = @" \xE2\x9D\xA4";
+    
+    Show *show = [showsController objectAtIndexPath:indexPath];
+    NSString *title;
+    if ([show isFavorite]) {
+        title = [show.name stringByAppendingString:kHeartSuffix];
+    } else {
+        title = show.name;
+    }
+    cell.textLabel.text = title;
 }
 
 #pragma mark - Table view data source
@@ -109,11 +136,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShowCell"];
-    
-    // Configure the cell...
-    Show *show = [showsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = show.name;
-    
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 

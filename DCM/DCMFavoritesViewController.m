@@ -87,6 +87,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Performance *p = [performancesController objectAtIndexPath:indexPath];
         p.favorite = NO;
+        p.show.favoriteChangedDate = [NSDate date];
         [p.managedObjectContext save:nil];
     }
 }

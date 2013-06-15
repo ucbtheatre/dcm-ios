@@ -22,11 +22,24 @@
 @dynamic performances;
 @dynamic sortName;
 @dynamic sortSection;
+@dynamic favoriteChangedDate;
 
-
-- (BOOL) favorite
+- (BOOL)isFavorite
 {
-    return [[self.performances anyObject] favorite];
+    for (Performance *p in self.performances) {
+        if (p.favorite) return YES;
+    }
+    return NO;
+}
+
+- (BOOL)toggleFavoriteAndSave:(NSError **)error
+{
+    BOOL favored = ! [self isFavorite];
+    self.favoriteChangedDate = [NSDate date];
+    for (Performance* p in self.performances) {
+        p.favorite = favored;
+    }
+    return [self.managedObjectContext save:error];
 }
 
 - (BOOL)anyShowRequiresTicket

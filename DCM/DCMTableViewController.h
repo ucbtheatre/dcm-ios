@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DCMTableViewController : UITableViewController
+@interface DCMTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 {
     NSMutableArray *sectionHeaderViews;
 }
+- (void)enableDoubleTapRecognizer;
+@end
+
+@interface DCMTableViewController (Abstract)
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)tableCellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath;
 @end

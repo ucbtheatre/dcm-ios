@@ -32,7 +32,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self enableDoubleTapRecognizer];
     self.navigationItem.title = self.venue.name;
+}
+
+- (void)tableCellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
+{
+    Performance *perf = [self performanceAtIndexPath:indexPath];
+    NSError *error = nil;
+    if ( ! [perf.show toggleFavoriteAndSave:&error]) {
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        [alert setTitle:@"Unexpected Error"];
+        [alert setMessage:[error debugDescription]];
+        [alert addButtonWithTitle:@"Dismiss"];
+        [alert show];
+    }
 }
 
 - (void)configureCell:(UITableViewCell *)cell forPerformance:(Performance *)perf

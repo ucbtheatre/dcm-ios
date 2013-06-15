@@ -11,10 +11,6 @@
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
 
-@interface DCMShowDetailViewController ()
-
-@end
-
 @implementation DCMShowDetailViewController
 
 @synthesize show;
@@ -50,7 +46,7 @@
 
 - (void)updateFavoriteButton
 {
-    NSString *name = self.show.favorite ? @"Heart1" : @"Heart0";
+    NSString *name = [self.show isFavorite] ? @"Heart1" : @"Heart0";
     self.favoriteButton.image = [UIImage imageNamed:name];
 }
 
@@ -116,18 +112,15 @@
 
 - (IBAction)toggleFavorite:(id)sender
 {
-    //self.show.favorite = !self.show.favorite;
-    BOOL fav = self.show.favorite;
-    for (Performance* p in self.show.performances) {
-        p.favorite = !fav;
-    }
-    
     NSError *error = nil;
-    if ([self.show.managedObjectContext save:&error]) {
+    if ([self.show toggleFavoriteAndSave:&error]) {
         [self updateFavoriteButton];
     } else {
-        // TODO: display alert
-        NSLog(@"Error: %@", [error localizedDescription]);
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        [alert setTitle:@"Unexpected Error"];
+        [alert setMessage:[error debugDescription]];
+        [alert addButtonWithTitle:@"Dismiss"];
+        [alert show];
     }
 }
 

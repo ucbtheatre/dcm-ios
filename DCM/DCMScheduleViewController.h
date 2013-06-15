@@ -12,13 +12,14 @@
 @class DCMDatabase;
 @class Performance;
 
-@interface DCMScheduleViewController : DCMTableViewController <NSFetchedResultsControllerDelegate>
+@interface DCMScheduleViewController : DCMTableViewController
 {
     NSFetchedResultsController *performancesController;
     BOOL scrollOnNextAppearance;
 }
 + (NSString *)timeStringForPerformance:(Performance *)perf showFavorite:(BOOL)showFav;
 - (void)setUpControllerForDatabase:(DCMDatabase *)database;
+- (Performance *)performanceAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface DCMScheduleViewController (Abstract)
