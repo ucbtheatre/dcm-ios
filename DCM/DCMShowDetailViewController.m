@@ -17,7 +17,7 @@
 + (CALayer *)vignetteLayerForBounds:(CGRect)imageBounds
 {
     // Gradient components: Opaque Black to Transparent Black
-    static const CGFloat colorComponents[] = {0, 1, 0, 0};
+    static const CGFloat colorComponents[] = {0, 0.2, 0, 1};
     
     const CGPoint center = CGPointMake(CGRectGetMidX(imageBounds), CGRectGetMidY(imageBounds));
     const CGSize size = imageBounds.size;
@@ -48,6 +48,74 @@
     self.favoriteButton.image = [UIImage imageNamed:name];
 }
 
+- (CGRect)boundsForTableHeaderView
+{
+    CGRect bounds = [self.tableView.tableHeaderView bounds];
+    bounds.size.height = (CGRectGetHeight(self.imageView.frame) + 8 +
+                          CGRectGetHeight(self.promoBlurbLabel.frame) + 8);
+    if ([self.show anyShowRequiresTicket]) {
+        bounds.size.height += CGRectGetHeight(self.ticketWarningLabel.frame) + 8;
+    } else {
+        [self.ticketWarningLabel removeFromSuperview];
+    }
+    return bounds;
+}
+
+- (void)loadShowImageAsynchronously
+{
+    NSString *imageURLString = self.show.imageURLString;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
+        NSURL *imageURL = [NSURL URLWithString:imageURLString];
+        NSMutableURLRequest *imageRequest = [NSMutableURLRequest requestWithURL:imageURL];
+        [imageRequest setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
+        NSHTTPURLResponse *imageResponse = nil;
+        NSError *error = nil;
+        NSData *imageData = [NSURLConnection sendSynchronousRequest:imageRequest
+                                                  returningResponse:&imageResponse
+                                                              error:&error];
+        if (imageData != nil && imageResponse.statusCode == 200) {
+            UIImage *image = [UIImage imageWithData:imageData];
+            if (image) {
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    self.imageView.image = image;
+                });
+            } else {
+                NSString *contentType = imageResponse.allHeaderFields[@"Content-Type"];
+                NSLog(@"Data from %@ wasn't a recognized image format; server reported content-type %@.", imageURL, contentType);
+            }
+        } else if (error) {
+            NSLog(@"Failed to load data from %@, error: %@", imageURL, error);
+        } else {
+            NSLog(@"Failed to load data from %@, HTTP %d response, headers: %@", imageURL, imageResponse.statusCode, imageResponse.allHeaderFields);
+        }
+    });
+}
+
+- (void)sizeLabel:(UILabel *)label toFitSize:(CGSize)size
+{
+    CGRect newBounds = CGRectZero;
+    newBounds.size = [label.text sizeWithFont:label.font constrainedToSize:size
+                                lineBreakMode:label.lineBreakMode];
+    [label setBounds:newBounds];
+}
+
+- (void)layoutTitleAndCityLabels
+{
+    CGSize imageSize = self.imageView.bounds.size;
+    imageSize.width -= 16;
+    [self sizeLabel:self.titleLabel toFitSize:imageSize];
+    [self sizeLabel:self.homeCityLabel toFitSize:imageSize];
+    // Put titleLabel near center of imageView, bumped up a little bit
+    CGPoint titleCenter = self.imageView.center;
+    titleCenter.y -= 0.5f * CGRectGetHeight(self.homeCityLabel.bounds);
+    self.titleLabel.center = titleCenter;
+    // Place homeCityLabel just below the titleLabel
+    CGPoint homeCityLabelCenter = self.titleLabel.center;
+    homeCityLabelCenter.y += 0.5f * (CGRectGetHeight(self.titleLabel.bounds) +
+                                     CGRectGetHeight(self.homeCityLabel.bounds));
+    self.homeCityLabel.center = homeCityLabelCenter;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,44 +136,22 @@
     self.titleLabel.text = self.show.name;
     self.homeCityLabel.text = self.show.homeCity;
     self.promoBlurbLabel.text = self.show.promoBlurb;
-    [self.promoBlurbLabel sizeToFit];
 
-    CGRect bounds = [self.tableView.tableHeaderView bounds];
-    bounds.size.height = (CGRectGetHeight(self.imageView.frame) + 8 +
-                          CGRectGetHeight(self.promoBlurbLabel.frame) + 8);
-    if ([self.show anyShowRequiresTicket]) {
-        bounds.size.height += CGRectGetHeight(self.ticketWarningLabel.frame) + 8;
-    } else {
-        [self.ticketWarningLabel removeFromSuperview];
-    }
-    [self.tableView.tableHeaderView setBounds:bounds];
+    [self layoutTitleAndCityLabels];
+    [self.promoBlurbLabel sizeToFit];
+    [self.tableView.tableHeaderView setBounds:[self boundsForTableHeaderView]];
 
     CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
     [self.imageView.layer addSublayer:vignetteLayer];
 
-    Class avcClass = NSClassFromString(@"UIActivityViewController");
-    self.shareButton.hidden = (avcClass == nil);
-    
+    // Only show the share button on iOS 6 or later.
+    self.shareButton.hidden = ([UIActivityViewController class] == nil);
+
     if (self.show.imageURLString) {
-        NSString *imageURLString = self.show.imageURLString;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-            NSURL *imageURL = [NSURL URLWithString:imageURLString];
-            NSMutableURLRequest *imageRequest = [NSMutableURLRequest requestWithURL:imageURL];
-            [imageRequest setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
-            NSHTTPURLResponse *imageResponse = nil;
-            NSError *error = nil;
-            NSData *imageData = [NSURLConnection sendSynchronousRequest:imageRequest
-                                                      returningResponse:&imageResponse
-                                                                  error:&error];
-            if (imageData) {
-                UIImage *image = [UIImage imageWithData:imageData];
-                if (image) {
-                    dispatch_async(dispatch_get_main_queue(), ^(void) {
-                        self.imageView.image = image;
-                    });
-                }
-            }
-        });
+        self.imageView.backgroundColor = [UIColor grayColor];
+        [self loadShowImageAsynchronously];
+    } else {
+        self.imageView.backgroundColor = [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1];
     }
 }
 
@@ -161,8 +207,7 @@
         [text appendFormat:@" at %@", [[[performances lastObject] venue] name]];
     }
     [text appendString:@" #dcm15"];
-    NSString *showURLString = [NSString stringWithFormat:@"http://delclosemarathon.com/dcm15/shows/%@", self.show.identifier];
-    NSURL *showURL = [NSURL URLWithString:showURLString];
+    NSURL *showURL = [self.show homePageURL];
     UIActivityViewController *avc = [[UIActivityViewController alloc]
                                      initWithActivityItems:@[text, showURL]
                                      applicationActivities:nil];

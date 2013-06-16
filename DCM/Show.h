@@ -30,6 +30,7 @@
 - (BOOL)isFavorite;
 - (BOOL)anyShowRequiresTicket;
 - (BOOL)toggleFavoriteAndSave:(NSError **)error;
+- (NSURL *)homePageURL;
 
 @end
 

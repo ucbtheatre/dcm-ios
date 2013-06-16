@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>DCM 15</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -54,11 +54,11 @@
 			<key>TintColor</key>
 			<dict>
 				<key>Blue</key>
-				<real>0.12643131613731384</real>
+				<real>0.1264313161373138</real>
 				<key>Green</key>
-				<real>0.072808600962162018</real>
+				<real>0.07280860096216202</real>
 				<key>Red</key>
-				<real>0.76361459493637085</real>
+				<real>0.7636145949363708</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>

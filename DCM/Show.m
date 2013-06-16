@@ -50,4 +50,12 @@
     return NO;
 }
 
+- (NSURL *)homePageURL
+{
+    return [NSURL URLWithString:
+            [NSString stringWithFormat:
+             @"http://delclosemarathon.com/dcm15/shows/view/%@",
+             self.identifier]];
+}
+
 @end
