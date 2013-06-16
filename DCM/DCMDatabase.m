@@ -57,7 +57,7 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
     NSURL *documentsURL = [[[NSFileManager defaultManager]
                             URLsForDirectory:NSDocumentDirectory
                             inDomains:NSUserDomainMask] lastObject];
-    return [NSURL URLWithString:@"dcm-favorites.plist" relativeToURL:documentsURL];
+    return [NSURL URLWithString:@"dcm15-favorites.plist" relativeToURL:documentsURL];
 }
 
 - (NSURL *)storeURL

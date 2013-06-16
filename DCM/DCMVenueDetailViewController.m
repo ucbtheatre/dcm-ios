@@ -6,17 +6,12 @@
 //  Copyright (c) 2012 Upright Citizens Brigade LLC. All rights reserved.
 //
 
-#import <CommonCrypto/CommonDigest.h>
-
 #import "DCMVenueDetailViewController.h"
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
 #import "DCMAppDelegate.h"
 #import "DCMVenueViewController.h"
-
-@interface DCMVenueDetailViewController ()
-
-@end
+#import "DCMUtilities.h"
 
 @implementation DCMVenueDetailViewController
 
@@ -34,24 +29,6 @@
     return parent.venue;
 }
 
-- (NSString *)cachedImagePath
-{
-    const char *imgURL = [self.venue.imageURLString UTF8String];
-    unsigned char hash[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(imgURL, strlen(imgURL), hash);
-    NSMutableString *name = [[NSMutableString alloc] initWithCapacity:2*CC_MD5_DIGEST_LENGTH];
-    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-        [name appendFormat:@"%02x", hash[i]];
-    }
-    NSURL *cachesURL = [[NSFileManager defaultManager]
-                        URLForDirectory:NSCachesDirectory
-                        inDomain:NSUserDomainMask
-                        appropriateForURL:nil
-                        create:YES
-                        error:nil];
-    return [[NSURL URLWithString:name relativeToURL:cachesURL] path];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,22 +39,11 @@
     self.websiteButton.enabled = [self.venue.homeURLString length] > 0;
     self.mapButton.enabled = [self.venue.mapURLString length] > 0;
     if ([self.venue.imageURLString length] > 0) {
-        NSString *path = [self cachedImagePath];
-        UIImage *image = [UIImage imageWithContentsOfFile:path];
-        if (image) {
-            self.imageView.image = image;
+        NSURL *imageURL = [NSURL URLWithString:self.venue.imageURLString];
+        DCMLoadImageAsynchronously(imageURL, ^(UIImage *image) {
             self.loadingIndicator.hidden = YES;
-        } else {
-            NSURL *imageURL = [NSURL URLWithString:self.venue.imageURLString];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                NSData *data = [NSData dataWithContentsOfURL:imageURL];
-                [data writeToFile:path options:0 error:nil];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.loadingIndicator.hidden = YES;
-                    self.imageView.image = [UIImage imageWithContentsOfFile:path];
-                });
-            });
-        }
+            self.imageView.image = image;
+        });
     } else {
         self.imageView.hidden = YES;
         self.loadingIndicator.hidden = YES;

@@ -8,6 +8,7 @@
 
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
+#import "DCMUtilities.h"
 
 @implementation DCMShowDetailViewController
 
@@ -59,36 +60,6 @@
         [self.ticketWarningLabel removeFromSuperview];
     }
     return bounds;
-}
-
-- (void)loadShowImageAsynchronously
-{
-    NSString *imageURLString = self.show.imageURLString;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        NSURL *imageURL = [NSURL URLWithString:imageURLString];
-        NSMutableURLRequest *imageRequest = [NSMutableURLRequest requestWithURL:imageURL];
-        [imageRequest setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
-        NSHTTPURLResponse *imageResponse = nil;
-        NSError *error = nil;
-        NSData *imageData = [NSURLConnection sendSynchronousRequest:imageRequest
-                                                  returningResponse:&imageResponse
-                                                              error:&error];
-        if (imageData != nil && imageResponse.statusCode == 200) {
-            UIImage *image = [UIImage imageWithData:imageData];
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    self.imageView.image = image;
-                });
-            } else {
-                NSString *contentType = imageResponse.allHeaderFields[@"Content-Type"];
-                NSLog(@"Data from %@ wasn't a recognized image format; server reported content-type %@.", imageURL, contentType);
-            }
-        } else if (error) {
-            NSLog(@"Failed to load data from %@, error: %@", imageURL, error);
-        } else {
-            NSLog(@"Failed to load data from %@, HTTP %d response, headers: %@", imageURL, imageResponse.statusCode, imageResponse.allHeaderFields);
-        }
-    });
 }
 
 - (void)sizeLabel:(UILabel *)label toFitSize:(CGSize)size
@@ -149,7 +120,10 @@
 
     if (self.show.imageURLString) {
         self.imageView.backgroundColor = [UIColor grayColor];
-        [self loadShowImageAsynchronously];
+        NSURL *imageURL = [NSURL URLWithString:self.show.imageURLString];
+        DCMLoadImageAsynchronously(imageURL, ^(UIImage *image) {
+            self.imageView.image = image;
+        });
     } else {
         self.imageView.backgroundColor = [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1];
     }
