@@ -151,7 +151,7 @@
     }
 }
 
-- (void)shareShow:(id)sender
+- (IBAction)shareShow:(id)sender
 {
     // Cases:
     // - 1 performance
@@ -186,6 +186,11 @@
                                      initWithActivityItems:@[text, showURL]
                                      applicationActivities:nil];
     [self presentViewController:avc animated:YES completion:nil];
+}
+
+- (IBAction)dismiss:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

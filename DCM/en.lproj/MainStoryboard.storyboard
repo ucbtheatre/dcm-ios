@@ -486,6 +486,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="bvE-Ny-9Eb">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="222"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -599,6 +600,7 @@ of Show</string>
                         <connections>
                             <outlet property="dataSource" destination="8fh-Yh-dX8" id="q27-hZ-jC2"/>
                             <outlet property="delegate" destination="8fh-Yh-dX8" id="e7m-qI-Z3v"/>
+                            <outletCollection property="gestureRecognizers" destination="Uf5-hC-oPt" appends="YES" id="amk-Ef-qdN"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NiG-qw-d9p">
@@ -619,6 +621,11 @@ of Show</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnM-yg-n3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Uf5-hC-oPt">
+                    <connections>
+                        <action selector="dismiss:" destination="8fh-Yh-dX8" id="L8l-DS-jn6"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2666" y="248"/>
         </scene>
@@ -833,6 +840,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="DCMShowDetailViewController" superclassName="DCMTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMShowDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="dismiss:"/>
                 <relationship kind="action" name="shareShow:"/>
                 <relationship kind="action" name="toggleFavorite:"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIBarButtonItem"/>
