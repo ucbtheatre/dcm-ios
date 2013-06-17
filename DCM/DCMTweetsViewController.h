@@ -10,5 +10,6 @@
 
 @interface DCMTweetsViewController : UIViewController <UIWebViewDelegate>
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *refreshButton;
 - (IBAction)refreshTweets:(id)sender;
 @end

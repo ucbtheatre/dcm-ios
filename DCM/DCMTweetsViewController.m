@@ -10,18 +10,6 @@
 
 @implementation DCMTweetsViewController
 
-- (NSURLRequest *)twitterSearchRequest
-{
-    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"DCMTweets" withExtension:@"html"];
-    return [NSURLRequest requestWithURL:URL];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self.webView loadRequest:[self twitterSearchRequest]];
-}
-
 - (void)viewDidUnload
 {
     self.webView.delegate = nil;
@@ -29,9 +17,17 @@
     [super viewDidUnload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.webView.request == nil) {
+        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"DCMTweets" withExtension:@"html"];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    }
+}
+
 - (void)refreshTweets:(id)sender
 {
-    [self.webView loadRequest:[self twitterSearchRequest]];
+    [self.webView reload];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -48,16 +44,21 @@
         NSRange r = [[request.URL path] rangeOfString:@"/intent"];
         if (r.location == 0) {
             NSLog(@"Bouncing request for %@", URL);
-            [[UIApplication sharedApplication] openURL:request.URL];
+            [[UIApplication sharedApplication] openURL:URL];
             return NO;
         }
     }
     return YES;
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    NSLog(@"Load failed: %@", error);
+    self.refreshButton.enabled = NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    self.refreshButton.enabled = YES;
 }
 
 @end

@@ -6,15 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <style>
             html {
+                color: white; background: black;
+                font-family: sans-serif;
                 margin: 0;
                 padding: 0;
             }
             body {
-                margin: 4px;
+                margin: 4px 4px 20px 4px;
                 width: 312px;
                 padding: 0;
-                color: white; background: black;
-                font-family: sans-serif;
             }
             a {
                 color: white;
@@ -24,11 +24,28 @@
             h1 {
                 font-size: 20px;
             }
+            #error {
+                display: none;
+                font-weight: bold;
+                margin-bottom: 20px;
+                border: 2px solid #ffff00;
+                background-color: #333300;
+                color: #ffff00;
+                padding: 8px;
+                font-size: 20px;
+                text-align: center;
+            }
         </style>
+        <script>
+            function displayError() {
+                document.getElementById("error").style.display = "block";
+            }
+        </script>
     </head>
     <body>
+        <div id="error">An Internet connection is required to display tweets.</div>
         <!-- Note: The actual search is configured via https://twitter.com/settings/widgets -->
-        <a class="twitter-timeline" href="https://twitter.com/search?q=%23dcm15" data-widget-id="346421992553078785" data-chrome="nofooter noscrollbar" data-theme="light" data-tweet-limit="20">Read #dcm15 tweets</a>
+        <a class="twitter-timeline" href="https://twitter.com/search?q=%23dcm15" data-widget-id="346421992553078785" data-chrome="nofooter noscrollbar" data-theme="light" data-tweet-limit="20">Latest #dcm15 Tweets</a>
         <h1>UCB on Twitter</h1>
         <div><a href="https://twitter.com/UCBTheatreNY"   class="twitter-follow-button" data-show-count="true" data-size="large" data-width="312px">Follow @UCBTheatreNY</a></div>
         <div><a href="https://twitter.com/UCBTheatreEast" class="twitter-follow-button" data-show-count="true" data-size="large" data-width="312px">Follow @UCBTheatreEast</a></div>
@@ -40,6 +57,6 @@
         <div><a href="https://twitter.com/UCBTBooth"      class="twitter-follow-button" data-show-count="true" data-size="large" data-width="312px">Follow @UCBTBooth</a></div>
         <h1>DCM App Questions</h1>
         <div><a href="https://twitter.com/benzado"        class="twitter-follow-button" data-show-count="true" data-size="large" data-width="312px">Follow @benzado</a></div>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js" onerror="displayError()"></script>
     </body>
 </html>

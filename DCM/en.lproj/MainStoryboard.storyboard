@@ -314,6 +314,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="#dcm15" image="TwitterBird.png" id="RVB-gy-BnB"/>
                     <connections>
+                        <outlet property="refreshButton" destination="hMO-Ie-37e" id="fqZ-FU-pAp"/>
                         <outlet property="webView" destination="sX0-ic-Xg2" id="C5o-wU-llc"/>
                     </connections>
                 </viewController>
@@ -903,6 +904,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DCMTweetsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refreshTweets:"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
