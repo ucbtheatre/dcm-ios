@@ -40,6 +40,8 @@
     vignetteLayer.position = center;
     vignetteLayer.contents = (__bridge id)([image CGImage]);
     UIGraphicsEndImageContext();
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
     return vignetteLayer;
 }
 
