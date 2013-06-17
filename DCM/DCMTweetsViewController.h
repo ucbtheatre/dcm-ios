@@ -1,0 +1,14 @@
+//
+//  DCMTweetsViewController.h
+//  DCM
+//
+//  Created by Benjamin Ragheb on 6/16/13.
+//  Copyright (c) 2013 Heroic Software Inc. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface DCMTweetsViewController : UIViewController <UIWebViewDelegate>
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+- (IBAction)refreshTweets:(id)sender;
+@end

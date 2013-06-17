@@ -61,6 +61,10 @@
 		BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A5176CF41E00C84653 /* Action@2x.png */; };
 		BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB86A401585835300DD48E7 /* CountdownView.xib */; };
 		BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */; };
+		BCD35DFA176E8A4700B8E799 /* DCMTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */; };
+		BCD35DFC176E8DE800B8E799 /* DCMTweets.html in Resources */ = {isa = PBXBuildFile; fileRef = BCD35DFB176E8DE800B8E799 /* DCMTweets.html */; };
+		BCD35DFE176EB86900B8E799 /* TwitterBird.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD35DFD176EB86900B8E799 /* TwitterBird.png */; };
+		BCD35E00176EB87900B8E799 /* TwitterBird@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD35DFF176EB87900B8E799 /* TwitterBird@2x.png */; };
 		BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD9D13B158A7A0000BC9D0F /* WallClock.m */; };
 		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
 		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
@@ -155,6 +159,11 @@
 		BCC90100157D730900F94409 /* DCM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCM.entitlements; sourceTree = "<group>"; };
 		BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUtilities.h; sourceTree = "<group>"; };
 		BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUtilities.m; sourceTree = "<group>"; };
+		BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTweetsViewController.h; sourceTree = "<group>"; };
+		BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTweetsViewController.m; sourceTree = "<group>"; };
+		BCD35DFB176E8DE800B8E799 /* DCMTweets.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DCMTweets.html; sourceTree = "<group>"; };
+		BCD35DFD176EB86900B8E799 /* TwitterBird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterBird.png; sourceTree = "<group>"; };
+		BCD35DFF176EB87900B8E799 /* TwitterBird@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterBird@2x.png"; sourceTree = "<group>"; };
 		BCD9D13A158A7A0000BC9D0F /* WallClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallClock.h; sourceTree = "<group>"; };
 		BCD9D13B158A7A0000BC9D0F /* WallClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallClock.m; sourceTree = "<group>"; };
 		BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueViewController.h; sourceTree = "<group>"; };
@@ -247,6 +256,7 @@
 				BC3748C6155F4C6C0033BAC9 /* InfoPlist.strings */,
 				BC3748C9155F4C6C0033BAC9 /* main.m */,
 				BC3748CB155F4C6C0033BAC9 /* DCM-Prefix.pch */,
+				BCD35DFB176E8DE800B8E799 /* DCMTweets.html */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -303,6 +313,8 @@
 				BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */,
 				0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */,
 				0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */,
+				BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */,
+				BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -337,6 +349,8 @@
 				BC374919155FB0A40033BAC9 /* Masks@2x.png */,
 				BC37491A155FB0A40033BAC9 /* Person.png */,
 				BC37491B155FB0A40033BAC9 /* Person@2x.png */,
+				BCD35DFD176EB86900B8E799 /* TwitterBird.png */,
+				BCD35DFF176EB87900B8E799 /* TwitterBird@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -435,6 +449,9 @@
 				BCEFBDB6176C42B5003388E1 /* Default-568h@2x.png in Resources */,
 				BC9DC5A6176CF41E00C84653 /* Action.png in Resources */,
 				BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */,
+				BCD35DFC176E8DE800B8E799 /* DCMTweets.html in Resources */,
+				BCD35DFE176EB86900B8E799 /* TwitterBird.png in Resources */,
+				BCD35E00176EB87900B8E799 /* TwitterBird@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +486,7 @@
 				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
 				BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */,
 				BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */,
+				BCD35DFA176E8A4700B8E799 /* DCMTweetsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
