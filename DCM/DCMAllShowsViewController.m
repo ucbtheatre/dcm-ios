@@ -15,21 +15,56 @@
 
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
 {
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
-    [request setSortDescriptors:
-     [NSArray arrayWithObject:
-      [NSSortDescriptor sortDescriptorWithKey:@"sortName" ascending:YES]]];
-    [request setRelationshipKeyPathsForPrefetching:@[@"performances"]];
+    NSError *error = nil;
+    NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"sortName" ascending:YES];
+    
+    NSFetchRequest *showsRequest = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
+    [showsRequest setSortDescriptors:@[sortDesc]];
     showsController = [[NSFetchedResultsController alloc]
-                       initWithFetchRequest:request
+                       initWithFetchRequest:showsRequest
                        managedObjectContext:database.managedObjectContext
                        sectionNameKeyPath:@"sortSection"
                        cacheName:nil];
     showsController.delegate = self;
-    NSError *error = nil;
     if (![showsController performFetch:&error]) {
         NSLog(@"Error: %@", [error localizedDescription]);
     }
+    
+    NSFetchRequest *searchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
+    [searchRequest setSortDescriptors:@[sortDesc]];
+    searchController = [[NSFetchedResultsController alloc]
+                        initWithFetchRequest:searchRequest
+                        managedObjectContext:database.managedObjectContext
+                        sectionNameKeyPath:nil
+                        cacheName:nil];
+    searchController.delegate = self;
+    if (![searchController performFetch:&error]) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }
+}
+
+- (UITableView *)tableViewForFetchedResultsController:(NSFetchedResultsController *)controller
+{
+    if (controller == showsController) {
+        return self.tableView;
+    }
+    if (controller == searchController) {
+        return self.searchDisplayController.searchResultsTableView;
+    }
+    NSAssert(NO, @"Unfamiliar Search Controller");
+    return nil;
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerForTableView:(UITableView *)tableView
+{
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return searchController;
+    }
+    if (tableView == self.tableView) {
+        return showsController;
+    }
+    NSAssert(NO, @"Unfamiliar Table View");
+    return nil;
 }
 
 - (void)awakeFromNib
@@ -49,6 +84,7 @@
 - (void)databaseWillChange:(NSNotification *)notification
 {
     showsController = nil;
+    searchController = nil;
     if ([self isViewLoaded]) {
         [self.tableView reloadData];
         [self.navigationController popToViewController:self animated:YES];
@@ -63,23 +99,18 @@
     }
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self enableDoubleTapRecognizer];
+    [self enableDoubleTapRecognizerOnTableView:self.tableView];
     [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
-    
-    //This offsets the scroll so we don't see the Search Bar initially
-    if([self.tableView.dataSource tableView:self.tableView numberOfRowsInSection:0] > 0){
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    }
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     showsController = nil;
+    searchController = nil;
 }
 
 - (IBAction)refresh:(id)sender
@@ -87,9 +118,10 @@
     [[DCMDatabase sharedDatabase] checkForUpdate];
 }
 
-- (void)tableCellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView cellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
 {
-    Show *show = [showsController objectAtIndexPath:indexPath];
+    NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
+    Show *show = [controller objectAtIndexPath:indexPath];
     NSError *error = nil;
     if ( ! [show toggleFavoriteAndSave:&error]) {
         UIAlertView *alert = [[UIAlertView alloc] init];
@@ -100,12 +132,13 @@
     }
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView
 {
     // Unicode "HEAVY BLACK HEART"
     static NSString * const kHeartSuffix = @" \xE2\x9D\xA4";
     
-    Show *show = [showsController objectAtIndexPath:indexPath];
+    NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
+    Show *show = [controller objectAtIndexPath:indexPath];
     NSString *title;
     if ([show isFavorite]) {
         title = [show.name stringByAppendingString:kHeartSuffix];
@@ -119,80 +152,81 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[showsController sections] count];
+    NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
+    return [[controller sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> info = [[showsController sections] objectAtIndex:section];
+    NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
+    id <NSFetchedResultsSectionInfo> info = [[controller sections] objectAtIndex:section];
     return [info numberOfObjects];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> info = [[showsController sections] objectAtIndex:section];
+    NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
+    id <NSFetchedResultsSectionInfo> info = [[controller sections] objectAtIndex:section];
     return [info name];
 }
 
-// Removed this so we wouldn't show the Indices since we now have search
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-//{
-//    return [showsController sectionIndexTitles];
-//}
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
+    return [controller sectionIndexTitles];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShowCell"];
-    [self configureCell:cell atIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath inTableView:tableView];
     return cell;
 }
 
-#pragma mark - Storyboard
+#pragma mark - Search
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [searchBar setShowsCancelButton:YES animated:YES];
+- (void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    UINib *nib = [UINib nibWithNibName:@"DCMSearchResultCell" bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:@"ShowCell"];
+    [self enableDoubleTapRecognizerOnTableView:tableView];
 }
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [NSFetchedResultsController deleteCacheWithName:[showsController cacheName]];
-    if(searchText != nil && ![searchText isEqual:@""]){
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name contains[cd] %@) OR (ANY performers.name contains[cd] %@)", searchBar.text, searchBar.text];
-        [showsController.fetchRequest setPredicate:predicate];
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSPredicate *predicate;
+    if ([searchString length] > 0) {
+        predicate = [NSPredicate predicateWithFormat:@"(name contains[cd] %@) OR (ANY performers.name contains[cd] %@)", searchString, searchString];
+    } else {
+        predicate = nil;
     }
-    else {
-        [showsController.fetchRequest setPredicate:nil];
+    [searchController.fetchRequest setPredicate:predicate];
+    NSError *error = nil;
+    if (![searchController performFetch:&error]) {
+        NSLog(@"Search Error: %@", error);
     }
-
-    [showsController performFetch:nil];
-    [self.tableView reloadData];
-
-}
-
-- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [searchBar setShowsCancelButton:NO animated:YES];
-    
-    [NSFetchedResultsController deleteCacheWithName:[showsController cacheName]];
-    [showsController.fetchRequest setPredicate:nil];
-    [showsController performFetch:nil];
-    [self.tableView reloadData];
-    
-    [searchBar setText:nil];
-    [searchBar resignFirstResponder];
-}
-
-- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [searchBar resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Storyboard
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        [self performSegueWithIdentifier:@"FromAllShowsToShowDetail" sender:self.searchDisplayController];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     DCMShowDetailViewController *detailViewController = [segue destinationViewController];
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    detailViewController.show = [showsController objectAtIndexPath:indexPath];
+    if (sender == self.searchDisplayController) {
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+        detailViewController.show = [searchController objectAtIndexPath:indexPath];
+    } else {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        detailViewController.show = [showsController objectAtIndexPath:indexPath];
+    }
 }
 
 @end

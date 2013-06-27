@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "DCMTableViewController.h"
 
-@interface DCMAllShowsViewController : DCMTableViewController <UISearchBarDelegate>
+@interface DCMAllShowsViewController : DCMTableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 {
     NSFetchedResultsController *showsController;
+    NSFetchedResultsController *searchController;
 }
 - (IBAction)refresh:(id)sender;
 @end

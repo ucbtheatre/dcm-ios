@@ -41,8 +41,9 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
     [TestFlight takeOff:kTestFlightTeamToken];
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
-    [[UINavigationBar appearance] setTintColor:
-     [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1]];
+    UIColor *tintColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1];
+    [[UINavigationBar appearance] setTintColor:tintColor];
+    [[UISearchBar appearance] setTintColor:tintColor];
     // Override point for customization after application launch.
     [[NSNotificationCenter defaultCenter]
      addObserverForName:DCMDatabaseProgressNotification object:nil

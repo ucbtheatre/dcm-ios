@@ -10,7 +10,7 @@
 
 @implementation DCMTableViewController
 
-- (void)enableDoubleTapRecognizer
+- (void)enableDoubleTapRecognizerOnTableView:(UITableView *)tableView
 {
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     tapRecognizer.numberOfTapsRequired = 2;
@@ -18,26 +18,32 @@
     tapRecognizer.delaysTouchesBegan = YES;
     tapRecognizer.delaysTouchesEnded = YES;
     tapRecognizer.cancelsTouchesInView = YES;
-    [self.tableView addGestureRecognizer:tapRecognizer];
+    [tableView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)tapRecognizer
 {
-    CGPoint p = [tapRecognizer locationInView:self.tableView];
-    NSIndexPath *path = [self.tableView indexPathForRowAtPoint:p];
+    UITableView *view = (UITableView *)tapRecognizer.view;
+    CGPoint p = [tapRecognizer locationInView:view];
+    NSIndexPath *path = [view indexPathForRowAtPoint:p];
     if (path) {
-        [self tableCellDoubleTappedAtIndexPath:path];
+        [self tableView:view cellDoubleTappedAtIndexPath:path];
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+- (UITableView *)tableViewForFetchedResultsController:(NSFetchedResultsController *)controller
+{
+    return self.tableView;
 }
 
 #pragma mark - Table view delegate
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSString *title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    if (title == nil) {
+        return nil;
+    }
     UIView *headerView;
     if (sectionHeaderViews == nil) {
         sectionHeaderViews = [[NSMutableArray alloc] initWithCapacity:8];
@@ -71,7 +77,7 @@
         [sectionHeaderViews addObject:headerView];
     }
     UILabel *label = [[headerView subviews] lastObject];
-    label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    label.text = title;
     return headerView;
 }
 
@@ -79,20 +85,21 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView beginUpdates];
+    [[self tableViewForFetchedResultsController:controller] beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
+    UITableView *tableView = [self tableViewForFetchedResultsController:controller];
     switch (type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                     withRowAnimation:UITableViewRowAnimationFade];
             break;
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                     withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -101,7 +108,7 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UITableView *tableView = self.tableView;
+    UITableView *tableView = [self tableViewForFetchedResultsController:controller];
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
@@ -113,7 +120,7 @@
             break;
         case NSFetchedResultsChangeUpdate:
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
-                    atIndexPath:indexPath];
+                    atIndexPath:indexPath inTableView:tableView];
             break;
         case NSFetchedResultsChangeMove:
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
@@ -126,7 +133,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView endUpdates];
+    [[self tableViewForFetchedResultsController:controller] endUpdates];
 }
 
 @end

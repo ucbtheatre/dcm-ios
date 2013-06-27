@@ -32,11 +32,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self enableDoubleTapRecognizer];
+    [self enableDoubleTapRecognizerOnTableView:self.tableView];
     self.navigationItem.title = self.venue.name;
 }
 
-- (void)tableCellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView cellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
 {
     Performance *perf = [self performanceAtIndexPath:indexPath];
     NSError *error = nil;

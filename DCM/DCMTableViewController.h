@@ -12,10 +12,11 @@
 {
     NSMutableArray *sectionHeaderViews;
 }
-- (void)enableDoubleTapRecognizer;
+- (void)enableDoubleTapRecognizerOnTableView:(UITableView *)tableView;
 @end
 
 @interface DCMTableViewController (Abstract)
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-- (void)tableCellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView;
+- (void)tableView:(UITableView *)tableView cellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath;
+- (UITableView *)tableViewForFetchedResultsController:(NSFetchedResultsController *)controller;
 @end
