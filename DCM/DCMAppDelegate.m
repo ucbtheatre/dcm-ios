@@ -12,18 +12,6 @@
 #import "MBProgressHUD.h"
 #import "WallClock.h"
 
-#if TESTFLIGHT_ENABLED
-
-#import "TestFlight.h"
-
-static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
-                                                @"6bd8bf15b156896"
-                                                @"b9_OTA5MTkyMDEy"
-                                                @"LTA1LTE2IDE3OjA"
-                                                @"wOjE4LjcyOTI5MA");
-
-#endif
-
 @implementation DCMAppDelegate
 
 + (DCMAppDelegate *)sharedDelegate
@@ -38,8 +26,10 @@ static NSString * const kTestFlightTeamToken = (@"dfa2a4e0ad7cf43"
     NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"America/New_York"];
     if (tz) [NSTimeZone setDefaultTimeZone:tz];
 #if TESTFLIGHT_ENABLED
-    [TestFlight takeOff:kTestFlightTeamToken];
+#if BETA_RELEASE
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+    [TestFlight takeOff:@"17d0e716-24af-462b-a2bd-bad946a25a6f"];
 #endif
     UIColor *tintColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1];
     [[UINavigationBar appearance] setTintColor:tintColor];

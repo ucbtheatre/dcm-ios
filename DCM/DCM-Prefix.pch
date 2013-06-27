@@ -4,6 +4,9 @@
 
 #import <Availability.h>
 
+#define TESTFLIGHT_ENABLED 1
+#define BETA_RELEASE 0
+
 #ifndef __IPHONE_5_1
 #warning "This project uses features only available in iOS SDK 5.1 and later."
 #endif
@@ -13,4 +16,7 @@
     #import <QuartzCore/QuartzCore.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+#if TESTFLIGHT_ENABLED
+    #import "TestFlight.h"
+#endif
 #endif

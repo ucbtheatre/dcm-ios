@@ -60,6 +60,8 @@
 		BC9DC5A6176CF41E00C84653 /* Action.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A4176CF41E00C84653 /* Action.png */; };
 		BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A5176CF41E00C84653 /* Action@2x.png */; };
 		BCB0074F177CAA25004F3A4E /* DCMSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */; };
+		BCB00750177CB20D004F3A4E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC94EF8F158918CC001CE7A8 /* libTestFlight.a */; };
+		BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB00751177CB227004F3A4E /* libz.dylib */; };
 		BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB86A401585835300DD48E7 /* CountdownView.xib */; };
 		BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */; };
 		BCD35DFA176E8A4700B8E799 /* DCMTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */; };
@@ -138,10 +140,9 @@
 		BC94EF8815885AA8001CE7A8 /* Pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pin.png; sourceTree = "<group>"; };
 		BC94EF8915885AA9001CE7A8 /* Pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin@2x.png"; sourceTree = "<group>"; };
 		BC94EF8F158918CC001CE7A8 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		BC94EF90158918CC001CE7A8 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		BC94EF91158918CC001CE7A8 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		BC94EF90158918CC001CE7A8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		BC94EF91158918CC001CE7A8 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		BC94EF92158918CC001CE7A8 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
-		BC94EF9615891EBB001CE7A8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUpcomingViewController.h; sourceTree = "<group>"; };
 		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 		BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxCapacitorViewController.h; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		BC9DC5A4176CF41E00C84653 /* Action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Action.png; sourceTree = "<group>"; };
 		BC9DC5A5176CF41E00C84653 /* Action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Action@2x.png"; sourceTree = "<group>"; };
 		BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCMSearchResultCell.xib; sourceTree = "<group>"; };
+		BCB00751177CB227004F3A4E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BCB86A401585835300DD48E7 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
 		BCC90100157D730900F94409 /* DCM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCM.entitlements; sourceTree = "<group>"; };
 		BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUtilities.h; sourceTree = "<group>"; };
@@ -181,11 +183,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */,
 				BCEFBDB8176C6BF4003388E1 /* QuartzCore.framework in Frameworks */,
 				BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */,
 				BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */,
 				BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */,
 				BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */,
+				BCB00750177CB20D004F3A4E /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +221,7 @@
 		BC3748BC155F4C6C0033BAC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCB00751177CB227004F3A4E /* libz.dylib */,
 				BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */,
 				BC374909155F8A030033BAC9 /* CoreData.framework */,
 				BC3748BD155F4C6C0033BAC9 /* UIKit.framework */,
@@ -363,9 +368,8 @@
 			children = (
 				BC94EF92158918CC001CE7A8 /* TestFlight.h */,
 				BC94EF8F158918CC001CE7A8 /* libTestFlight.a */,
-				BC94EF9615891EBB001CE7A8 /* libz.dylib */,
-				BC94EF90158918CC001CE7A8 /* README.txt */,
-				BC94EF91158918CC001CE7A8 /* release_notes.txt */,
+				BC94EF90158918CC001CE7A8 /* README.md */,
+				BC94EF91158918CC001CE7A8 /* release_notes.md */,
 			);
 			path = TestFlightSDK;
 			sourceTree = "<group>";
@@ -531,10 +535,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -559,7 +559,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "TESTFLIGHT_ENABLED=0";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
