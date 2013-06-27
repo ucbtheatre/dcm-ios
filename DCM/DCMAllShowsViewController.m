@@ -24,7 +24,7 @@
                        initWithFetchRequest:request
                        managedObjectContext:database.managedObjectContext
                        sectionNameKeyPath:@"sortSection"
-                       cacheName:@"DCMAllShowsViewController"];
+                       cacheName:nil];
     showsController.delegate = self;
     NSError *error = nil;
     if (![showsController performFetch:&error]) {
@@ -63,11 +63,17 @@
     }
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self enableDoubleTapRecognizer];
     [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
+    
+    //This offsets the scroll so we don't see the Search Bar initially
+    if([self.tableView.dataSource tableView:self.tableView numberOfRowsInSection:0] > 0){
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
 }
 
 - (void)viewDidUnload
@@ -128,16 +134,56 @@
     return [info name];
 }
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return [showsController sectionIndexTitles];
-}
+// Removed this so we wouldn't show the Indices since we now have search
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    return [showsController sectionIndexTitles];
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ShowCell"];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - Storyboard
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [NSFetchedResultsController deleteCacheWithName:[showsController cacheName]];
+    if(searchText != nil && ![searchText isEqual:@""]){
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name contains[cd] %@) OR (ANY performers.name contains[cd] %@)", searchBar.text, searchBar.text];
+        [showsController.fetchRequest setPredicate:predicate];
+    }
+    else {
+        [showsController.fetchRequest setPredicate:nil];
+    }
+
+    [showsController performFetch:nil];
+    [self.tableView reloadData];
+
+}
+
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [searchBar setShowsCancelButton:NO animated:YES];
+    
+    [NSFetchedResultsController deleteCacheWithName:[showsController cacheName]];
+    [showsController.fetchRequest setPredicate:nil];
+    [showsController performFetch:nil];
+    [self.tableView reloadData];
+    
+    [searchBar setText:nil];
+    [searchBar resignFirstResponder];
+}
+
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark - Storyboard

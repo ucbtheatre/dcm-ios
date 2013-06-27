@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DCMTableViewController.h"
 
-@interface DCMAllShowsViewController : DCMTableViewController
+@interface DCMAllShowsViewController : DCMTableViewController <UISearchBarDelegate>
 {
     NSFetchedResultsController *showsController;
 }
