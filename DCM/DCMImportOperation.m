@@ -187,7 +187,12 @@
 
 - (NSString *)sortSectionFromSortName:(NSString *)sortName
 {
-    return [sortName substringToIndex:1];
+    NSCharacterSet *letterSet = [NSCharacterSet letterCharacterSet];
+    if ([letterSet characterIsMember:[sortName characterAtIndex:0]]) {
+        return [sortName substringToIndex:1];
+    } else {
+        return @"#";
+    }
 }
 
 - (void)importShow:(NSDictionary *)info
