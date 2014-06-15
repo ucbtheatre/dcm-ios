@@ -44,8 +44,10 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
+    assert([response expectedContentLength] < NSIntegerMax);
+
     statusCode = [response statusCode];
-    expectedLength = [response expectedContentLength];
+    expectedLength = (NSInteger)[response expectedContentLength];
     responseHeaders = [response allHeaderFields];
     if (expectedLength == NSURLResponseUnknownLength) {
         rawData = [[NSMutableData alloc] init];

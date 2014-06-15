@@ -29,7 +29,7 @@ void DCMLoadImageAsynchronously(NSURL *imageURL, DCMImageHandler imageHandler)
         } else if (error) {
             NSLog(@"Failed to load data from %@, error: %@", imageURL, error);
         } else {
-            NSLog(@"Failed to load data from %@, HTTP %d, headers: %@", imageURL, response.statusCode, response.allHeaderFields);
+            NSLog(@"Failed to load data from %@, HTTP %d, headers: %@", imageURL, (int)response.statusCode, response.allHeaderFields);
         }
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             imageHandler(image);
