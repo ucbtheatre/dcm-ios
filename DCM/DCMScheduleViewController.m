@@ -12,6 +12,9 @@
 #import "DCMShowDetailViewController.h"
 
 @implementation DCMScheduleViewController
+{
+    BOOL scrollOnNextAppearance;
+}
 
 + (NSString *)timeStringForPerformance:(Performance *)perf showFavorite:(BOOL)showFav
 {
@@ -36,21 +39,21 @@
     [request setSortDescriptors:
      [NSArray arrayWithObject:
       [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:YES]]];
-    performancesController = [[NSFetchedResultsController alloc]
+    _performancesController = [[NSFetchedResultsController alloc]
                               initWithFetchRequest:request
                               managedObjectContext:database.managedObjectContext
                               sectionNameKeyPath:@"weekday"
                               cacheName:nil];
-    performancesController.delegate = self;
+    _performancesController.delegate = self;
     NSError *error = nil;
-    if (![performancesController performFetch:&error]) {
+    if (![_performancesController performFetch:&error]) {
         NSLog(@"Error: %@", [error localizedDescription]);
     }
 }
 
 - (Performance *)performanceAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [performancesController objectAtIndexPath:indexPath];
+    return [_performancesController objectAtIndexPath:indexPath];
 }
 
 - (void)viewDidLoad
@@ -63,13 +66,13 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    performancesController = nil;
+    _performancesController = nil;
 }
 
 - (void)scrollToCurrentShowAnimated:(BOOL)animated
 {
     NSDate *date = [[WallClock sharedClock] date];
-    NSArray *perfArray = [performancesController fetchedObjects];
+    NSArray *perfArray = [_performancesController fetchedObjects];
     NSUInteger idx = [perfArray
                       indexOfObject:date
                       inSortedRange:NSMakeRange(0, [perfArray count])
@@ -92,10 +95,10 @@
     if (idx == 0) return; // don't do anything if first show hasn't happened yet
     NSIndexPath *path;
     if (idx < [perfArray count]) {
-        path = [performancesController indexPathForObject:
+        path = [_performancesController indexPathForObject:
                 [perfArray objectAtIndex:idx]];
     } else {
-        path = [performancesController indexPathForObject:
+        path = [_performancesController indexPathForObject:
                 [perfArray lastObject]];
     }
     [self.tableView scrollToRowAtIndexPath:path
@@ -116,20 +119,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[performancesController sections] count];
+    return [[_performancesController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> info;
-    info = [[performancesController sections] objectAtIndex:section];
+    info = [[_performancesController sections] objectAtIndex:section];
     return [info numberOfObjects];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> info;
-    info = [[performancesController sections] objectAtIndex:section];
+    info = [[_performancesController sections] objectAtIndex:section];
     return [info name];
 }
 
@@ -142,7 +145,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView
 {
-    Performance *perf = [performancesController objectAtIndexPath:indexPath];
+    Performance *perf = [_performancesController objectAtIndexPath:indexPath];
     [self configureCell:cell forPerformance:perf];
 }
 
@@ -152,7 +155,7 @@
 {
     DCMShowDetailViewController *detailViewController = [segue destinationViewController];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    Performance *perf = [performancesController objectAtIndexPath:indexPath];
+    Performance *perf = [_performancesController objectAtIndexPath:indexPath];
     detailViewController.show = perf.show;
 }
 

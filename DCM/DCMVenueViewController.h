@@ -11,11 +11,6 @@
 @class Venue;
 
 @interface DCMVenueViewController : UIViewController
-{
-    BOOL isFlipped;
-    UIViewController *frontViewController;
-    UIViewController *backViewController;
-}
 @property (nonatomic,strong) Venue *venue;
 - (IBAction)flipView:(id)sender;
 @end

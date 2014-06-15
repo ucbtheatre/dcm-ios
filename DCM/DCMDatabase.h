@@ -33,12 +33,6 @@ enum {
 };
 
 @interface DCMDatabase : NSObject
-{
-    NSManagedObjectModel *__managedObjectModel;
-    NSDate *__startDate;
-    NSOperationQueue *__backgroundQueue;
-    BOOL isUpdating;
-}
 + (DCMDatabase *)sharedDatabase;
 @property (nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic,readonly) NSManagedObjectContext *managedObjectContext;

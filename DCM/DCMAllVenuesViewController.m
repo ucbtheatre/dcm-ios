@@ -15,6 +15,9 @@
 @end
 
 @implementation DCMAllVenuesViewController
+{
+    NSFetchedResultsController *venuesController;
+}
 
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
 {

@@ -16,6 +16,11 @@ static NSString * const DCMVenueViewIsFlipped = @"DCMVenueViewIsFlipped";
 @end
 
 @implementation DCMVenueViewController
+{
+    BOOL isFlipped;
+    UIViewController *frontViewController;
+    UIViewController *backViewController;
+}
 
 @synthesize venue;
 

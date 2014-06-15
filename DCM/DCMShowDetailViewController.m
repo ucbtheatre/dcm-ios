@@ -11,6 +11,11 @@
 #import "DCMUtilities.h"
 
 @implementation DCMShowDetailViewController
+{
+    NSArray *performers;
+    NSArray *performances;
+    NSDateFormatter *performanceDateFormatter;
+}
 
 @synthesize show;
 @synthesize favoriteButton;

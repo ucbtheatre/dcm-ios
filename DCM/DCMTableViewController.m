@@ -9,6 +9,9 @@
 #import "DCMTableViewController.h"
 
 @implementation DCMTableViewController
+{
+    NSMutableArray *sectionHeaderViews;
+}
 
 - (void)enableDoubleTapRecognizerOnTableView:(UITableView *)tableView
 {

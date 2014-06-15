@@ -13,10 +13,7 @@
 @class Performance;
 
 @interface DCMScheduleViewController : DCMTableViewController
-{
-    NSFetchedResultsController *performancesController;
-    BOOL scrollOnNextAppearance;
-}
+@property (nonatomic, strong) NSFetchedResultsController *performancesController;
 + (NSString *)timeStringForPerformance:(Performance *)perf showFavorite:(BOOL)showFav;
 - (void)setUpControllerForDatabase:(DCMDatabase *)database;
 - (Performance *)performanceAtIndexPath:(NSIndexPath *)indexPath;

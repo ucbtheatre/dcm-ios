@@ -19,11 +19,6 @@
 extern NSString * const WallClockMinuteDidChangeNotification;
 
 @interface WallClock : NSObject
-{
-    BOOL isRunning;
-    NSTimeInterval speedOffset;
-    NSTimeInterval speedRate;
-}
 + (WallClock *)sharedClock;
 @property (nonatomic) NSTimeInterval timeShift;
 @property (nonatomic) NSTimeInterval speed;

@@ -41,7 +41,7 @@
 
 - (void)databaseWillChange:(NSNotification *)notification
 {
-    performancesController = nil;
+    self.performancesController = nil;
     if ([self isViewLoaded]) {
         [self.tableView reloadData];
         [self.navigationController popToViewController:self animated:YES];
@@ -85,7 +85,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Performance *p = [performancesController objectAtIndexPath:indexPath];
+        Performance *p = [self.performancesController objectAtIndexPath:indexPath];
         p.favorite = NO;
         p.show.favoriteChangedDate = [NSDate date];
         [p.managedObjectContext save:nil];

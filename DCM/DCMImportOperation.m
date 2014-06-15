@@ -15,6 +15,15 @@
 #import "Performance.h"
 
 @implementation DCMImportOperation
+{
+    NSData *rawData;
+    NSMutableDictionary *performerCache;
+    NSCache *objectCache;
+    NSUInteger numberOfObjectsToImport;
+    NSUInteger numberOfObjectsImported;
+    NSDate *lastProgressNotificationDate;
+    NSManagedObjectContext *managedObjectContext;
+}
 
 - (id)initWithData:(NSData *)data context:(NSManagedObjectContext *)context
 {

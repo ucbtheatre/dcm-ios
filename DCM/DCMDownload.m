@@ -10,6 +10,13 @@
 #import "DCMDatabase.h"
 
 @implementation DCMDownload
+{
+    DCMDatabase *database;
+    NSMutableData *rawData;
+    NSInteger statusCode;
+    NSInteger expectedLength;
+    NSDictionary *responseHeaders;
+}
 
 - (id)initWithDatabase:(DCMDatabase *)aDatabase
 {

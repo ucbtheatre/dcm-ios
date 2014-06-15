@@ -17,6 +17,10 @@
 @end
 
 @implementation DCMUpcomingViewController
+{
+    NSFetchedResultsController *performancesController;
+    NSDate *lastRefreshDate;
+}
 
 @synthesize dateLabel;
 @synthesize countdownView;

@@ -11,6 +11,11 @@
 NSString * const WallClockMinuteDidChangeNotification = @"WallClockMinuteDidChange";
 
 @implementation WallClock
+{
+    BOOL isRunning;
+    NSTimeInterval speedOffset;
+    NSTimeInterval speedRate;
+}
 
 + (WallClock *)sharedClock
 {

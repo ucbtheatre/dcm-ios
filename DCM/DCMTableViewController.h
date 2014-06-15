@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DCMTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-{
-    NSMutableArray *sectionHeaderViews;
-}
 - (void)enableDoubleTapRecognizerOnTableView:(UITableView *)tableView;
 @end
 

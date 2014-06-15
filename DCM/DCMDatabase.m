@@ -26,6 +26,12 @@ static NSString * const DCMMetadataOriginLastModifiedKey = @"Origin-Last-Modifie
 static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 @implementation DCMDatabase
+{
+    NSManagedObjectModel *__managedObjectModel;
+    NSDate *__startDate;
+    NSOperationQueue *__backgroundQueue;
+    BOOL isUpdating;
+}
 
 + (DCMDatabase *)sharedDatabase
 {

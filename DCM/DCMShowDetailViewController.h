@@ -12,11 +12,6 @@
 @class Show;
 
 @interface DCMShowDetailViewController : DCMTableViewController
-{
-    NSArray *performers;
-    NSArray *performances;
-    NSDateFormatter *performanceDateFormatter;
-}
 @property (strong, nonatomic) Show *show;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

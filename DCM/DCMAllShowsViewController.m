@@ -12,6 +12,10 @@
 #import "DCMAppDelegate.h"
 
 @implementation DCMAllShowsViewController
+{
+    NSFetchedResultsController *showsController;
+    NSFetchedResultsController *searchController;
+}
 
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
 {

@@ -11,12 +11,5 @@
 @class DCMDatabase;
 
 @interface DCMDownload : NSObject <NSURLConnectionDataDelegate>
-{
-    DCMDatabase *database;
-    NSMutableData *rawData;
-    NSInteger statusCode;
-    NSInteger expectedLength;
-    NSDictionary *responseHeaders;
-}
 - (id)initWithDatabase:(DCMDatabase *)aDatabase;
 @end

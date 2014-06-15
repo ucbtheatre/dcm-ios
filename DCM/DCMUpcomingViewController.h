@@ -10,10 +10,6 @@
 #import "FluxCapacitorViewController.h"
 
 @interface DCMUpcomingViewController : UITableViewController <FluxCapacitorDelegate>
-{
-    NSFetchedResultsController *performancesController;
-    NSDate *lastRefreshDate;
-}
 @property (nonatomic,strong) IBOutlet UILabel *dateLabel;
 @property (nonatomic,strong) IBOutlet UIView *countdownView;
 @property (nonatomic,strong) IBOutlet UILabel *countdownLabel;
