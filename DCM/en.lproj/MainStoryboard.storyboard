@@ -19,7 +19,7 @@
                         <segue destination="p3q-ex-DjY" kind="relationship" relationship="viewControllers" id="MZx-YM-AMS"/>
                         <segue destination="aWE-pS-yT1" kind="relationship" relationship="viewControllers" id="kEm-IK-FUf"/>
                         <segue destination="3cc-g6-m2K" kind="relationship" relationship="viewControllers" id="JWY-wF-L43"/>
-                        <segue destination="Y3g-Np-mzV" kind="relationship" relationship="viewControllers" id="Ag5-Ik-jQ5"/>
+                        <segue destination="W47-pV-csQ" kind="relationship" relationship="viewControllers" id="zos-2e-uXs"/>
                         <segue destination="uBx-cy-dVK" kind="relationship" relationship="viewControllers" id="UUf-10-L5F"/>
                     </connections>
                 </tabBarController>
@@ -101,21 +101,21 @@
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueCell" textLabel="eLr-CQ-pDB" imageView="MDz-Jh-8zE" style="IBUITableViewCellStyleDefault" id="uRO-JI-LaF">
-                                <rect key="frame" x="0.0" y="46" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uRO-JI-LaF" id="4Cr-Zw-5EC">
-                                    <rect key="frame" x="10" y="1" width="280" height="47"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Venue Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eLr-CQ-pDB">
-                                            <rect key="frame" x="50" y="0.0" width="220" height="47"/>
+                                            <rect key="frame" x="60" y="0.0" width="225" height="47"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Barrier.png" id="MDz-Jh-8zE">
-                                            <rect key="frame" x="10" y="14" width="30" height="18"/>
+                                            <rect key="frame" x="15" y="14" width="30" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -295,40 +295,33 @@
             </objects>
             <point key="canvasLocation" x="330" y="1838"/>
         </scene>
-        <!--Tweets View Controller - #dcm16-->
+        <!--Tweets View Controller - Tweets-->
         <scene sceneID="JJe-3w-O81">
             <objects>
-                <viewController id="Y3g-Np-mzV" customClass="DCMTweetsViewController" sceneMemberID="viewController">
+                <viewController title="Tweets" id="Y3g-Np-mzV" customClass="DCMTweetsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h9y-0K-Y0S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="sX0-ic-Xg2">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                                 <connections>
                                     <outlet property="delegate" destination="Y3g-Np-mzV" id="hJv-kl-Wdz"/>
                                 </connections>
                             </webView>
-                            <navigationBar contentMode="scaleToFill" id="adG-fy-Lk7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Tweets" id="ird-bf-HiK">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hMO-Ie-37e">
-                                            <connections>
-                                                <action selector="refreshTweets:" destination="Y3g-Np-mzV" id="5cy-lY-NiU"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="#dcm16" image="TwitterBird.png" id="RVB-gy-BnB"/>
+                    <navigationItem key="navigationItem" title="Tweets" id="I0L-wa-gqf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hMO-Ie-37e">
+                            <connections>
+                                <action selector="refreshTweets:" destination="Y3g-Np-mzV" id="5cy-lY-NiU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="refreshButton" destination="hMO-Ie-37e" id="fqZ-FU-pAp"/>
                         <outlet property="webView" destination="sX0-ic-Xg2" id="C5o-wU-llc"/>
@@ -336,7 +329,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TW8-g5-WjI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="2526"/>
+            <point key="canvasLocation" x="978" y="2594"/>
+        </scene>
+        <!--Navigation Controller - #dcm16-->
+        <scene sceneID="K0i-kJ-OoV">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="W47-pV-csQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="#dcm16" image="TwitterBird.png" id="Gnj-Qe-tsK"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yiB-eu-ZGz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y3g-Np-mzV" kind="relationship" relationship="rootViewController" id="zUf-po-Bqs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mdz-hH-svJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="2594"/>
         </scene>
         <!--Navigation Controller - Now-->
         <scene sceneID="owG-Mr-HIE">
