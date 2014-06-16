@@ -76,7 +76,7 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 - (NSURL *)originURL
 {
-    return [NSURL URLWithString:@"http://delclosemarathon.com/dcm15/schedule.json"];
+    return [NSURL URLWithString:@"http://api.production.ucbt.net/dcm"];
 }
 
 #pragma mark - Core Data
@@ -217,6 +217,9 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
         NSString *entityTag = md[DCMMetadataOriginEntityTagKey];
         if (entityTag) {
             [request setValue:entityTag forHTTPHeaderField:@"If-None-Match"];
+            // The client is not supposed to send an ETag header, but we need
+            // this to work around a quirk in the UCBT's implementation.
+            [request setValue:entityTag forHTTPHeaderField:@"ETag"];
         } else {
             NSString *lastModified = md[DCMMetadataOriginLastModifiedKey];
             if (lastModified) {

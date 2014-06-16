@@ -23,6 +23,7 @@
     NSUInteger numberOfObjectsImported;
     NSDate *lastProgressNotificationDate;
     NSManagedObjectContext *managedObjectContext;
+    NSDictionary *importPropertyMap;
 }
 
 - (id)initWithData:(NSData *)data context:(NSManagedObjectContext *)context
@@ -32,6 +33,13 @@
         managedObjectContext = context;
     }
     return self;
+}
+
+- (void)loadImportPropertyMap
+{
+    NSURL *mapURL = [[NSBundle mainBundle] URLForResource:@"DCMImportMap"
+                                            withExtension:@"plist"];
+    importPropertyMap = [NSDictionary dictionaryWithContentsOfURL:mapURL];
 }
 
 - (void)postNotificationOfProgress:(float)progress
@@ -51,12 +59,8 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:DCMDatabaseProgressNotification
      object:nil
-     userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-               activity,
-               DCMDatabaseActivityKey,
-               [NSNumber numberWithFloat:progress],
-               DCMDatabaseProgressKey,
-               nil]];
+     userInfo:@{DCMDatabaseActivityKey: activity,
+                DCMDatabaseProgressKey: @(progress)}];
      lastProgressNotificationDate = [[NSDate alloc] init];
 }
 
@@ -78,17 +82,6 @@
         float d = numberOfObjectsToImport;
         [self postNotificationOfProgress:(n / d)];
     }
-}
-
-- (NSNumber *)identifierFromInfo:(NSDictionary *)info
-{
-    id value = [info objectForKey:@"id"];
-    return [NSNumber numberWithInt:[value intValue]];
-}
-
-- (NSDate *)parseDate:(id)value
-{
-    return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
 }
 
 - (void)cacheObject:(NSManagedObject *)object withIdentifier:(id)identifier
@@ -140,30 +133,12 @@
     return [self objectFromIdentifier:identifier entity:entity];
 }
 
-- (void)importVenue:(NSDictionary *)info
+- (Performer *)performerFromName:(NSDictionary *)nameObject
 {
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Venue"
-                                   inManagedObjectContext:managedObjectContext];
-    Venue *venue = [[Venue alloc]
-                    initWithEntity:entity
-                    insertIntoManagedObjectContext:managedObjectContext];
-    venue.identifier = [self identifierFromInfo:info];
-    venue.name = [info objectForKey:@"name"];
-    venue.shortName = [info objectForKey:@"short_name"];
-    venue.address = [info objectForKey:@"address"];
-    venue.directions = [info objectForKey:@"directions"];
-    venue.imageURLString = [info objectForKey:@"image"];
-    venue.mapURLString = [info objectForKey:@"gmaps"];
-    venue.homeURLString = [info objectForKey:@"url"];
-    [self cacheObject:venue withIdentifier:venue.identifier];
-    [self didImportObject];
-}
-
-- (Performer *)performerFromName:(NSString *)name
-{
-    if ([name length] < 1) return nil;
-    id key = [name stringByAppendingString:@":Performer"];
+    NSString *firstName = nameObject[@"first"];
+    NSString *lastName = nameObject[@"last"];
+    NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    id key = fullName;
     Performer *perf = [performerCache objectForKey:key];
     if (perf) {
         return perf;
@@ -174,7 +149,7 @@
     perf = [[Performer alloc]
             initWithEntity:entity
             insertIntoManagedObjectContext:managedObjectContext];
-    perf.name = name;
+    perf.name = fullName;
     [performerCache setObject:perf forKey:key];
     return perf;
 }
@@ -204,23 +179,60 @@
     }
 }
 
-- (void)importShow:(NSDictionary *)info
+- (id)objectWithEntityName:(NSString *)entityName fromObject:(NSDictionary *)info
 {
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Show"
+                                   entityForName:entityName
                                    inManagedObjectContext:managedObjectContext];
-    Show *show = [[Show alloc]
-                  initWithEntity:entity
-                  insertIntoManagedObjectContext:managedObjectContext];
-    show.identifier = [self identifierFromInfo:info];
-    show.name = [info objectForKey:@"show_name"];
+    id object = [[NSManagedObject alloc]
+                 initWithEntity:entity
+                 insertIntoManagedObjectContext:managedObjectContext];
+    NSDictionary *map = importPropertyMap[entityName];
+    NSDictionary *attributes = [entity attributesByName];
+    [map enumerateKeysAndObjectsUsingBlock:^(id localKey, id remoteKey, BOOL *stop) {
+        NSAttributeDescription *desc = attributes[localKey];
+        assert(desc != nil);
+        id remoteValue = info[remoteKey];
+        if (remoteValue == [NSNull null]) {
+            remoteValue = nil;
+        }
+        if ([remoteValue isKindOfClass:[NSString class]] && [remoteValue length] == 0) {
+            remoteValue = nil;
+        }
+        id localValue = nil;
+        if (remoteValue) {
+            switch ([desc attributeType]) {
+                case NSDateAttributeType:
+                    localValue = [NSDate dateWithTimeIntervalSince1970:[remoteValue doubleValue]];
+                    break;
+                default:
+                    localValue = remoteValue;
+            }
+        }
+        [object setValue:localValue forKey:localKey];
+    }];
+    return object;
+}
+
+- (void)importVenue:(NSDictionary *)info
+{
+    Venue *venue = [self objectWithEntityName:@"Venue" fromObject:info];
+    [self cacheObject:venue withIdentifier:venue.identifier];
+    [self didImportObject];
+}
+
+- (void)importShow:(NSDictionary *)info
+{
+    Show *show = [self objectWithEntityName:@"Show" fromObject:info];
     show.sortName = [self sortNameFromName:show.name];
     show.sortSection = [self sortSectionFromSortName:show.sortName];
-    show.promoBlurb = [info objectForKey:@"promo_blurb"];
-    show.homeCity = [info objectForKey:@"home_city"];
-    show.imageURLString = [info objectForKey:@"image"];
-    for (NSString *name in [info objectForKey:@"cast"]) {
-        Performer *perf = [self performerFromName:name];
+    NSArray *nameArray = info[@"cast"];
+    // Check to be sure cast does not contain an array inside of an array
+    if ([nameArray[0] isKindOfClass:[NSArray class]]) {
+        nameArray = nameArray[0];
+    }
+    for (NSDictionary *nameObject in nameArray) {
+        Performer *perf = [self performerFromName:nameObject];
         if (perf) {
             [show addPerformersObject:perf];
         }
@@ -231,21 +243,9 @@
 
 - (void)importSchedule:(NSDictionary *)info
 {
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Performance"
-                                   inManagedObjectContext:managedObjectContext];
-    Performance *perf = [[Performance alloc]
-                         initWithEntity:entity
-                         insertIntoManagedObjectContext:managedObjectContext];
-    perf.identifier = [self identifierFromInfo:info];
+    Performance *perf = [self objectWithEntityName:@"Performance" fromObject:info];
     perf.show = [self showFromIdentifier:[info objectForKey:@"show_id"]];
     perf.venue = [self venueFromIdentifier:[info objectForKey:@"venue_id"]];
-    perf.startDate = [self parseDate:[info objectForKey:@"starttime"]];
-    perf.endDate = [self parseDate:[info objectForKey:@"endtime"]];
-    NSString *tix = [info objectForKey:@"tickets"];
-    if ([tix length] > 0) {
-        perf.ticketsURLString = tix;
-    }
     NSTimeInterval interval = [perf.endDate timeIntervalSinceDate:perf.startDate];
     perf.minutes = [NSNumber numberWithDouble:(interval / 60.0)];
     [self didImportObject];
@@ -265,36 +265,60 @@
 {
     [self postNotificationOfProgress:DCMDatabaseProgressNone];
     NSError *error = nil;
-    NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:rawData
+    NSDictionary *rootObject = [NSJSONSerialization JSONObjectWithData:rawData
                                                                options:0
                                                                  error:&error];
-    if (jsonObject == nil) {
+    if (rootObject == nil) {
         [self postNotificationOfError:error];
         return;
     }
-    NSArray *venueDataArray = [jsonObject objectForKey:@"Venues"];
-    NSArray *showDataArray = [jsonObject objectForKey:@"Shows"];
-    NSArray *scheduleDataArray = [jsonObject objectForKey:@"Schedules"];
+
+    /*
+     * JSON format synopsis:
+     * {
+     *   "status": <BOOLEAN>,
+     *   "data": {
+     *     "Schedules": [ ... ],
+     *     "Shows": [ ... ],
+     *     "Venues": [ ... ],
+     *   }
+     * }
+     */
+
+    NSDictionary *dataObject = rootObject[@"data"];
+    
+    if (![dataObject isKindOfClass:[NSDictionary class]]) {
+        [self postNotificationOfError:nil];
+        return;
+    }
+
+    [self loadImportPropertyMap];
+    
+    NSArray *venueArray = dataObject[@"Venues"];
+    NSArray *showArray = dataObject[@"Shows"];
+    NSArray *scheduleArray = dataObject[@"Schedules"];
+
     // Compute the number of objects to import
-    numberOfObjectsToImport = ([venueDataArray count] +
-                               [showDataArray count] +
-                               [scheduleDataArray count]);
+    numberOfObjectsToImport = ([venueArray count] +
+                               [showArray count] +
+                               [scheduleArray count]);
     objectCache = [[NSCache alloc] init];
-    performerCache = [[NSMutableDictionary alloc]
-                      initWithCapacity:(5 * [showDataArray count])];
-    for (NSDictionary *info in showDataArray) {
+    performerCache = [[NSMutableDictionary alloc] initWithCapacity:(5 * [showArray count])];
+    for (NSDictionary *showObject in showArray) {
         @autoreleasepool {
-            [self importShow:[info objectForKey:@"Show"]];
+            [self importShow:showObject];
         }
     }
     performerCache = nil;
     [self saveContext];
-    for (NSDictionary *info in venueDataArray) {
-        [self importVenue:[info objectForKey:@"Venue"]];
-    }
-    for (NSDictionary *info in scheduleDataArray) {
+    for (NSDictionary *venueObject in venueArray) {
         @autoreleasepool {
-            [self importSchedule:[info objectForKey:@"Schedule"]];
+            [self importVenue:venueObject];
+        }
+    }
+    for (NSDictionary *scheduleObject in scheduleArray) {
+        @autoreleasepool {
+            [self importSchedule:scheduleObject];
         }
     }
     objectCache = nil;

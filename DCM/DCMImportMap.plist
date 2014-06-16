@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Venue</key>
+	<dict>
+		<key>address</key>
+		<string>address</string>
+		<key>directions</key>
+		<string></string>
+		<key>homeURLString</key>
+		<string>url</string>
+		<key>identifier</key>
+		<string>id</string>
+		<key>imageURLString</key>
+		<string>image</string>
+		<key>mapURLString</key>
+		<string></string>
+		<key>name</key>
+		<string>name</string>
+		<key>shortName</key>
+		<string>short_name</string>
+	</dict>
+	<key>Show</key>
+	<dict>
+		<key>homeCity</key>
+		<string>home_city</string>
+		<key>identifier</key>
+		<string>id</string>
+		<key>imageURLString</key>
+		<string></string>
+		<key>name</key>
+		<string>show_name</string>
+		<key>promoBlurb</key>
+		<string>promo_blurb</string>
+	</dict>
+	<key>Performance</key>
+	<dict>
+		<key>endDate</key>
+		<string>endtime</string>
+		<key>identifier</key>
+		<string>id</string>
+		<key>startDate</key>
+		<string>starttime</string>
+		<key>ticketsURLString</key>
+		<string>tickets</string>
+	</dict>
+</dict>
+</plist>

@@ -59,6 +59,7 @@
 		BC965CA91560C24600665E50 /* Heart1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC965CA51560C24600665E50 /* Heart1@2x.png */; };
 		BC9DC5A6176CF41E00C84653 /* Action.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A4176CF41E00C84653 /* Action.png */; };
 		BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9DC5A5176CF41E00C84653 /* Action@2x.png */; };
+		BCA9A556194E902A006FC7BF /* DCMImportMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCA9A555194E902A006FC7BF /* DCMImportMap.plist */; };
 		BCB0074F177CAA25004F3A4E /* DCMSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */; };
 		BCB00750177CB20D004F3A4E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC94EF8F158918CC001CE7A8 /* libTestFlight.a */; };
 		BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB00751177CB227004F3A4E /* libz.dylib */; };
@@ -157,6 +158,7 @@
 		BC9DC5A5176CF41E00C84653 /* Action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Action@2x.png"; sourceTree = "<group>"; };
 		BCA9A553194E5768006FC7BF /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
 		BCA9A554194E5768006FC7BF /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		BCA9A555194E902A006FC7BF /* DCMImportMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DCMImportMap.plist; sourceTree = "<group>"; };
 		BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCMSearchResultCell.xib; sourceTree = "<group>"; };
 		BCB00751177CB227004F3A4E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BCB86A401585835300DD48E7 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				BC3748EA155F62F00033BAC9 /* DCM.xcdatamodeld */,
+				BCA9A555194E902A006FC7BF /* DCMImportMap.plist */,
 				BC3748FE155F6A8C0033BAC9 /* Show.h */,
 				BC3748FF155F6A8C0033BAC9 /* Show.m */,
 				BC3748FB155F69EC0033BAC9 /* Venue.h */,
@@ -455,6 +458,7 @@
 				BC7C6A99159008730055E985 /* Default@2x.png in Resources */,
 				BCEFBDB6176C42B5003388E1 /* Default-568h@2x.png in Resources */,
 				BC9DC5A6176CF41E00C84653 /* Action.png in Resources */,
+				BCA9A556194E902A006FC7BF /* DCMImportMap.plist in Resources */,
 				BC9DC5A7176CF41E00C84653 /* Action@2x.png in Resources */,
 				BCD35DFC176E8DE800B8E799 /* DCMTweets.html in Resources */,
 				BCD35DFE176EB86900B8E799 /* TwitterBird.png in Resources */,
