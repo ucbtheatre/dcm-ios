@@ -74,7 +74,7 @@
     CGRect newBounds = CGRectZero;
     newBounds.size = [label.text sizeWithFont:label.font constrainedToSize:size
                                 lineBreakMode:label.lineBreakMode];
-    [label setBounds:newBounds];
+    [label setBounds:CGRectIntegral(newBounds)];
 }
 
 - (void)layoutTitleAndCityLabels

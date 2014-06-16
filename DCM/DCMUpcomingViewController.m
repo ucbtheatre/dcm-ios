@@ -48,8 +48,20 @@
      instantiateWithOwner:self options:nil];
     [self.tableView setScrollEnabled:NO];
     [self.tableView setContentOffset:CGPointZero];
-    self.countdownView.frame = self.view.bounds;
     [self.tableView addSubview:self.countdownView];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    CGRect frame = self.view.bounds;
+    if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+        frame.origin.y += [[self topLayoutGuide] length];
+        frame.size.height -= [[self topLayoutGuide] length];
+    }
+    if ([self respondsToSelector:@selector(bottomLayoutGuide)]) {
+        frame.size.height -= [[self bottomLayoutGuide] length];
+    }
+    self.countdownView.frame = frame;
 }
 
 - (void)refreshCountdownViewWithDate:(NSDate *)nowDate
@@ -99,6 +111,10 @@
                    name:UIApplicationDidBecomeActiveNotification object:nil];
     [center addObserver:self selector:@selector(timeToRefresh:)
                    name:WallClockMinuteDidChangeNotification object:nil];
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        self.dateLabel.textColor = [UIColor darkTextColor];
+        self.dateLabel.shadowColor = nil;
+    }
 }
 
 - (void)dealloc

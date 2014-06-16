@@ -31,10 +31,15 @@
 #endif
     [TestFlight takeOff:@"17d0e716-24af-462b-a2bd-bad946a25a6f"];
 #endif
+
     UIColor *tintColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1];
-    [[UINavigationBar appearance] setTintColor:tintColor];
-    [[UISearchBar appearance] setTintColor:tintColor];
-    // Override point for customization after application launch.
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        [[UINavigationBar appearance] setTintColor:tintColor];
+        [[UISearchBar appearance] setTintColor:tintColor];
+    } else {
+        self.window.tintColor = tintColor;
+    }
+
     [[NSNotificationCenter defaultCenter]
      addObserverForName:DCMDatabaseProgressNotification object:nil
      queue:[NSOperationQueue mainQueue]
