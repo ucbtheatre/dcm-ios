@@ -187,7 +187,7 @@
         }];
         [text appendFormat:@" at %@", [[[performances lastObject] venue] name]];
     }
-    [text appendString:@" #dcm15"];
+    [text appendString:@" #dcm16"];
     NSURL *showURL = [self.show homePageURL];
     UIActivityViewController *avc = [[UIActivityViewController alloc]
                                      initWithActivityItems:@[text, showURL]

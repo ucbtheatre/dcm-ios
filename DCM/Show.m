@@ -52,10 +52,12 @@
 
 - (NSURL *)homePageURL
 {
+    // TODO: verify this is correct
+    Performance *perf = [self.performances anyObject];
     return [NSURL URLWithString:
             [NSString stringWithFormat:
-             @"http://delclosemarathon.com/dcm15/shows/view/%@",
-             self.identifier]];
+             @"http://delclosemarathon.com/performance/detail/%@",
+             perf.identifier]];
 }
 
 @end
