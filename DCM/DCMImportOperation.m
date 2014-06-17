@@ -227,10 +227,6 @@
     show.sortName = [self sortNameFromName:show.name];
     show.sortSection = [self sortSectionFromSortName:show.sortName];
     NSArray *nameArray = info[@"cast"];
-    // Check to be sure cast does not contain an array inside of an array
-    if ([nameArray[0] isKindOfClass:[NSArray class]]) {
-        nameArray = nameArray[0];
-    }
     for (NSDictionary *nameObject in nameArray) {
         Performer *perf = [self performerFromName:nameObject];
         if (perf) {

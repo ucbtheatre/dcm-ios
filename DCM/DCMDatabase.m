@@ -217,9 +217,6 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
         NSString *entityTag = md[DCMMetadataOriginEntityTagKey];
         if (entityTag) {
             [request setValue:entityTag forHTTPHeaderField:@"If-None-Match"];
-            // The client is not supposed to send an ETag header, but we need
-            // this to work around a quirk in the UCBT's implementation.
-            [request setValue:entityTag forHTTPHeaderField:@"ETag"];
         } else {
             NSString *lastModified = md[DCMMetadataOriginLastModifiedKey];
             if (lastModified) {
