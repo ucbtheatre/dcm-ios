@@ -72,8 +72,10 @@
                                   UIViewAutoresizingFlexibleHeight);
         label.font = [UIFont boldSystemFontOfSize:15];
         label.textColor = [UIColor whiteColor];
-        label.shadowColor = [UIColor grayColor];
-        label.shadowOffset = CGSizeMake(0, -1);
+        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+            label.shadowColor = [UIColor grayColor];
+            label.shadowOffset = CGSizeMake(0, -1);
+        }
         label.backgroundColor = [UIColor clearColor];
         label.opaque = NO;
         [headerView addSubview:label];
