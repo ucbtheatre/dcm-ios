@@ -656,7 +656,6 @@ of Show</string>
                         <connections>
                             <outlet property="dataSource" destination="8fh-Yh-dX8" id="q27-hZ-jC2"/>
                             <outlet property="delegate" destination="8fh-Yh-dX8" id="e7m-qI-Z3v"/>
-                            <outletCollection property="gestureRecognizers" destination="Uf5-hC-oPt" appends="YES" id="amk-Ef-qdN"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NiG-qw-d9p">
@@ -677,11 +676,6 @@ of Show</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnM-yg-n3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Uf5-hC-oPt">
-                    <connections>
-                        <action selector="dismiss:" destination="8fh-Yh-dX8" id="L8l-DS-jn6"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2666" y="248"/>
         </scene>
