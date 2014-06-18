@@ -96,6 +96,7 @@
                             self.countdownView = nil;
                             self.countdownLabel = nil;
                         } completion:^(BOOL finished) {
+                            [self.tableView reloadData];
                         }];
     }
 }
