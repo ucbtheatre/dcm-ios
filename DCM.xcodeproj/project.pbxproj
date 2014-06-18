@@ -109,7 +109,6 @@
 		BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCMSearchResultCell.xib; sourceTree = "<group>"; };
 		BCB00751177CB227004F3A4E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BCB86A401585835300DD48E7 /* CountdownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
-		BCC90100157D730900F94409 /* DCM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCM.entitlements; sourceTree = "<group>"; };
 		BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUtilities.h; sourceTree = "<group>"; };
 		BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUtilities.m; sourceTree = "<group>"; };
 		BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTweetsViewController.h; sourceTree = "<group>"; };
@@ -202,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				BC7C6A9A15900A2C0055E985 /* iTunesArtwork */,
-				BCC90100157D730900F94409 /* DCM.entitlements */,
 				BC3748C5155F4C6C0033BAC9 /* DCM-Info.plist */,
 				BC3748C6155F4C6C0033BAC9 /* InfoPlist.strings */,
 				BC3748C9155F4C6C0033BAC9 /* main.m */,
