@@ -25,12 +25,6 @@
 {
     NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"America/New_York"];
     if (tz) [NSTimeZone setDefaultTimeZone:tz];
-#if TESTFLIGHT_ENABLED
-#if BETA_RELEASE
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
-    [TestFlight takeOff:@"17d0e716-24af-462b-a2bd-bad946a25a6f"];
-#endif
 
     UIColor *tintColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1];
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
