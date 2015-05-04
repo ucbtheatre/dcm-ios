@@ -36,7 +36,6 @@
 		BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */; };
 		BCA9A556194E902A006FC7BF /* DCMImportMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCA9A555194E902A006FC7BF /* DCMImportMap.plist */; };
 		BCB0074F177CAA25004F3A4E /* DCMSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */; };
-		BCB00750177CB20D004F3A4E /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC94EF8F158918CC001CE7A8 /* libTestFlight.a */; };
 		BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB00751177CB227004F3A4E /* libz.dylib */; };
 		BCB86A411585835300DD48E7 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB86A401585835300DD48E7 /* CountdownView.xib */; };
 		BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */; };
@@ -95,16 +94,10 @@
 		BC7C6A9A15900A2C0055E985 /* iTunesArtwork */ = {isa = PBXFileReference; explicitFileType = image.jpeg; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTableViewController.h; sourceTree = "<group>"; };
 		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTableViewController.m; sourceTree = "<group>"; };
-		BC94EF8F158918CC001CE7A8 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		BC94EF90158918CC001CE7A8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		BC94EF91158918CC001CE7A8 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		BC94EF92158918CC001CE7A8 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUpcomingViewController.h; sourceTree = "<group>"; };
 		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 		BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxCapacitorViewController.h; sourceTree = "<group>"; };
 		BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxCapacitorViewController.m; sourceTree = "<group>"; };
-		BCA9A553194E5768006FC7BF /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		BCA9A554194E5768006FC7BF /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		BCA9A555194E902A006FC7BF /* DCMImportMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DCMImportMap.plist; sourceTree = "<group>"; };
 		BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCMSearchResultCell.xib; sourceTree = "<group>"; };
 		BCB00751177CB227004F3A4E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -134,7 +127,6 @@
 				BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */,
 				BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */,
 				BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */,
-				BCB00750177CB20D004F3A4E /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +139,6 @@
 				BC3748E5155F4D0E0033BAC9 /* README.md */,
 				BC3748C3155F4C6C0033BAC9 /* DCM */,
 				BC3748ED155F69580033BAC9 /* MBProgressHUD */,
-				BC94EF8E158918CB001CE7A8 /* TestFlightSDK */,
 				BC3748BC155F4C6C0033BAC9 /* Frameworks */,
 				BC3748BA155F4C6C0033BAC9 /* Products */,
 			);
@@ -268,19 +259,6 @@
 				BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		BC94EF8E158918CB001CE7A8 /* TestFlightSDK */ = {
-			isa = PBXGroup;
-			children = (
-				BC94EF92158918CC001CE7A8 /* TestFlight.h */,
-				BCA9A553194E5768006FC7BF /* TestFlight+AsyncLogging.h */,
-				BCA9A554194E5768006FC7BF /* TestFlight+ManualSessions.h */,
-				BC94EF8F158918CC001CE7A8 /* libTestFlight.a */,
-				BC94EF90158918CC001CE7A8 /* README.md */,
-				BC94EF91158918CC001CE7A8 /* release_notes.md */,
-			);
-			path = TestFlightSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,10 +448,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DCM/DCM-Prefix.pch";
 				INFOPLIST_FILE = "DCM/DCM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -487,10 +462,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DCM/DCM-Prefix.pch";
 				INFOPLIST_FILE = "DCM/DCM-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/TestFlightSDK\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
