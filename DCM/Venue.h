@@ -22,6 +22,9 @@
 @property (nonatomic, retain) NSString * mapURLString;
 @property (nonatomic, retain) NSString * homeURLString;
 @property (nonatomic, retain) NSSet *performances;
+@property (nonatomic, retain) NSNumber *latitude;
+@property (nonatomic, retain) NSNumber *longitude;
+
 @end
 
 @interface Venue (CoreDataGeneratedAccessors)

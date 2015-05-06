@@ -9,6 +9,7 @@
 #import "DCMAllVenuesViewController.h"
 #import "DCMDatabase.h"
 #import "DCMVenueViewController.h"
+#import "DCMVenuesMapViewController.h"
 
 @interface DCMAllVenuesViewController ()
 
@@ -104,9 +105,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DCMVenueViewController *viewController = [segue destinationViewController];
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    viewController.venue = [venuesController objectAtIndexPath:indexPath];
+    if ([[segue identifier] isEqualToString:@"toMapView"]) {
+        DCMVenuesMapViewController *viewController = [segue destinationViewController];
+        viewController.venues = venuesController.fetchedObjects;
+    } else {
+        DCMVenueViewController *viewController = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        viewController.venue = [venuesController objectAtIndexPath:indexPath];
+    }
 }
 
 @end

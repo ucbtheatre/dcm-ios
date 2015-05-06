@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */; };
+		95DDA7181AF9856B00387569 /* DCMVenuesMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */; };
+		95DDA71A1AF988F100387569 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DDA7191AF988F100387569 /* MapKit.framework */; };
+		95DDA71C1AF988FF00387569 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DDA71B1AF988FF00387569 /* CoreLocation.framework */; };
 		BC0D368A194FF71700D8CC4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC0D3689194FF71700D8CC4C /* Images.xcassets */; };
 		BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */; };
 		BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31B93E1587D593005F9717 /* DCMDownload.m */; };
@@ -50,6 +53,10 @@
 /* Begin PBXFileReference section */
 		0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMFavoritesViewController.h; sourceTree = "<group>"; };
 		0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMFavoritesViewController.m; sourceTree = "<group>"; };
+		95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenuesMapViewController.h; sourceTree = "<group>"; };
+		95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenuesMapViewController.m; sourceTree = "<group>"; };
+		95DDA7191AF988F100387569 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		95DDA71B1AF988FF00387569 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BC0D3689194FF71700D8CC4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMScheduleViewController.h; sourceTree = "<group>"; };
 		BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMScheduleViewController.m; sourceTree = "<group>"; };
@@ -121,6 +128,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95DDA71C1AF988FF00387569 /* CoreLocation.framework in Frameworks */,
+				95DDA71A1AF988F100387569 /* MapKit.framework in Frameworks */,
 				BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */,
 				BCEFBDB8176C6BF4003388E1 /* QuartzCore.framework in Frameworks */,
 				BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */,
@@ -155,6 +164,8 @@
 		BC3748BC155F4C6C0033BAC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95DDA71B1AF988FF00387569 /* CoreLocation.framework */,
+				95DDA7191AF988F100387569 /* MapKit.framework */,
 				BCB00751177CB227004F3A4E /* libz.dylib */,
 				BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */,
 				BC374909155F8A030033BAC9 /* CoreData.framework */,
@@ -240,6 +251,8 @@
 				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
 				BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */,
 				BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */,
+				95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */,
+				95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */,
 				BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */,
 				BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */,
 				BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */,
@@ -341,6 +354,7 @@
 				BC3748EC155F62F00033BAC9 /* DCM.xcdatamodeld in Sources */,
 				BC3748F0155F69720033BAC9 /* MBProgressHUD.m in Sources */,
 				BC3748F4155F69BD0033BAC9 /* Performance.m in Sources */,
+				95DDA7181AF9856B00387569 /* DCMVenuesMapViewController.m in Sources */,
 				BC3748F7155F69D10033BAC9 /* Performer.m in Sources */,
 				BC3748FD155F69EC0033BAC9 /* Venue.m in Sources */,
 				BC374900155F6A8C0033BAC9 /* Show.m in Sources */,

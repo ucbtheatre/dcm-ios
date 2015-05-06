@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment version="1296" defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment version="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-909" y="1188"/>
         </scene>
-        <!--All Shows View Controller - Shows-->
+        <!--Shows-->
         <scene sceneID="fmR-ee-qz3">
             <objects>
                 <tableViewController id="S87-I9-Zih" customClass="DCMAllShowsViewController" sceneMemberID="viewController">
@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="1612" y="-647"/>
         </scene>
-        <!--All Venues View Controller - Venues-->
+        <!--Venues-->
         <scene sceneID="9HE-rx-7NE">
             <objects>
                 <tableViewController id="qgu-tl-91x" customClass="DCMAllVenuesViewController" sceneMemberID="viewController">
@@ -101,7 +101,7 @@
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VenueCell" textLabel="eLr-CQ-pDB" imageView="MDz-Jh-8zE" style="IBUITableViewCellStyleDefault" id="uRO-JI-LaF">
-                                <rect key="frame" x="0.0" y="119" width="320" height="48"/>
+                                <rect key="frame" x="0.0" y="114" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uRO-JI-LaF" id="4Cr-Zw-5EC">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="47"/>
@@ -126,13 +126,19 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Venues" id="2nq-DV-HVY"/>
+                    <navigationItem key="navigationItem" title="Venues" id="2nq-DV-HVY">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="0Cc-Ck-n3y">
+                            <connections>
+                                <segue destination="ucD-0Q-1I3" kind="push" identifier="toMapView" id="TDM-H9-IYN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15s-um-nQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="760" y="248"/>
         </scene>
-        <!--Upcoming View Controller - Now-->
+        <!--Now-->
         <scene sceneID="vmk-bP-Dm6">
             <objects>
                 <tableViewController title="Now" id="rCJ-kO-75b" customClass="DCMUpcomingViewController" sceneMemberID="viewController">
@@ -164,7 +170,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="x8x-w4-bRs" detailTextLabel="Kxk-qY-P7r" style="IBUITableViewCellStyleValue2" id="z9X-N3-XLV">
-                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z9X-N3-XLV" id="UVn-up-gUK">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -228,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="1612" y="1188"/>
         </scene>
-        <!--Favorites View Controller - Favorites-->
+        <!--Favorites-->
         <scene sceneID="rRn-Sn-ODd">
             <objects>
                 <tableViewController id="5X7-ii-q0c" customClass="DCMFavoritesViewController" sceneMemberID="viewController">
@@ -238,7 +244,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" id="2YU-Ud-T1i">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2YU-Ud-T1i" id="9b8-lh-Eeg">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -279,7 +285,7 @@
             </objects>
             <point key="canvasLocation" x="1612" y="1838"/>
         </scene>
-        <!--Navigation Controller - Favorites-->
+        <!--Favorites-->
         <scene sceneID="spz-Be-BSC">
             <objects>
                 <navigationController definesPresentationContext="YES" id="uBx-cy-dVK" sceneMemberID="viewController">
@@ -295,7 +301,7 @@
             </objects>
             <point key="canvasLocation" x="330" y="1838"/>
         </scene>
-        <!--Tweets View Controller - Tweets-->
+        <!--Tweets-->
         <scene sceneID="JJe-3w-O81">
             <objects>
                 <viewController title="Tweets" id="Y3g-Np-mzV" customClass="DCMTweetsViewController" sceneMemberID="viewController">
@@ -331,7 +337,7 @@
             </objects>
             <point key="canvasLocation" x="978" y="2594"/>
         </scene>
-        <!--Navigation Controller - #dcm16-->
+        <!--#dcm16-->
         <scene sceneID="K0i-kJ-OoV">
             <objects>
                 <navigationController definesPresentationContext="YES" id="W47-pV-csQ" sceneMemberID="viewController">
@@ -347,7 +353,7 @@
             </objects>
             <point key="canvasLocation" x="330" y="2594"/>
         </scene>
-        <!--Navigation Controller - Now-->
+        <!--Now-->
         <scene sceneID="owG-Mr-HIE">
             <objects>
                 <navigationController definesPresentationContext="YES" id="p3q-ex-DjY" sceneMemberID="viewController">
@@ -363,6 +369,31 @@
             </objects>
             <point key="canvasLocation" x="330" y="1188"/>
         </scene>
+        <!--Venues Map View Controller-->
+        <scene sceneID="pSI-dd-Hjd">
+            <objects>
+                <viewController id="ucD-0Q-1I3" customClass="DCMVenuesMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DGq-Tp-vGM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="aOR-F6-4NJ">
+                                <rect key="frame" x="0.0" y="63" width="320" height="370"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pTJ-R6-k42"/>
+                    <connections>
+                        <outlet property="mapView" destination="aOR-F6-4NJ" id="0ad-6q-gDD"/>
+                        <segue destination="6Pi-TB-XcK" kind="push" identifier="mapToVenue" id="x4M-TU-cdk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2lV-fB-KXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1195" y="-82"/>
+        </scene>
         <!--Venue View Controller-->
         <scene sceneID="RHn-yW-E3R">
             <objects>
@@ -376,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Gv-Mg-tm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216" y="248"/>
+            <point key="canvasLocation" x="1195" y="498"/>
         </scene>
         <!--Venue Schedule View Controller-->
         <scene sceneID="sQj-3q-MGQ">
@@ -434,7 +465,7 @@
             </objects>
             <point key="canvasLocation" x="1612" y="540"/>
         </scene>
-        <!--Navigation Controller - Venues-->
+        <!--Venues-->
         <scene sceneID="bYa-Au-3SG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="aWE-pS-yT1" sceneMemberID="viewController">
@@ -608,7 +639,7 @@ of Show</string>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="tfg-Tt-Hjh" detailTextLabel="anG-9j-u3I" style="IBUITableViewCellStyleValue1" id="ETF-7h-T4U">
-                                <rect key="frame" x="0.0" y="308" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="244" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ETF-7h-T4U" id="gPk-wj-Q06">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -632,7 +663,7 @@ of Show</string>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformerCell" textLabel="VvG-hN-Lze" imageView="au4-pG-PT6" style="IBUITableViewCellStyleDefault" id="ld8-cS-cOK">
-                                <rect key="frame" x="0.0" y="352" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="288" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ld8-cS-cOK" id="7fL-3j-2pg">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -679,7 +710,7 @@ of Show</string>
             </objects>
             <point key="canvasLocation" x="2666" y="248"/>
         </scene>
-        <!--View Controller - About-->
+        <!--About-->
         <scene sceneID="HEK-p8-U9V">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="eSw-09-ASA" sceneMemberID="viewController">
@@ -734,27 +765,6 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                                     <!--2012-05-13 18:29:21 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
-                                <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                                </timeZone>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Adp-Ra-h92">
                                 <rect key="frame" x="20" y="424" width="280" height="37"/>
@@ -807,7 +817,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2666" y="1188"/>
         </scene>
-        <!--Navigation Controller - Shows-->
+        <!--Shows-->
         <scene sceneID="hkC-BK-Iin">
             <objects>
                 <navigationController definesPresentationContext="YES" id="3cc-g6-m2K" sceneMemberID="viewController">
@@ -844,5 +854,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="bwO-Ck-TVu"/>
+        <segue reference="x4M-TU-cdk"/>
     </inferredMetricsTieBreakers>
 </document>
