@@ -76,7 +76,7 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 - (NSURL *)originURL
 {
-    return [NSURL URLWithString:@"http://api.production.ucbt.net/dcm"];
+    return [NSURL URLWithString:@"http://api.ucbcomedy.com/dcm"];
 }
 
 #pragma mark - Core Data

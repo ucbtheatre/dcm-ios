@@ -226,9 +226,26 @@
     Show *show = [self objectWithEntityName:@"Show" fromObject:info];
     show.sortName = [self sortNameFromName:show.name];
     show.sortSection = [self sortSectionFromSortName:show.sortName];
+/**
     NSArray *nameArray = info[@"cast"];
     for (NSDictionary *nameObject in nameArray) {
         Performer *perf = [self performerFromName:nameObject];
+        if (perf) {
+            [show addPerformersObject:perf];
+        }
+    }
+
+The server now sends the cast over in a dictionary instead of an array, where person ID is the key.
+We could add cast headshots later with:
+http://974d0d3e3fab692e5845-1fa162517f41f1b2710e3fd3bd0f08f4.r84.cf5.rackcdn.com/person_{{ PERSON_ID }}.png
+for thumbnail headshots (75pxX75px)
+or
+http://2292774aeb57f699998f-7c1ee3a3cf06785b3e2b618873b759ef.r47.cf5.rackcdn.com/person_{{ PERSON_ID }}.png
+for full size (400pxX400px)
+**/
+    NSDictionary *castDictionary = info[@"cast"];
+    for (id key in castDictionary) {
+        Performer *perf = [self performerFromName:[castDictionary objectForKey:key]];
         if (perf) {
             [show addPerformersObject:perf];
         }
