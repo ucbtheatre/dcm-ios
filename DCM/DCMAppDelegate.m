@@ -71,7 +71,7 @@
              }
          }
      }];
-    // Supress error messages unless the database is empty.
+    // Suppress error messages unless the database is empty.
     DCMDatabase *db = [DCMDatabase sharedDatabase];
     [db checkForUpdateQuietly:![db isEmpty]];
     [[WallClock sharedClock] start];

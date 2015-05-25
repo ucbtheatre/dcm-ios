@@ -103,9 +103,7 @@
     [performanceDateFormatter setDateFormat:@"EEEE h:mm a"];
 
     performers = [self.show.performers sortedArrayUsingDescriptors:
-                  [NSArray arrayWithObject:
-                   [NSSortDescriptor
-                    sortDescriptorWithKey:@"name" ascending:YES]]];
+                  [Performer standardSortDescriptors]];
     performances = [self.show.performances sortedArrayUsingDescriptors:
                     [NSArray arrayWithObject:
                      [NSSortDescriptor
@@ -229,7 +227,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformerCell"];
     Performer *performer = [performers objectAtIndex:row];
-    cell.textLabel.text = performer.name;
+    cell.textLabel.text = performer.fullName;
     return cell;
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Performance" representedClassName="Performance" syncable="YES">
         <attribute name="endDate" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="favorite" optional="YES" attributeType="Boolean" indexed="YES" syncable="YES"/>
@@ -11,7 +11,9 @@
         <relationship name="venue" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" inverseName="performances" inverseEntity="Venue" syncable="YES"/>
     </entity>
     <entity name="Performer" representedClassName="Performer" syncable="YES">
-        <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="shows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Show" inverseName="performers" inverseEntity="Show" syncable="YES"/>
     </entity>
     <entity name="Show" representedClassName="Show" syncable="YES">
@@ -39,7 +41,7 @@
     </entity>
     <elements>
         <element name="Performance" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="Performer" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Performer" positionX="160" positionY="192" width="128" height="30"/>
         <element name="Show" positionX="160" positionY="192" width="128" height="195"/>
         <element name="Venue" positionX="160" positionY="192" width="128" height="180"/>
     </elements>
