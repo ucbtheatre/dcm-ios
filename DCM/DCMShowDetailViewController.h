@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *homeCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *promoBlurbLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ticketWarningLabel;
-@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 - (IBAction)toggleFavorite:(id)sender;
 - (IBAction)shareShow:(id)sender;
 - (IBAction)dismiss:(id)sender;

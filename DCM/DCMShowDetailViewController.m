@@ -120,8 +120,16 @@
     CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
     [self.imageView.layer addSublayer:vignetteLayer];
 
-    // Only show the share button on iOS 6 or later.
-    self.shareButton.hidden = ([UIActivityViewController class] == nil);
+    // Show the Share button
+    NSMutableArray *items = [self.navigationItem.rightBarButtonItems mutableCopy];
+    if ([items count] < 2) {
+        [items
+         insertObject:[[UIBarButtonItem alloc]
+                       initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                       target:self action:@selector(shareShow:)]
+         atIndex:0];
+        self.navigationItem.rightBarButtonItems = items;
+    }
 
     if (self.show.imageURLString) {
         self.imageView.backgroundColor = [UIColor grayColor];

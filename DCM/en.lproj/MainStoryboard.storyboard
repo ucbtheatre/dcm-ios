@@ -437,20 +437,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7P-Eb-CJq">
-                                    <rect key="frame" x="275" y="95" width="44" height="44"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="Action">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="shareShow:" destination="8fh-Yh-dX8" eventType="touchUpInside" id="ftg-TQ-Kun"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="This is the description of the show. It may span multiple lines. In fact, it probably will." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdL-oN-Rm5">
                                     <rect key="frame" x="8" y="148" width="304" height="39"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -548,7 +534,6 @@ of Show</string>
                         <outlet property="homeCityLabel" destination="Oqd-c3-sr5" id="KtL-Yk-5S3"/>
                         <outlet property="imageView" destination="6Dz-ap-NQo" id="QQa-sb-9U2"/>
                         <outlet property="promoBlurbLabel" destination="vdL-oN-Rm5" id="l2P-Ip-vL4"/>
-                        <outlet property="shareButton" destination="I7P-Eb-CJq" id="enw-8z-eQt"/>
                         <outlet property="ticketWarningLabel" destination="eNN-aK-2Ca" id="Q3V-CF-Gns"/>
                         <outlet property="titleLabel" destination="xy6-Kv-k65" id="abz-bJ-i4h"/>
                     </connections>
@@ -683,7 +668,6 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Action" width="28" height="22"/>
         <image name="Barrier" width="30" height="18"/>
         <image name="Glasses" width="66" height="42"/>
         <image name="Heart" width="28" height="28"/>
