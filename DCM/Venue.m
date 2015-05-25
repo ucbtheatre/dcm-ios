@@ -21,5 +21,7 @@
 @dynamic mapURLString;
 @dynamic homeURLString;
 @dynamic performances;
+@dynamic latitude;
+@dynamic longitude;
 
 @end

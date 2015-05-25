@@ -10,6 +10,10 @@
 		<string>directions</string>
 		<key>homeURLString</key>
 		<string>url</string>
+		<key>latitude</key>
+		<string>lat</string>
+		<key>longitude</key>
+		<string>lng</string>
 		<key>identifier</key>
 		<string>id</string>
 		<key>imageURLString</key>
