@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 Upright Citizens Brigade LLC. All rights reserved.
 //
 
-#import "DCMVenueViewController.h"
 #import "DCMVenueScheduleViewController.h"
 #import "DCMDatabase.h"
 #import "DCMAppDelegate.h"
@@ -18,11 +17,7 @@
 
 @implementation DCMVenueScheduleViewController
 
-- (Venue *)venue
-{
-    DCMVenueViewController *parent = (DCMVenueViewController *)self.parentViewController;
-    return parent.venue;
-}
+@synthesize venue;
 
 - (NSPredicate *)predicate
 {

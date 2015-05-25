@@ -6,26 +6,68 @@
 //  Copyright (c) 2015 Heroic Software Inc. All rights reserved.
 //
 
+#import "DCMDatabase.h"
 #import "DCMVenuesMapViewController.h"
 #import "Venue.h"
-#import "DCMVenueViewController.h"
-
-@interface DCMVenuesMapViewController ()
-
-@end
+#import "DCMVenueScheduleViewController.h"
 
 @implementation DCMVenuesMapViewController
-@synthesize mapView;
-@synthesize venues;
-Venue *selectedVenue;
-
-- (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.title = @"Venue Map";
-    self.mapView.delegate = self;
+    NSArray *allVenues;
+    Venue *selectedVenue;
+}
+
+@synthesize mapView;
+
+- (void)setUpControllerForDatabase:(DCMDatabase *)database
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Venue"];
+    NSError *error = nil;
+
+    allVenues = [[database managedObjectContext]
+                 executeFetchRequest:request
+                 error:&error];
+    if (error) {
+        NSLog(@"venue fetch error: %@", error);
+    }
+}
+
+- (void)awakeFromNib
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(databaseWillChange:)
+                   name:DCMDatabaseWillChangeNotification object:nil];
+    [center addObserver:self selector:@selector(databaseDidChange:)
+                   name:DCMDatabaseDidChangeNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)databaseWillChange:(NSNotification *)notification
+{
+    allVenues = nil;
+    selectedVenue = nil;
+    if ([self isViewLoaded]) {
+        [self.mapView removeAnnotations:[self.mapView annotations]];
+        [self.navigationController popToViewController:self animated:YES];
+    }
+}
+
+- (void)databaseDidChange:(NSNotification *)notification
+{
+    [self setUpControllerForDatabase:[notification object]];
+    if ([self isViewLoaded]) {
+        [self annotateMap];
+    }
+}
+
+- (void)annotateMap
+{
     MKMapRect mapRect = MKMapRectNull;
-    for (Venue *venue in venues) {
+    for (Venue *venue in allVenues) {
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         CLLocationDegrees latitude = [venue.latitude doubleValue];
         CLLocationDegrees longitude = [venue.longitude doubleValue];
@@ -36,22 +78,33 @@ Venue *selectedVenue;
         MKMapRect pointRect = MKMapRectMake(mapPoint.x, mapPoint.y, 0, 0);
         mapRect = MKMapRectUnion(mapRect, pointRect);
     }
-    [self.mapView setVisibleMapRect:mapRect edgePadding:UIEdgeInsetsMake(100, 100, 100, 100) animated:NO];
+    [self.mapView setVisibleMapRect:mapRect
+                        edgePadding:UIEdgeInsetsMake(100, 100, 100, 100)
+                           animated:NO];
 }
 
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+- (void)viewDidLoad
 {
-    //Figure out which venue was selected
-    for (Venue *venue in venues) {
+    [super viewDidLoad];
+
+    self.mapView.delegate = self;
+
+    [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
+    [self annotateMap];
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    // Figure out which venue was selected
+    for (Venue *venue in allVenues) {
         if ([view.annotation.title isEqualToString:venue.name]) {
             selectedVenue = venue;
             break;
         }
     }
     if (selectedVenue != nil) {
-        [self performSegueWithIdentifier:@"mapToVenue" sender:self];
+        [self performSegueWithIdentifier:@"MapToSchedule" sender:self];
     }
-    
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)sender viewForAnnotation:(id < MKAnnotation >)annotation
@@ -68,14 +121,9 @@ Venue *selectedVenue;
     return annotationView;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DCMVenueViewController *viewController = [segue destinationViewController];
+    DCMVenueScheduleViewController *viewController = [segue destinationViewController];
     viewController.venue = selectedVenue;
 }
 

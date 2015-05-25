@@ -32,8 +32,6 @@
 		BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374906155F7BE90033BAC9 /* DCMDatabase.m */; };
 		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
-		BC374911155FA64C0033BAC9 /* DCMAllVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */; };
-		BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */; };
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
 		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
 		BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */; };
@@ -46,7 +44,6 @@
 		BCD35DFA176E8A4700B8E799 /* DCMTweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */; };
 		BCD35DFC176E8DE800B8E799 /* DCMTweets.html in Resources */ = {isa = PBXBuildFile; fileRef = BCD35DFB176E8DE800B8E799 /* DCMTweets.html */; };
 		BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD9D13B158A7A0000BC9D0F /* WallClock.m */; };
-		BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */; };
 		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
 		BCEFBDB8176C6BF4003388E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -95,10 +92,6 @@
 		BC374909155F8A030033BAC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMShowDetailViewController.h; sourceTree = "<group>"; };
 		BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMShowDetailViewController.m; sourceTree = "<group>"; };
-		BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMAllVenuesViewController.h; sourceTree = "<group>"; };
-		BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMAllVenuesViewController.m; sourceTree = "<group>"; };
-		BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueDetailViewController.h; sourceTree = "<group>"; };
-		BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueDetailViewController.m; sourceTree = "<group>"; };
 		BC7C6A9A15900A2C0055E985 /* iTunesArtwork */ = {isa = PBXFileReference; explicitFileType = image.jpeg; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTableViewController.h; sourceTree = "<group>"; };
 		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTableViewController.m; sourceTree = "<group>"; };
@@ -119,8 +112,6 @@
 		BCD35DFB176E8DE800B8E799 /* DCMTweets.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = DCMTweets.html; sourceTree = "<group>"; };
 		BCD9D13A158A7A0000BC9D0F /* WallClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallClock.h; sourceTree = "<group>"; };
 		BCD9D13B158A7A0000BC9D0F /* WallClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallClock.m; sourceTree = "<group>"; };
-		BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueViewController.h; sourceTree = "<group>"; };
-		BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueViewController.m; sourceTree = "<group>"; };
 		BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueScheduleViewController.h; sourceTree = "<group>"; };
 		BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenueScheduleViewController.m; sourceTree = "<group>"; };
 		BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -254,16 +245,10 @@
 				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
 				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
 				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
-				BC37490F155FA64B0033BAC9 /* DCMAllVenuesViewController.h */,
-				BC374910155FA64B0033BAC9 /* DCMAllVenuesViewController.m */,
 				95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */,
 				95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */,
-				BCEC5E67157C327500BA8AAD /* DCMVenueViewController.h */,
-				BCEC5E68157C327500BA8AAD /* DCMVenueViewController.m */,
 				BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */,
 				BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */,
-				BC374912155FA65F0033BAC9 /* DCMVenueDetailViewController.h */,
-				BC374913155FA65F0033BAC9 /* DCMVenueDetailViewController.m */,
 				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
 				BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */,
 				BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */,
@@ -366,12 +351,9 @@
 				BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */,
 				BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */,
 				BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */,
-				BC374911155FA64C0033BAC9 /* DCMAllVenuesViewController.m in Sources */,
-				BC374914155FA65F0033BAC9 /* DCMVenueDetailViewController.m in Sources */,
 				BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */,
 				BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */,
 				0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */,
-				BCEC5E69157C327500BA8AAD /* DCMVenueViewController.m in Sources */,
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
@@ -428,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -454,7 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};

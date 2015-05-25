@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @interface DCMVenuesMapViewController : UIViewController <MKMapViewDelegate>
+
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) NSArray *venues;
 
 @end

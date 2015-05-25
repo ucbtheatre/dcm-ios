@@ -12,5 +12,5 @@
 @class Venue;
 
 @interface DCMVenueScheduleViewController : DCMScheduleViewController
-@property (readonly, nonatomic) Venue *venue;
+@property (nonatomic, strong) Venue *venue;
 @end
