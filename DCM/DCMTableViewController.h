@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface DCMTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-- (void)enableDoubleTapRecognizerOnTableView:(UITableView *)tableView;
+- (void)enableLongPressRecognizerOnTableView:(UITableView *)tableView;
 @end
 
 @interface DCMTableViewController (Abstract)
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView;
-- (void)tableView:(UITableView *)tableView cellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView cellLongPressedAtIndexPath:(NSIndexPath *)indexPath;
 - (UITableView *)tableViewForFetchedResultsController:(NSFetchedResultsController *)controller;
 @end

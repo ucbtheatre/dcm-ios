@@ -27,11 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self enableDoubleTapRecognizerOnTableView:self.tableView];
+    [self enableLongPressRecognizerOnTableView:self.tableView];
     self.navigationItem.title = self.venue.name;
 }
 
-- (void)tableView:(UITableView *)tableView cellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView cellLongPressedAtIndexPath:(NSIndexPath *)indexPath
 {
     Performance *perf = [self performanceAtIndexPath:indexPath];
     NSError *error = nil;

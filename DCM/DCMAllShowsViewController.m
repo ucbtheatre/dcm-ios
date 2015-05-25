@@ -106,7 +106,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self enableDoubleTapRecognizerOnTableView:self.tableView];
+    [self enableLongPressRecognizerOnTableView:self.tableView];
     [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
 }
 
@@ -122,7 +122,7 @@
     [[DCMDatabase sharedDatabase] checkForUpdate];
 }
 
-- (void)tableView:(UITableView *)tableView cellDoubleTappedAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView cellLongPressedAtIndexPath:(NSIndexPath *)indexPath
 {
     NSFetchedResultsController *controller = [self fetchedResultsControllerForTableView:tableView];
     Show *show = [controller objectAtIndexPath:indexPath];
@@ -193,7 +193,7 @@
 {
     UINib *nib = [UINib nibWithNibName:@"DCMSearchResultCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"ShowCell"];
-    [self enableDoubleTapRecognizerOnTableView:tableView];
+    [self enableLongPressRecognizerOnTableView:tableView];
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString

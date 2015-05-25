@@ -13,24 +13,22 @@
     NSMutableArray *sectionHeaderViews;
 }
 
-- (void)enableDoubleTapRecognizerOnTableView:(UITableView *)tableView
+- (void)enableLongPressRecognizerOnTableView:(UITableView *)tableView
 {
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-    tapRecognizer.numberOfTapsRequired = 2;
-    tapRecognizer.numberOfTouchesRequired = 1;
-    tapRecognizer.delaysTouchesBegan = YES;
-    tapRecognizer.delaysTouchesEnded = YES;
-    tapRecognizer.cancelsTouchesInView = YES;
-    [tableView addGestureRecognizer:tapRecognizer];
+    [tableView addGestureRecognizer:[[UILongPressGestureRecognizer alloc]
+                                     initWithTarget:self
+                                     action:@selector(handleLongPress:)]];
 }
 
-- (void)handleDoubleTap:(UITapGestureRecognizer *)tapRecognizer
+- (void)handleLongPress:(UILongPressGestureRecognizer *)pressRecognizer
 {
-    UITableView *view = (UITableView *)tapRecognizer.view;
-    CGPoint p = [tapRecognizer locationInView:view];
-    NSIndexPath *path = [view indexPathForRowAtPoint:p];
-    if (path) {
-        [self tableView:view cellDoubleTappedAtIndexPath:path];
+    if (pressRecognizer.state == UIGestureRecognizerStateBegan) {
+        UITableView *view = (UITableView *)pressRecognizer.view;
+        CGPoint p = [pressRecognizer locationInView:view];
+        NSIndexPath *path = [view indexPathForRowAtPoint:p];
+        if (path) {
+            [self tableView:view cellLongPressedAtIndexPath:path];
+        }
     }
 }
 
