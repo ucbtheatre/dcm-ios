@@ -34,6 +34,7 @@
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
 		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
 		BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */; };
+		BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA413121B136BE800440316 /* NSDictionary+DCM.m */; };
 		BCA9A556194E902A006FC7BF /* DCMImportMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCA9A555194E902A006FC7BF /* DCMImportMap.plist */; };
 		BCB0074F177CAA25004F3A4E /* DCMSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */; };
 		BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB00751177CB227004F3A4E /* libz.dylib */; };
@@ -98,6 +99,8 @@
 		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 		BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxCapacitorViewController.h; sourceTree = "<group>"; };
 		BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxCapacitorViewController.m; sourceTree = "<group>"; };
+		BCA413111B136BE800440316 /* NSDictionary+DCM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DCM.h"; sourceTree = "<group>"; };
+		BCA413121B136BE800440316 /* NSDictionary+DCM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DCM.m"; sourceTree = "<group>"; };
 		BCA9A555194E902A006FC7BF /* DCMImportMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DCMImportMap.plist; sourceTree = "<group>"; };
 		BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCMSearchResultCell.xib; sourceTree = "<group>"; };
 		BCB00751177CB227004F3A4E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -180,6 +183,8 @@
 				BCD9D13B158A7A0000BC9D0F /* WallClock.m */,
 				BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */,
 				BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */,
+				BCA413111B136BE800440316 /* NSDictionary+DCM.h */,
+				BCA413121B136BE800440316 /* NSDictionary+DCM.m */,
 				BC3748F1155F698F0033BAC9 /* Data Model */,
 				BC37490E155F9B2C0033BAC9 /* View Controllers */,
 				BC0D3689194FF71700D8CC4C /* Images.xcassets */,
@@ -356,6 +361,7 @@
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
+				BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */,
 				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
 				BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */,
 				BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */,
