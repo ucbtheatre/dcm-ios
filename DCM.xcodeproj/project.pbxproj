@@ -292,7 +292,7 @@
 			attributes = {
 				CLASSPREFIX = DCM;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Heroic Software Inc";
+				ORGANIZATIONNAME = "Upright Citizens Brigade LLC";
 				TargetAttributes = {
 					BC3748B8155F4C6B0033BAC9 = {
 						DevelopmentTeam = 32985GSFL8;
