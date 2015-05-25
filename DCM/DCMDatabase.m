@@ -76,7 +76,11 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 - (NSURL *)originURL
 {
+#if TARGET_IPHONE_SIMULATOR
+    return [NSURL URLWithString:@"http://api.ucbcomedy.com/dcm?mode=development"];
+#else
     return [NSURL URLWithString:@"http://api.ucbcomedy.com/dcm"];
+#endif
 }
 
 #pragma mark - Core Data
