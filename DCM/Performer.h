@@ -9,18 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface Performer : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSSet *shows;
+@property (nonatomic, strong) NSNumber *identifier;
+@property (nonatomic, strong) NSSet *shows;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
+@property (nonatomic, readonly) NSString *fullName;
+
++ (NSArray *)standardSortDescriptors;
+
 @end
 
 @interface Performer (CoreDataGeneratedAccessors)
-
 - (void)addShowsObject:(NSManagedObject *)value;
 - (void)removeShowsObject:(NSManagedObject *)value;
 - (void)addShows:(NSSet *)values;
 - (void)removeShows:(NSSet *)values;
-
 @end

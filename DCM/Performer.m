@@ -8,10 +8,26 @@
 
 #import "Performer.h"
 
-
 @implementation Performer
 
-@dynamic name;
+@dynamic identifier;
+@dynamic firstName;
+@dynamic lastName;
 @dynamic shows;
+
++ (NSArray *)standardSortDescriptors
+{
+    return @[
+             [NSSortDescriptor
+              sortDescriptorWithKey:@"firstName" ascending:YES],
+             [NSSortDescriptor
+              sortDescriptorWithKey:@"lastName" ascending:YES]
+             ];
+}
+
+- (NSString *)fullName
+{
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
 
 @end

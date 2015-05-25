@@ -9,6 +9,8 @@
 #import "DCMImportOperation.h"
 #import "DCMDatabase.h"
 
+#import "NSDictionary+DCM.h"
+
 #import "Show.h"
 #import "Venue.h"
 #import "Performer.h"
@@ -17,7 +19,6 @@
 @implementation DCMImportOperation
 {
     NSData *rawData;
-    NSMutableDictionary *performerCache;
     NSCache *objectCache;
     NSUInteger numberOfObjectsToImport;
     NSUInteger numberOfObjectsImported;
@@ -84,18 +85,26 @@
     }
 }
 
+- (id)cacheKeyForIdentifier:(id)identifier entity:(NSEntityDescription *)entity
+{
+    NSParameterAssert(identifier != nil);
+    NSParameterAssert(entity != nil);
+
+    return [NSString stringWithFormat:@"%@:%@", identifier, entity.name];
+}
+
 - (void)cacheObject:(NSManagedObject *)object withIdentifier:(id)identifier
 {
-    id key = [NSString stringWithFormat:@"%@:%@", identifier, object.entity.name];
+    id key = [self cacheKeyForIdentifier:identifier entity:object.entity];
     [objectCache setObject:object forKey:key];
 }
 
 - (id)objectFromIdentifier:(id)identifier entity:(NSEntityDescription *)entity
 {
-    id key = [NSString stringWithFormat:@"%@:%@", identifier, entity.name];
+    id key = [self cacheKeyForIdentifier:identifier entity:entity];
     id object = [objectCache objectForKey:key];
     if (object) return object;
-    // Because we are no longer using NSCache, the following is never executed.
+
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entity];
     [request setFetchLimit:1];
@@ -133,25 +142,87 @@
     return [self objectFromIdentifier:identifier entity:entity];
 }
 
-- (Performer *)performerFromName:(NSDictionary *)nameObject
+- (NSArray *)performersFromIdentifiers:(NSSet *)identifiers
 {
-    NSString *firstName = nameObject[@"first"];
-    NSString *lastName = nameObject[@"last"];
-    NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-    id key = fullName;
-    Performer *perf = [performerCache objectForKey:key];
-    if (perf) {
-        return perf;
-    }
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Performer"
                                    inManagedObjectContext:managedObjectContext];
-    perf = [[Performer alloc]
-            initWithEntity:entity
-            insertIntoManagedObjectContext:managedObjectContext];
-    perf.name = fullName;
-    [performerCache setObject:perf forKey:key];
-    return perf;
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entity];
+    [request setReturnsObjectsAsFaults:YES];
+    [request setPredicate:
+     [NSPredicate predicateWithFormat:@"identifier IN %@", identifiers]];
+    NSError *error = nil;
+    NSArray *results = [managedObjectContext
+                        executeFetchRequest:request
+                        error:&error];
+    if (error) {
+        NSLog(@"performer fetch error: %@", error);
+    }
+    return results;
+}
+
+/**
+ * Takes a dictionary where each pair is of the form:
+ * @{ performer-id: @{ first: String, last: String } }
+ * and returns a set of Performer objects.
+ */
+- (NSSet *)performerSetFromCastInfo:(NSDictionary *)castInfo
+{
+    NSUInteger count = [castInfo count];
+
+    // Ensure the keys are numbers, not strings.
+    castInfo = [castInfo DCM_dictionaryWithNumberKeys];
+
+    // We'll build up a set of performer objects to be returned at the end.
+    NSMutableSet *performers = [NSMutableSet setWithCapacity:count];
+
+    // This will be a set of identifiers still to be fetched.
+    NSMutableSet *identifiers = [NSMutableSet setWithArray:[castInfo allKeys]];
+
+    assert([performers count] + [identifiers count] == count);
+
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Performer"
+                                   inManagedObjectContext:managedObjectContext];
+
+    // First, round up any performers that are in the memory cache.
+    for (id key in [identifiers copy]) {
+        id cacheKey = [self cacheKeyForIdentifier:key entity:entity];
+        Performer *p = [objectCache objectForKey:cacheKey];
+        if (p) {
+            [performers addObject:p];
+            [identifiers removeObject:key];
+        }
+    }
+
+    assert([performers count] + [identifiers count] == count);
+
+    // Next, fetch any remaining performers from the persistent store.
+    NSArray *results = [self performersFromIdentifiers:identifiers];
+    for (Performer *p in results) {
+        [performers addObject:p];
+        [identifiers removeObject:[p identifier]];
+    }
+
+    assert([performers count] + [identifiers count] == count);
+
+    // Finally, create any missing performers.
+    for (id key in identifiers) {
+        NSDictionary *perfInfo = castInfo[key];
+        Performer *p = [[Performer alloc]
+                        initWithEntity:entity
+                        insertIntoManagedObjectContext:managedObjectContext];
+        p.identifier = key;
+        p.firstName = perfInfo[@"first"];
+        p.lastName = perfInfo[@"last"];
+        [performers addObject:p];
+        [self cacheObject:p withIdentifier:key];
+    }
+
+    assert([performers count] == count);
+
+    return performers;
 }
 
 - (NSString *)sortNameFromName:(NSString *)name
@@ -236,12 +307,12 @@ http://2292774aeb57f699998f-7c1ee3a3cf06785b3e2b618873b759ef.r47.cf5.rackcdn.com
 for full size (400pxX400px)
 **/
     NSDictionary *castDictionary = info[@"cast"];
-    for (id key in castDictionary) {
-        Performer *perf = [self performerFromName:[castDictionary objectForKey:key]];
-        if (perf) {
-            [show addPerformersObject:perf];
-        }
+    // We check because the cast value may be an empty array (e.g., Indie Team
+    // Cage Match Winner).
+    if ([castDictionary count] > 0) {
+        show.performers = [self performerSetFromCastInfo:castDictionary];
     }
+
     [self cacheObject:show withIdentifier:show.identifier];
     [self didImportObject];
 }
@@ -308,13 +379,11 @@ for full size (400pxX400px)
                                [showArray count] +
                                [scheduleArray count]);
     objectCache = [[NSCache alloc] init];
-    performerCache = [[NSMutableDictionary alloc] initWithCapacity:(5 * [showArray count])];
     for (NSDictionary *showObject in showArray) {
         @autoreleasepool {
             [self importShow:showObject];
         }
     }
-    performerCache = nil;
     [self saveContext];
     for (NSDictionary *venueObject in venueArray) {
         @autoreleasepool {

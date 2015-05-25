@@ -200,7 +200,11 @@
 {
     NSPredicate *predicate;
     if ([searchString length] > 0) {
-        predicate = [NSPredicate predicateWithFormat:@"(name contains[cd] %@) OR (ANY performers.name contains[cd] %@)", searchString, searchString];
+        predicate = [NSPredicate predicateWithFormat:
+                     @"(name contains[cd] %@)"
+                     @" OR (ANY performers.firstName contains[cd] %@)"
+                     @" OR (ANY performers.lastName contains[cd] %@)",
+                     searchString, searchString, searchString];
     } else {
         predicate = nil;
     }
