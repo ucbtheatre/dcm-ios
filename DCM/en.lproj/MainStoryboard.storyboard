@@ -430,21 +430,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="bvE-Ny-9Eb">
-                            <rect key="frame" x="0.0" y="64" width="320" height="222"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Dz-ap-NQo">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="This is the description of the show. It may span multiple lines. In fact, it probably will." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdL-oN-Rm5">
-                                    <rect key="frame" x="8" y="148" width="304" height="39"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-Kv-k65">
-                                    <rect key="frame" x="108" y="39" width="104" height="62"/>
+                                    <rect key="frame" x="8" y="38" width="304" height="64"/>
                                     <string key="text">Title
 of Show</string>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -454,23 +448,40 @@ of Show</string>
                                     <size key="shadowOffset" width="2" height="0.0"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Anytown, USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-c3-sr5">
-                                    <rect key="frame" x="107" y="101" width="105" height="19"/>
+                                    <rect key="frame" x="8" y="110" width="304" height="19"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                     <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="shadowOffset" width="1" height="0.0"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Tickets for this show are sold separately." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNN-aK-2Ca">
-                                    <rect key="frame" x="8" y="195" width="304" height="19"/>
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromoBlurbCell" textLabel="mqj-f0-Kms" rowHeight="67" style="IBUITableViewCellStyleDefault" id="eQ2-aj-07g">
+                                <rect key="frame" x="0.0" y="352" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eQ2-aj-07g" id="lRk-T8-c6j">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mqj-f0-Kms">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Promo Blurb Text">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="tfg-Tt-Hjh" detailTextLabel="anG-9j-u3I" style="IBUITableViewCellStyleValue1" id="ETF-7h-T4U">
                                 <rect key="frame" x="0.0" y="308" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -533,8 +544,6 @@ of Show</string>
                         <outlet property="favoriteButton" destination="g8p-9w-JPF" id="wnE-g0-dcc"/>
                         <outlet property="homeCityLabel" destination="Oqd-c3-sr5" id="KtL-Yk-5S3"/>
                         <outlet property="imageView" destination="6Dz-ap-NQo" id="QQa-sb-9U2"/>
-                        <outlet property="promoBlurbLabel" destination="vdL-oN-Rm5" id="l2P-Ip-vL4"/>
-                        <outlet property="ticketWarningLabel" destination="eNN-aK-2Ca" id="Q3V-CF-Gns"/>
                         <outlet property="titleLabel" destination="xy6-Kv-k65" id="abz-bJ-i4h"/>
                     </connections>
                 </tableViewController>

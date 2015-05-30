@@ -39,6 +39,16 @@
 
 #pragma mark - Table view delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSString *title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    if (title == nil) {
+        return 0;
+    } else {
+        return tableView.sectionHeaderHeight;
+    }
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString *title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
@@ -104,6 +114,9 @@
             [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
                      withRowAnimation:UITableViewRowAnimationFade];
             break;
+        default:
+            NSLog(@"NSFetchedResultsController broke the rules!");
+            return;
     }
 }
 

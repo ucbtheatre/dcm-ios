@@ -56,44 +56,6 @@
     self.favoriteButton.image = [UIImage imageNamed:name];
 }
 
-- (CGRect)boundsForTableHeaderView
-{
-    CGRect bounds = [self.tableView.tableHeaderView bounds];
-    bounds.size.height = (CGRectGetHeight(self.imageView.frame) + 8 +
-                          CGRectGetHeight(self.promoBlurbLabel.frame) + 8);
-    if ([self.show anyShowRequiresTicket]) {
-        bounds.size.height += CGRectGetHeight(self.ticketWarningLabel.frame) + 8;
-    } else {
-        [self.ticketWarningLabel removeFromSuperview];
-    }
-    return bounds;
-}
-
-- (void)sizeLabel:(UILabel *)label toFitSize:(CGSize)size
-{
-    CGRect newBounds = CGRectZero;
-    newBounds.size = [label.text sizeWithFont:label.font constrainedToSize:size
-                                lineBreakMode:label.lineBreakMode];
-    [label setBounds:CGRectIntegral(newBounds)];
-}
-
-- (void)layoutTitleAndCityLabels
-{
-    CGSize imageSize = self.imageView.bounds.size;
-    imageSize.width -= 16;
-    [self sizeLabel:self.titleLabel toFitSize:imageSize];
-    [self sizeLabel:self.homeCityLabel toFitSize:imageSize];
-    // Put titleLabel near center of imageView, bumped up a little bit
-    CGPoint titleCenter = self.imageView.center;
-    titleCenter.y -= 0.5f * CGRectGetHeight(self.homeCityLabel.bounds);
-    self.titleLabel.center = titleCenter;
-    // Place homeCityLabel just below the titleLabel
-    CGPoint homeCityLabelCenter = self.titleLabel.center;
-    homeCityLabelCenter.y += 0.5f * (CGRectGetHeight(self.titleLabel.bounds) +
-                                     CGRectGetHeight(self.homeCityLabel.bounds));
-    self.homeCityLabel.center = homeCityLabelCenter;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -111,11 +73,6 @@
 
     self.titleLabel.text = self.show.name;
     self.homeCityLabel.text = self.show.homeCity;
-    self.promoBlurbLabel.text = self.show.promoBlurb;
-
-    [self layoutTitleAndCityLabels];
-    [self.promoBlurbLabel sizeToFit];
-    [self.tableView.tableHeaderView setBounds:[self boundsForTableHeaderView]];
 
     CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
     [self.imageView.layer addSublayer:vignetteLayer];
@@ -210,14 +167,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return @"Showtimes";
-        case 1: return @"Cast";
+        case 0: return nil; // Blurb has no header
+        case 1: return @"Showtimes";
+        case 2: return @"Cast";
     }
     return nil;
 }
@@ -225,10 +183,60 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return [performances count];
-        case 1: return [performers count];
+        case 0: return 1;
+        case 1: return [performances count];
+        case 2: return [performers count];
     }
     return 0;
+}
+
+- (NSAttributedString *)promoBlurbString
+{
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
+    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    NSMutableParagraphStyle *paraStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paraStyle.paragraphSpacing = 0.5 * [font lineHeight];
+
+    if ([self.show.promoBlurb length] > 0) {
+        [string appendAttributedString:[[NSAttributedString alloc]
+                                        initWithString:self.show.promoBlurb
+                                        attributes:@{NSFontAttributeName: font,
+                                                     NSForegroundColorAttributeName: [UIColor blackColor],
+                                                     NSParagraphStyleAttributeName: paraStyle}]];
+    } else {
+        [string appendAttributedString:[[NSAttributedString alloc]
+                                        initWithString:@"No Description"
+                                        attributes:@{NSFontAttributeName: font,
+                                                     NSForegroundColorAttributeName: [UIColor grayColor],
+                                                     NSParagraphStyleAttributeName: paraStyle}]];
+    }
+
+    if ([self.show anyShowRequiresTicket]) {
+        UIFont *italicFont = [UIFont italicSystemFontOfSize:[UIFont systemFontSize]];
+        [string appendAttributedString:[[NSAttributedString alloc]
+                                        initWithString:@"\nTickets for this show are sold separately."
+                                        attributes:@{NSFontAttributeName: italicFont,
+                                                     NSForegroundColorAttributeName: [UIColor grayColor],
+                                                     NSParagraphStyleAttributeName: paraStyle}]];
+    }
+
+    return string;
+}
+
+- (UITableViewCell *)promoBlurbCellForTableView:(UITableView *)tableView
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PromoBlurbCell"];
+    cell.textLabel.attributedText = [self promoBlurbString];
+    return cell;
+}
+
+- (CGFloat)heightForPromoBlurbCell
+{
+    CGRect bounds = [[self promoBlurbString]
+                     boundingRectWithSize:CGSizeMake(320-16, CGFLOAT_MAX)
+                     options:(NSStringDrawingUsesLineFragmentOrigin)
+                     context:nil];
+    return ceil(bounds.size.height) + 16;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForPerformerAtRow:(NSInteger)row
@@ -257,14 +265,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0: return [self
+        case 0: return [self promoBlurbCellForTableView:tableView];
+        case 1: return [self
                         tableView:tableView
                         cellForPerformanceAtRow:indexPath.row];
-        case 1: return [self
+        case 2: return [self
                         tableView:tableView
                         cellForPerformerAtRow:indexPath.row];
     }
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 0: return [self heightForPromoBlurbCell];
+        default: return tableView.rowHeight;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
