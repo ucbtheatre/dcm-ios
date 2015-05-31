@@ -14,7 +14,6 @@
 {
     NSArray *performers;
     NSArray *performances;
-    NSDateFormatter *performanceDateFormatter;
 }
 
 @synthesize show;
@@ -61,15 +60,10 @@
     [super viewDidLoad];
     [self updateFavoriteButton];
 
-    performanceDateFormatter = [[NSDateFormatter alloc] init];
-    [performanceDateFormatter setDateFormat:@"EEEE h:mm a"];
-
     performers = [self.show.performers sortedArrayUsingDescriptors:
                   [Performer standardSortDescriptors]];
-    performances = [self.show.performances sortedArrayUsingDescriptors:
-                    [NSArray arrayWithObject:
-                     [NSSortDescriptor
-                      sortDescriptorWithKey:@"startDate" ascending:YES]]];
+
+    performances = [self.show performancesSortedByDate];
 
     self.titleLabel.text = self.show.name;
     self.homeCityLabel.text = self.show.homeCity;
@@ -123,38 +117,12 @@
 
 - (IBAction)shareShow:(id)sender
 {
-    // Cases:
-    // - 1 performance
-    // - multiple performances, 1 venue
-    // - multiple performances, multiple venues
-    NSMutableString *text = [NSMutableString string];
-    if ([self.show isFavorite]) {
-        [text appendString:@"I’ll be at "];
-    } else {
-        [text appendString:@"Check out "];
-    }
-    [text appendString:self.show.name];
-    [text appendString:@" "];
-    if ([[performances valueForKeyPath:@"@distinctUnionOfObjects.venue"] count] > 1) {
-        [performances enumerateObjectsUsingBlock:^(Performance *p, NSUInteger idx, BOOL *stop) {
-            if (idx > 0) [text appendString:@", "];
-            [text appendFormat:@"%@ at %@",
-             [performanceDateFormatter stringFromDate:p.startDate],
-             p.venue.name];
-        }];
-    }
-    else {
-        [performances enumerateObjectsUsingBlock:^(Performance *p, NSUInteger idx, BOOL *stop) {
-            if (idx > 0) [text appendString:@", "];
-            [text appendString:[performanceDateFormatter stringFromDate:p.startDate]];
-        }];
-        [text appendFormat:@" at %@", [[[performances lastObject] venue] name]];
-    }
-    [text appendString:@" #dcm16"];
-    NSURL *showURL = [self.show homePageURL];
+    NSURL *link = [NSURL URLWithString:@"http://delclosemarathon.com"];
+
     UIActivityViewController *avc = [[UIActivityViewController alloc]
-                                     initWithActivityItems:@[text, showURL]
+                                     initWithActivityItems:@[self.show, link]
                                      applicationActivities:nil];
+
     [self presentViewController:avc animated:YES completion:nil];
 }
 
@@ -252,7 +220,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformanceCell"];
     Performance *performance = [performances objectAtIndex:row];
-    cell.textLabel.text = [performanceDateFormatter stringFromDate:performance.startDate];
+    cell.textLabel.text = [[Show dateFormatter] stringFromDate:performance.startDate];
     cell.detailTextLabel.text = performance.venue.shortName;
     NSURL *ticketsURL = performance.ticketsURL;
     if (ticketsURL) {

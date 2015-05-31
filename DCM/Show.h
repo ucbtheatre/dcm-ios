@@ -11,7 +11,7 @@
 
 @class Performance, Performer;
 
-@interface Show : NSManagedObject
+@interface Show : NSManagedObject <UIActivityItemSource>
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *promoBlurb;
@@ -27,10 +27,12 @@
 
 @property (nonatomic, retain) NSDate *favoriteChangedDate;
 
++ (NSDateFormatter *)dateFormatter;
+
 - (BOOL)isFavorite;
 - (BOOL)anyShowRequiresTicket;
 - (BOOL)toggleFavoriteAndSave:(NSError **)error;
-- (NSURL *)homePageURL;
+- (NSArray *)performancesSortedByDate;
 
 @end
 
@@ -45,6 +47,5 @@
 - (void)removePerformancesObject:(Performance *)value;
 - (void)addPerformances:(NSSet *)values;
 - (void)removePerformances:(NSSet *)values;
-
 
 @end

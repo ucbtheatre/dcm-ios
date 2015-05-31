@@ -9,7 +9,7 @@
 #import "Show.h"
 #import "Performance.h"
 #import "Performer.h"
-
+#import "Venue.h"
 
 @implementation Show
 
@@ -23,6 +23,13 @@
 @dynamic sortName;
 @dynamic sortSection;
 @dynamic favoriteChangedDate;
+
++ (NSDateFormatter *)dateFormatter
+{
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"EEEE h:mm a"];
+    return df;
+}
 
 - (BOOL)isFavorite
 {
@@ -50,14 +57,60 @@
     return NO;
 }
 
-- (NSURL *)homePageURL
+- (NSArray *)performancesSortedByDate
 {
-    // TODO: verify this is correct
-    Performance *perf = [self.performances anyObject];
-    return [NSURL URLWithString:
-            [NSString stringWithFormat:
-             @"http://delclosemarathon.com/performance/detail/%@",
-             perf.identifier]];
+    return [self.performances sortedArrayUsingDescriptors:
+            [NSArray arrayWithObject:
+             [NSSortDescriptor
+              sortDescriptorWithKey:@"startDate" ascending:YES]]];
+}
+
+#pragma mark UIActivityItemSource
+
+- (id)activityViewControllerPlaceholderItem:(UIActivityViewController *)activityViewController
+{
+    return @"text";
+}
+
+- (id)activityViewController:(UIActivityViewController *)activityViewController itemForActivityType:(NSString *)activityType
+{
+    // Cases:
+    // - 1 performance
+    // - multiple performances, 1 venue
+    // - multiple performances, multiple venues
+    NSMutableString *text = [NSMutableString string];
+
+    [text appendString:([self isFavorite] ? @"I’ll be at " : @"Check out ")];
+    [text appendString:self.name];
+    [text appendString:@" "];
+
+    NSDateFormatter *dateFormatter = [Show dateFormatter];
+
+    NSArray *performances = [self performancesSortedByDate];
+
+    if ([[performances valueForKeyPath:@"@distinctUnionOfObjects.venue"] count] > 1) {
+        [performances enumerateObjectsUsingBlock:^(Performance *p, NSUInteger idx, BOOL *stop) {
+            if (idx > 0) [text appendString:@", "];
+            [text appendFormat:@"%@ at %@",
+             [dateFormatter stringFromDate:p.startDate],
+             p.venue.name];
+        }];
+    }
+    else {
+        [performances enumerateObjectsUsingBlock:^(Performance *p, NSUInteger idx, BOOL *stop) {
+            if (idx > 0) [text appendString:@", "];
+            [text appendString:[dateFormatter stringFromDate:p.startDate]];
+        }];
+        [text appendFormat:@" at %@", [[[performances lastObject] venue] name]];
+    }
+    [text appendString:@" #dcm17"];
+
+    return text;
+}
+
+- (NSString *)activityViewController:(UIActivityViewController *)activityViewController subjectForActivityType:(NSString *)activityType
+{
+    return self.name;
 }
 
 @end
