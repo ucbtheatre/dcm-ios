@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <deployment version="1552" identifier="iOS"/>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -261,7 +262,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sX0-ic-Xg2">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sX0-ic-Xg2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -271,16 +272,15 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sX0-ic-Xg2" secondAttribute="bottom" id="QSP-bj-p5H"/>
+                            <constraint firstItem="sX0-ic-Xg2" firstAttribute="top" secondItem="h9y-0K-Y0S" secondAttribute="top" id="QpM-cG-8Gp"/>
+                            <constraint firstAttribute="trailing" secondItem="sX0-ic-Xg2" secondAttribute="trailing" id="phP-vM-Rb4"/>
+                            <constraint firstItem="sX0-ic-Xg2" firstAttribute="leading" secondItem="h9y-0K-Y0S" secondAttribute="leading" id="xmq-eG-Zj1"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tweets" id="I0L-wa-gqf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hMO-Ie-37e">
-                            <connections>
-                                <action selector="refreshTweets:" destination="Y3g-Np-mzV" id="5cy-lY-NiU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="#dcm17" id="I0L-wa-gqf"/>
                     <connections>
-                        <outlet property="refreshButton" destination="hMO-Ie-37e" id="fqZ-FU-pAp"/>
                         <outlet property="webView" destination="sX0-ic-Xg2" id="C5o-wU-llc"/>
                     </connections>
                 </viewController>
@@ -288,11 +288,11 @@
             </objects>
             <point key="canvasLocation" x="978" y="2594"/>
         </scene>
-        <!--#dcm16-->
+        <!--#dcm17-->
         <scene sceneID="K0i-kJ-OoV">
             <objects>
                 <navigationController definesPresentationContext="YES" id="W47-pV-csQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="#dcm16" image="TwitterBird" id="Gnj-Qe-tsK"/>
+                    <tabBarItem key="tabBarItem" title="#dcm17" image="TwitterBird" id="Gnj-Qe-tsK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yiB-eu-ZGz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -459,7 +459,7 @@ of Show</string>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromoBlurbCell" textLabel="mqj-f0-Kms" rowHeight="67" style="IBUITableViewCellStyleDefault" id="eQ2-aj-07g">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromoBlurbCell" textLabel="mqj-f0-Kms" style="IBUITableViewCellStyleDefault" id="eQ2-aj-07g">
                                 <rect key="frame" x="0.0" y="352" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eQ2-aj-07g" id="lRk-T8-c6j">
@@ -563,8 +563,8 @@ of Show</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OeT-Cf-UUN">
-                                <rect key="frame" x="33" y="283" width="255" height="144"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="OeT-Cf-UUN">
+                                <rect key="frame" x="16" y="64" width="288" height="416"/>
                                 <string key="text">Check out the code on GitHub
 http://github.com/ucbtheatre
 
@@ -577,14 +577,14 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="#dcm16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="n0o-EH-wpZ">
-                                <rect key="frame" x="20" y="439" width="280" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zQV-zQ-eg9" firstAttribute="top" secondItem="OeT-Cf-UUN" secondAttribute="bottom" id="87v-NS-2OV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OeT-Cf-UUN" secondAttribute="trailing" id="Qyx-P1-KMZ"/>
+                            <constraint firstItem="OeT-Cf-UUN" firstAttribute="top" secondItem="was-DF-cQp" secondAttribute="bottom" id="aPA-Oi-2Ap"/>
+                            <constraint firstItem="OeT-Cf-UUN" firstAttribute="leading" secondItem="fdd-jP-2Wu" secondAttribute="leadingMargin" id="x8X-fq-Z6k"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="C5x-e0-kIG"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -631,7 +631,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nDs-K5-MSm">
-                                <rect key="frame" x="20" y="285" width="280" height="44"/>
+                                <rect key="frame" x="20" y="285" width="280" height="29"/>
                                 <segments>
                                     <segment title="1 Hz"/>
                                     <segment title="300 Hz"/>
@@ -694,4 +694,5 @@ Copyright ©2009-2012 Matej Bukovinski</string>
     <inferredMetricsTieBreakers>
         <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

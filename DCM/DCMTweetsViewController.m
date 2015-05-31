@@ -25,11 +25,6 @@
     }
 }
 
-- (void)refreshTweets:(id)sender
-{
-    [self.webView reload];
-}
-
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -40,25 +35,7 @@
         [[UIApplication sharedApplication] openURL:URL];
         return NO;
     }
-    if ([[URL host] isEqualToString:@"twitter.com"]) {
-        NSRange r = [[request.URL path] rangeOfString:@"/intent"];
-        if (r.location == 0) {
-            NSLog(@"Bouncing request for %@", URL);
-            [[UIApplication sharedApplication] openURL:URL];
-            return NO;
-        }
-    }
     return YES;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    self.refreshButton.enabled = NO;
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    self.refreshButton.enabled = YES;
 }
 
 @end
