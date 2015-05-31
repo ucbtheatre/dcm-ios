@@ -31,6 +31,12 @@
     self.navigationItem.title = self.venue.name;
 }
 
+- (void)getDirections:(id)sender
+{
+    NSDictionary *options = @{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking};
+    [self.venue.mapItem openInMapsWithLaunchOptions:options];
+}
+
 - (void)tableView:(UITableView *)tableView cellLongPressedAtIndexPath:(NSIndexPath *)indexPath
 {
     Performance *perf = [self performanceAtIndexPath:indexPath];

@@ -46,6 +46,7 @@
 		BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD9D13B158A7A0000BC9D0F /* WallClock.m */; };
 		BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */; };
 		BCEFBDB8176C6BF4003388E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */; };
+		BCEFC03C1B1B7FCF00F432DC /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCEFC03B1B1B7FCF00F432DC /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,7 @@
 		BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenueScheduleViewController.h; sourceTree = "<group>"; };
 		BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DCMVenueScheduleViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BCEFBDB7176C6BF4003388E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BCEFC03B1B1B7FCF00F432DC /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCEFC03C1B1B7FCF00F432DC /* AddressBook.framework in Frameworks */,
 				95DDA71C1AF988FF00387569 /* CoreLocation.framework in Frameworks */,
 				95DDA71A1AF988F100387569 /* MapKit.framework in Frameworks */,
 				BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */,
@@ -158,6 +161,7 @@
 		BC3748BC155F4C6C0033BAC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCEFC03B1B1B7FCF00F432DC /* AddressBook.framework */,
 				95DDA71B1AF988FF00387569 /* CoreLocation.framework */,
 				95DDA7191AF988F100387569 /* MapKit.framework */,
 				BCB00751177CB227004F3A4E /* libz.dylib */,

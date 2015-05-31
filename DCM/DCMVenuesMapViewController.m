@@ -69,9 +69,7 @@
     MKMapRect mapRect = MKMapRectNull;
     for (Venue *venue in allVenues) {
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        CLLocationDegrees latitude = [venue.latitude doubleValue];
-        CLLocationDegrees longitude = [venue.longitude doubleValue];
-        [annotation setCoordinate:CLLocationCoordinate2DMake(latitude, longitude)];
+        [annotation setCoordinate:venue.coordinate];
         [annotation setTitle:venue.name];
         [self.mapView addAnnotation:annotation];
         MKMapPoint mapPoint = MKMapPointForCoordinate(annotation.coordinate);

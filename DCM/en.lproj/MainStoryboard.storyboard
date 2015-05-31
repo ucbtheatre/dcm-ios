@@ -396,7 +396,13 @@
                             <outlet property="delegate" destination="acV-b5-WiA" id="beS-fP-cNR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dCA-oL-6bB"/>
+                    <navigationItem key="navigationItem" id="dCA-oL-6bB">
+                        <barButtonItem key="rightBarButtonItem" title="Directions" id="ro4-gB-W5m">
+                            <connections>
+                                <action selector="getDirections:" destination="acV-b5-WiA" id="925-re-Xvo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

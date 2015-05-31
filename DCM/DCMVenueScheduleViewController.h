@@ -13,4 +13,5 @@
 
 @interface DCMVenueScheduleViewController : DCMScheduleViewController
 @property (nonatomic, strong) Venue *venue;
+- (IBAction)getDirections:(id)sender;
 @end

@@ -25,6 +25,9 @@
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
 
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) MKMapItem *mapItem;
+
 @end
 
 @interface Venue (CoreDataGeneratedAccessors)
