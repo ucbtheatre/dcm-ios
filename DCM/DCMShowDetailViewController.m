@@ -233,8 +233,9 @@
 - (CGFloat)heightForPromoBlurbCell
 {
     CGRect bounds = [[self promoBlurbString]
-                     boundingRectWithSize:CGSizeMake(320-16, CGFLOAT_MAX)
-                     options:(NSStringDrawingUsesLineFragmentOrigin)
+                     boundingRectWithSize:CGSizeMake(320-40, CGFLOAT_MAX)
+                     options:(NSStringDrawingUsesLineFragmentOrigin |
+                              NSStringDrawingUsesFontLeading)
                      context:nil];
     return ceil(bounds.size.height) + 16;
 }
