@@ -344,7 +344,13 @@
                             <constraint firstAttribute="trailing" secondItem="aOR-F6-4NJ" secondAttribute="trailing" id="nbz-Pb-GzN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Venues" id="pTJ-R6-k42"/>
+                    <navigationItem key="navigationItem" title="Venues" id="pTJ-R6-k42">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" id="NhP-ev-1W5">
+                            <connections>
+                                <action selector="resetMapRect:" destination="ucD-0Q-1I3" id="a4O-4B-NYC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="aOR-F6-4NJ" id="0ad-6q-gDD"/>
                         <segue destination="acV-b5-WiA" kind="push" identifier="MapToSchedule" id="EB6-eM-Rh2"/>

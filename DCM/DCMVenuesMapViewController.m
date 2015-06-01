@@ -15,6 +15,7 @@
 {
     NSArray *allVenues;
     Venue *selectedVenue;
+    MKMapRect defaultMapRect;
 }
 
 @synthesize mapView;
@@ -64,9 +65,16 @@
     }
 }
 
+- (void)resetMapRect:(id)sender
+{
+    [self.mapView setVisibleMapRect:defaultMapRect
+                        edgePadding:UIEdgeInsetsMake(100, 100, 100, 100)
+                           animated:(sender != nil)];
+}
+
 - (void)annotateMap
 {
-    MKMapRect mapRect = MKMapRectNull;
+    defaultMapRect = MKMapRectNull;
     for (Venue *venue in allVenues) {
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         [annotation setCoordinate:venue.coordinate];
@@ -74,11 +82,9 @@
         [self.mapView addAnnotation:annotation];
         MKMapPoint mapPoint = MKMapPointForCoordinate(annotation.coordinate);
         MKMapRect pointRect = MKMapRectMake(mapPoint.x, mapPoint.y, 0, 0);
-        mapRect = MKMapRectUnion(mapRect, pointRect);
+        defaultMapRect = MKMapRectUnion(defaultMapRect, pointRect);
     }
-    [self.mapView setVisibleMapRect:mapRect
-                        edgePadding:UIEdgeInsetsMake(100, 100, 100, 100)
-                           animated:NO];
+    [self resetMapRect:nil];
 }
 
 - (void)viewDidLoad
