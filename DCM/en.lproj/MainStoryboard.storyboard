@@ -155,7 +155,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Now" id="T6V-h7-63m"/>
                         <view key="titleView" opaque="NO" contentMode="scaleToFill" id="BcD-dt-8Yh">
-                            <rect key="frame" x="55" y="6" width="210" height="33"/>
+                            <rect key="frame" x="55" y="5.5" width="210" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Thursday 13:86 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="CXz-sV-ibK">
@@ -354,11 +354,58 @@
                     <connections>
                         <outlet property="mapView" destination="aOR-F6-4NJ" id="0ad-6q-gDD"/>
                         <segue destination="acV-b5-WiA" kind="push" identifier="MapToSchedule" id="EB6-eM-Rh2"/>
+                        <segue destination="n3C-bz-fSX" kind="push" identifier="MapToVenueList" id="Hb4-T4-bbe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lV-fB-KXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="995" y="248"/>
+        </scene>
+        <!--Venues List View Controller-->
+        <scene sceneID="dB0-Vk-mTB">
+            <objects>
+                <tableViewController id="n3C-bz-fSX" customClass="DCMVenuesListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ITW-yY-5Gp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="VenueCell" textLabel="tst-Hf-ri8" style="IBUITableViewCellStyleDefault" id="8Dg-jq-fJv">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Dg-jq-fJv" id="59n-XG-20b">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tst-Hf-ri8">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="acV-b5-WiA" kind="push" id="Qsh-b5-yJu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="n3C-bz-fSX" id="2Jh-Dp-koG"/>
+                            <outlet property="delegate" destination="n3C-bz-fSX" id="FQx-do-Yzm"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="pgj-S2-WW6">
+                        <barButtonItem key="rightBarButtonItem" title="Directions" id="vpD-Ld-FlT">
+                            <connections>
+                                <action selector="getDirections:" destination="n3C-bz-fSX" id="aIb-5A-Swc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="38o-rv-GoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1471" y="573"/>
         </scene>
         <!--Venue Schedule View Controller-->
         <scene sceneID="sQj-3q-MGQ">
@@ -414,7 +461,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yz-NA-YQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="248"/>
+            <point key="canvasLocation" x="1950" y="248"/>
         </scene>
         <!--Venues-->
         <scene sceneID="bYa-Au-3SG">
@@ -704,6 +751,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Qsh-b5-yJu"/>
         <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

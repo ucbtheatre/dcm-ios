@@ -13,6 +13,7 @@
 		95DDA71C1AF988FF00387569 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DDA71B1AF988FF00387569 /* CoreLocation.framework */; };
 		BC0D368A194FF71700D8CC4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC0D3689194FF71700D8CC4C /* Images.xcassets */; };
 		BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */; };
+		BC249A301B2001400093604F /* DCMVenuesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC249A2F1B2001400093604F /* DCMVenuesListViewController.m */; };
 		BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31B93E1587D593005F9717 /* DCMDownload.m */; };
 		BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BD155F4C6C0033BAC9 /* UIKit.framework */; };
 		BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3748BF155F4C6C0033BAC9 /* Foundation.framework */; };
@@ -59,6 +60,8 @@
 		BC0D3689194FF71700D8CC4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMScheduleViewController.h; sourceTree = "<group>"; };
 		BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMScheduleViewController.m; sourceTree = "<group>"; };
+		BC249A2E1B2001400093604F /* DCMVenuesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenuesListViewController.h; sourceTree = "<group>"; };
+		BC249A2F1B2001400093604F /* DCMVenuesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenuesListViewController.m; sourceTree = "<group>"; };
 		BC31B93D1587D593005F9717 /* DCMDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMDownload.h; sourceTree = "<group>"; };
 		BC31B93E1587D593005F9717 /* DCMDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMDownload.m; sourceTree = "<group>"; };
 		BC3748B9155F4C6C0033BAC9 /* DCM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,29 +244,31 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */,
-				BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */,
-				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
 				BCB86A401585835300DD48E7 /* CountdownView.xib */,
-				BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */,
-				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
-				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
-				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
-				95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */,
-				95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */,
-				BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */,
-				BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */,
 				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
 				BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */,
+				0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */,
+				0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */,
+				BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */,
+				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
 				BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */,
 				BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */,
 				BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */,
-				BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */,
-				BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */,
-				0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */,
-				0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */,
+				BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */,
+				BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */,
 				BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */,
 				BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */,
+				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
+				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
+				BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */,
+				BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */,
+				BC249A2E1B2001400093604F /* DCMVenuesListViewController.h */,
+				BC249A2F1B2001400093604F /* DCMVenuesListViewController.m */,
+				95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */,
+				95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */,
+				BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */,
+				BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */,
+				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -363,6 +368,7 @@
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
 				BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */,
 				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
+				BC249A301B2001400093604F /* DCMVenuesListViewController.m in Sources */,
 				BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */,
 				BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */,
 				BCD35DFA176E8A4700B8E799 /* DCMTweetsViewController.m in Sources */,
@@ -451,11 +457,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DCM/DCM-Prefix.pch";
 				INFOPLIST_FILE = "DCM/DCM-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -465,11 +474,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DCM/DCM-Prefix.pch";
 				INFOPLIST_FILE = "DCM/DCM-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
