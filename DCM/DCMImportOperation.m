@@ -225,31 +225,6 @@
     return performers;
 }
 
-- (NSString *)sortNameFromName:(NSString *)name
-{
-    NSString *upName = [name uppercaseString];
-    if ([upName hasPrefix:@"THE "]) {
-        return [upName substringFromIndex:4];
-    }
-    NSRange letterRange = [upName rangeOfCharacterFromSet:
-                           [NSCharacterSet alphanumericCharacterSet]];
-    if (letterRange.location == NSNotFound) {
-        return upName;
-    } else {
-        return [upName substringFromIndex:letterRange.location];
-    }
-}
-
-- (NSString *)sortSectionFromSortName:(NSString *)sortName
-{
-    NSCharacterSet *letterSet = [NSCharacterSet letterCharacterSet];
-    if ([letterSet characterIsMember:[sortName characterAtIndex:0]]) {
-        return [sortName substringToIndex:1];
-    } else {
-        return @"#";
-    }
-}
-
 - (id)objectWithEntityName:(NSString *)entityName fromObject:(NSDictionary *)info
 {
     NSEntityDescription *entity = [NSEntityDescription
@@ -295,8 +270,6 @@
 - (void)importShow:(NSDictionary *)info
 {
     Show *show = [self objectWithEntityName:@"Show" fromObject:info];
-    show.sortName = [self sortNameFromName:show.name];
-    show.sortSection = [self sortSectionFromSortName:show.sortName];
 /**
 The server now sends the cast over in a dictionary instead of an array, where person ID is the key.
 We could add cast headshots later with:

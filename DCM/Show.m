@@ -37,6 +37,43 @@
     return df;
 }
 
++ (NSString *)sortNameFromName:(NSString *)name
+{
+    NSString *upName = [name uppercaseString];
+    if ([upName hasPrefix:@"THE "]) {
+        return [upName substringFromIndex:4];
+    }
+    NSRange letterRange = [upName rangeOfCharacterFromSet:
+                           [NSCharacterSet alphanumericCharacterSet]];
+    if (letterRange.location == NSNotFound) {
+        return upName;
+    } else {
+        return [upName substringFromIndex:letterRange.location];
+    }
+}
+
++ (NSString *)sortSectionFromSortName:(NSString *)sortName
+{
+    NSCharacterSet *letterSet = [NSCharacterSet letterCharacterSet];
+    if ([letterSet characterIsMember:[sortName characterAtIndex:0]]) {
+        return [sortName substringToIndex:1];
+    } else {
+        return @"#";
+    }
+}
+
+- (void)setName:(NSString *)name
+{
+    [self willChangeValueForKey:@"name"];
+    [self setPrimitiveValue:name forKey:@"name"];
+
+    self.sortName = [Show sortNameFromName:name];
+
+    self.sortSection = [Show sortSectionFromSortName:self.sortName];
+
+    [self didChangeValueForKey:@"name"];
+}
+
 - (BOOL)isFavorite
 {
     for (Performance *p in self.performances) {
