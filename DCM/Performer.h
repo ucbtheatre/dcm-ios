@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSSet *shows;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
-@property (nonatomic, readonly) NSString *fullName;
+@property (nonatomic, strong) NSString *fullName;
 
 + (NSArray *)standardSortDescriptors;
 

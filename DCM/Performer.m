@@ -13,6 +13,7 @@
 @dynamic identifier;
 @dynamic firstName;
 @dynamic lastName;
+@dynamic fullName;
 @dynamic shows;
 
 + (NSArray *)standardSortDescriptors
@@ -25,9 +26,11 @@
              ];
 }
 
-- (NSString *)fullName
+- (void)willSave
 {
-    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+    if (self.fullName == nil) {
+        self.fullName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+    }
 }
 
 @end
