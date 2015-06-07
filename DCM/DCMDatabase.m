@@ -25,6 +25,9 @@ NSString * const DCMDatabaseErrorDomain = @"DCMDatabaseError";
 static NSString * const DCMMetadataOriginLastModifiedKey = @"Origin-Last-Modified";
 static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
+static NSString * const DCMOriginURLStringKey = @"DCMFeedURL";
+static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
+
 @implementation DCMDatabase
 {
     NSManagedObjectModel *__managedObjectModel;
@@ -36,10 +39,14 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 + (DCMDatabase *)sharedDatabase
 {
     static DCMDatabase *database = nil;
-    
-    if (database == nil) {
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+        [[NSUserDefaults standardUserDefaults]
+         registerDefaults:@{DCMOriginURLStringKey: DCMOriginURLString}];
+
         database = [[DCMDatabase alloc] init];
-    }
+    });
     return database;
 }
 
@@ -76,11 +83,9 @@ static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 - (NSURL *)originURL
 {
-#if TARGET_IPHONE_SIMULATOR
-    return [NSURL URLWithString:@"http://api.ucbcomedy.com/dcm?mode=development"];
-#else
-    return [NSURL URLWithString:@"http://api.ucbcomedy.com/dcm"];
-#endif
+    NSString *string = [[NSUserDefaults standardUserDefaults]
+                        stringForKey:DCMOriginURLStringKey];
+    return [NSURL URLWithString:string];
 }
 
 #pragma mark - Core Data
