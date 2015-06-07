@@ -27,6 +27,7 @@
 
 @property (nonatomic, retain) NSDate *favoriteChangedDate;
 
++ (NSArray *)standardSortDescriptors;
 + (NSDateFormatter *)dateFormatter;
 
 - (BOOL)isFavorite;

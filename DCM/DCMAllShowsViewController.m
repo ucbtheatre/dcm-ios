@@ -20,10 +20,9 @@
 - (void)setUpControllerForDatabase:(DCMDatabase *)database
 {
     NSError *error = nil;
-    NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"sortName" ascending:YES];
-    
+
     NSFetchRequest *showsRequest = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
-    [showsRequest setSortDescriptors:@[sortDesc]];
+    [showsRequest setSortDescriptors:[Show standardSortDescriptors]];
     showsController = [[NSFetchedResultsController alloc]
                        initWithFetchRequest:showsRequest
                        managedObjectContext:database.managedObjectContext
@@ -35,7 +34,7 @@
     }
     
     NSFetchRequest *searchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Show"];
-    [searchRequest setSortDescriptors:@[sortDesc]];
+    [searchRequest setSortDescriptors:[Show standardSortDescriptors]];
     searchController = [[NSFetchedResultsController alloc]
                         initWithFetchRequest:searchRequest
                         managedObjectContext:database.managedObjectContext

@@ -24,6 +24,12 @@
 @dynamic sortSection;
 @dynamic favoriteChangedDate;
 
++ (NSArray *)standardSortDescriptors
+{
+    return @[[NSSortDescriptor
+              sortDescriptorWithKey:@"sortName" ascending:YES]];
+}
+
 + (NSDateFormatter *)dateFormatter
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
