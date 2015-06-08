@@ -182,19 +182,9 @@
 			children = (
 				BC3748CC155F4C6C0033BAC9 /* DCMAppDelegate.h */,
 				BC3748CD155F4C6C0033BAC9 /* DCMAppDelegate.m */,
-				BC374905155F7BE90033BAC9 /* DCMDatabase.h */,
-				BC374906155F7BE90033BAC9 /* DCMDatabase.m */,
-				BC31B93D1587D593005F9717 /* DCMDownload.h */,
-				BC31B93E1587D593005F9717 /* DCMDownload.m */,
-				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
-				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
-				BCD9D13A158A7A0000BC9D0F /* WallClock.h */,
-				BCD9D13B158A7A0000BC9D0F /* WallClock.m */,
-				BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */,
-				BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */,
-				BCA413111B136BE800440316 /* NSDictionary+DCM.h */,
-				BCA413121B136BE800440316 /* NSDictionary+DCM.m */,
+				BC9F50261B2541C800594B10 /* Utility */,
 				BC3748F1155F698F0033BAC9 /* Data Model */,
+				BC9F50271B2541D700594B10 /* Database */,
 				BC37490E155F9B2C0033BAC9 /* View Controllers */,
 				BC0D3689194FF71700D8CC4C /* Images.xcassets */,
 				BC3748C4155F4C6C0033BAC9 /* Supporting Files */,
@@ -244,33 +234,107 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BCB86A401585835300DD48E7 /* CountdownView.xib */,
-				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
-				BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */,
-				0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */,
-				0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */,
 				BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */,
 				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
-				BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */,
-				BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */,
-				BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */,
 				BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */,
 				BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */,
-				BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */,
-				BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */,
-				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
-				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
+				BC9F50241B249E8300594B10 /* Favorites */,
+				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
+				BC9F50231B249E7D00594B10 /* Shows */,
+				BC9F50211B249E3500594B10 /* Social */,
+				BC9F50251B2533F100594B10 /* Testing */,
+				BC9F50221B249E4F00594B10 /* Upcoming */,
+				BC9F50201B249E2900594B10 /* Venues */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BC9F50201B249E2900594B10 /* Venues */ = {
+			isa = PBXGroup;
+			children = (
 				BCEC5E6B157C34ED00BA8AAD /* DCMVenueScheduleViewController.h */,
 				BCEC5E6C157C34ED00BA8AAD /* DCMVenueScheduleViewController.m */,
 				BC249A2E1B2001400093604F /* DCMVenuesListViewController.h */,
 				BC249A2F1B2001400093604F /* DCMVenuesListViewController.m */,
 				95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */,
 				95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */,
+			);
+			name = Venues;
+			sourceTree = "<group>";
+		};
+		BC9F50211B249E3500594B10 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */,
+				BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
+		BC9F50221B249E4F00594B10 /* Upcoming */ = {
+			isa = PBXGroup;
+			children = (
+				BCB86A401585835300DD48E7 /* CountdownView.xib */,
+				BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */,
+				BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */,
+			);
+			name = Upcoming;
+			sourceTree = "<group>";
+		};
+		BC9F50231B249E7D00594B10 /* Shows */ = {
+			isa = PBXGroup;
+			children = (
+				BC3748E6155F60F10033BAC9 /* DCMAllShowsViewController.h */,
+				BC3748E7155F60F10033BAC9 /* DCMAllShowsViewController.m */,
+				BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */,
+				BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */,
+				BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */,
+			);
+			name = Shows;
+			sourceTree = "<group>";
+		};
+		BC9F50241B249E8300594B10 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */,
+				0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		BC9F50251B2533F100594B10 /* Testing */ = {
+			isa = PBXGroup;
+			children = (
 				BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */,
 				BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */,
-				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
 			);
-			name = "View Controllers";
+			name = Testing;
+			sourceTree = "<group>";
+		};
+		BC9F50261B2541C800594B10 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BCD9D13A158A7A0000BC9D0F /* WallClock.h */,
+				BCD9D13B158A7A0000BC9D0F /* WallClock.m */,
+				BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */,
+				BCD35DF6176E7D2000B8E799 /* DCMUtilities.m */,
+				BCA413111B136BE800440316 /* NSDictionary+DCM.h */,
+				BCA413121B136BE800440316 /* NSDictionary+DCM.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		BC9F50271B2541D700594B10 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				BC374905155F7BE90033BAC9 /* DCMDatabase.h */,
+				BC374906155F7BE90033BAC9 /* DCMDatabase.m */,
+				BC31B93D1587D593005F9717 /* DCMDownload.h */,
+				BC31B93E1587D593005F9717 /* DCMDownload.m */,
+				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
+				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
