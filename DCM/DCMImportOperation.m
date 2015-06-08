@@ -213,9 +213,8 @@
         Performer *p = [[Performer alloc]
                         initWithEntity:entity
                         insertIntoManagedObjectContext:managedObjectContext];
-        p.identifier = key;
-        p.firstName = perfInfo[@"first"];
-        p.lastName = perfInfo[@"last"];
+        [p setIdentifier:key];
+        [p setFirstName:perfInfo[@"first"] lastName:perfInfo[@"last"]];
         [performers addObject:p];
         [self cacheObject:p withIdentifier:key];
     }

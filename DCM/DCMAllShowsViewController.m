@@ -54,7 +54,7 @@
     if (controller == searchController) {
         return self.searchDisplayController.searchResultsTableView;
     }
-    NSAssert(NO, @"Unfamiliar Search Controller");
+    NSLog(@"Unfamiliar Search Controller: %@", controller);
     return nil;
 }
 
@@ -66,7 +66,7 @@
     if (tableView == self.tableView) {
         return showsController;
     }
-    NSAssert(NO, @"Unfamiliar Table View");
+    NSLog(@"Unfamiliar Table View: %@", tableView);
     return nil;
 }
 
@@ -193,7 +193,7 @@
     NSPredicate *predicate;
     if ([searchString length] > 0) {
         NSPredicate *showNamePredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", searchString];
-        NSPredicate *performerNamePredicate = [NSPredicate predicateWithFormat:@"ANY performers.fullName CONTAINS[cd] %@", searchString];
+        NSPredicate *performerNamePredicate = [NSPredicate predicateWithFormat:@"ANY performers.foldedName CONTAINS[cd] %@", searchString];
         predicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:@[showNamePredicate, performerNamePredicate]];
     } else {
         predicate = nil;

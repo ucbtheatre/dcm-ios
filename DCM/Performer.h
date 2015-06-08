@@ -13,11 +13,18 @@
 
 @property (nonatomic, strong) NSNumber *identifier;
 @property (nonatomic, strong) NSSet *shows;
+@property (nonatomic, strong) NSString *firstInitial;
 @property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastInitial;
 @property (nonatomic, strong) NSString *lastName;
-@property (nonatomic, strong) NSString *fullName;
+@property (nonatomic, strong) NSString *foldedName;
+
+@property (nonatomic, readonly) NSAttributedString *attributedFullName;
 
 + (NSArray *)standardSortDescriptors;
++ (NSString *)sectionNameKeyPath;
+
+- (void)setFirstName:(NSString *)firstName lastName:(NSString *)lastName;
 
 @end
 

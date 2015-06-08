@@ -36,6 +36,8 @@
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
 		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
 		BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */; };
+		BC9F502B1B2543BC00594B10 /* DCMAllPerformersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F502A1B2543BC00594B10 /* DCMAllPerformersViewController.m */; };
+		BC9F502F1B255D6B00594B10 /* DCMPerformerScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F502E1B255D6B00594B10 /* DCMPerformerScheduleViewController.m */; };
 		BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA413121B136BE800440316 /* NSDictionary+DCM.m */; };
 		BCA9A556194E902A006FC7BF /* DCMImportMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCA9A555194E902A006FC7BF /* DCMImportMap.plist */; };
 		BCB0074F177CAA25004F3A4E /* DCMSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0074E177CAA25004F3A4E /* DCMSearchResultCell.xib */; };
@@ -103,6 +105,10 @@
 		BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMUpcomingViewController.m; sourceTree = "<group>"; };
 		BC965C93156036BA00665E50 /* FluxCapacitorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxCapacitorViewController.h; sourceTree = "<group>"; };
 		BC965C94156036BA00665E50 /* FluxCapacitorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxCapacitorViewController.m; sourceTree = "<group>"; };
+		BC9F50291B2543BC00594B10 /* DCMAllPerformersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMAllPerformersViewController.h; sourceTree = "<group>"; };
+		BC9F502A1B2543BC00594B10 /* DCMAllPerformersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMAllPerformersViewController.m; sourceTree = "<group>"; };
+		BC9F502D1B255D6B00594B10 /* DCMPerformerScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMPerformerScheduleViewController.h; sourceTree = "<group>"; };
+		BC9F502E1B255D6B00594B10 /* DCMPerformerScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMPerformerScheduleViewController.m; sourceTree = "<group>"; };
 		BCA413111B136BE800440316 /* NSDictionary+DCM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+DCM.h"; sourceTree = "<group>"; };
 		BCA413121B136BE800440316 /* NSDictionary+DCM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DCM.m"; sourceTree = "<group>"; };
 		BCA9A555194E902A006FC7BF /* DCMImportMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DCMImportMap.plist; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 				BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */,
 				BC9F50241B249E8300594B10 /* Favorites */,
 				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
+				BC9F502C1B2543C200594B10 /* Performers */,
 				BC9F50231B249E7D00594B10 /* Shows */,
 				BC9F50211B249E3500594B10 /* Social */,
 				BC9F50251B2533F100594B10 /* Testing */,
@@ -337,6 +344,17 @@
 			name = Database;
 			sourceTree = "<group>";
 		};
+		BC9F502C1B2543C200594B10 /* Performers */ = {
+			isa = PBXGroup;
+			children = (
+				BC9F50291B2543BC00594B10 /* DCMAllPerformersViewController.h */,
+				BC9F502A1B2543BC00594B10 /* DCMAllPerformersViewController.m */,
+				BC9F502D1B255D6B00594B10 /* DCMPerformerScheduleViewController.h */,
+				BC9F502E1B255D6B00594B10 /* DCMPerformerScheduleViewController.m */,
+			);
+			name = Performers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,6 +431,7 @@
 			files = (
 				BC3748CA155F4C6C0033BAC9 /* main.m in Sources */,
 				BC3748CE155F4C6C0033BAC9 /* DCMAppDelegate.m in Sources */,
+				BC9F502B1B2543BC00594B10 /* DCMAllPerformersViewController.m in Sources */,
 				BC3748E8155F60F10033BAC9 /* DCMAllShowsViewController.m in Sources */,
 				BC3748EC155F62F00033BAC9 /* DCM.xcdatamodeld in Sources */,
 				BC3748F0155F69720033BAC9 /* MBProgressHUD.m in Sources */,
@@ -422,6 +441,7 @@
 				BC3748FD155F69EC0033BAC9 /* Venue.m in Sources */,
 				BC374900155F6A8C0033BAC9 /* Show.m in Sources */,
 				BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */,
+				BC9F502F1B255D6B00594B10 /* DCMPerformerScheduleViewController.m in Sources */,
 				BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */,
 				BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */,
 				BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */,

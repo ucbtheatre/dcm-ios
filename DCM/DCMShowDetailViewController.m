@@ -204,7 +204,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformerCell"];
     Performer *performer = [performers objectAtIndex:row];
-    cell.textLabel.text = performer.fullName;
+    cell.textLabel.attributedText = performer.attributedFullName;
     return cell;
 }
 

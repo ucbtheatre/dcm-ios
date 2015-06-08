@@ -13,10 +13,6 @@
 #define kVenueLabelTag 102
 #define kTitleLabelTag 103
 
-@interface DCMFavoritesViewController ()
-
-@end
-
 @implementation DCMFavoritesViewController
 
 - (void)awakeFromNib

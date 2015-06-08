@@ -39,16 +39,21 @@
 
 + (NSString *)sortNameFromName:(NSString *)name
 {
-    NSString *upName = [name uppercaseString];
-    if ([upName hasPrefix:@"THE "]) {
-        return [upName substringFromIndex:4];
+    NSStringCompareOptions options = (NSCaseInsensitiveSearch |
+                                      NSDiacriticInsensitiveSearch |
+                                      NSWidthInsensitiveSearch);
+    NSString *foldedName = [name
+                            stringByFoldingWithOptions:options
+                            locale:[NSLocale currentLocale]];
+    if ([foldedName hasPrefix:@"the "]) {
+        return [foldedName substringFromIndex:4];
     }
-    NSRange letterRange = [upName rangeOfCharacterFromSet:
+    NSRange letterRange = [foldedName rangeOfCharacterFromSet:
                            [NSCharacterSet alphanumericCharacterSet]];
     if (letterRange.location == NSNotFound) {
-        return upName;
+        return foldedName;
     } else {
-        return [upName substringFromIndex:letterRange.location];
+        return [foldedName substringFromIndex:letterRange.location];
     }
 }
 
