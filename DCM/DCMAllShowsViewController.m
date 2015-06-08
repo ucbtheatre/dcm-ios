@@ -109,13 +109,6 @@
     [self setUpControllerForDatabase:[DCMDatabase sharedDatabase]];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    showsController = nil;
-    searchController = nil;
-}
-
 - (IBAction)refresh:(id)sender
 {
     [[DCMDatabase sharedDatabase] checkForUpdate];

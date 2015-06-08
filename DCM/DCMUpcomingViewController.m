@@ -246,15 +246,6 @@
     [self refresh];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    self.dateLabel = nil;
-    self.countdownView = nil;
-    self.countdownLabel = nil;
-    performancesController = nil;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

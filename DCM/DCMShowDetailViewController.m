@@ -93,14 +93,6 @@
     }
 }
 
-- (void)viewDidUnload
-{
-    self.show = nil;
-    performers = nil;
-    performances = nil;
-    [super viewDidUnload];
-}
-
 - (IBAction)toggleFavorite:(id)sender
 {
     NSError *error = nil;

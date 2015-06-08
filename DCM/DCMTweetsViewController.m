@@ -10,11 +10,9 @@
 
 @implementation DCMTweetsViewController
 
-- (void)viewDidUnload
+- (void)dealloc
 {
     self.webView.delegate = nil;
-    self.webView = nil;
-    [super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -63,12 +63,6 @@
     scrollOnNextAppearance = YES;
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    _performancesController = nil;
-}
-
 - (void)scrollToCurrentShowAnimated:(BOOL)animated
 {
     NSDate *date = [[WallClock sharedClock] date];
