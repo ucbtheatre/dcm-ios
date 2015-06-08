@@ -61,7 +61,7 @@
 {
     NSCharacterSet *letterSet = [NSCharacterSet letterCharacterSet];
     if ([letterSet characterIsMember:[sortName characterAtIndex:0]]) {
-        return [sortName substringToIndex:1];
+        return [[sortName substringToIndex:1] uppercaseString];
     } else {
         return @"#";
     }
