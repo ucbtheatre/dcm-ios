@@ -105,7 +105,7 @@
                             <rect key="frame" x="0.0" y="173" width="320" height="64"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq5-rn-4BV">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq5-rn-4BV">
                                     <rect key="frame" x="127" y="11" width="66" height="42"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" image="Glasses">
@@ -121,6 +121,10 @@
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="yq5-rn-4BV" firstAttribute="centerX" secondItem="w9U-Yw-ECW" secondAttribute="centerX" id="62O-A4-0bl"/>
+                                <constraint firstItem="yq5-rn-4BV" firstAttribute="centerY" secondItem="w9U-Yw-ECW" secondAttribute="centerY" id="Jco-1f-Zox"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="x8x-w4-bRs" detailTextLabel="Kxk-qY-P7r" style="IBUITableViewCellStyleValue2" id="z9X-N3-XLV">
@@ -292,7 +296,7 @@
         <scene sceneID="K0i-kJ-OoV">
             <objects>
                 <navigationController definesPresentationContext="YES" id="W47-pV-csQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="#dcm17" image="TwitterBird" id="Gnj-Qe-tsK"/>
+                    <tabBarItem key="tabBarItem" title="#dcm17" image="Hashtag" id="Gnj-Qe-tsK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yiB-eu-ZGz">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -597,11 +601,11 @@
                             <rect key="frame" x="0.0" y="64" width="320" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Dz-ap-NQo">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dz-ap-NQo">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-Kv-k65">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-Kv-k65">
                                     <rect key="frame" x="8" y="38" width="304" height="64"/>
                                     <string key="text">Title
 of Show</string>
@@ -611,7 +615,7 @@ of Show</string>
                                     <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="shadowOffset" width="2" height="0.0"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Anytown, USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-c3-sr5">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Anytown, USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-c3-sr5">
                                     <rect key="frame" x="8" y="110" width="304" height="19"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -621,6 +625,20 @@ of Show</string>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="xy6-Kv-k65" firstAttribute="trailing" secondItem="Oqd-c3-sr5" secondAttribute="trailing" id="18O-JV-YiW"/>
+                                <constraint firstItem="6Dz-ap-NQo" firstAttribute="leading" secondItem="bvE-Ny-9Eb" secondAttribute="leading" id="2u1-am-pIX"/>
+                                <constraint firstItem="xy6-Kv-k65" firstAttribute="leading" secondItem="bvE-Ny-9Eb" secondAttribute="leadingMargin" id="7ni-xG-Xmg"/>
+                                <constraint firstAttribute="bottom" secondItem="Oqd-c3-sr5" secondAttribute="bottom" constant="11" id="CwK-aP-8Dv"/>
+                                <constraint firstItem="Oqd-c3-sr5" firstAttribute="top" secondItem="xy6-Kv-k65" secondAttribute="bottom" constant="8" symbolic="YES" id="JsW-nG-shu"/>
+                                <constraint firstItem="6Dz-ap-NQo" firstAttribute="top" secondItem="bvE-Ny-9Eb" secondAttribute="top" id="MMT-MY-XK3"/>
+                                <constraint firstAttribute="trailing" secondItem="6Dz-ap-NQo" secondAttribute="trailing" id="Mdt-Xw-tEl"/>
+                                <constraint firstItem="6Dz-ap-NQo" firstAttribute="centerY" secondItem="xy6-Kv-k65" secondAttribute="centerY" id="Wff-Et-BoD"/>
+                                <constraint firstAttribute="bottom" secondItem="6Dz-ap-NQo" secondAttribute="bottom" id="XgW-ET-Gk6"/>
+                                <constraint firstItem="xy6-Kv-k65" firstAttribute="top" secondItem="bvE-Ny-9Eb" secondAttribute="top" constant="38" id="em9-EJ-iiT"/>
+                                <constraint firstItem="Oqd-c3-sr5" firstAttribute="centerX" secondItem="6Dz-ap-NQo" secondAttribute="centerX" id="w7C-c6-nLF"/>
+                                <constraint firstItem="xy6-Kv-k65" firstAttribute="leading" secondItem="Oqd-c3-sr5" secondAttribute="leading" id="zPp-hZ-VXP"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromoBlurbCell" textLabel="mqj-f0-Kms" style="IBUITableViewCellStyleDefault" id="eQ2-aj-07g">
@@ -843,12 +861,12 @@ Copyright ©2009-2012 Matej Bukovinski</string>
     <resources>
         <image name="Barrier" width="30" height="18"/>
         <image name="Glasses" width="66" height="42"/>
+        <image name="Hashtag" width="24" height="24"/>
         <image name="Heart" width="28" height="28"/>
         <image name="Heart0" width="17" height="15"/>
         <image name="Masks" width="37" height="23"/>
         <image name="Person" width="24" height="21"/>
         <image name="Ticket" width="28" height="18"/>
-        <image name="TwitterBird" width="28" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -857,7 +875,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="EB6-eM-Rh2"/>
-        <segue reference="lGQ-UK-JVb"/>
+        <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
