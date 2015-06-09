@@ -32,8 +32,9 @@
                                     options:NSCaseInsensitiveSearch];
     }
 
-    // The last character is probably a space; trim it.
-    name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // The last character is probably a space or a dash; trim it.
+    NSCharacterSet *trimSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    name = [name stringByTrimmingCharactersInSet:trimSet];
 
     if ([name length] > 0) {
         return name;
