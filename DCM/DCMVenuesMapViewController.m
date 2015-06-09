@@ -121,6 +121,7 @@
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
         [annotation setCoordinate:[key MKCoordinateValue]];
         [annotation setTitle:[DCMVenuesMapViewController titleForVenues:array]];
+        [annotation setSubtitle:[(Venue *)[array firstObject] address]];
 
         [self.mapView addAnnotation:annotation];
 
