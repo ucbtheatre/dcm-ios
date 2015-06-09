@@ -33,13 +33,9 @@
     </entity>
     <entity name="Venue" representedClassName="Venue" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="directions" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="homeURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="mapURLString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="performances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Performance" inverseName="venue" inverseEntity="Performance" syncable="YES"/>
@@ -48,6 +44,6 @@
         <element name="Performance" positionX="160" positionY="192" width="128" height="165"/>
         <element name="Performer" positionX="160" positionY="192" width="128" height="150"/>
         <element name="Show" positionX="160" positionY="192" width="128" height="195"/>
-        <element name="Venue" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="Venue" positionX="160" positionY="192" width="128" height="30"/>
     </elements>
 </model>

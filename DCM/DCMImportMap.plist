@@ -6,20 +6,12 @@
 	<dict>
 		<key>address</key>
 		<string>address</string>
-		<key>directions</key>
-		<string>directions</string>
-		<key>homeURLString</key>
-		<string>url</string>
 		<key>latitude</key>
 		<string>lat</string>
 		<key>longitude</key>
 		<string>lng</string>
 		<key>identifier</key>
 		<string>id</string>
-		<key>imageURLString</key>
-		<string>image</string>
-		<key>mapURLString</key>
-		<string>map_url</string>
 		<key>name</key>
 		<string>name</string>
 		<key>shortName</key>

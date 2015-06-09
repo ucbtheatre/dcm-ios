@@ -16,10 +16,6 @@
 @dynamic name;
 @dynamic shortName;
 @dynamic address;
-@dynamic directions;
-@dynamic imageURLString;
-@dynamic mapURLString;
-@dynamic homeURLString;
 @dynamic performances;
 @dynamic latitude;
 @dynamic longitude;

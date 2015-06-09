@@ -17,10 +17,6 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSString * directions;
-@property (nonatomic, retain) NSString * imageURLString;
-@property (nonatomic, retain) NSString * mapURLString;
-@property (nonatomic, retain) NSString * homeURLString;
 @property (nonatomic, retain) NSSet *performances;
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
