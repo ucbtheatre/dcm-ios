@@ -21,10 +21,14 @@
 
 @synthesize window = _window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"America/New_York"];
-    if (tz) [NSTimeZone setDefaultTimeZone:tz];
+    NSTimeZone *nyZone = [NSTimeZone timeZoneWithName:@"America/New_York"];
+    if (nyZone) {
+        [NSTimeZone setDefaultTimeZone:nyZone];
+    } else {
+        NSLog(@"Time Zone 'America/New_York' not found!");
+    }
 
     UIColor *tintColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1];
     if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
@@ -34,6 +38,27 @@
         self.window.tintColor = tintColor;
     }
 
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
+{
+    NSString *bundleVersion = [coder decodeObjectForKey:UIApplicationStateRestorationBundleVersionKey];
+    NSString *systemVersion = [coder decodeObjectForKey:UIApplicationStateRestorationSystemVersionKey];
+    NSDate *timestamp = [coder decodeObjectForKey:UIApplicationStateRestorationTimestampKey];
+
+    NSLog(@"Restoring app state saved by app version %@ under system %@ on %@", bundleVersion, systemVersion, timestamp);
+
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
+{
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     [[NSNotificationCenter defaultCenter]
      addObserverForName:DCMDatabaseProgressNotification object:nil
      queue:[NSOperationQueue mainQueue]
@@ -71,10 +96,13 @@
              }
          }
      }];
+
     // Suppress error messages unless the database is empty.
     DCMDatabase *db = [DCMDatabase sharedDatabase];
     [db checkForUpdateQuietly:![db isEmpty]];
+
     [[WallClock sharedClock] start];
+
     return YES;
 }
 

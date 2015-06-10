@@ -33,6 +33,7 @@
 		BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374906155F7BE90033BAC9 /* DCMDatabase.m */; };
 		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
+		BC66EFE61B27D522005B10EF /* DCMTabControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */; };
 		BC72D4D81B26A8640028EC65 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC72D4D71B26A8640028EC65 /* Launch Screen.xib */; };
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
 		BC965C91156020BE00665E50 /* DCMUpcomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC965C90156020BE00665E50 /* DCMUpcomingViewController.m */; };
@@ -99,6 +100,8 @@
 		BC374909155F8A030033BAC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMShowDetailViewController.h; sourceTree = "<group>"; };
 		BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMShowDetailViewController.m; sourceTree = "<group>"; };
+		BC66EFE41B27D522005B10EF /* DCMTabControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTabControllerDelegate.h; sourceTree = "<group>"; };
+		BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTabControllerDelegate.m; sourceTree = "<group>"; };
 		BC72D4D71B26A8640028EC65 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		BC7C6A9A15900A2C0055E985 /* iTunesArtwork */ = {isa = PBXFileReference; explicitFileType = image.jpeg; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DCMTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -204,12 +207,11 @@
 		BC3748C4155F4C6C0033BAC9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BC7C6A9A15900A2C0055E985 /* iTunesArtwork */,
 				BC3748C5155F4C6C0033BAC9 /* DCM-Info.plist */,
-				BC3748C6155F4C6C0033BAC9 /* InfoPlist.strings */,
-				BC3748C9155F4C6C0033BAC9 /* main.m */,
 				BC3748CB155F4C6C0033BAC9 /* DCM-Prefix.pch */,
-				BCD35DFB176E8DE800B8E799 /* DCMTweets.html */,
+				BC3748C6155F4C6C0033BAC9 /* InfoPlist.strings */,
+				BC7C6A9A15900A2C0055E985 /* iTunesArtwork */,
+				BC3748C9155F4C6C0033BAC9 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -227,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				BC3748EA155F62F00033BAC9 /* DCM.xcdatamodeld */,
-				BCA9A555194E902A006FC7BF /* DCMImportMap.plist */,
 				BC3748FE155F6A8C0033BAC9 /* Show.h */,
 				BC3748FF155F6A8C0033BAC9 /* Show.m */,
 				BC3748FB155F69EC0033BAC9 /* Venue.h */,
@@ -243,6 +244,8 @@
 		BC37490E155F9B2C0033BAC9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BC66EFE41B27D522005B10EF /* DCMTabControllerDelegate.h */,
+				BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */,
 				BC15F37D157C53DB00239CB8 /* DCMScheduleViewController.h */,
 				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
 				BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */,
@@ -277,6 +280,7 @@
 			children = (
 				BCD35DF8176E8A4600B8E799 /* DCMTweetsViewController.h */,
 				BCD35DF9176E8A4700B8E799 /* DCMTweetsViewController.m */,
+				BCD35DFB176E8DE800B8E799 /* DCMTweets.html */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -343,6 +347,7 @@
 				BC31B93E1587D593005F9717 /* DCMDownload.m */,
 				BC374901155F6B010033BAC9 /* DCMImportOperation.h */,
 				BC374902155F6B010033BAC9 /* DCMImportOperation.m */,
+				BCA9A555194E902A006FC7BF /* DCMImportMap.plist */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				BC965C95156036BA00665E50 /* FluxCapacitorViewController.m in Sources */,
 				0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */,
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
+				BC66EFE61B27D522005B10EF /* DCMTabControllerDelegate.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
 				BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */,
