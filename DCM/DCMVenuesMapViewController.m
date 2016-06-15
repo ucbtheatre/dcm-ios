@@ -118,7 +118,6 @@
 
     for (NSValue *key in venuesForCoordinate) {
         NSArray *array = [venuesForCoordinate objectForKey:key];
-
         
         //if we have locations that don't have a lat/long it screws up our calculation
         if([[array firstObject] latitude] != nil &&
@@ -137,6 +136,16 @@
     }
 
     [self resetMapRect:nil];
+}
+
+- (void)showListView {
+    NSMutableArray* venues = [NSMutableArray array];
+    
+    for(NSArray* arr in venuesForCoordinate.allValues){
+        [venues addObjectsFromArray:arr];
+    }
+    
+    [self performSegueWithIdentifier:@"MapToVenueList" sender:venues];
 }
 
 - (void)viewDidLoad

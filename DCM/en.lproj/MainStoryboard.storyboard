@@ -454,7 +454,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aOR-F6-4NJ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOR-F6-4NJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </mapView>
                         </subviews>
@@ -470,6 +470,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Reset" id="NhP-ev-1W5">
                             <connections>
                                 <action selector="resetMapRect:" destination="ucD-0Q-1I3" id="a4O-4B-NYC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="List" id="pN1-9V-Cgh">
+                            <connections>
+                                <action selector="showListView" destination="ucD-0Q-1I3" id="YFR-Vq-f96"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -519,13 +524,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="pgj-S2-WW6">
-                        <barButtonItem key="rightBarButtonItem" title="Directions" id="vpD-Ld-FlT">
-                            <connections>
-                                <action selector="getDirections:" destination="n3C-bz-fSX" id="aIb-5A-Swc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="pgj-S2-WW6"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38o-rv-GoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -891,8 +890,8 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Qsh-b5-yJu"/>
         <segue reference="bwO-Ck-TVu"/>
-        <segue reference="EB6-eM-Rh2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

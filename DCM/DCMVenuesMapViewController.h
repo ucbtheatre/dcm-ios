@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)resetMapRect:(id)sender;
+- (IBAction)showListView;
 
 @end

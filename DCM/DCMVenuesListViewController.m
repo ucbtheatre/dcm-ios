@@ -16,12 +16,6 @@
 
 @implementation DCMVenuesListViewController
 
-- (void)getDirections:(id)sender
-{
-    Venue *venue = [self.venueList firstObject];
-    NSDictionary *options = @{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking};
-    [venue.mapItem openInMapsWithLaunchOptions:options];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
