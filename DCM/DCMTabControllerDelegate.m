@@ -52,6 +52,7 @@ static NSString * const kDCMTabOrderKey = @"DCMTabOrder";
 
         tabBarController.viewControllers = array;
     }
+    
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
