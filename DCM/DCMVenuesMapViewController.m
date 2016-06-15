@@ -119,16 +119,21 @@
     for (NSValue *key in venuesForCoordinate) {
         NSArray *array = [venuesForCoordinate objectForKey:key];
 
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        [annotation setCoordinate:[key MKCoordinateValue]];
-        [annotation setTitle:[DCMVenuesMapViewController titleForVenues:array]];
-        [annotation setSubtitle:[(Venue *)[array firstObject] address]];
+        
+        //if we have locations that don't have a lat/long it screws up our calculation
+        if([[array firstObject] latitude] != nil &&
+           [[array firstObject] longitude] != nil){
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            [annotation setCoordinate:[key MKCoordinateValue]];
+            [annotation setTitle:[DCMVenuesMapViewController titleForVenues:array]];
+            [annotation setSubtitle:[(Venue *)[array firstObject] address]];
 
-        [self.mapView addAnnotation:annotation];
+            [self.mapView addAnnotation:annotation];
 
-        MKMapPoint mapPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(mapPoint.x, mapPoint.y, 0, 0);
-        defaultMapRect = MKMapRectUnion(defaultMapRect, pointRect);
+            MKMapPoint mapPoint = MKMapPointForCoordinate(annotation.coordinate);
+            MKMapRect pointRect = MKMapRectMake(mapPoint.x, mapPoint.y, 0, 0);
+            defaultMapRect = MKMapRectUnion(defaultMapRect, pointRect);
+        }
     }
 
     [self resetMapRect:nil];
