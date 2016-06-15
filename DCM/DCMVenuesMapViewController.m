@@ -40,7 +40,7 @@
         return name;
     } else {
         // If for some reason there is no common prefix, fall back to a count.
-        return [NSString stringWithFormat:@"%d Stages", (int)[array count]];
+        return @"All Stages";
     }
 }
 

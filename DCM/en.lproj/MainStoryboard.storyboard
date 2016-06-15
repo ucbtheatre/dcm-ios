@@ -467,6 +467,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Venues" id="pTJ-R6-k42">
+                        <barButtonItem key="backBarButtonItem" title="Map" id="68t-Xk-vbe"/>
                         <barButtonItem key="leftBarButtonItem" title="Reset" id="NhP-ev-1W5">
                             <connections>
                                 <action selector="resetMapRect:" destination="ucD-0Q-1I3" id="a4O-4B-NYC"/>
@@ -890,7 +891,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Qsh-b5-yJu"/>
+        <segue reference="EB6-eM-Rh2"/>
         <segue reference="bwO-Ck-TVu"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
