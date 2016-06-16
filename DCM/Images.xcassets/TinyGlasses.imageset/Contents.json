@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Glasses.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Glasses@2x.png",
+      "filename" : "Glasses@2x copy.png",
       "scale" : "2x"
     },
     {

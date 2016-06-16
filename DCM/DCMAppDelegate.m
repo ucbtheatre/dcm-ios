@@ -36,14 +36,16 @@
         NSLog(@"Time Zone 'America/New_York' not found!");
     }
 
-    UIColor *tintColor = [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1];
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        [[UINavigationBar appearance] setTintColor:tintColor];
-        [[UISearchBar appearance] setTintColor:tintColor];
-    } else {
-        self.window.tintColor = tintColor;
-    }
-
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    [UINavigationBar appearance].barTintColor = [UIColor colorWithRed:0.19 green:0.31 blue:0.64 alpha:1.0];
+    [UINavigationBar appearance].tintColor = [UIColor whiteColor];
+    [UINavigationBar appearance].titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    [UITabBar appearance].barTintColor = [UIColor colorWithRed:.82 green:.25 blue:.25 alpha:1.0];
+    [UITabBar appearance].tintColor = [UIColor whiteColor];
+    
     return YES;
 }
 
@@ -106,6 +108,7 @@
              }
          }
      }];
+
 
     // Suppress error messages unless the database is empty.
     DCMDatabase *db = [DCMDatabase sharedDatabase];

@@ -113,7 +113,7 @@
     [center addObserver:self selector:@selector(timeToRefresh:)
                    name:WallClockMinuteDidChangeNotification object:nil];
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-        self.dateLabel.textColor = [UIColor darkTextColor];
+        self.dateLabel.textColor = [UIColor whiteColor];
         self.dateLabel.shadowColor = nil;
     }
 }
