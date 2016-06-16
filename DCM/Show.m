@@ -141,7 +141,7 @@
             if (idx > 0) [text appendString:@", "];
             [text appendFormat:@"%@ at %@",
              [dateFormatter stringFromDate:p.startDate],
-             p.venue.name];
+             p.venue.shortName];
         }];
     }
     else {

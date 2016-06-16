@@ -51,7 +51,7 @@
 
 - (void)updateFavoriteButton
 {
-    NSString *name = [self.show isFavorite] ? @"Heart1" : @"Heart0";
+    NSString *name = [self.show isFavorite] ? @"LikeFilled" : @"Like";
     self.favoriteButton.image = [UIImage imageNamed:name];
 }
 
@@ -67,9 +67,6 @@
 
     self.titleLabel.text = self.show.name;
     self.homeCityLabel.text = self.show.homeCity;
-
-    CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
-    [self.imageView.layer addSublayer:vignetteLayer];
 
     // Show the Share button
     NSMutableArray *items = [self.navigationItem.rightBarButtonItems mutableCopy];
@@ -91,6 +88,17 @@
     } else {
         self.imageView.backgroundColor = [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1];
     }
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+        
+    if(self.imageView.layer.sublayers.count){
+        [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
+    }
+    CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
+    [self.imageView.layer addSublayer:vignetteLayer];
+    
 }
 
 - (IBAction)toggleFavorite:(id)sender

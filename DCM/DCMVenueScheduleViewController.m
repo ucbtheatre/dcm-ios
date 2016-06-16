@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     [self enableLongPressRecognizerOnTableView:self.tableView];
-    self.navigationItem.title = self.venue.name;
+    self.navigationItem.title = self.venue.shortName;
 }
 
 - (void)getDirections:(id)sender

@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Hashtag.png",
+      "filename" : "User.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Hashtag-1.png",
+      "filename" : "User-1.png",
       "scale" : "2x"
     },
     {

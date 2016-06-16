@@ -31,7 +31,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VenueCell" forIndexPath:indexPath];
 
     Venue *venue = [self.venueList objectAtIndex:indexPath.row];
-    cell.textLabel.text = venue.name;
+    cell.textLabel.text = venue.shortName;
 
     return cell;
 }

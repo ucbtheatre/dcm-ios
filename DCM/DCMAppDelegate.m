@@ -91,8 +91,12 @@
              }
              hud.labelText = activity;
              if (progress == DCMDatabaseProgressComplete) {
-                 hud.mode = MBProgressHUDModeText;
-                 [hud hide:YES afterDelay:1];
+                 if(activity.length){
+                     hud.mode = MBProgressHUDModeText;
+                     [hud hide:YES afterDelay:1];
+                 } else {
+                     [hud hide:YES];
+                 }
              }
          }
      }];

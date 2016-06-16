@@ -25,9 +25,9 @@
  */
 + (NSString *)titleForVenues:(NSArray *)array
 {
-    NSString *name = [[array firstObject] name];
+    NSString *name = [[array firstObject] shortName];
     for (NSUInteger i = 1; i < [array count]; i++) {
-        NSString *otherName = [[array objectAtIndex:i] name];
+        NSString *otherName = [[array objectAtIndex:i] shortName];
         name = [name commonPrefixWithString:otherName
                                     options:NSCaseInsensitiveSearch];
     }

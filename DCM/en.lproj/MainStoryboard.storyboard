@@ -248,7 +248,7 @@
         <scene sceneID="spz-Be-BSC">
             <objects>
                 <navigationController storyboardIdentifier="FavoritesNavigationController" title="Favorites Navigation" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uBx-cy-dVK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Heart" id="53C-Fl-Das"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Like" id="53C-Fl-Das"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i0Z-HI-HTC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -274,14 +274,13 @@
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sX0-ic-Xg2">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                                 <connections>
                                     <outlet property="delegate" destination="Y3g-Np-mzV" id="hJv-kl-Wdz"/>
                                 </connections>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="sX0-ic-Xg2" secondAttribute="bottom" id="QSP-bj-p5H"/>
                             <constraint firstItem="sX0-ic-Xg2" firstAttribute="top" secondItem="h9y-0K-Y0S" secondAttribute="top" id="QpM-cG-8Gp"/>
@@ -413,7 +412,7 @@
         <scene sceneID="I9h-Es-XBl">
             <objects>
                 <navigationController storyboardIdentifier="PerformersNavigationController" title="Performers Navigation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sgz-P9-7Zu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Performers" image="Person" id="GMh-Ah-5pw"/>
+                    <tabBarItem key="tabBarItem" title="Performers" image="Performers" id="GMh-Ah-5pw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ia6-Xi-6l8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -430,7 +429,7 @@
         <scene sceneID="owG-Mr-HIE">
             <objects>
                 <navigationController storyboardIdentifier="NowNavigationController" title="Now Navigation" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p3q-ex-DjY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now" image="Ticket" id="toI-Yc-ghw"/>
+                    <tabBarItem key="tabBarItem" title="Now" image="Now" id="toI-Yc-ghw"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Bid-mE-s4X">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -592,7 +591,7 @@
         <scene sceneID="bYa-Au-3SG">
             <objects>
                 <navigationController storyboardIdentifier="VenuesNavigationController" title="Venues Navigation" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aWE-pS-yT1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Venues" image="Barrier" id="n9P-sF-Dxy"/>
+                    <tabBarItem key="tabBarItem" title="Venues" image="Map Marker" id="n9P-sF-Dxy"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CAc-rt-zaK">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -713,14 +712,14 @@ of Show</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Performer Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VvG-hN-Lze">
-                                            <rect key="frame" x="54" y="0.0" width="251" height="44"/>
+                                            <rect key="frame" x="74" y="0.0" width="231" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Person" id="au4-pG-PT6">
-                                            <rect key="frame" x="15" y="11" width="24" height="21"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="User" id="au4-pG-PT6">
+                                            <rect key="frame" x="15" y="0.0" width="44" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -862,7 +861,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         <scene sceneID="hkC-BK-Iin">
             <objects>
                 <navigationController storyboardIdentifier="ShowsNavigationController" title="Shows Navigation" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3cc-g6-m2K" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shows" image="Masks" id="6Hm-ua-LS2"/>
+                    <tabBarItem key="tabBarItem" title="Shows" image="Theatre Mask" id="6Hm-ua-LS2"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Y62-aw-oUv">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -876,14 +875,15 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Barrier" width="30" height="18"/>
         <image name="Glasses" width="66" height="42"/>
-        <image name="Hashtag" width="24" height="24"/>
-        <image name="Heart" width="28" height="28"/>
+        <image name="Hashtag" width="50" height="50"/>
         <image name="Heart0" width="17" height="15"/>
-        <image name="Masks" width="37" height="23"/>
-        <image name="Person" width="24" height="21"/>
-        <image name="Ticket" width="28" height="18"/>
+        <image name="Like" width="50" height="50"/>
+        <image name="Map Marker" width="50" height="50"/>
+        <image name="Now" width="50" height="50"/>
+        <image name="Performers" width="50" height="50"/>
+        <image name="Theatre Mask" width="50" height="50"/>
+        <image name="User" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
