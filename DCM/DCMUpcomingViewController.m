@@ -297,7 +297,7 @@
 
 - (IBAction)dontThink:(id)sender
 {
-    [self performSegueWithIdentifier:@"GiveCredit" sender:sender];
+    //[self performSegueWithIdentifier:@"GiveCredit" sender:sender];
 }
 
 - (IBAction)timeTravel:(id)sender

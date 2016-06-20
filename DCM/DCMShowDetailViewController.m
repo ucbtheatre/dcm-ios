@@ -23,35 +23,6 @@
 @synthesize show;
 @synthesize favoriteButton;
 
-+ (CALayer *)vignetteLayerForBounds:(CGRect)imageBounds
-{
-    // Gradient components: Opaque Black to Transparent Black
-    static const CGFloat colorComponents[] = {0, 0.2, 0, 1};
-    
-    const CGPoint center = CGPointMake(CGRectGetMidX(imageBounds), CGRectGetMidY(imageBounds));
-    const CGSize size = imageBounds.size;
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-    CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, colorComponents, NULL, 2);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    // Since radial gradients must be circular, we transform the coordinate
-    // system so that a unit circle fills the layer rectangle.
-    CGContextTranslateCTM(context, center.x, center.y);
-    CGContextScaleCTM(context, size.width, size.height);
-    CGContextDrawRadialGradient(context, gradient,
-                                CGPointZero, 0,
-                                CGPointZero, 1,
-                                0);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    CALayer *vignetteLayer = [CALayer layer];
-    vignetteLayer.bounds = imageBounds;
-    vignetteLayer.position = center;
-    vignetteLayer.contents = (__bridge id)([image CGImage]);
-    UIGraphicsEndImageContext();
-    CGGradientRelease(gradient);
-    CGColorSpaceRelease(colorSpace);
-    return vignetteLayer;
-}
 
 - (void)updateFavoriteButton
 {
@@ -82,36 +53,39 @@
          atIndex:0];
         
         
-        if([[NSDate date] compare:[[DCMDatabase sharedDatabase] marathonStartDate]] == NSOrderedDescending){
+        if(true){
+        //if([[NSDate date] compare:[[DCMDatabase sharedDatabase] marathonStartDate]] == NSOrderedDescending){
             [items
              insertObject:[[UIBarButtonItem alloc]
                            initWithTitle:@"VOTE!" style:UIBarButtonItemStyleDone target:self action:@selector(vote:)]
              atIndex:0];
         }
-                
+        
         self.navigationItem.rightBarButtonItems = items;
     }
 
     if (self.show.imageURLString) {
-        self.imageView.backgroundColor = [UIColor grayColor];
         NSURL *imageURL = [NSURL URLWithString:self.show.imageURLString];
         DCMLoadImageAsynchronously(imageURL, ^(UIImage *image) {
             self.imageView.image = image;
+            if(!image){
+                CGRect r = self.tableView.tableHeaderView.frame;
+                r.size.height = 75;
+                self.tableView.tableHeaderView.frame = r ;
+                [self.tableView setTableHeaderView:self.tableView.tableHeaderView];
+            }
         });
     } else {
-        self.imageView.backgroundColor = [UIColor colorWithRed:0.6 green:0 blue:0 alpha:1];
+        CGRect r = self.tableView.tableHeaderView.frame;
+        r.size.height = 75;
+        self.tableView.tableHeaderView.frame = r ;
+        [self.tableView setTableHeaderView:self.tableView.tableHeaderView];
     }
 }
 
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-        
-    if(self.imageView.layer.sublayers.count){
-        [self.imageView.layer.sublayers.firstObject removeFromSuperlayer];
-    }
-    CALayer *vignetteLayer = [DCMShowDetailViewController vignetteLayerForBounds:self.imageView.bounds];
-    [self.imageView.layer addSublayer:vignetteLayer];
-    
 }
 
 - (IBAction)toggleFavorite:(id)sender

@@ -85,6 +85,7 @@ static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
 {
     NSString *string = [[NSUserDefaults standardUserDefaults]
                         stringForKey:DCMOriginURLStringKey];
+    string = [string stringByAppendingString:[NSString stringWithFormat:@"?%d", arc4random()]];
     return [NSURL URLWithString:string];
 }
 
@@ -116,6 +117,7 @@ static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [self storeURL];
     NSError *error;
+    
     [__persistentStoreCoordinator
      addPersistentStoreWithType:NSSQLiteStoreType
      configuration:nil
@@ -123,6 +125,12 @@ static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
      options:nil
      error:&error];
     [self addSkipBackupAttributeToItemAtURL:storeURL];
+    
+    if(!__persistentStoreCoordinator){
+        //error!
+        ;;
+    }
+    
     return __persistentStoreCoordinator;
 }
 
@@ -249,10 +257,37 @@ static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
 {
     [[NSNotificationCenter defaultCenter]
      postNotificationName:DCMDatabaseWillChangeNotification object:self];
-    __managedObjectContext = nil;
-    __persistentStoreCoordinator = nil;
-    __startDate = nil;
-    [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
+    
+    //Note: this code was causing a crash so instead of the much more
+    //efficient route of just deleting the URL, I opted to just iterate the data
+    //and delete.  When iOS 9+ can be assumed we can use batch deletes, which will be faster
+    
+//    __managedObjectContext = nil;
+//    __persistentStoreCoordinator = nil;
+//    __startDate = nil;
+//    [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
+    
+    [self deleteAllEntities:@"Performance"];
+    [self deleteAllEntities:@"Performer"];
+    [self deleteAllEntities:@"Show"];
+    [self deleteAllEntities:@"Venue"];
+    [self deleteAllEntities:@"VoteResponse"];
+}
+
+- (void)deleteAllEntities:(NSString *)nameEntity
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:nameEntity];
+    [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSError *error;
+    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    for (NSManagedObject *object in fetchedObjects)
+    {
+        [self.managedObjectContext deleteObject:object];
+    }
+    
+    error = nil;
+    [self.managedObjectContext save:&error];
 }
 
 - (void)backupFavorites
