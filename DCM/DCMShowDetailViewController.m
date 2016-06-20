@@ -52,17 +52,9 @@
                        target:self action:@selector(shareShow:)]
          atIndex:0];
         
-        
-        if(true){
-        //if([[NSDate date] compare:[[DCMDatabase sharedDatabase] marathonStartDate]] == NSOrderedDescending){
-            [items
-             insertObject:[[UIBarButtonItem alloc]
-                           initWithTitle:@"VOTE!" style:UIBarButtonItemStyleDone target:self action:@selector(vote:)]
-             atIndex:0];
-        }
-        
         self.navigationItem.rightBarButtonItems = items;
     }
+    
 
     if (self.show.imageURLString) {
         NSURL *imageURL = [NSURL URLWithString:self.show.imageURLString];
@@ -138,7 +130,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return 1;
+        case 0: return 2;
         case 1: return [performances count];
         case 2: return [performers count];
     }
@@ -185,6 +177,16 @@
     return cell;
 }
 
+- (UITableViewCell *)voteCellForTableView:(UITableView *)tableView
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VoteCell"];
+    UIButton* button = [cell viewWithTag:1];
+    button.layer.borderWidth = 1.f;
+    button.layer.cornerRadius = 5.f;
+    button.layer.borderColor = [UIColor blueColor].CGColor;
+    return cell;
+}
+
 - (CGFloat)heightForPromoBlurbCell
 {
     CGRect bounds = [[self promoBlurbString]
@@ -221,7 +223,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0: return [self promoBlurbCellForTableView:tableView];
+        case 0:
+            if(indexPath.row == 0){
+                return [self promoBlurbCellForTableView:tableView];
+            } else {
+                return [self voteCellForTableView:tableView];
+            }
         case 1: return [self
                         tableView:tableView
                         cellForPerformanceAtRow:indexPath.row];
@@ -235,7 +242,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0: return [self heightForPromoBlurbCell];
+        case 0:
+            if(indexPath.row == 0) {
+                return [self heightForPromoBlurbCell];
+            } else {
+                return tableView.rowHeight;
+            }
+            
         default: return tableView.rowHeight;
     }
 }
