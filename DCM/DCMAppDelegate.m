@@ -12,6 +12,10 @@
 #import "MBProgressHUD.h"
 #import "WallClock.h"
 
+#import <Fabric/Fabric.h>
+#import <Answers/Answers.h>
+
+
 @implementation DCMAppDelegate
 
 + (DCMAppDelegate *)sharedDelegate
@@ -23,6 +27,8 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Fabric with:@[[Answers class]]];
+    
     NSTimeZone *nyZone = [NSTimeZone timeZoneWithName:@"America/New_York"];
     if (nyZone) {
         [NSTimeZone setDefaultTimeZone:nyZone];

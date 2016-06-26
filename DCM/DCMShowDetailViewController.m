@@ -9,6 +9,10 @@
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
 #import "DCMUtilities.h"
+#import "VoteResponse.h"
+
+#import <Answers/Answers.h>
+
 
 @implementation DCMShowDetailViewController
 {
@@ -76,6 +80,15 @@
                        initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                        target:self action:@selector(shareShow:)]
          atIndex:0];
+        
+        
+        if([[NSDate date] compare:[[DCMDatabase sharedDatabase] marathonStartDate]] == NSOrderedDescending){
+            [items
+             insertObject:[[UIBarButtonItem alloc]
+                           initWithTitle:@"VOTE!" style:UIBarButtonItemStyleDone target:self action:@selector(vote:)]
+             atIndex:0];
+        }
+                
         self.navigationItem.rightBarButtonItems = items;
     }
 
@@ -257,6 +270,16 @@
 {
     Performance *performance = [performances objectAtIndex:indexPath.row];
     [[UIApplication sharedApplication] openURL:performance.ticketsURL];
+}
+
+
+- (void)vote:(id)sender {
+    [Answers logRating:@(10) contentName:self.show.name contentType:@"show" contentId:[self.show.identifier stringValue] customAttributes:nil];
+    
+    VoteResponse* randomResponse = [VoteResponse randomResponse:[DCMDatabase sharedDatabase]];
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Thanks for Voting!" message:randomResponse.message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
 }
 
 @end

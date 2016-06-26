@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0F18531015681EF1007075E5 /* DCMFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */; };
+		0F3843CE1D1241FA00D7EE26 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3843CC1D1241FA00D7EE26 /* Fabric.framework */; };
+		0F3843CF1D1241FA00D7EE26 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F3843CD1D1241FA00D7EE26 /* Answers.framework */; };
+		0F3843D41D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3843D11D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.m */; };
+		0F3843D51D1F795D00D7EE26 /* VoteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F3843D31D1F795D00D7EE26 /* VoteResponse.m */; };
 		95DDA7181AF9856B00387569 /* DCMVenuesMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */; };
 		95DDA71A1AF988F100387569 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DDA7191AF988F100387569 /* MapKit.framework */; };
 		95DDA71C1AF988FF00387569 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95DDA71B1AF988FF00387569 /* CoreLocation.framework */; };
@@ -57,6 +61,12 @@
 /* Begin PBXFileReference section */
 		0F18530E15681EF1007075E5 /* DCMFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMFavoritesViewController.h; sourceTree = "<group>"; };
 		0F18530F15681EF1007075E5 /* DCMFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMFavoritesViewController.m; sourceTree = "<group>"; };
+		0F3843CC1D1241FA00D7EE26 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		0F3843CD1D1241FA00D7EE26 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
+		0F3843D01D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VoteResponse+CoreDataProperties.h"; sourceTree = "<group>"; };
+		0F3843D11D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VoteResponse+CoreDataProperties.m"; sourceTree = "<group>"; };
+		0F3843D21D1F795D00D7EE26 /* VoteResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteResponse.h; sourceTree = "<group>"; };
+		0F3843D31D1F795D00D7EE26 /* VoteResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteResponse.m; sourceTree = "<group>"; };
 		95DDA7161AF9856B00387569 /* DCMVenuesMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMVenuesMapViewController.h; sourceTree = "<group>"; };
 		95DDA7171AF9856B00387569 /* DCMVenuesMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMVenuesMapViewController.m; sourceTree = "<group>"; };
 		95DDA7191AF988F100387569 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -139,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCEFC03C1B1B7FCF00F432DC /* AddressBook.framework in Frameworks */,
+				0F3843CE1D1241FA00D7EE26 /* Fabric.framework in Frameworks */,
 				95DDA71C1AF988FF00387569 /* CoreLocation.framework in Frameworks */,
 				95DDA71A1AF988F100387569 /* MapKit.framework in Frameworks */,
 				BCB00752177CB227004F3A4E /* libz.dylib in Frameworks */,
@@ -147,6 +158,7 @@
 				BC3748BE155F4C6C0033BAC9 /* UIKit.framework in Frameworks */,
 				BC3748C0155F4C6C0033BAC9 /* Foundation.framework in Frameworks */,
 				BC3748C2155F4C6C0033BAC9 /* CoreGraphics.framework in Frameworks */,
+				0F3843CF1D1241FA00D7EE26 /* Answers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +168,8 @@
 		BC3748AE155F4C6B0033BAC9 = {
 			isa = PBXGroup;
 			children = (
+				0F3843CC1D1241FA00D7EE26 /* Fabric.framework */,
+				0F3843CD1D1241FA00D7EE26 /* Answers.framework */,
 				BC72D4D71B26A8640028EC65 /* Launch Screen.xib */,
 				BC3748E5155F4D0E0033BAC9 /* README.md */,
 				BC3748C3155F4C6C0033BAC9 /* DCM */,
@@ -237,6 +251,10 @@
 				BC3748F6155F69D10033BAC9 /* Performer.m */,
 				BC3748F2155F69BD0033BAC9 /* Performance.h */,
 				BC3748F3155F69BD0033BAC9 /* Performance.m */,
+				0F3843D01D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.h */,
+				0F3843D11D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.m */,
+				0F3843D21D1F795D00D7EE26 /* VoteResponse.h */,
+				0F3843D31D1F795D00D7EE26 /* VoteResponse.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -373,6 +391,7 @@
 				BC3748B5155F4C6B0033BAC9 /* Sources */,
 				BC3748B6155F4C6B0033BAC9 /* Frameworks */,
 				BC3748B7155F4C6B0033BAC9 /* Resources */,
+				0F3843CB1D1241DA00D7EE26 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -433,6 +452,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F3843CB1D1241DA00D7EE26 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 9679150a7b829c298cbd007f43f09f148b51a962 61ba57b7374751a0325b0af8f52ef5c1c7e1db6bf80f64e215dae09f7236cba6";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BC3748B5155F4C6B0033BAC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -444,6 +480,7 @@
 				BC3748E8155F60F10033BAC9 /* DCMAllShowsViewController.m in Sources */,
 				BC3748EC155F62F00033BAC9 /* DCM.xcdatamodeld in Sources */,
 				BC3748F0155F69720033BAC9 /* MBProgressHUD.m in Sources */,
+				0F3843D51D1F795D00D7EE26 /* VoteResponse.m in Sources */,
 				BC3748F4155F69BD0033BAC9 /* Performance.m in Sources */,
 				95DDA7181AF9856B00387569 /* DCMVenuesMapViewController.m in Sources */,
 				BC3748F7155F69D10033BAC9 /* Performer.m in Sources */,
@@ -459,6 +496,7 @@
 				BCEC5E6D157C34ED00BA8AAD /* DCMVenueScheduleViewController.m in Sources */,
 				BC66EFE61B27D522005B10EF /* DCMTabControllerDelegate.m in Sources */,
 				BC15F37F157C53DB00239CB8 /* DCMScheduleViewController.m in Sources */,
+				0F3843D41D1F795D00D7EE26 /* VoteResponse+CoreDataProperties.m in Sources */,
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
 				BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */,
 				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
@@ -553,6 +591,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DCM/DCM-Prefix.pch";
 				INFOPLIST_FILE = "DCM/DCM-Info.plist";
@@ -571,6 +613,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DCM/DCM-Prefix.pch";
 				INFOPLIST_FILE = "DCM/DCM-Info.plist";

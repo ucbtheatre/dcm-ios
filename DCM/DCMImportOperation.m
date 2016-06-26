@@ -15,6 +15,7 @@
 #import "Venue.h"
 #import "Performer.h"
 #import "Performance.h"
+#import "VoteResponse.h"
 
 @implementation DCMImportOperation
 {
@@ -345,6 +346,20 @@ for full size (400pxX400px)
     NSArray *venueArray = dataObject[@"Venues"];
     NSArray *showArray = dataObject[@"Shows"];
     NSArray *scheduleArray = dataObject[@"Schedules"];
+    
+    NSArray *jokes = dataObject[@"Jokes"];
+    for (NSString *joke in jokes){
+        @autoreleasepool {
+            NSEntityDescription *entity = [NSEntityDescription
+                                           entityForName:@"VoteResponse"
+                                           inManagedObjectContext:managedObjectContext];
+            VoteResponse* vr = (VoteResponse*) [[NSManagedObject alloc]
+                         initWithEntity:entity
+                         insertIntoManagedObjectContext:managedObjectContext];
+            vr.message = joke;
+        }
+    }
+    
 
     // Compute the number of objects to import
     numberOfObjectsToImport = ([venueArray count] +

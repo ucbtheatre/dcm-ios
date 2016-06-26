@@ -20,4 +20,5 @@
 - (IBAction)toggleFavorite:(id)sender;
 - (IBAction)shareShow:(id)sender;
 - (IBAction)dismiss:(id)sender;
+- (IBAction)vote:(id)sender;
 @end
