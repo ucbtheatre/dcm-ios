@@ -71,9 +71,9 @@
     // but the calendar computation may round away a half-minute remaining. )
     NSDate *startDate = [[DCMDatabase sharedDatabase] marathonStartDate];
     NSDateComponents *dc = [[NSCalendar currentCalendar]
-                            components:(NSDayCalendarUnit |
-                                        NSHourCalendarUnit |
-                                        NSMinuteCalendarUnit)
+                            components:(NSCalendarUnitDay |
+                                        NSCalendarUnitHour |
+                                        NSCalendarUnitMinute)
                             fromDate:nowDate
                             toDate:[startDate dateByAddingTimeInterval:60]
                             options:0];
@@ -104,6 +104,7 @@
 - (void)awakeFromNib
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
     [center addObserver:self selector:@selector(databaseWillChange:)
                    name:DCMDatabaseWillChangeNotification object:nil];
     [center addObserver:self selector:@selector(databaseDidChange:)
@@ -112,10 +113,13 @@
                    name:UIApplicationDidBecomeActiveNotification object:nil];
     [center addObserver:self selector:@selector(timeToRefresh:)
                    name:WallClockMinuteDidChangeNotification object:nil];
+
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
         self.dateLabel.textColor = [UIColor whiteColor];
         self.dateLabel.shadowColor = nil;
     }
+
+    [super awakeFromNib];
 }
 
 - (void)dealloc

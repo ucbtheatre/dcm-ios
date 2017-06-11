@@ -78,10 +78,13 @@
 - (void)awakeFromNib
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+
     [center addObserver:self selector:@selector(databaseWillChange:)
                    name:DCMDatabaseWillChangeNotification object:nil];
     [center addObserver:self selector:@selector(databaseDidChange:)
                    name:DCMDatabaseDidChangeNotification object:nil];
+
+    [super awakeFromNib];
 }
 
 - (void)dealloc

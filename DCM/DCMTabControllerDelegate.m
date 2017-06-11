@@ -43,6 +43,7 @@ static NSString * const kDCMTabOrderKey = @"DCMTabOrder";
 - (void)awakeFromNib
 {
     NSArray *tabIdentifiers = [self tabIdentifiers];
+
     if (tabIdentifiers) {
         UITabBarController *tabBarController = self.tabBarController;
         NSArray *array = tabBarController.viewControllers;
@@ -52,7 +53,8 @@ static NSString * const kDCMTabOrderKey = @"DCMTabOrder";
 
         tabBarController.viewControllers = array;
     }
-    
+
+    [super awakeFromNib];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed

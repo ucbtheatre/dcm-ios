@@ -67,7 +67,7 @@ NSString * const WallClockMinuteDidChangeNotification = @"WallClockMinuteDidChan
     NSTimeInterval sec;
     NSTimeInterval millis = modf([now timeIntervalSinceReferenceDate], &sec);
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *dc = [calendar components:NSSecondCalendarUnit fromDate:now];
+    NSDateComponents *dc = [calendar components:NSCalendarUnitSecond fromDate:now];
     return 60.001 - millis - dc.second; // add 1 ms for safety
 }
 

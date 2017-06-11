@@ -10,5 +10,4 @@
 
 @interface DCMVenuesListViewController : UITableViewController
 @property (nonatomic, strong) NSArray *venueList;
-- (IBAction)getDirections:(id)sender;
 @end

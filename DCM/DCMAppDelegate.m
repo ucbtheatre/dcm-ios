@@ -20,7 +20,7 @@
 
 + (DCMAppDelegate *)sharedDelegate
 {
-    return [[UIApplication sharedApplication] delegate];
+    return (DCMAppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 @synthesize window = _window;
