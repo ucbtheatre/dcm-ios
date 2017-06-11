@@ -168,13 +168,12 @@
 		BC3748AE155F4C6B0033BAC9 = {
 			isa = PBXGroup;
 			children = (
-				0F3843CC1D1241FA00D7EE26 /* Fabric.framework */,
-				0F3843CD1D1241FA00D7EE26 /* Answers.framework */,
 				BC72D4D71B26A8640028EC65 /* Launch Screen.xib */,
 				BC3748E5155F4D0E0033BAC9 /* README.md */,
 				BC3748C3155F4C6C0033BAC9 /* DCM */,
 				BC3748ED155F69580033BAC9 /* MBProgressHUD */,
-				BC3748BC155F4C6C0033BAC9 /* Frameworks */,
+				BC94399E1EECEBD600408855 /* Project Frameworks */,
+				BC3748BC155F4C6C0033BAC9 /* System Frameworks */,
 				BC3748BA155F4C6C0033BAC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -187,7 +186,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC3748BC155F4C6C0033BAC9 /* Frameworks */ = {
+		BC3748BC155F4C6C0033BAC9 /* System Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				BCEFC03B1B1B7FCF00F432DC /* AddressBook.framework */,
@@ -200,7 +199,7 @@
 				BC3748BF155F4C6C0033BAC9 /* Foundation.framework */,
 				BC3748C1155F4C6C0033BAC9 /* CoreGraphics.framework */,
 			);
-			name = Frameworks;
+			name = "System Frameworks";
 			sourceTree = "<group>";
 		};
 		BC3748C3155F4C6C0033BAC9 /* DCM */ = {
@@ -278,6 +277,15 @@
 				BC9F50201B249E2900594B10 /* Venues */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BC94399E1EECEBD600408855 /* Project Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F3843CC1D1241FA00D7EE26 /* Fabric.framework */,
+				0F3843CD1D1241FA00D7EE26 /* Answers.framework */,
+			);
+			name = "Project Frameworks";
 			sourceTree = "<group>";
 		};
 		BC9F50201B249E2900594B10 /* Venues */ = {
