@@ -854,17 +854,16 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-xG-9mF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="cUH-xG-9mF">
+                                <rect key="frame" x="16" y="28" width="343" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="358626561.45871902">
                                     <!--2012-05-13 18:29:21 +0000-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-Ra-h92">
-                                <rect key="frame" x="20" y="424" width="280" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Adp-Ra-h92">
+                                <rect key="frame" x="16" y="370" width="343" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Go Back to the Future">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -872,9 +871,9 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                                     <action selector="reset:" destination="uyM-I1-Cdv" eventType="touchUpInside" id="Qs6-hx-BjB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7et-P5-VvZ">
-                                <rect key="frame" x="20" y="373" width="280" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7et-P5-VvZ">
+                                <rect key="frame" x="16" y="329" width="343" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Activate Time Circuits">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -882,18 +881,17 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                                     <action selector="confirm:" destination="uyM-I1-Cdv" eventType="touchUpInside" id="aie-K2-y2l"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nDs-K5-MSm">
-                                <rect key="frame" x="20" y="285" width="280" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nDs-K5-MSm">
+                                <rect key="frame" x="16" y="293" width="343" height="29"/>
                                 <segments>
                                     <segment title="1 Hz"/>
                                     <segment title="300 Hz"/>
                                     <segment title="1800 Hz"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umg-zY-nHU">
-                                <rect key="frame" x="20" y="224" width="280" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umg-zY-nHU">
+                                <rect key="frame" x="16" y="252" width="343" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Marathon Starting Line">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -902,7 +900,24 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Adp-Ra-h92" secondAttribute="trailing" id="Ad7-TI-Trg"/>
+                            <constraint firstItem="umg-zY-nHU" firstAttribute="top" secondItem="cUH-xG-9mF" secondAttribute="bottom" constant="8" symbolic="YES" id="Di4-8O-Oyh"/>
+                            <constraint firstItem="Adp-Ra-h92" firstAttribute="leading" secondItem="kCo-kV-onu" secondAttribute="leadingMargin" id="E3w-aK-CQC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="umg-zY-nHU" secondAttribute="trailing" id="KFq-dM-7Od"/>
+                            <constraint firstItem="nDs-K5-MSm" firstAttribute="leading" secondItem="kCo-kV-onu" secondAttribute="leadingMargin" id="SW1-mX-iya"/>
+                            <constraint firstItem="cUH-xG-9mF" firstAttribute="top" secondItem="ZCc-LM-aPW" secondAttribute="bottom" constant="8" symbolic="YES" id="agl-mj-xBq"/>
+                            <constraint firstItem="7et-P5-VvZ" firstAttribute="top" secondItem="nDs-K5-MSm" secondAttribute="bottom" constant="8" symbolic="YES" id="fR5-BO-hfT"/>
+                            <constraint firstItem="nDs-K5-MSm" firstAttribute="top" secondItem="umg-zY-nHU" secondAttribute="bottom" constant="8" symbolic="YES" id="o3C-pR-bvI"/>
+                            <constraint firstItem="umg-zY-nHU" firstAttribute="leading" secondItem="kCo-kV-onu" secondAttribute="leadingMargin" id="qFc-Um-P37"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cUH-xG-9mF" secondAttribute="trailing" id="qhT-Ld-FFp"/>
+                            <constraint firstItem="Adp-Ra-h92" firstAttribute="top" secondItem="7et-P5-VvZ" secondAttribute="bottom" constant="8" symbolic="YES" id="qr3-WG-kAo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7et-P5-VvZ" secondAttribute="trailing" id="wyB-Cc-8Fe"/>
+                            <constraint firstItem="cUH-xG-9mF" firstAttribute="leading" secondItem="kCo-kV-onu" secondAttribute="leadingMargin" id="xOg-jq-X9H"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nDs-K5-MSm" secondAttribute="trailing" id="xOy-IN-OSv"/>
+                            <constraint firstItem="7et-P5-VvZ" firstAttribute="leading" secondItem="kCo-kV-onu" secondAttribute="leadingMargin" id="yTB-7D-abn"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="cUH-xG-9mF" id="Mkj-SG-kih"/>
@@ -911,7 +926,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i78-ap-Kh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="896"/>
+            <point key="canvasLocation" x="2014" y="992"/>
         </scene>
         <!--Shows Navigation-->
         <scene sceneID="hkC-BK-Iin">
