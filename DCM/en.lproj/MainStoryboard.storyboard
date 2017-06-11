@@ -167,7 +167,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Now" id="T6V-h7-63m"/>
                         <view key="titleView" opaque="NO" contentMode="scaleToFill" id="BcD-dt-8Yh">
-                            <rect key="frame" x="38" y="5.5" width="210" height="33"/>
+                            <rect key="frame" x="82.5" y="5.5" width="210" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Thursday 13:86 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="CXz-sV-ibK">
@@ -470,16 +470,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOR-F6-4NJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOR-F6-4NJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="aOR-F6-4NJ" secondAttribute="bottom" id="K8e-jB-N9v"/>
-                            <constraint firstItem="aOR-F6-4NJ" firstAttribute="top" secondItem="DGq-Tp-vGM" secondAttribute="top" id="Nha-Kp-Lmb"/>
-                            <constraint firstItem="aOR-F6-4NJ" firstAttribute="leading" secondItem="DGq-Tp-vGM" secondAttribute="leading" id="OYs-va-bNM"/>
-                            <constraint firstAttribute="trailing" secondItem="aOR-F6-4NJ" secondAttribute="trailing" id="nbz-Pb-GzN"/>
+                            <constraint firstAttribute="trailing" secondItem="aOR-F6-4NJ" secondAttribute="trailing" id="kiH-aG-vsW"/>
+                            <constraint firstItem="aOR-F6-4NJ" firstAttribute="leading" secondItem="DGq-Tp-vGM" secondAttribute="leading" id="t1u-84-e0L"/>
+                            <constraint firstItem="aOR-F6-4NJ" firstAttribute="top" secondItem="DGq-Tp-vGM" secondAttribute="top" id="wa1-Vb-XfB"/>
+                            <constraint firstAttribute="bottom" secondItem="aOR-F6-4NJ" secondAttribute="bottom" id="zTr-hW-48i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Venues" id="pTJ-R6-k42">
@@ -503,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lV-fB-KXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="-104"/>
+            <point key="canvasLocation" x="915.5" y="-104.5"/>
         </scene>
         <!--Venue List-->
         <scene sceneID="dB0-Vk-mTB">
@@ -634,12 +634,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Dz-ap-NQo">
-                                    <rect key="frame" x="0.0" y="54" width="320" height="175"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dz-ap-NQo">
+                                    <rect key="frame" x="0.0" y="90.5" width="375" height="189.5"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" misplaced="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-Kv-k65">
-                                    <rect key="frame" x="8" y="0.0" width="304" height="40"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-Kv-k65">
+                                    <rect key="frame" x="16" y="5" width="351" height="62.5"/>
                                     <string key="text">Title
 of Show</string>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -647,8 +647,8 @@ of Show</string>
                                     <nil key="highlightedColor"/>
                                     <size key="shadowOffset" width="2" height="0.0"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Anytown, USA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-c3-sr5">
-                                    <rect key="frame" x="-93" y="35" width="304" height="19"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Anytown, USA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqd-c3-sr5">
+                                    <rect key="frame" x="16" y="67.5" width="250" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -677,8 +677,8 @@ of Show</string>
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKL-hr-BPC" userLabel="voteButton">
-                                            <rect key="frame" x="0.0" y="-8" width="320" height="44"/>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKL-hr-BPC" userLabel="voteButton">
+                                            <rect key="frame" x="8" y="4" width="359" height="36"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Vote this show my favorite of DCM">
                                                 <color key="titleColor" red="0.1522822380065918" green="0.31438067555427551" blue="0.62812906503677368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -949,7 +949,7 @@ Copyright ©2009-2012 Matej Bukovinski</string>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="w5y-sB-QMH"/>
+        <segue reference="bwO-Ck-TVu"/>
         <segue reference="EB6-eM-Rh2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.7455558180809021" green="0.11901278793811798" blue="0.15297476947307587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
