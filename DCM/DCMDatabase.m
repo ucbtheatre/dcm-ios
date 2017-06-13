@@ -26,7 +26,10 @@ static NSString * const DCMMetadataOriginLastModifiedKey = @"Origin-Last-Modifie
 static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 static NSString * const DCMOriginURLStringKey = @"DCMFeedURL";
-static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
+static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm19";
+
+static NSString * const DCMStoreFileName = @"dcm19.sqlite";
+static NSString * const DCMFavoritesFileName = @"dcm19-favorites.plist";
 
 @implementation DCMDatabase
 {
@@ -70,7 +73,7 @@ static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
     NSURL *documentsURL = [[[NSFileManager defaultManager]
                             URLsForDirectory:NSDocumentDirectory
                             inDomains:NSUserDomainMask] lastObject];
-    return [NSURL URLWithString:@"dcm-favorites.plist" relativeToURL:documentsURL];
+    return [NSURL URLWithString:DCMFavoritesFileName relativeToURL:documentsURL];
 }
 
 - (NSURL *)storeURL
@@ -78,14 +81,14 @@ static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm";
     NSURL *documentsURL = [[[NSFileManager defaultManager]
                             URLsForDirectory:NSDocumentDirectory
                             inDomains:NSUserDomainMask] lastObject];
-    return [NSURL URLWithString:@"dcm.sqlite" relativeToURL:documentsURL];
+    return [NSURL URLWithString:DCMStoreFileName relativeToURL:documentsURL];
 }
 
 - (NSURL *)originURL
 {
     NSString *string = [[NSUserDefaults standardUserDefaults]
                         stringForKey:DCMOriginURLStringKey];
-    string = [string stringByAppendingString:[NSString stringWithFormat:@"?%d", arc4random()]];
+
     return [NSURL URLWithString:string];
 }
 

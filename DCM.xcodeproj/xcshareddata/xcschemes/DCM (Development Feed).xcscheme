@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-DCMFeedURL http://api.ucbcomedy.com/dcm?mode=development"
+            argument = "-DCMFeedURL http://api.ucbcomedy.com/dcm19?mode=development"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
