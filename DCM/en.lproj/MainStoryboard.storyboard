@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -772,11 +773,18 @@ of Show</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NiG-qw-d9p">
-                        <barButtonItem key="rightBarButtonItem" image="Heart0" id="g8p-9w-JPF">
-                            <connections>
-                                <action selector="toggleFavorite:" destination="8fh-Yh-dX8" id="oUG-3L-5iP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="Geq-hS-fFd">
+                                <connections>
+                                    <action selector="shareShow:" destination="8fh-Yh-dX8" id="RC6-2w-vlv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Heart0" id="g8p-9w-JPF">
+                                <connections>
+                                    <action selector="toggleFavorite:" destination="8fh-Yh-dX8" id="oUG-3L-5iP"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteButton" destination="g8p-9w-JPF" id="wnE-g0-dcc"/>

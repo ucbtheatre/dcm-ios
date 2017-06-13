@@ -43,19 +43,6 @@
     self.titleLabel.text = self.show.name;
     self.homeCityLabel.text = self.show.homeCity;
 
-    // Show the Share button
-    NSMutableArray *items = [self.navigationItem.rightBarButtonItems mutableCopy];
-    if ([items count] < 2) {
-        [items
-         insertObject:[[UIBarButtonItem alloc]
-                       initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                       target:self action:@selector(shareShow:)]
-         atIndex:0];
-        
-        self.navigationItem.rightBarButtonItems = items;
-    }
-    
-
     if (self.show.imageURLString) {
         NSURL *imageURL = [NSURL URLWithString:self.show.imageURLString];
         DCMLoadImageAsynchronously(imageURL, ^(UIImage *image) {
