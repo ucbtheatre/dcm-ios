@@ -13,6 +13,13 @@
 
 #import <Answers/Answers.h>
 
+enum {
+    DCMTableSectionBlurb,
+    DCMTableSectionVote,
+    DCMTableSectionTicketWarning,
+    DCMTableSectionShowtimes,
+    DCMTableSectionCast
+};
 
 @implementation DCMShowDetailViewController
 {
@@ -22,7 +29,6 @@
 
 @synthesize show;
 @synthesize favoriteButton;
-
 
 - (void)updateFavoriteButton
 {
@@ -46,25 +52,30 @@
     if (self.show.imageURLString) {
         NSURL *imageURL = [NSURL URLWithString:self.show.imageURLString];
         DCMLoadImageAsynchronously(imageURL, ^(UIImage *image) {
-            self.imageView.image = image;
-            if(!image){
-                CGRect r = self.tableView.tableHeaderView.frame;
-                r.size.height = 75;
-                self.tableView.tableHeaderView.frame = r ;
-                [self.tableView setTableHeaderView:self.tableView.tableHeaderView];
-            }
+            [self.imageView setImage:image];
         });
     } else {
-        CGRect r = self.tableView.tableHeaderView.frame;
-        r.size.height = 75;
-        self.tableView.tableHeaderView.frame = r ;
-        [self.tableView setTableHeaderView:self.tableView.tableHeaderView];
+        [self.imageView setImage:nil];
     }
 }
 
+- (void)viewWillLayoutSubviews
+{
+    UIView *header = self.tableView.tableHeaderView;
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
+    CGSize headerSize = [header systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGFloat height = ceil(headerSize.height);
+
+    CGRect bounds = header.bounds;
+
+    if (bounds.size.height != height) {
+        bounds.size.height = height;
+        header.bounds = bounds;
+
+        self.tableView.tableHeaderView = header;
+    }
+
+    [super viewWillLayoutSubviews];
 }
 
 - (IBAction)toggleFavorite:(id)sender
@@ -101,15 +112,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 5;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return nil; // Blurb has no header
-        case 1: return @"Showtimes";
-        case 2: return @"Cast";
+        case DCMTableSectionBlurb:          return nil;
+        case DCMTableSectionTicketWarning:  return nil;
+        case DCMTableSectionVote:           return nil;
+        case DCMTableSectionShowtimes:      return @"Showtimes";
+        case DCMTableSectionCast:           return @"Cast";
     }
     return nil;
 }
@@ -117,50 +130,26 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case 0: return 2;
-        case 1: return [performances count];
-        case 2: return [performers count];
+        case DCMTableSectionBlurb:          return 1;
+        case DCMTableSectionTicketWarning:  return [self.show anyShowRequiresTicket] ? 1 : 0;
+        case DCMTableSectionVote:           return 1;
+        case DCMTableSectionShowtimes:      return [performances count];
+        case DCMTableSectionCast:           return [performers count];
     }
     return 0;
 }
 
-- (NSAttributedString *)promoBlurbString
-{
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
-    UIFont *font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    NSMutableParagraphStyle *paraStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    paraStyle.paragraphSpacing = 0.5 * [font lineHeight];
-
-    if ([self.show.promoBlurb length] > 0) {
-        [string appendAttributedString:[[NSAttributedString alloc]
-                                        initWithString:self.show.promoBlurb
-                                        attributes:@{NSFontAttributeName: font,
-                                                     NSForegroundColorAttributeName: [UIColor blackColor],
-                                                     NSParagraphStyleAttributeName: paraStyle}]];
-    } else {
-        [string appendAttributedString:[[NSAttributedString alloc]
-                                        initWithString:@"No Description"
-                                        attributes:@{NSFontAttributeName: font,
-                                                     NSForegroundColorAttributeName: [UIColor grayColor],
-                                                     NSParagraphStyleAttributeName: paraStyle}]];
-    }
-
-    if ([self.show anyShowRequiresTicket]) {
-        UIFont *italicFont = [UIFont italicSystemFontOfSize:[UIFont systemFontSize]];
-        [string appendAttributedString:[[NSAttributedString alloc]
-                                        initWithString:@"\nTickets for this show are sold separately."
-                                        attributes:@{NSFontAttributeName: italicFont,
-                                                     NSForegroundColorAttributeName: [UIColor grayColor],
-                                                     NSParagraphStyleAttributeName: paraStyle}]];
-    }
-
-    return string;
-}
-
 - (UITableViewCell *)promoBlurbCellForTableView:(UITableView *)tableView
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PromoBlurbCell"];
-    cell.textLabel.attributedText = [self promoBlurbString];
+    UITableViewCell *cell;
+
+    if ([self.show.promoBlurb length] > 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"PromoBlurbCell"];
+        cell.textLabel.text = self.show.promoBlurb;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"NoPromoBlurbCell"];
+    }
+
     return cell;
 }
 
@@ -170,18 +159,8 @@
     UIButton* button = [cell viewWithTag:1];
     button.layer.borderWidth = 1.f;
     button.layer.cornerRadius = 5.f;
-    button.layer.borderColor = [UIColor blueColor].CGColor;
+    button.layer.borderColor = tableView.tintColor.CGColor;
     return cell;
-}
-
-- (CGFloat)heightForPromoBlurbCell
-{
-    CGRect bounds = [[self promoBlurbString]
-                     boundingRectWithSize:CGSizeMake(320-40, CGFLOAT_MAX)
-                     options:(NSStringDrawingUsesLineFragmentOrigin |
-                              NSStringDrawingUsesFontLeading)
-                     context:nil];
-    return ceil(bounds.size.height) + 16;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForPerformerAtRow:(NSInteger)row
@@ -210,18 +189,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0:
-            if(indexPath.row == 0){
-                return [self promoBlurbCellForTableView:tableView];
-            } else {
-                return [self voteCellForTableView:tableView];
-            }
-        case 1: return [self
-                        tableView:tableView
-                        cellForPerformanceAtRow:indexPath.row];
-        case 2: return [self
-                        tableView:tableView
-                        cellForPerformerAtRow:indexPath.row];
+        case DCMTableSectionBlurb:
+            return [self promoBlurbCellForTableView:tableView];
+
+        case DCMTableSectionTicketWarning:
+            return [tableView dequeueReusableCellWithIdentifier:@"TicketWarningCell"];
+
+        case DCMTableSectionVote:
+            return [self voteCellForTableView:tableView];
+
+        case DCMTableSectionShowtimes:
+            return [self
+                    tableView:tableView
+                    cellForPerformanceAtRow:indexPath.row];
+
+        case DCMTableSectionCast:
+            return [self
+                    tableView:tableView
+                    cellForPerformerAtRow:indexPath.row];
     }
     return nil;
 }
@@ -229,20 +214,27 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0:
-            if(indexPath.row == 0) {
-                return [self heightForPromoBlurbCell];
-            } else {
-                return tableView.rowHeight;
-            }
-            
-        default: return tableView.rowHeight;
+        case DCMTableSectionBlurb: {
+            // If you call [tableView cellForRowAtIndexPath:] here, you'll enter an infinite loop.
+
+            UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+
+            CGFloat width = CGRectGetWidth(tableView.bounds);
+
+            CGSize cellSize = [cell sizeThatFits:CGSizeMake(width, CGFLOAT_MAX)];
+
+            return cellSize.height;
+        }
+
+        default:
+            return tableView.rowHeight;
     }
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     Performance *performance = [performances objectAtIndex:indexPath.row];
+
     [[UIApplication sharedApplication] openURL:performance.ticketsURL];
 }
 
