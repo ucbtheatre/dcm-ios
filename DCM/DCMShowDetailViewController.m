@@ -260,12 +260,23 @@
 }
 
 
-- (void)vote:(id)sender {
-    [Answers logRating:@(10) contentName:self.show.name contentType:@"show" contentId:[self.show.identifier stringValue] customAttributes:nil];
+- (void)vote:(id)sender
+{
+    [Answers logRating:@(10)
+           contentName:self.show.name
+           contentType:@"show"
+             contentId:[self.show.identifier stringValue]
+      customAttributes:nil];
     
     VoteResponse* randomResponse = [VoteResponse randomResponse:[DCMDatabase sharedDatabase]];
     
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Thanks for Voting!" message:randomResponse.message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView* alert = [[UIAlertView alloc]
+                          initWithTitle:@"Points Added"
+                          message:randomResponse.message
+                          delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+
     [alert show];
 }
 

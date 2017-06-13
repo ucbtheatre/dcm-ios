@@ -679,8 +679,8 @@ of Show</string>
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKL-hr-BPC" userLabel="voteButton">
                                             <rect key="frame" x="8" y="4" width="359" height="36"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Vote this show my favorite of DCM">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" title="Give this show points towards a High Score!">
                                                 <color key="titleColor" red="0.1522822380065918" green="0.31438067555427551" blue="0.62812906503677368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
