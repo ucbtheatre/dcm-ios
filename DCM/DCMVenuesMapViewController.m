@@ -14,7 +14,7 @@
 
 @implementation DCMVenuesMapViewController
 {
-    NSDictionary *venuesForCoordinate;
+    NSDictionary<NSValue *, NSArray<Venue *> *> *venuesForCoordinate;
     MKMapRect defaultMapRect;
 }
 
@@ -23,7 +23,7 @@
 /**
  * Finds a common prefix of all given venue names.
  */
-+ (NSString *)titleForVenues:(NSArray *)array
++ (NSString *)titleForVenues:(NSArray<Venue *> *)array
 {
     NSString *name = [[array firstObject] shortName];
     for (NSUInteger i = 1; i < [array count]; i++) {
@@ -49,9 +49,9 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Venue"];
     NSError *error = nil;
 
-    NSArray *allVenues = [[database managedObjectContext]
-                          executeFetchRequest:request
-                          error:&error];
+    NSArray<Venue *> *allVenues = [[database managedObjectContext]
+                                   executeFetchRequest:request
+                                   error:&error];
     if (error) {
         NSLog(@"venue fetch error: %@", error);
     }
@@ -63,7 +63,7 @@
     for (Venue *venue in allVenues) {
         CLLocationCoordinate2D coord = venue.coordinate;
         NSValue *key = [NSValue valueWithMKCoordinate:coord];
-        NSArray *array = [dict objectForKey:key];
+        NSArray<Venue *> *array = [dict objectForKey:key];
         if (array) {
             array = [array arrayByAddingObject:venue];
         } else {
@@ -120,7 +120,7 @@
     defaultMapRect = MKMapRectNull;
 
     for (NSValue *key in venuesForCoordinate) {
-        NSArray *array = [venuesForCoordinate objectForKey:key];
+        NSArray<Venue *> *array = [venuesForCoordinate objectForKey:key];
         
         //if we have locations that don't have a lat/long it screws up our calculation
         if([[array firstObject] latitude] != nil &&
@@ -128,7 +128,7 @@
             MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
             [annotation setCoordinate:[key MKCoordinateValue]];
             [annotation setTitle:[DCMVenuesMapViewController titleForVenues:array]];
-            [annotation setSubtitle:[(Venue *)[array firstObject] address]];
+            [annotation setSubtitle:[[array firstObject] address]];
 
             [self.mapView addAnnotation:annotation];
 
@@ -137,18 +137,30 @@
             defaultMapRect = MKMapRectUnion(defaultMapRect, pointRect);
         }
     }
-
-    [self resetMapRect:nil];
 }
 
-- (void)showListView {
-    NSMutableArray* venues = [NSMutableArray array];
-    
-    for(NSArray* arr in venuesForCoordinate.allValues){
-        [venues addObjectsFromArray:arr];
+- (void)showVenues:(NSArray<Venue *> *)venueList
+{
+    if ([venueList count] == 1) {
+        [self performSegueWithIdentifier:@"MapToSchedule" sender:[venueList firstObject]];
+        return;
     }
-    
-    [self performSegueWithIdentifier:@"MapToVenueList" sender:venues];
+
+    NSSortDescriptor *byName = [NSSortDescriptor sortDescriptorWithKey:@"shortName" ascending:YES];
+    NSArray *sortedVenueList = [venueList sortedArrayUsingDescriptors:@[byName]];
+
+    [self performSegueWithIdentifier:@"MapToVenueList" sender:sortedVenueList];
+}
+
+- (void)showListView
+{
+    NSMutableArray<Venue *> *allVenues = [NSMutableArray array];
+
+    for (NSArray<Venue *> *array in [venuesForCoordinate allValues]) {
+        [allVenues addObjectsFromArray:array];
+    }
+
+    [self showVenues:allVenues];
 }
 
 - (void)viewDidLoad
@@ -161,21 +173,18 @@
     [self annotateMap];
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [self resetMapRect:nil];
+}
+
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     CLLocationCoordinate2D coordinate = [view.annotation coordinate];
     NSValue *key = [NSValue valueWithMKCoordinate:coordinate];
-    NSArray *array = [venuesForCoordinate objectForKey:key];
+    NSArray<Venue *> *venueList = [venuesForCoordinate objectForKey:key];
 
-    if ([array count] > 1) {
-        [self performSegueWithIdentifier:@"MapToVenueList" sender:array];
-    }
-    else if ([array count] == 1) {
-        [self performSegueWithIdentifier:@"MapToSchedule" sender:[array firstObject]];
-    }
-    else {
-        NSLog(@"No venue at coordinate %@", key);
-    }
+    [self showVenues:venueList];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)sender viewForAnnotation:(id < MKAnnotation >)annotation
