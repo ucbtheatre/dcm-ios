@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Theatre Mask.png",
+      "filename" : "theatre-mask-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Theatre Mask-1.png",
+      "filename" : "theatre-mask-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "theatre-mask-75.png",
       "scale" : "3x"
     }
   ],

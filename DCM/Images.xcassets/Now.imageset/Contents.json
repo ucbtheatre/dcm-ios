@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Present.png",
+      "filename" : "present-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Present-1.png",
+      "filename" : "present-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "present-75.png",
       "scale" : "3x"
     }
   ],
