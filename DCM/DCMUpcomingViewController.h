@@ -13,6 +13,5 @@
 @property (nonatomic,strong) IBOutlet UILabel *dateLabel;
 @property (nonatomic,strong) IBOutlet UIView *countdownView;
 @property (nonatomic,strong) IBOutlet UILabel *countdownLabel;
-- (IBAction)dontThink:(id)sender;
 - (IBAction)timeTravel:(id)sender;
 @end

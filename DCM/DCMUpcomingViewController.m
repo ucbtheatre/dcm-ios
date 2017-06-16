@@ -294,11 +294,6 @@
 
 #pragma mark - Storyboard
 
-- (IBAction)dontThink:(id)sender
-{
-    //[self performSegueWithIdentifier:@"GiveCredit" sender:sender];
-}
-
 - (IBAction)timeTravel:(id)sender
 {
     [self performSegueWithIdentifier:@"TimeTravel" sender:sender];

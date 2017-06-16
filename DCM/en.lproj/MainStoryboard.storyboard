@@ -111,28 +111,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Eof-Rb-NoK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="w9U-Yw-ECW">
-                            <rect key="frame" x="0.0" y="109.5" width="320" height="64"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yq5-rn-4BV">
-                                    <rect key="frame" x="127" y="11" width="66" height="42"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" image="Glasses">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="yq5-rn-4BV" firstAttribute="centerX" secondItem="w9U-Yw-ECW" secondAttribute="centerX" id="62O-A4-0bl"/>
-                                <constraint firstItem="yq5-rn-4BV" firstAttribute="centerY" secondItem="w9U-Yw-ECW" secondAttribute="centerY" id="Jco-1f-Zox"/>
-                            </constraints>
-                        </view>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PerformanceCell" textLabel="x8x-w4-bRs" detailTextLabel="Kxk-qY-P7r" style="IBUITableViewCellStyleValue2" id="z9X-N3-XLV">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
@@ -166,7 +145,7 @@
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="Now" id="T6V-h7-63m"/>
                         <view key="titleView" opaque="NO" contentMode="scaleToFill" id="BcD-dt-8Yh">
-                            <rect key="frame" x="38" y="5.5" width="210" height="33"/>
+                            <rect key="frame" x="52" y="5.5" width="210" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" fixedFrame="YES" text="Thursday 13:86 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXz-sV-ibK">
@@ -182,7 +161,7 @@
                                 <outletCollection property="gestureRecognizers" destination="UCq-UU-fKs" appends="YES" id="BAQ-1b-SjP"/>
                             </connections>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" image="TinyGlasses" id="IGT-jm-a2F">
+                        <barButtonItem key="rightBarButtonItem" image="About" id="IGT-jm-a2F">
                             <connections>
                                 <segue destination="eSw-09-ASA" kind="push" id="yNM-uq-knc"/>
                             </connections>
@@ -970,14 +949,13 @@ MBProgressHUD
         </scene>
     </scenes>
     <resources>
-        <image name="Glasses" width="66" height="42"/>
+        <image name="About" width="25" height="25"/>
         <image name="Hashtag" width="25" height="25"/>
         <image name="Like" width="25" height="25"/>
         <image name="Map Marker" width="25" height="25"/>
         <image name="Now" width="25" height="25"/>
         <image name="Performers" width="25" height="25"/>
         <image name="Theatre Mask" width="25" height="25"/>
-        <image name="TinyGlasses" width="39" height="25"/>
         <image name="User" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -986,7 +964,7 @@ MBProgressHUD
         <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="bwO-Ck-TVu"/>
         <segue reference="EB6-eM-Rh2"/>
-        <segue reference="w5y-sB-QMH"/>
     </inferredMetricsTieBreakers>
 </document>
