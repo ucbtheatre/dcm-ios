@@ -115,7 +115,7 @@
 		BC3F8CF11EF36C0D00519D40 /* BorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedButton.m; sourceTree = "<group>"; };
 		BC66EFE41B27D522005B10EF /* DCMTabControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTabControllerDelegate.h; sourceTree = "<group>"; };
 		BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTabControllerDelegate.m; sourceTree = "<group>"; };
-		BC72D4D71B26A8640028EC65 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		BC72D4D71B26A8640028EC65 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
 		BC7C6A9A15900A2C0055E985 /* iTunesArtwork */ = {isa = PBXFileReference; explicitFileType = image.jpeg; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DCMTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DCMTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -171,7 +171,6 @@
 		BC3748AE155F4C6B0033BAC9 = {
 			isa = PBXGroup;
 			children = (
-				BC72D4D71B26A8640028EC65 /* Launch Screen.xib */,
 				BC3748E5155F4D0E0033BAC9 /* README.md */,
 				BC3748C3155F4C6C0033BAC9 /* DCM */,
 				BC3748ED155F69580033BAC9 /* MBProgressHUD */,
@@ -215,6 +214,7 @@
 				BC9F50271B2541D700594B10 /* Database */,
 				BC37490E155F9B2C0033BAC9 /* View Controllers */,
 				BC0D3689194FF71700D8CC4C /* Images.xcassets */,
+				BC72D4D71B26A8640028EC65 /* Launch Screen.xib */,
 				BC3748C4155F4C6C0033BAC9 /* Supporting Files */,
 			);
 			path = DCM;
@@ -613,7 +613,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -636,7 +635,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
