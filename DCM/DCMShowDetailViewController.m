@@ -6,12 +6,13 @@
 //  Copyright (c) 2012 Upright Citizens Brigade LLC. All rights reserved.
 //
 
+#import <Answers/Answers.h>
+
 #import "DCMShowDetailViewController.h"
 #import "DCMDatabase.h"
 #import "DCMUtilities.h"
 #import "VoteResponse.h"
-
-#import <Answers/Answers.h>
+#import "WallClock.h"
 
 enum {
     DCMTableSectionBlurb,
@@ -101,6 +102,38 @@ enum {
                                      applicationActivities:nil];
 
     [self presentViewController:avc animated:YES completion:nil];
+}
+
+- (BOOL)hasDCMStartedYet
+{
+    NSDate *startDate = [[DCMDatabase sharedDatabase] marathonStartDate];
+
+    return [[WallClock sharedClock] isDateInThePast:startDate];
+}
+
+- (IBAction)vote:(id)sender
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    if ([self hasDCMStartedYet]) {
+        [Answers logRating:@(10)
+               contentName:self.show.name
+               contentType:@"show"
+                 contentId:[self.show.identifier stringValue]
+          customAttributes:nil];
+
+        VoteResponse* randomResponse = [VoteResponse randomResponse:[DCMDatabase sharedDatabase]];
+
+        alert.title = @"Points Added";
+        alert.message = randomResponse.message;
+    } else {
+        alert.title = @"Too Soon!";
+        alert.message = @"Try again AFTER the start of the marathon.";
+    }
+
+    [alert addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil]];
+
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)dismiss:(id)sender
@@ -226,27 +259,6 @@ enum {
     Performance *performance = [performances objectAtIndex:indexPath.row];
 
     [[UIApplication sharedApplication] openURL:performance.ticketsURL];
-}
-
-
-- (void)vote:(id)sender
-{
-    [Answers logRating:@(10)
-           contentName:self.show.name
-           contentType:@"show"
-             contentId:[self.show.identifier stringValue]
-      customAttributes:nil];
-    
-    VoteResponse* randomResponse = [VoteResponse randomResponse:[DCMDatabase sharedDatabase]];
-    
-    UIAlertView* alert = [[UIAlertView alloc]
-                          initWithTitle:@"Points Added"
-                          message:randomResponse.message
-                          delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-
-    [alert show];
 }
 
 @end

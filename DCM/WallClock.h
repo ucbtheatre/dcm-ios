@@ -23,6 +23,7 @@ extern NSString * const WallClockMinuteDidChangeNotification;
 @property (nonatomic) NSTimeInterval timeShift;
 @property (nonatomic) NSTimeInterval speed;
 - (NSDate *)date;
+- (BOOL)isDateInThePast:(NSDate *)date;
 - (void)start;
 - (void)stop;
 @end

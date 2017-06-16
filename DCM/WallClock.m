@@ -58,6 +58,11 @@ NSString * const WallClockMinuteDidChangeNotification = @"WallClockMinuteDidChan
     }
 }
 
+- (BOOL)isDateInThePast:(NSDate *)date
+{
+    return [date compare:[self date]] == NSOrderedAscending;
+}
+
 - (NSTimeInterval)timeIntervalUntilNextMinuteChange
 {
     if (speedRate) {
