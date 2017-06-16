@@ -38,6 +38,7 @@
 		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
 		BC3F8CF21EF36C0D00519D40 /* BorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3F8CF11EF36C0D00519D40 /* BorderedButton.m */; };
+		BC3F8CF51EF38CDA00519D40 /* DCMTableSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3F8CF41EF38CDA00519D40 /* DCMTableSectionHeaderView.m */; };
 		BC66EFE61B27D522005B10EF /* DCMTabControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */; };
 		BC72D4D81B26A8640028EC65 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC72D4D71B26A8640028EC65 /* Launch Screen.xib */; };
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
@@ -113,6 +114,8 @@
 		BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMShowDetailViewController.m; sourceTree = "<group>"; };
 		BC3F8CF01EF36C0D00519D40 /* BorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedButton.h; sourceTree = "<group>"; };
 		BC3F8CF11EF36C0D00519D40 /* BorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedButton.m; sourceTree = "<group>"; };
+		BC3F8CF31EF38CDA00519D40 /* DCMTableSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTableSectionHeaderView.h; sourceTree = "<group>"; };
+		BC3F8CF41EF38CDA00519D40 /* DCMTableSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTableSectionHeaderView.m; sourceTree = "<group>"; };
 		BC66EFE41B27D522005B10EF /* DCMTabControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTabControllerDelegate.h; sourceTree = "<group>"; };
 		BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTabControllerDelegate.m; sourceTree = "<group>"; };
 		BC72D4D71B26A8640028EC65 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				BC15F37E157C53DB00239CB8 /* DCMScheduleViewController.m */,
 				BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */,
 				BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */,
+				BC3F8CF31EF38CDA00519D40 /* DCMTableSectionHeaderView.h */,
+				BC3F8CF41EF38CDA00519D40 /* DCMTableSectionHeaderView.m */,
 				BC9F50241B249E8300594B10 /* Favorites */,
 				BC3748CF155F4C6C0033BAC9 /* MainStoryboard.storyboard */,
 				BC9F502C1B2543C200594B10 /* Performers */,
@@ -498,6 +503,7 @@
 				95DDA7181AF9856B00387569 /* DCMVenuesMapViewController.m in Sources */,
 				BC3748F7155F69D10033BAC9 /* Performer.m in Sources */,
 				BC3748FD155F69EC0033BAC9 /* Venue.m in Sources */,
+				BC3F8CF51EF38CDA00519D40 /* DCMTableSectionHeaderView.m in Sources */,
 				BC374900155F6A8C0033BAC9 /* Show.m in Sources */,
 				BC374903155F6B010033BAC9 /* DCMImportOperation.m in Sources */,
 				BC9F502F1B255D6B00594B10 /* DCMPerformerScheduleViewController.m in Sources */,

@@ -7,10 +7,11 @@
 //
 
 #import "DCMTableViewController.h"
+#import "DCMTableSectionHeaderView.h"
 
 @implementation DCMTableViewController
 {
-    NSMutableArray *sectionHeaderViews;
+    NSMutableArray<DCMTableSectionHeaderView *> *sectionHeaderViews;
 }
 
 - (void)enableLongPressRecognizerOnTableView:(UITableView *)tableView
@@ -52,45 +53,34 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString *title = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+
     if (title == nil) {
         return nil;
     }
-    UIView *headerView;
+
+    DCMTableSectionHeaderView *headerView;
+
     if (sectionHeaderViews == nil) {
         sectionHeaderViews = [[NSMutableArray alloc] initWithCapacity:8];
     } else {
-        for (UIView *view in sectionHeaderViews) {
+        for (DCMTableSectionHeaderView *view in sectionHeaderViews) {
             if ([view superview] == nil) {
                 headerView = view;
                 break;
             }
         }
     }
+
     if (headerView == nil) {
         CGRect frame = CGRectMake(0, 0, 320, tableView.sectionHeaderHeight);
-        headerView = [[UIView alloc] initWithFrame:frame];
-        headerView.backgroundColor = [UIColor colorWithRed:0.82f
-                                                     green:0.25f
-                                                      blue:0.25f
-                                                     alpha:1.0f];
-        headerView.opaque = NO;
-        headerView.autoresizesSubviews = YES;
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectInset(frame, 10, 0)];
-        label.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-                                  UIViewAutoresizingFlexibleHeight);
-        label.font = [UIFont boldSystemFontOfSize:15];
-        label.textColor = [UIColor whiteColor];
-        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-            label.shadowColor = [UIColor grayColor];
-            label.shadowOffset = CGSizeMake(0, -1);
-        }
-        label.backgroundColor = [UIColor clearColor];
-        label.opaque = NO;
-        [headerView addSubview:label];
+
+        headerView = [[DCMTableSectionHeaderView alloc] initWithFrame:frame];
+
         [sectionHeaderViews addObject:headerView];
     }
-    UILabel *label = [[headerView subviews] lastObject];
-    label.text = title;
+
+    headerView.title = title;
+
     return headerView;
 }
 
