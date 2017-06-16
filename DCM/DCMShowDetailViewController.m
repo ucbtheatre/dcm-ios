@@ -153,16 +153,6 @@ enum {
     return cell;
 }
 
-- (UITableViewCell *)voteCellForTableView:(UITableView *)tableView
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VoteCell"];
-    UIButton* button = [cell viewWithTag:1];
-    button.layer.borderWidth = 1.f;
-    button.layer.cornerRadius = 5.f;
-    button.layer.borderColor = tableView.tintColor.CGColor;
-    return cell;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForPerformerAtRow:(NSInteger)row
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PerformerCell"];
@@ -196,7 +186,7 @@ enum {
             return [tableView dequeueReusableCellWithIdentifier:@"TicketWarningCell"];
 
         case DCMTableSectionVote:
-            return [self voteCellForTableView:tableView];
+            return [tableView dequeueReusableCellWithIdentifier:@"VoteCell"];
 
         case DCMTableSectionShowtimes:
             return [self

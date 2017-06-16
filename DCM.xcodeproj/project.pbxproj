@@ -37,6 +37,7 @@
 		BC374907155F7BE90033BAC9 /* DCMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC374906155F7BE90033BAC9 /* DCMDatabase.m */; };
 		BC37490A155F8A030033BAC9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC374909155F8A030033BAC9 /* CoreData.framework */; };
 		BC37490D155F9B1F0033BAC9 /* DCMShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */; };
+		BC3F8CF21EF36C0D00519D40 /* BorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3F8CF11EF36C0D00519D40 /* BorderedButton.m */; };
 		BC66EFE61B27D522005B10EF /* DCMTabControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */; };
 		BC72D4D81B26A8640028EC65 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC72D4D71B26A8640028EC65 /* Launch Screen.xib */; };
 		BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */; };
@@ -110,6 +111,8 @@
 		BC374909155F8A030033BAC9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BC37490B155F9B1E0033BAC9 /* DCMShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMShowDetailViewController.h; sourceTree = "<group>"; };
 		BC37490C155F9B1E0033BAC9 /* DCMShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMShowDetailViewController.m; sourceTree = "<group>"; };
+		BC3F8CF01EF36C0D00519D40 /* BorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderedButton.h; sourceTree = "<group>"; };
+		BC3F8CF11EF36C0D00519D40 /* BorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderedButton.m; sourceTree = "<group>"; };
 		BC66EFE41B27D522005B10EF /* DCMTabControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTabControllerDelegate.h; sourceTree = "<group>"; };
 		BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTabControllerDelegate.m; sourceTree = "<group>"; };
 		BC72D4D71B26A8640028EC65 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 		BC9F50261B2541C800594B10 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				BC3F8CF01EF36C0D00519D40 /* BorderedButton.h */,
+				BC3F8CF11EF36C0D00519D40 /* BorderedButton.m */,
 				BCD9D13A158A7A0000BC9D0F /* WallClock.h */,
 				BCD9D13B158A7A0000BC9D0F /* WallClock.m */,
 				BCD35DF5176E7D2000B8E799 /* DCMUtilities.h */,
@@ -508,6 +513,7 @@
 				BC31B93F1587D594005F9717 /* DCMDownload.m in Sources */,
 				BCA413131B136BE800440316 /* NSDictionary+DCM.m in Sources */,
 				BC94EF7815883A9F001CE7A8 /* DCMTableViewController.m in Sources */,
+				BC3F8CF21EF36C0D00519D40 /* BorderedButton.m in Sources */,
 				BC249A301B2001400093604F /* DCMVenuesListViewController.m in Sources */,
 				BCD9D13C158A7A0000BC9D0F /* WallClock.m in Sources */,
 				BCD35DF7176E7D2000B8E799 /* DCMUtilities.m in Sources */,
