@@ -154,8 +154,10 @@ enum {
         case DCMTableSectionBlurb:          return nil;
         case DCMTableSectionTicketWarning:  return nil;
         case DCMTableSectionVote:           return nil;
-        case DCMTableSectionShowtimes:      return @"Showtimes";
-        case DCMTableSectionCast:           return @"Cast";
+        case DCMTableSectionShowtimes:
+            return ([performances count] > 0) ? @"Showtimes" : nil;
+        case DCMTableSectionCast:
+            return ([performers count] > 0) ? @"Cast" : nil;
     }
     return nil;
 }
