@@ -151,7 +151,7 @@
         }];
         [text appendFormat:@" at %@", [[[performances lastObject] venue] name]];
     }
-    [text appendString:@" #DCM18"];
+    [text appendString:@" #DCM19"];
 
     return text;
 }
