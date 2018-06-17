@@ -37,7 +37,7 @@ Singleton DCMDatabase object. May reset the Core Data stack at any time; client 
 
 ## License
 
-Copyright (c) 2012 Upright Citizens Brigade LLC
+Copyright (c) 2012-2018 Upright Citizens Brigade LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
