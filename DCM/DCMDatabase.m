@@ -26,10 +26,10 @@ static NSString * const DCMMetadataOriginLastModifiedKey = @"Origin-Last-Modifie
 static NSString * const DCMMetadataOriginEntityTagKey = @"Origin-ETag";
 
 static NSString * const DCMOriginURLStringKey = @"DCMFeedURL";
-static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm19";
+static NSString * const DCMOriginURLString = @"http://api.ucbcomedy.com/dcm20hkezldho92";
 
-static NSString * const DCMStoreFileName = @"dcm19.sqlite";
-static NSString * const DCMFavoritesFileName = @"dcm19-favorites.plist";
+static NSString * const DCMStoreFileName = @"dcm20.sqlite";
+static NSString * const DCMFavoritesFileName = @"dcm20-favorites.plist";
 
 @implementation DCMDatabase
 {
