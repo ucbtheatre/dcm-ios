@@ -233,6 +233,8 @@ enum {
                     tableView:tableView
                     cellForPerformerAtRow:indexPath.row];
     }
+
+    [NSException raise:NSRangeException format:@"Section out of range: %@", indexPath];
     return nil;
 }
 

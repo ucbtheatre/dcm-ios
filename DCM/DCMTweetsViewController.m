@@ -17,6 +17,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+
     if (self.webView.request == nil) {
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"DCMTweets" withExtension:@"html"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
