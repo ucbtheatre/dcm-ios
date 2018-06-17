@@ -124,7 +124,7 @@ enum {
 
         VoteResponse* randomResponse = [VoteResponse randomResponse:[DCMDatabase sharedDatabase]];
 
-        alert.title = @"Points Added";
+        alert.title = @"Fun Fact";
         alert.message = randomResponse.message;
     } else {
         alert.title = @"Too Soon!";
