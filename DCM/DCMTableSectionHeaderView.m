@@ -16,9 +16,9 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
-        self.backgroundColor = [UIColor colorWithRed:0.565
-                                               green:0.784
-                                                blue:0.749
+        self.backgroundColor = [UIColor colorWithRed:0.929
+                                               green:0.294
+                                                blue:0.349
                                                alpha:1.000];
 
         self.opaque = YES;
