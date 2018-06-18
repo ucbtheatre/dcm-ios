@@ -1,14 +1,14 @@
 //
-//  DCMTweetsViewController.m
+//  DCMOffersViewController.m
 //  DCM
 //
-//  Created by Benjamin Ragheb on 6/16/13.
-//  Copyright (c) 2013 Upright Citizens Brigade LLC. All rights reserved.
+//  Created by Benjamin Ragheb on 6/18/18.
+//  Copyright © 2018 Upright Citizens Brigade LLC. All rights reserved.
 //
 
-#import "DCMTweetsViewController.h"
+#import "DCMOffersViewController.h"
 
-@implementation DCMTweetsViewController
+@implementation DCMOffersViewController
 
 - (void)dealloc
 {
@@ -20,7 +20,7 @@
     [super viewWillAppear:animated];
 
     if (self.webView.request == nil) {
-        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"DCMTweets" withExtension:@"html"];
+        NSURL *URL = [NSURL URLWithString:@"http://delclosemarathon.com/offersjwdgl0r797"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     }
 }
