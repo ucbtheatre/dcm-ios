@@ -119,7 +119,6 @@
 		BC66EFE41B27D522005B10EF /* DCMTabControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMTabControllerDelegate.h; sourceTree = "<group>"; };
 		BC66EFE51B27D522005B10EF /* DCMTabControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMTabControllerDelegate.m; sourceTree = "<group>"; };
 		BC72D4D71B26A8640028EC65 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "Launch Screen.xib"; path = "../Launch Screen.xib"; sourceTree = "<group>"; };
-		BC7C6A9A15900A2C0055E985 /* iTunesArtwork */ = {isa = PBXFileReference; explicitFileType = image.jpeg; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		BC94EF7615883A9F001CE7A8 /* DCMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DCMTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		BC94EF7715883A9F001CE7A8 /* DCMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DCMTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		BC965C8F156020BE00665E50 /* DCMUpcomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMUpcomingViewController.h; sourceTree = "<group>"; };
@@ -229,7 +228,6 @@
 				BC3748C5155F4C6C0033BAC9 /* DCM-Info.plist */,
 				BC3748CB155F4C6C0033BAC9 /* DCM-Prefix.pch */,
 				BC3748C6155F4C6C0033BAC9 /* InfoPlist.strings */,
-				BC7C6A9A15900A2C0055E985 /* iTunesArtwork */,
 				BC3748C9155F4C6C0033BAC9 /* main.m */,
 			);
 			name = "Supporting Files";
